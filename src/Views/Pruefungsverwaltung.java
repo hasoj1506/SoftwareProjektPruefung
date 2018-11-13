@@ -50,9 +50,5 @@ public class Pruefungsverwaltung extends JFrame{
 		pack();
 		
 	}
-	
-	public static void main(String[] args) {
-		Pruefungsverwaltung p = new Pruefungsverwaltung();
-	}
 
 }
