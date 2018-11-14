@@ -9,20 +9,21 @@ public class Aufgabendetails {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTable table;
+	private JTable table; 
 	
 	
 	public Aufgabendetails() {
 		
-		this.frame = new JFrame("Aufgabendetails");
+	
+		JFrame frame = new JFrame("Aufgabendetails");
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel label = new JLabel("Aufgabentitel:");
@@ -30,37 +31,41 @@ public class Aufgabendetails {
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.anchor = GridBagConstraints.EAST;
 		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 7;
-		gbc_label.gridy = 5;
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 3;
 		panel.add(label, gbc_label);
 		
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setColumns(10);
+		textField.setPreferredSize(new Dimension(5, 21));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 3;
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.gridx = 8;
-		gbc_textField.gridy = 5;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 3;
 		panel.add(textField, gbc_textField);
 		
 		JLabel label_1 = new JLabel("Aufgabentext:");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.anchor = GridBagConstraints.EAST;
+		gbc_label_1.anchor = GridBagConstraints.NORTHEAST;
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 7;
-		gbc_label_1.gridy = 6;
+		gbc_label_1.gridx = 1;
+		gbc_label_1.gridy = 4;
 		panel.add(label_1, gbc_label_1);
 		
 		textField_1 = new JTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
 		textField_1.setColumns(10);
+		textField_1.setPreferredSize(new Dimension(100, 115));
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.gridx = 8;
-		gbc_textField_1.gridy = 6;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.gridx = 2;
+		gbc_textField_1.gridy = 4;
 		panel.add(textField_1, gbc_textField_1);
 		
 		JLabel label_2 = new JLabel("Punktzahl:");
@@ -68,8 +73,8 @@ public class Aufgabendetails {
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.anchor = GridBagConstraints.EAST;
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 7;
-		gbc_label_2.gridy = 7;
+		gbc_label_2.gridx = 1;
+		gbc_label_2.gridy = 5;
 		panel.add(label_2, gbc_label_2);
 		
 		textField_2 = new JTextField();
@@ -77,26 +82,51 @@ public class Aufgabendetails {
 		textField_2.setColumns(10);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.gridx = 8;
-		gbc_textField_2.gridy = 7;
+		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_2.gridx = 2;
+		gbc_textField_2.gridy = 5;
 		panel.add(textField_2, gbc_textField_2);
 		
 		JLabel label_3 = new JLabel("Antworten:");
+		label_3.setVerticalAlignment(SwingConstants.TOP);
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
-		gbc_label_3.insets = new Insets(0, 0, 0, 5);
-		gbc_label_3.gridx = 7;
-		gbc_label_3.gridy = 8;
+		gbc_label_3.anchor = GridBagConstraints.NORTHEAST;
+		gbc_label_3.insets = new Insets(0, 0, 5, 5);
+		gbc_label_3.gridx = 1;
+		gbc_label_3.gridy = 7;
 		panel.add(label_3, gbc_label_3);
 		
 		table = new JTable();
-		table.setPreferredSize(new Dimension(150, 400));
+		table.setPreferredSize(new Dimension(100, 200));
 		GridBagConstraints gbc_table = new GridBagConstraints();
+		gbc_table.gridwidth = 3;
+		gbc_table.insets = new Insets(0, 0, 5, 5);
 		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 8;
-		gbc_table.gridy = 8;
+		gbc_table.gridx = 2;
+		gbc_table.gridy = 7;
 		panel.add(table, gbc_table);
+		
+		JButton btnNewButton_3 = new JButton("Bearbeiten");
+		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_3.gridx = 5;
+		gbc_btnNewButton_3.gridy = 7;
+		panel.add(btnNewButton_3, gbc_btnNewButton_3);
+		
+		JPanel panel_4 = new JPanel();
+		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_4.fill = GridBagConstraints.BOTH;
+		gbc_panel_4.gridx = 6;
+		gbc_panel_4.gridy = 7;
+		panel.add(panel_4, gbc_panel_4);
+		GridBagLayout gbl_panel_4 = new GridBagLayout();
+		gbl_panel_4.columnWidths = new int[]{0};
+		gbl_panel_4.rowHeights = new int[]{0};
+		gbl_panel_4.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_panel_4.rowWeights = new double[]{Double.MIN_VALUE};
+		panel_4.setLayout(gbl_panel_4);
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
@@ -116,6 +146,7 @@ public class Aufgabendetails {
 		frame.getContentPane().add(panel_2, BorderLayout.SOUTH);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setPreferredSize(new Dimension(90,20));
 		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
 		flowLayout_2.setVgap(1);
 		flowLayout_2.setHgap(1);
@@ -125,9 +156,6 @@ public class Aufgabendetails {
 		JButton btnNewButton_2 = new JButton("Neu");
 		panel_3.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Bearbeiten");
-		panel_3.add(btnNewButton_3);
-		
 		JButton btnNewButton_4 = new JButton("L\u00F6schen");
 		panel_3.add(btnNewButton_4);
 		
@@ -135,9 +163,13 @@ public class Aufgabendetails {
 		
 		
 		frame.setVisible(true);
-		// setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// frame.pack();
+		//frame.setDefaulCloseOperation();
+		frame.pack();
 		
+	}
+	
+	public static void main(String arg) {
+		Aufgabendetails view = new Aufgabendetails();
 	}
 	
 	
