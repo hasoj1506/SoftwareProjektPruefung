@@ -1,9 +1,13 @@
 package testPackage;
 
+import Views.Aufgabendetails;
+import Views.Pruefungsverwaltung;
+
 public class TestApp {
 
 	public static void main(String[] args) {
-		System.out.println("Hello them");
+		Pruefungsverwaltung view = new Pruefungsverwaltung();
+		Aufgabendetails view2 = new Aufgabendetails();
 	}
 
 }
