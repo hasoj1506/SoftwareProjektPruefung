@@ -1,163 +1,160 @@
 package Views;
 
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.JTable;
+import java.awt.Dimension;
 import javax.swing.JButton;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.GridBagLayout;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
+import javax.swing.JList;
+import javax.swing.JTable;
 
-
-public class PruefungsDetails extends JFrame{
-	private JTable tableTermine;
-	private JTextField textFieldTitel;
+public class PruefungsDetails extends JFrame {
+	private JTextField textFieldPrfungstitel;
 	private JTextField textFieldDauer;
 	private JTextField textFieldPunkte;
+	private JTable tableAufgaben;
+	private JTable table;
 	public PruefungsDetails() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		getContentPane().setLayout(gridBagLayout);
+		
+		JPanel panelButtons = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panelButtons.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		getContentPane().add(panelButtons, BorderLayout.NORTH);
+		
+		JButton btnSpeichern = new JButton("Speichern");
+		btnSpeichern.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panelButtons.add(btnSpeichern);
+		
+		JButton btnLschen = new JButton("L\u00F6schen");
+		panelButtons.add(btnLschen);
+		
+		JButton btnFreigeben = new JButton("Freigeben");
+		panelButtons.add(btnFreigeben);
+		
+		JPanel panelMain = new JPanel();
+		getContentPane().add(panelMain, BorderLayout.CENTER);
+		GridBagLayout gbl_panelMain = new GridBagLayout();
+		gbl_panelMain.columnWidths = new int[]{0, 0, 0, 0, 0};
+		gbl_panelMain.rowHeights = new int[]{0, 0, 59, 0, 0, 0};
+		gbl_panelMain.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		panelMain.setLayout(gbl_panelMain);
 		
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel:");
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.anchor = GridBagConstraints.EAST;
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPrfungstitel.gridx = 0;
-		gbc_lblPrfungstitel.gridy = 0;
-		getContentPane().add(lblPrfungstitel, gbc_lblPrfungstitel);
+		gbc_lblPrfungstitel.gridx = 1;
+		gbc_lblPrfungstitel.gridy = 1;
+		panelMain.add(lblPrfungstitel, gbc_lblPrfungstitel);
 		
-		textFieldTitel = new JTextField();
-		GridBagConstraints gbc_textFieldTitel = new GridBagConstraints();
-		gbc_textFieldTitel.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldTitel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldTitel.gridx = 1;
-		gbc_textFieldTitel.gridy = 0;
-		getContentPane().add(textFieldTitel, gbc_textFieldTitel);
-		textFieldTitel.setColumns(10);
+		textFieldPrfungstitel = new JTextField();
+		GridBagConstraints gbc_textFieldPrfungstitel = new GridBagConstraints();
+		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldPrfungstitel.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldPrfungstitel.gridx = 2;
+		gbc_textFieldPrfungstitel.gridy = 1;
+		panelMain.add(textFieldPrfungstitel, gbc_textFieldPrfungstitel);
+		textFieldPrfungstitel.setColumns(10);
 		
-		JLabel lblDauermin = new JLabel("Dauer (Min):");
-		GridBagConstraints gbc_lblDauermin = new GridBagConstraints();
-		gbc_lblDauermin.anchor = GridBagConstraints.EAST;
-		gbc_lblDauermin.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDauermin.gridx = 0;
-		gbc_lblDauermin.gridy = 1;
-		getContentPane().add(lblDauermin, gbc_lblDauermin);
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridwidth = 2;
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 2;
+		panelMain.add(panel, gbc_panel);
+		
+		JLabel lblDauermin = new JLabel("Dauer(Min):");
+		panel.add(lblDauermin);
 		
 		textFieldDauer = new JTextField();
-		GridBagConstraints gbc_textFieldDauer = new GridBagConstraints();
-		gbc_textFieldDauer.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldDauer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldDauer.gridx = 1;
-		gbc_textFieldDauer.gridy = 1;
-		getContentPane().add(textFieldDauer, gbc_textFieldDauer);
-		textFieldDauer.setColumns(10);
+		panel.add(textFieldDauer);
+		textFieldDauer.setColumns(4);
 		
-		JLabel lblPunkte = new JLabel("Punkte:");
-		GridBagConstraints gbc_lblPunkte = new GridBagConstraints();
-		gbc_lblPunkte.anchor = GridBagConstraints.EAST;
-		gbc_lblPunkte.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPunkte.gridx = 0;
-		gbc_lblPunkte.gridy = 2;
-		getContentPane().add(lblPunkte, gbc_lblPunkte);
+		JLabel lblPunte = new JLabel("Punkte:");
+		panel.add(lblPunte);
 		
 		textFieldPunkte = new JTextField();
-		GridBagConstraints gbc_textFieldPunkte = new GridBagConstraints();
-		gbc_textFieldPunkte.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldPunkte.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldPunkte.gridx = 1;
-		gbc_textFieldPunkte.gridy = 2;
-		getContentPane().add(textFieldPunkte, gbc_textFieldPunkte);
-		textFieldPunkte.setColumns(10);
+		panel.add(textFieldPunkte);
+		textFieldPunkte.setColumns(4);
+		
+		JList listTermine = new JList();
+		panel.add(listTermine);
+		
+		JPanel panelBtns3 = new JPanel();
+		GridBagConstraints gbc_panelBtns3 = new GridBagConstraints();
+		gbc_panelBtns3.insets = new Insets(0, 0, 5, 0);
+		gbc_panelBtns3.fill = GridBagConstraints.BOTH;
+		gbc_panelBtns3.gridx = 3;
+		gbc_panelBtns3.gridy = 2;
+		panelMain.add(panelBtns3, gbc_panelBtns3);
+		panelBtns3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblAufgaben = new JLabel("Aufgaben:");
 		GridBagConstraints gbc_lblAufgaben = new GridBagConstraints();
+		gbc_lblAufgaben.anchor = GridBagConstraints.NORTH;
 		gbc_lblAufgaben.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAufgaben.gridx = 0;
+		gbc_lblAufgaben.gridx = 1;
 		gbc_lblAufgaben.gridy = 3;
-		getContentPane().add(lblAufgaben, gbc_lblAufgaben);
+		panelMain.add(lblAufgaben, gbc_lblAufgaben);
 		
-		JButton btnAufgabenlisteffnen = new JButton("Aufgaben-Liste \u00F6ffnen");
-		GridBagConstraints gbc_btnAufgabenlisteffnen = new GridBagConstraints();
-		gbc_btnAufgabenlisteffnen.insets = new Insets(0, 0, 5, 0);
-		gbc_btnAufgabenlisteffnen.gridx = 1;
-		gbc_btnAufgabenlisteffnen.gridy = 3;
-		getContentPane().add(btnAufgabenlisteffnen, gbc_btnAufgabenlisteffnen);
+		tableAufgaben = new JTable();
+		GridBagConstraints gbc_tableAufgaben = new GridBagConstraints();
+		gbc_tableAufgaben.insets = new Insets(0, 0, 5, 5);
+		gbc_tableAufgaben.fill = GridBagConstraints.BOTH;
+		gbc_tableAufgaben.gridx = 2;
+		gbc_tableAufgaben.gridy = 3;
+		panelMain.add(tableAufgaben, gbc_tableAufgaben);
 		
-		JLabel lblTeilnehmer = new JLabel("Teilnehmer:");
-		GridBagConstraints gbc_lblTeilnehmer = new GridBagConstraints();
-		gbc_lblTeilnehmer.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTeilnehmer.gridx = 0;
-		gbc_lblTeilnehmer.gridy = 4;
-		getContentPane().add(lblTeilnehmer, gbc_lblTeilnehmer);
+		JPanel panelBtns2 = new JPanel();
+		GridBagConstraints gbc_panelBtns2 = new GridBagConstraints();
+		gbc_panelBtns2.anchor = GridBagConstraints.NORTH;
+		gbc_panelBtns2.insets = new Insets(0, 0, 5, 0);
+		gbc_panelBtns2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelBtns2.gridx = 3;
+		gbc_panelBtns2.gridy = 3;
+		panelMain.add(panelBtns2, gbc_panelBtns2);
 		
-		JButton btnTeilnehmerlisteffnen = new JButton("Teilnehmer-Liste \u00F6ffnen");
-		GridBagConstraints gbc_btnTeilnehmerlisteffnen = new GridBagConstraints();
-		gbc_btnTeilnehmerlisteffnen.insets = new Insets(0, 0, 5, 0);
-		gbc_btnTeilnehmerlisteffnen.gridx = 1;
-		gbc_btnTeilnehmerlisteffnen.gridy = 4;
-		getContentPane().add(btnTeilnehmerlisteffnen, gbc_btnTeilnehmerlisteffnen);
+		JLabel lblNewLabel = new JLabel("Teilnehmer:");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 4;
+		panelMain.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JPanel panelTermine = new JPanel();
-		GridBagConstraints gbc_panelTermine = new GridBagConstraints();
-		gbc_panelTermine.gridheight = 2;
-		gbc_panelTermine.gridwidth = 2;
-		gbc_panelTermine.insets = new Insets(0, 0, 5, 0);
-		gbc_panelTermine.fill = GridBagConstraints.BOTH;
-		gbc_panelTermine.gridx = 0;
-		gbc_panelTermine.gridy = 5;
-		getContentPane().add(panelTermine, gbc_panelTermine);
-		panelTermine.setLayout(new BorderLayout(0, 0));
+		table = new JTable();
+		GridBagConstraints gbc_table = new GridBagConstraints();
+		gbc_table.insets = new Insets(0, 0, 0, 5);
+		gbc_table.fill = GridBagConstraints.BOTH;
+		gbc_table.gridx = 2;
+		gbc_table.gridy = 4;
+		panelMain.add(table, gbc_table);
 		
-		tableTermine = new JTable();
-		panelTermine.add(tableTermine, BorderLayout.CENTER);
-		
-		JPanel panelBtns = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panelBtns.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panelTermine.add(panelBtns, BorderLayout.SOUTH);
-		
-		JButton btnNeu = new JButton("Neu");
-		btnNeu.setBackground(Color.WHITE);
-		panelBtns.add(btnNeu);
-		
-		JButton btnBearbeiten = new JButton("Bearbeiten");
-		panelBtns.add(btnBearbeiten);
-		
-		JButton btnLschen = new JButton("L\u00F6schen");
-		panelBtns.add(btnLschen);
-		
-		JPanel panelButtons = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panelButtons.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.RIGHT);
-		GridBagConstraints gbc_panelButtons = new GridBagConstraints();
-		gbc_panelButtons.gridwidth = 2;
-		gbc_panelButtons.fill = GridBagConstraints.BOTH;
-		gbc_panelButtons.gridx = 0;
-		gbc_panelButtons.gridy = 7;
-		getContentPane().add(panelButtons, gbc_panelButtons);
-		
-		JButton btnFreischalten = new JButton("Freischalten");
-		panelButtons.add(btnFreischalten);
-		
-		JButton btnLschen_1 = new JButton("L\u00F6schen");
-		panelButtons.add(btnLschen_1);
-		
-		JButton btnSpeichern = new JButton("Speichern");
-		panelButtons.add(btnSpeichern);
-		
-		
+		JPanel panelBtns1 = new JPanel();
+		GridBagConstraints gbc_panelBtns1 = new GridBagConstraints();
+		gbc_panelBtns1.anchor = GridBagConstraints.NORTH;
+		gbc_panelBtns1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelBtns1.gridx = 3;
+		gbc_panelBtns1.gridy = 4;
+		panelMain.add(panelBtns1, gbc_panelBtns1);
 	}
 
 }
