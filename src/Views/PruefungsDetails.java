@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JList;
 import javax.swing.JTable;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 public class PruefungsDetails extends JFrame {
 	private JTextField textFieldPrfungstitel;
@@ -47,10 +49,10 @@ public class PruefungsDetails extends JFrame {
 		JPanel panelMain = new JPanel();
 		getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
-		gbl_panelMain.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gbl_panelMain.rowHeights = new int[]{0, 0, 59, 0, 0, 0};
-		gbl_panelMain.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelMain.columnWidths = new int[]{0, 0, 300, 50, 0, 0, 0};
+		gbl_panelMain.rowHeights = new int[]{0, 0, 59, 0, 0, 0, 0};
+		gbl_panelMain.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		panelMain.setLayout(gbl_panelMain);
 		
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel:");
@@ -74,14 +76,16 @@ public class PruefungsDetails extends JFrame {
 		FlowLayout flowLayout_1 = (FlowLayout) panel.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.anchor = GridBagConstraints.NORTH;
 		gbc_panel.gridwidth = 2;
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
-		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 2;
 		panelMain.add(panel, gbc_panel);
 		
 		JLabel lblDauermin = new JLabel("Dauer(Min):");
+		lblDauermin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblDauermin);
 		
 		textFieldDauer = new JTextField();
@@ -89,6 +93,7 @@ public class PruefungsDetails extends JFrame {
 		textFieldDauer.setColumns(4);
 		
 		JLabel lblPunte = new JLabel("Punkte:");
+		lblPunte.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblPunte);
 		
 		textFieldPunkte = new JTextField();
@@ -97,15 +102,6 @@ public class PruefungsDetails extends JFrame {
 		
 		JList listTermine = new JList();
 		panel.add(listTermine);
-		
-		JPanel panelBtns3 = new JPanel();
-		GridBagConstraints gbc_panelBtns3 = new GridBagConstraints();
-		gbc_panelBtns3.insets = new Insets(0, 0, 5, 0);
-		gbc_panelBtns3.fill = GridBagConstraints.BOTH;
-		gbc_panelBtns3.gridx = 3;
-		gbc_panelBtns3.gridy = 2;
-		panelMain.add(panelBtns3, gbc_panelBtns3);
-		panelBtns3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblAufgaben = new JLabel("Aufgaben:");
 		GridBagConstraints gbc_lblAufgaben = new GridBagConstraints();
@@ -123,38 +119,21 @@ public class PruefungsDetails extends JFrame {
 		gbc_tableAufgaben.gridy = 3;
 		panelMain.add(tableAufgaben, gbc_tableAufgaben);
 		
-		JPanel panelBtns2 = new JPanel();
-		GridBagConstraints gbc_panelBtns2 = new GridBagConstraints();
-		gbc_panelBtns2.anchor = GridBagConstraints.NORTH;
-		gbc_panelBtns2.insets = new Insets(0, 0, 5, 0);
-		gbc_panelBtns2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panelBtns2.gridx = 3;
-		gbc_panelBtns2.gridy = 3;
-		panelMain.add(panelBtns2, gbc_panelBtns2);
-		
 		JLabel lblNewLabel = new JLabel("Teilnehmer:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 4;
 		panelMain.add(lblNewLabel, gbc_lblNewLabel);
 		
 		table = new JTable();
 		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.insets = new Insets(0, 0, 0, 5);
+		gbc_table.insets = new Insets(0, 0, 5, 5);
 		gbc_table.fill = GridBagConstraints.BOTH;
 		gbc_table.gridx = 2;
 		gbc_table.gridy = 4;
 		panelMain.add(table, gbc_table);
-		
-		JPanel panelBtns1 = new JPanel();
-		GridBagConstraints gbc_panelBtns1 = new GridBagConstraints();
-		gbc_panelBtns1.anchor = GridBagConstraints.NORTH;
-		gbc_panelBtns1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panelBtns1.gridx = 3;
-		gbc_panelBtns1.gridy = 4;
-		panelMain.add(panelBtns1, gbc_panelBtns1);
 	}
 
 }
