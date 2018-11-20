@@ -30,8 +30,8 @@ public class PruefungsDetails extends JFrame {
 		
 		JPanel panelButtons = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panelButtons.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		getContentPane().add(panelButtons, BorderLayout.NORTH);
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 		
 		JButton btnSpeichern = new JButton("Speichern");
 		btnSpeichern.addActionListener(new ActionListener() {
