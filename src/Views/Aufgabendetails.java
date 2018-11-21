@@ -5,6 +5,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Aufgabendetails {
 
@@ -12,7 +14,7 @@ public class Aufgabendetails {
 	private JTextField afgdTitelTextField;
 	private JTextField afgdFrageTextField;
 	private JTextField afgdPunkteTextField;
-	private JTable table;
+	private JTable afgdTable;
 
 	public Aufgabendetails() {
 		onCreate();
@@ -21,14 +23,16 @@ public class Aufgabendetails {
 	public void onCreate() {
 
 		this.frame = new JFrame("Aufgabendetails");
+		frame.setMinimumSize(new Dimension(850, 650));
 
 		JPanel eingabePanel = new JPanel();
+		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(eingabePanel, BorderLayout.NORTH);
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
-		gbl_eingabePanel.columnWidths = new int[]{20, 95, 356, 65, 0};
-		gbl_eingabePanel.rowHeights = new int[]{0, 0, 59, 0, 0};
+		gbl_eingabePanel.columnWidths = new int[]{36, 95, 356, 65, 0};
+		gbl_eingabePanel.rowHeights = new int[]{43, 0, 0, 0, 0, 0, 0, 0};
 		gbl_eingabePanel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_eingabePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_eingabePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		eingabePanel.setLayout(gbl_eingabePanel);
 		
 		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
@@ -59,6 +63,8 @@ public class Aufgabendetails {
 		afgdFrageTextField = new JTextField();
 		afgdFrageTextField.setText("\r\n");
 		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
+		gbc_afgdFrageTextField.anchor = GridBagConstraints.NORTH;
+		gbc_afgdFrageTextField.gridheight = 3;
 		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdFrageTextField.fill = GridBagConstraints.BOTH;
 		gbc_afgdFrageTextField.gridx = 2;
@@ -69,27 +75,28 @@ public class Aufgabendetails {
 		JLabel afgdPunkteLabel = new JLabel("Punktzahl:");
 		GridBagConstraints gbc_afgdPunkteLabel = new GridBagConstraints();
 		gbc_afgdPunkteLabel.anchor = GridBagConstraints.EAST;
-		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdPunkteLabel.gridx = 1;
-		gbc_afgdPunkteLabel.gridy = 3;
+		gbc_afgdPunkteLabel.gridy = 5;
 		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
 		
 		afgdPunkteTextField = new JTextField();
 		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
-		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
 		gbc_afgdPunkteTextField.gridx = 2;
-		gbc_afgdPunkteTextField.gridy = 3;
+		gbc_afgdPunkteTextField.gridy = 5;
 		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
 		afgdPunkteTextField.setColumns(10);
 		
 		JPanel arbeitsPanel = new JPanel();
+		arbeitsPanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(arbeitsPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_arbeitsPanel = new GridBagLayout();
 		gbl_arbeitsPanel.columnWidths = new int[]{65, 0, 125, 65, 0};
-		gbl_arbeitsPanel.rowHeights = new int[]{0, 0, 0};
+		gbl_arbeitsPanel.rowHeights = new int[]{0, 0};
 		gbl_arbeitsPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_arbeitsPanel.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_arbeitsPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		arbeitsPanel.setLayout(gbl_arbeitsPanel);
 		
 		JLabel afgdAntwortenLabel = new JLabel("Antworten:");
@@ -97,20 +104,22 @@ public class Aufgabendetails {
 		gbc_afgdAntwortenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdAntwortenLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_afgdAntwortenLabel.gridx = 1;
-		gbc_afgdAntwortenLabel.gridy = 1;
+		gbc_afgdAntwortenLabel.gridy = 0;
 		arbeitsPanel.add(afgdAntwortenLabel, gbc_afgdAntwortenLabel);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 2;
-		gbc_scrollPane.gridy = 1;
-		arbeitsPanel.add(scrollPane, gbc_scrollPane);
+		JScrollPane tableScrollPane = new JScrollPane();
+		tableScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		tableScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		GridBagConstraints gbc_tableScrollPane = new GridBagConstraints();
+		gbc_tableScrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_tableScrollPane.fill = GridBagConstraints.BOTH;
+		gbc_tableScrollPane.gridx = 2;
+		gbc_tableScrollPane.gridy = 0;
+		arbeitsPanel.add(tableScrollPane, gbc_tableScrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		afgdTable = new JTable();
+		afgdTable.setMinimumSize(new Dimension(500, 300));
+		afgdTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
@@ -174,47 +183,77 @@ public class Aufgabendetails {
 				return columnTypes[columnIndex];
 			}
 		});
-		scrollPane.setViewportView(table);
+		tableScrollPane.setViewportView(afgdTable);
 		
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 65, 10));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 70, 10));
 		
-		JPanel panel = new JPanel();
-		buttonPanel.add(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		JPanel unterPanel = new JPanel();
+		buttonPanel.add(unterPanel);
+		GridBagLayout gbl_unterPanel = new GridBagLayout();
+		gbl_unterPanel.columnWidths = new int[]{46, 33, 54, 0, 39, 57, 0};
+		gbl_unterPanel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_unterPanel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_unterPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		unterPanel.setLayout(gbl_unterPanel);
 		
-		JButton btnNewButton = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 0;
-		panel.add(btnNewButton, gbc_btnNewButton);
+		JButton afgdButtonNeuAntwort = new JButton("Neu");
+		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		GridBagConstraints gbc_afgdButtonNeuAntwort = new GridBagConstraints();
+		gbc_afgdButtonNeuAntwort.gridwidth = 2;
+		gbc_afgdButtonNeuAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonNeuAntwort.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdButtonNeuAntwort.gridx = 0;
+		gbc_afgdButtonNeuAntwort.gridy = 0;
+		unterPanel.add(afgdButtonNeuAntwort, gbc_afgdButtonNeuAntwort);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton_2.gridx = 1;
-		gbc_btnNewButton_2.gridy = 0;
-		panel.add(btnNewButton_2, gbc_btnNewButton_2);
+		JButton afgdButtonBearbeitenAntwort = new JButton("Bearbeiten");
+		GridBagConstraints gbc_afgdButtonBearbeitenAntwort = new GridBagConstraints();
+		gbc_afgdButtonBearbeitenAntwort.gridwidth = 2;
+		gbc_afgdButtonBearbeitenAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonBearbeitenAntwort.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdButtonBearbeitenAntwort.gridx = 2;
+		gbc_afgdButtonBearbeitenAntwort.gridy = 0;
+		unterPanel.add(afgdButtonBearbeitenAntwort, gbc_afgdButtonBearbeitenAntwort);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_1.gridx = 0;
-		gbc_btnNewButton_1.gridy = 1;
-		panel.add(btnNewButton_1, gbc_btnNewButton_1);
+		JButton afgdButtonLoeschenAntwort = new JButton("L\u00F6schen");
+		GridBagConstraints gbc_afgdButtonLoeschenAntwort = new GridBagConstraints();
+		gbc_afgdButtonLoeschenAntwort.gridwidth = 2;
+		gbc_afgdButtonLoeschenAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonLoeschenAntwort.insets = new Insets(0, 0, 5, 0);
+		gbc_afgdButtonLoeschenAntwort.gridx = 4;
+		gbc_afgdButtonLoeschenAntwort.gridy = 0;
+		unterPanel.add(afgdButtonLoeschenAntwort, gbc_afgdButtonLoeschenAntwort);
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-		gbc_btnNewButton_3.gridx = 1;
-		gbc_btnNewButton_3.gridy = 1;
-		panel.add(btnNewButton_3, gbc_btnNewButton_3);
+		JSeparator buttonSeparator = new JSeparator();
+		GridBagConstraints gbc_buttonSeparator = new GridBagConstraints();
+		gbc_buttonSeparator.gridwidth = 6;
+		gbc_buttonSeparator.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonSeparator.gridx = 0;
+		gbc_buttonSeparator.gridy = 1;
+		unterPanel.add(buttonSeparator, gbc_buttonSeparator);
+		
+		JButton afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
+		GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
+		gbc_afgdButtonSpeichernAufgabe.gridwidth = 3;
+		gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdButtonSpeichernAufgabe.gridx = 0;
+		gbc_afgdButtonSpeichernAufgabe.gridy = 2;
+		unterPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
+		
+		JButton afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
+		GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
+		gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonLoescheAufgabe.gridwidth = 3;
+		gbc_afgdButtonLoescheAufgabe.gridx = 3;
+		gbc_afgdButtonLoescheAufgabe.gridy = 2;
+		unterPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
