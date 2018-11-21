@@ -9,9 +9,9 @@ import java.awt.*;
 public class Aufgabendetails {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField afgdTitelTextField;
+	private JTextField afgdFrageTextField;
+	private JTextField afgdPunkteTextField;
 	private JTable table;
 
 	public Aufgabendetails() {
@@ -22,173 +22,199 @@ public class Aufgabendetails {
 
 		this.frame = new JFrame("Aufgabendetails");
 
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.WEST);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 0, 0, 0, 492, 0, 0 };
-		gbl_panel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		panel.setLayout(gbl_panel);
-
-		JLabel label = new JLabel("Aufgabentitel:");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.anchor = GridBagConstraints.EAST;
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 2;
-		gbc_label.gridy = 3;
-		panel.add(label, gbc_label);
-
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setColumns(10);
-		textField.setPreferredSize(new Dimension(5, 21));
-		textField.setMaximumSize(new Dimension(5, 60));
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.weightx = 0.6;
-		gbc_textField.ipadx = 50;
-		gbc_textField.anchor = GridBagConstraints.LINE_END;
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.gridx = 3;
-		gbc_textField.gridy = 3;
-		panel.add(textField, gbc_textField);
-
-		JLabel label_1 = new JLabel("Aufgabentext:");
-		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.anchor = GridBagConstraints.NORTHEAST;
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 2;
-		gbc_label_1.gridy = 4;
-		panel.add(label_1, gbc_label_1);
-
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_1.setColumns(10);
-		textField_1.setPreferredSize(new Dimension(100, 115));
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.weighty = 1.0;
-		gbc_textField_1.weightx = 1.0;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.gridx = 3;
-		gbc_textField_1.gridy = 4;
-		panel.add(textField_1, gbc_textField_1);
-
-		JLabel label_2 = new JLabel("Punktzahl:");
-		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.anchor = GridBagConstraints.EAST;
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 2;
-		gbc_label_2.gridy = 5;
-		panel.add(label_2, gbc_label_2);
-
-		textField_2 = new JTextField();
-		textField_2.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_2.setColumns(10);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.anchor = GridBagConstraints.WEST;
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 600);
-		gbc_textField_2.gridx = 3;
-		gbc_textField_2.gridy = 5;
-		panel.add(textField_2, gbc_textField_2);
-
-		JLabel label_3 = new JLabel("Antworten:");
-		label_3.setVerticalAlignment(SwingConstants.TOP);
-		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		GridBagConstraints gbc_label_3 = new GridBagConstraints();
-		gbc_label_3.anchor = GridBagConstraints.NORTHEAST;
-		gbc_label_3.insets = new Insets(0, 0, 5, 5);
-		gbc_label_3.gridx = 2;
-		gbc_label_3.gridy = 7;
-		panel.add(label_3, gbc_label_3);
-
+		JPanel eingabePanel = new JPanel();
+		frame.getContentPane().add(eingabePanel, BorderLayout.NORTH);
+		GridBagLayout gbl_eingabePanel = new GridBagLayout();
+		gbl_eingabePanel.columnWidths = new int[]{20, 95, 356, 65, 0};
+		gbl_eingabePanel.rowHeights = new int[]{0, 0, 59, 0, 0};
+		gbl_eingabePanel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_eingabePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		eingabePanel.setLayout(gbl_eingabePanel);
+		
+		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
+		GridBagConstraints gbc_afgdTitelLabel = new GridBagConstraints();
+		gbc_afgdTitelLabel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_afgdTitelLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdTitelLabel.gridx = 1;
+		gbc_afgdTitelLabel.gridy = 1;
+		eingabePanel.add(afgdTitelLabel, gbc_afgdTitelLabel);
+		
+		afgdTitelTextField = new JTextField();
+		GridBagConstraints gbc_afgdTitelTextField = new GridBagConstraints();
+		gbc_afgdTitelTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdTitelTextField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdTitelTextField.gridx = 2;
+		gbc_afgdTitelTextField.gridy = 1;
+		eingabePanel.add(afgdTitelTextField, gbc_afgdTitelTextField);
+		afgdTitelTextField.setColumns(10);
+		
+		JLabel afgdFrageLabel = new JLabel("Fragestellung:");
+		GridBagConstraints gbc_afgdFrageLabel = new GridBagConstraints();
+		gbc_afgdFrageLabel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_afgdFrageLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdFrageLabel.gridx = 1;
+		gbc_afgdFrageLabel.gridy = 2;
+		eingabePanel.add(afgdFrageLabel, gbc_afgdFrageLabel);
+		
+		afgdFrageTextField = new JTextField();
+		afgdFrageTextField.setText("\r\n");
+		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
+		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdFrageTextField.fill = GridBagConstraints.BOTH;
+		gbc_afgdFrageTextField.gridx = 2;
+		gbc_afgdFrageTextField.gridy = 2;
+		eingabePanel.add(afgdFrageTextField, gbc_afgdFrageTextField);
+		afgdFrageTextField.setColumns(10);
+		
+		JLabel afgdPunkteLabel = new JLabel("Punktzahl:");
+		GridBagConstraints gbc_afgdPunkteLabel = new GridBagConstraints();
+		gbc_afgdPunkteLabel.anchor = GridBagConstraints.EAST;
+		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdPunkteLabel.gridx = 1;
+		gbc_afgdPunkteLabel.gridy = 3;
+		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
+		
+		afgdPunkteTextField = new JTextField();
+		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
+		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
+		gbc_afgdPunkteTextField.gridx = 2;
+		gbc_afgdPunkteTextField.gridy = 3;
+		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
+		afgdPunkteTextField.setColumns(10);
+		
+		JPanel arbeitsPanel = new JPanel();
+		frame.getContentPane().add(arbeitsPanel, BorderLayout.CENTER);
+		GridBagLayout gbl_arbeitsPanel = new GridBagLayout();
+		gbl_arbeitsPanel.columnWidths = new int[]{65, 0, 125, 65, 0};
+		gbl_arbeitsPanel.rowHeights = new int[]{0, 0, 0};
+		gbl_arbeitsPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_arbeitsPanel.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		arbeitsPanel.setLayout(gbl_arbeitsPanel);
+		
+		JLabel afgdAntwortenLabel = new JLabel("Antworten:");
+		GridBagConstraints gbc_afgdAntwortenLabel = new GridBagConstraints();
+		gbc_afgdAntwortenLabel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_afgdAntwortenLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdAntwortenLabel.gridx = 1;
+		gbc_afgdAntwortenLabel.gridy = 1;
+		arbeitsPanel.add(afgdAntwortenLabel, gbc_afgdAntwortenLabel);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.weightx = 0.5;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 3;
-		gbc_scrollPane.gridy = 7;
-		panel.add(scrollPane, gbc_scrollPane);
-
+		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.gridy = 1;
+		arbeitsPanel.add(scrollPane, gbc_scrollPane);
+		
 		table = new JTable();
-		table.setMinimumSize(new Dimension(500, 500));
-		table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		scrollPane.setViewportView(table);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null }, },
-				new String[] { "Nr.", "Antwort", "Richtig/Falsch" }));
-
-		JPanel panel_4 = new JPanel();
-		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
-		gbc_panel_4.anchor = GridBagConstraints.NORTHEAST;
-		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
-		panel_4.setPreferredSize(new Dimension(100, 200));
-		gbc_panel_4.fill = GridBagConstraints.BOTH;
-		gbc_panel_4.gridx = 4;
-		gbc_panel_4.gridy = 7;
-		panel.add(panel_4, gbc_panel_4);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[] { 20 };
-		gbl_panel_4.rowHeights = new int[] { 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_4.columnWeights = new double[] { 0.0 };
-		gbl_panel_4.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				Double.MIN_VALUE };
-		panel_4.setLayout(gbl_panel_4);
-
-		JButton btnNewButton_2 = new JButton("Neu");
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Nummer", "Antwort", "Richtig"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, Object.class, Boolean.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		scrollPane.setViewportView(table);
+		
+		JPanel buttonPanel = new JPanel();
+		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 65, 10));
+		
+		JPanel panel = new JPanel();
+		buttonPanel.add(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		JButton btnNewButton = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 0;
+		gbc_btnNewButton.gridy = 0;
+		panel.add(btnNewButton, gbc_btnNewButton);
+		
+		JButton btnNewButton_2 = new JButton("New button");
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.ipadx = 33;
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton_2.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnNewButton_2.gridx = 0;
-		gbc_btnNewButton_2.gridy = 11;
-		panel_4.add(btnNewButton_2, gbc_btnNewButton_2);
-
-		JButton btnNewButton_3 = new JButton("Bearbeiten");
+		gbc_btnNewButton_2.gridx = 1;
+		gbc_btnNewButton_2.gridy = 0;
+		panel.add(btnNewButton_2, gbc_btnNewButton_2);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_1.gridx = 0;
+		gbc_btnNewButton_1.gridy = 1;
+		panel.add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		JButton btnNewButton_3 = new JButton("New button");
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton_3.gridx = 0;
-		gbc_btnNewButton_3.gridy = 12;
-		panel_4.add(btnNewButton_3, gbc_btnNewButton_3);
-
-		JButton btnNewButton_4 = new JButton("L\u00F6schen");
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.ipadx = 14;
-		gbc_btnNewButton_4.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnNewButton_4.gridx = 0;
-		gbc_btnNewButton_4.gridy = 13;
-		panel_4.add(btnNewButton_4, gbc_btnNewButton_4);
-
-		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		frame.getContentPane().add(panel_1, BorderLayout.NORTH);
-
-		JButton btnNewButton_1 = new JButton("Speichern");
-		btnNewButton_1.setIcon(
-				new ImageIcon(Aufgabendetails.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
-		panel_1.add(btnNewButton_1);
-
-		JButton btnNewButton = new JButton("L\u00F6schen");
-		panel_1.add(btnNewButton);
+		gbc_btnNewButton_3.gridx = 1;
+		gbc_btnNewButton_3.gridy = 1;
+		panel.add(btnNewButton_3, gbc_btnNewButton_3);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -196,7 +222,7 @@ public class Aufgabendetails {
 
 	}
 
-	public static void main(String arg) {
+	public static void main(String[] ar) {
 		Aufgabendetails view = new Aufgabendetails();
 	}
 
