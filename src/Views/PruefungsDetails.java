@@ -55,7 +55,7 @@ public class PruefungsDetails extends JFrame {
 		GridBagLayout gbl_panelMain = new GridBagLayout();
 		gbl_panelMain.columnWidths = new int[]{0, 153, 300, 0, 0};
 		gbl_panelMain.rowHeights = new int[]{0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 0};
-		gbl_panelMain.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panelMain.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		panelMain.setLayout(gbl_panelMain);
 		
@@ -87,7 +87,6 @@ public class PruefungsDetails extends JFrame {
 		panelMain.add(panel, gbc_panel);
 		
 		JLabel lblDauermin = new JLabel("Dauer(Min):");
-		lblDauermin.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(lblDauermin);
 		
 		textFieldDauer = new JTextField();
@@ -95,7 +94,6 @@ public class PruefungsDetails extends JFrame {
 		textFieldDauer.setColumns(4);
 		
 		JLabel lblPunte = new JLabel("Punkte:");
-		lblPunte.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(lblPunte);
 		
 		textFieldPunkte = new JTextField();
