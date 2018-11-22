@@ -28,6 +28,7 @@ public class PruefungsDetails extends JFrame {
 	private JTable tableAufgaben;
 	private JTable tableTeilnehmer;
 	private JTable tableTermine;
+	
 	public PruefungsDetails() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -76,7 +77,6 @@ public class PruefungsDetails extends JFrame {
 		
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.anchor = GridBagConstraints.NORTH;
 		gbc_panel.gridwidth = 2;
@@ -212,6 +212,14 @@ public class PruefungsDetails extends JFrame {
 		
 		JButton btnNeu_2 = new JButton("Neu");
 		panelTermineButtons.add(btnNeu_2);
+		
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+	}
+	
+	public static void main(String[] args) {
+		PruefungsDetails p = new PruefungsDetails();
 	}
 
 }
