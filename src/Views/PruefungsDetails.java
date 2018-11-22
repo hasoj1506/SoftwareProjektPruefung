@@ -19,14 +19,15 @@ import javax.swing.JTable;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class PruefungsDetails extends JFrame {
 	private JTextField textFieldPrfungstitel;
 	private JTextField textFieldDauer;
 	private JTextField textFieldPunkte;
 	private JTable tableAufgaben;
-	private JTable table;
-	private JTable table_1;
+	private JTable tableTeilnehmer;
+	private JTable tableTermine;
 	public PruefungsDetails() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -52,7 +53,7 @@ public class PruefungsDetails extends JFrame {
 		getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
 		gbl_panelMain.columnWidths = new int[]{0, 153, 300, 0, 0};
-		gbl_panelMain.rowHeights = new int[]{0, 0, 59, 0, 50, 0, 50, 0, 50, 0, 0};
+		gbl_panelMain.rowHeights = new int[]{0, 0, 50, 0, 50, 0, 50, 0, 50, 0, 0};
 		gbl_panelMain.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		panelMain.setLayout(gbl_panelMain);
@@ -101,9 +102,6 @@ public class PruefungsDetails extends JFrame {
 		panel.add(textFieldPunkte);
 		textFieldPunkte.setColumns(4);
 		
-		JList listTermine = new JList();
-		panel.add(listTermine);
-		
 		JLabel lblAufgaben = new JLabel("Aufgaben:");
 		GridBagConstraints gbc_lblAufgaben = new GridBagConstraints();
 		gbc_lblAufgaben.anchor = GridBagConstraints.NORTH;
@@ -149,13 +147,13 @@ public class PruefungsDetails extends JFrame {
 		gbc_lblNewLabel.gridy = 5;
 		panelMain.add(lblNewLabel, gbc_lblNewLabel);
 		
-		table = new JTable();
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.insets = new Insets(0, 0, 5, 5);
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 2;
-		gbc_table.gridy = 5;
-		panelMain.add(table, gbc_table);
+		tableTeilnehmer = new JTable();
+		GridBagConstraints gbc_tableTeilnehmer = new GridBagConstraints();
+		gbc_tableTeilnehmer.insets = new Insets(0, 0, 5, 5);
+		gbc_tableTeilnehmer.fill = GridBagConstraints.BOTH;
+		gbc_tableTeilnehmer.gridx = 2;
+		gbc_tableTeilnehmer.gridy = 5;
+		panelMain.add(tableTeilnehmer, gbc_tableTeilnehmer);
 		
 		JPanel panelTeilnehmerButtons = new JPanel();
 		FlowLayout fl_panelTeilnehmerButtons = (FlowLayout) panelTeilnehmerButtons.getLayout();
@@ -186,14 +184,13 @@ public class PruefungsDetails extends JFrame {
 		gbc_lblTermine.gridy = 7;
 		panelMain.add(lblTermine, gbc_lblTermine);
 		
-		table_1 = new JTable();
-		GridBagConstraints gbc_table_1 = new GridBagConstraints();
-		gbc_table_1.anchor = GridBagConstraints.NORTH;
-		gbc_table_1.insets = new Insets(0, 0, 5, 5);
-		gbc_table_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_table_1.gridx = 2;
-		gbc_table_1.gridy = 7;
-		panelMain.add(table_1, gbc_table_1);
+		tableTermine = new JTable();
+		GridBagConstraints gbc_tableTermine = new GridBagConstraints();
+		gbc_tableTermine.insets = new Insets(0, 0, 5, 5);
+		gbc_tableTermine.fill = GridBagConstraints.BOTH;
+		gbc_tableTermine.gridx = 2;
+		gbc_tableTermine.gridy = 7;
+		panelMain.add(tableTermine, gbc_tableTermine);
 		
 		JPanel panelTermineButtons = new JPanel();
 		FlowLayout flowLayout_3 = (FlowLayout) panelTermineButtons.getLayout();
