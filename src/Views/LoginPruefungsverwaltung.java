@@ -13,6 +13,8 @@ import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Component;
+import java.awt.Point;
+import java.awt.Dimension;
 
 
 public class LoginPruefungsverwaltung extends JFrame {
@@ -41,6 +43,7 @@ public class LoginPruefungsverwaltung extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPruefungsverwaltung() {
+		setMinimumSize(new Dimension(300, 200));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,23 +55,32 @@ public class LoginPruefungsverwaltung extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setPreferredSize(new Dimension(50, 50));
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 0;
+		panel.add(panel_2, gbc_panel_2);
 		
 		JLabel lblPruefungsverwaltung = new JLabel("Pr\u00FCfungsverwaltung");
 		lblPruefungsverwaltung.setFont(new Font("Tahoma", Font.BOLD, 24));
 		GridBagConstraints gbc_lblPruefungsverwaltung = new GridBagConstraints();
 		gbc_lblPruefungsverwaltung.insets = new Insets(0, 0, 5, 0);
 		gbc_lblPruefungsverwaltung.gridx = 0;
-		gbc_lblPruefungsverwaltung.gridy = 0;
+		gbc_lblPruefungsverwaltung.gridy = 1;
 		panel.add(lblPruefungsverwaltung, gbc_lblPruefungsverwaltung);
 		
 		JLabel lblVersion = new JLabel("Version");
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
 		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 1;
+		gbc_lblVersion.gridy = 2;
 		panel.add(lblVersion, gbc_lblVersion);
 		
 		JPanel panel_1 = new JPanel();
