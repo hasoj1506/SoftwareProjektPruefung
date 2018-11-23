@@ -31,6 +31,7 @@ public class PruefungsDetails extends JFrame {
 	public PruefungsDetails() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JPanel panelButtons = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panelButtons.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
