@@ -9,7 +9,7 @@ public class Nutzer {
 	@JoinColumn(name = "nummer")
 	private int idNummer;	// Dozentennummer oder Matrikelnummer
 	
-	private String vorname;
+	private String vornamen;
 	private String nachname;
 	
 	private String benutzername;
