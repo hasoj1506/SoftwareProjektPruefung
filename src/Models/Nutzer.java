@@ -1,7 +1,14 @@
 package Models;
 
+import javax.persistence.*;
+
+@Entity
 public class Nutzer {
 
+	@Id
+	@JoinColumn(name = "nummer")
+	private int idNummer;	// Dozentennummer oder Matrikelnummer
+	
 	private String vorname;
 	private String nachname;
 	
@@ -9,10 +16,22 @@ public class Nutzer {
 	private String passwort;
 	
 	private boolean istDozent;
-	private int idNummer;	// Dozentennummer oder Matrikelnummer
 	
 	public Nutzer() {
 		
+		super();
+		
+	}
+	
+	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent) {
+		
+		super();
+		
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.benutzername = benutzername;
+		this.passwort = passwort;
+		this.istDozent = istDozent;
 		
 		
 	}
