@@ -6,19 +6,19 @@ public class DatabaseService {
 	
 	private EntityManager em;
 	private EntityManagerFactory emf;
-	private DatabaseService instance;
+	private static DatabaseService instance;
 	
 	private DatabaseService() {
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung");
 		em = emf.createEntityManager();		
 	}
 	
-	private DatabaseService getInstance() {
-		if(this.instance == null) {
+	public static DatabaseService getInstance() {
+		if(instance == null) {
 			instance = new DatabaseService();
 		} 
 		
-		return this.instance;
+		return instance;
 	}
 	
 	public void persistNutzer(Nutzer nutzer) {
