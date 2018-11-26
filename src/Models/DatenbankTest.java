@@ -6,9 +6,9 @@ public class DatenbankTest {
 
 		DatabaseService service = DatabaseService.getInstance();
 		
-		Nutzer nutzer1 = new Nutzer("Hans", "Dieter", "hDieter","1234",true);
+		Nutzer nutzerA = new Nutzer("Hans", "Dieter", "hDieter","1234",true);
 		
-		service.persistNutzer(nutzer1);
+		service.persistNutzer(nutzerA);
 
 	}
 
