@@ -6,7 +6,9 @@ import javax.persistence.*;
 public class Nutzer {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@JoinColumn(name = "nummer")
+	
 	private int idNummer;	// Dozentennummer oder Matrikelnummer
 	
 	private String vorname;

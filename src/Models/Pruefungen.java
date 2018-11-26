@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Pruefungen {
 	
-	@ID
-	@JoinColumn(name = "Prüfungsnummer");
+	@Id
+	@JoinColumn(name = "Prüfungsnummer")
 	private int pnr;
 	
 	private int pruefungsnummer;
