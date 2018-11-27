@@ -11,6 +11,7 @@ public class DatenbankTest {
 		Nutzer nutzerC = new Nutzer("Werner", "Ulf", "hUlf","3234",true);
 		Nutzer nutzerD = new Nutzer("Fritz", "Mueller", "hMeier","1564",true);
 		Nutzer nutzerE = new Nutzer("Hainer", "Karsten", "hKarsten","1222",true);
+		Nutzer nutzerF = new Nutzer("Test", "Test", "hTest","9988",true);
 		
 		service.persistNutzer(nutzerA);
 		service.persistNutzer(nutzerB);
