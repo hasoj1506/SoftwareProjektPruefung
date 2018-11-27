@@ -2,6 +2,7 @@ package Models;
 
 public class Antwort {
 	
+	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
 	private String antworttext;
 	

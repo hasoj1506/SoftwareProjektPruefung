@@ -47,7 +47,7 @@ public class Pruefungsverwaltung extends JFrame{
 		setTitle("Prüfungs-System");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
+		//pack();
 		
 	}
 

@@ -23,6 +23,7 @@ public class Aufgabendetails {
 	public void onCreate() {
 
 		this.frame = new JFrame("Aufgabendetails");
+		frame.setForeground(Color.WHITE);
 		frame.setMinimumSize(new Dimension(850, 650));
 
 		JPanel eingabePanel = new JPanel();
