@@ -4,20 +4,60 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.AufgabenDetailsController;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Aufgabendetails {
+public class AufgabendetailsView {
 
 	private JFrame frame;
+	
 	private JTextField afgdTitelTextField;
 	private JTextField afgdFrageTextField;
 	private JTextField afgdPunkteTextField;
+	
 	private JTable afgdTable;
+	
+	private JButton afgdButtonNeuAntwort;
+	private JButton afgdButtonBearbeitenAntwort;
+	private JButton afgdButtonLoeschenAntwort;
+	private JButton afgdButtonSpeichernAufgabe;
+	private JButton afgdButtonLoescheAufgabe;
+	
+	AufgabenDetailsController controller;
 
-	public Aufgabendetails() {
+	public AufgabendetailsView() {
 		onCreate();
+		
+		controller = new AufgabenDetailsController();
+		
+		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonLoeschenAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonSpeichernAufgabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonLoescheAufgabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
 	}
 
 	public void onCreate() {
@@ -200,37 +240,6 @@ public class Aufgabendetails {
 		gbl_unterPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		unterPanel.setLayout(gbl_unterPanel);
 		
-		JButton afgdButtonNeuAntwort = new JButton("Neu");
-		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		GridBagConstraints gbc_afgdButtonNeuAntwort = new GridBagConstraints();
-		gbc_afgdButtonNeuAntwort.gridwidth = 2;
-		gbc_afgdButtonNeuAntwort.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonNeuAntwort.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdButtonNeuAntwort.gridx = 0;
-		gbc_afgdButtonNeuAntwort.gridy = 0;
-		unterPanel.add(afgdButtonNeuAntwort, gbc_afgdButtonNeuAntwort);
-		
-		JButton afgdButtonBearbeitenAntwort = new JButton("Bearbeiten");
-		GridBagConstraints gbc_afgdButtonBearbeitenAntwort = new GridBagConstraints();
-		gbc_afgdButtonBearbeitenAntwort.gridwidth = 2;
-		gbc_afgdButtonBearbeitenAntwort.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonBearbeitenAntwort.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdButtonBearbeitenAntwort.gridx = 2;
-		gbc_afgdButtonBearbeitenAntwort.gridy = 0;
-		unterPanel.add(afgdButtonBearbeitenAntwort, gbc_afgdButtonBearbeitenAntwort);
-		
-		JButton afgdButtonLoeschenAntwort = new JButton("L\u00F6schen");
-		GridBagConstraints gbc_afgdButtonLoeschenAntwort = new GridBagConstraints();
-		gbc_afgdButtonLoeschenAntwort.gridwidth = 2;
-		gbc_afgdButtonLoeschenAntwort.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonLoeschenAntwort.insets = new Insets(0, 0, 5, 0);
-		gbc_afgdButtonLoeschenAntwort.gridx = 4;
-		gbc_afgdButtonLoeschenAntwort.gridy = 0;
-		unterPanel.add(afgdButtonLoeschenAntwort, gbc_afgdButtonLoeschenAntwort);
-		
 		JSeparator buttonSeparator = new JSeparator();
 		GridBagConstraints gbc_buttonSeparator = new GridBagConstraints();
 		gbc_buttonSeparator.gridwidth = 6;
@@ -239,7 +248,34 @@ public class Aufgabendetails {
 		gbc_buttonSeparator.gridy = 1;
 		unterPanel.add(buttonSeparator, gbc_buttonSeparator);
 		
-		JButton afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
+		afgdButtonNeuAntwort = new JButton("Neu");
+		GridBagConstraints gbc_afgdButtonNeuAntwort = new GridBagConstraints();
+		gbc_afgdButtonNeuAntwort.gridwidth = 2;
+		gbc_afgdButtonNeuAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonNeuAntwort.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdButtonNeuAntwort.gridx = 0;
+		gbc_afgdButtonNeuAntwort.gridy = 0;
+		unterPanel.add(afgdButtonNeuAntwort, gbc_afgdButtonNeuAntwort);
+		
+		afgdButtonBearbeitenAntwort = new JButton("Bearbeiten");
+		GridBagConstraints gbc_afgdButtonBearbeitenAntwort = new GridBagConstraints();
+		gbc_afgdButtonBearbeitenAntwort.gridwidth = 2;
+		gbc_afgdButtonBearbeitenAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonBearbeitenAntwort.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdButtonBearbeitenAntwort.gridx = 2;
+		gbc_afgdButtonBearbeitenAntwort.gridy = 0;
+		unterPanel.add(afgdButtonBearbeitenAntwort, gbc_afgdButtonBearbeitenAntwort);
+		
+		afgdButtonLoeschenAntwort = new JButton("L\u00F6schen");
+		GridBagConstraints gbc_afgdButtonLoeschenAntwort = new GridBagConstraints();
+		gbc_afgdButtonLoeschenAntwort.gridwidth = 2;
+		gbc_afgdButtonLoeschenAntwort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonLoeschenAntwort.insets = new Insets(0, 0, 5, 0);
+		gbc_afgdButtonLoeschenAntwort.gridx = 4;
+		gbc_afgdButtonLoeschenAntwort.gridy = 0;
+		unterPanel.add(afgdButtonLoeschenAntwort, gbc_afgdButtonLoeschenAntwort);
+		
+		afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
 		GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
 		gbc_afgdButtonSpeichernAufgabe.gridwidth = 3;
 		gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
@@ -248,7 +284,7 @@ public class Aufgabendetails {
 		gbc_afgdButtonSpeichernAufgabe.gridy = 2;
 		unterPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
 		
-		JButton afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
+		afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
 		GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
 		gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
 		gbc_afgdButtonLoescheAufgabe.gridwidth = 3;
@@ -262,8 +298,40 @@ public class Aufgabendetails {
 
 	}
 
+	public JTextField getAfgdTitelTextField() {
+		return afgdTitelTextField;
+	}
+
+	public void setAfgdTitelTextField(JTextField afgdTitelTextField) {
+		this.afgdTitelTextField = afgdTitelTextField;
+	}
+
+	public JTextField getAfgdFrageTextField() {
+		return afgdFrageTextField;
+	}
+
+	public void setAfgdFrageTextField(JTextField afgdFrageTextField) {
+		this.afgdFrageTextField = afgdFrageTextField;
+	}
+
+	public JTextField getAfgdPunkteTextField() {
+		return afgdPunkteTextField;
+	}
+
+	public void setAfgdPunkteTextField(JTextField afgdPunkteTextField) {
+		this.afgdPunkteTextField = afgdPunkteTextField;
+	}
+
+	public JTable getAfgdTable() {
+		return afgdTable;
+	}
+
+	public void setAfgdTable(JTable afgdTable) {
+		this.afgdTable = afgdTable;
+	}
+
 	public static void main(String[] ar) {
-		Aufgabendetails view = new Aufgabendetails();
+		AufgabendetailsView view = new AufgabendetailsView();
 	}
 
 }
