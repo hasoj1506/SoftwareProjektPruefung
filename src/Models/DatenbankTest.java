@@ -23,6 +23,7 @@ public class DatenbankTest {
 		service.persistNutzer(nutzerD);
 		service.persistNutzer(nutzerE);
 		service.persistPruefung(p1);
+		service.persistAufgabe(a1);
 
 	}
 
