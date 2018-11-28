@@ -40,7 +40,7 @@ public class Pruefung {
 		this.dauer = dauer;
 		this.bezeichnung = bezeichnung;
 		termine = new HashSet<Termin>();
-		aufgaben = new ArrayList<Aufgabe>();
+		aufgaben = new HashSet<Aufgabe>();
 	}
 
 	public String getBezeichnung() {
