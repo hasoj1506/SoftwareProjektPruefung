@@ -1,33 +1,33 @@
 package Models;
+
 import javax.persistence.*;
 
 @Entity
 public class Aufgabe {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name = "aufgabenId")
-	private long aufgabenId;
-	
+	private long id;
+
 	private String aufgabentitel;
 	private String frageStellung;
 	private int punktzahl;
-	
-	
+
 	@ManyToOne
-	private Pruefung pruefung;	//Zu jeder Aufgabe genau eine Prüfung
-	
+	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
+
 	public Aufgabe() {
-		
+
 		super();
 	}
-	
-	public Aufgabe(String aufgabentitel,int punktzahl, String frageStellung, Pruefung pruefung){
+
+	public Aufgabe(String aufgabentitel, int punktzahl, String frageStellung, Pruefung pruefung) {
 		super();
-		
+
 		this.aufgabentitel = aufgabentitel;
 		this.frageStellung = frageStellung;
 		this.punktzahl = punktzahl;
-		this.pruefung = pruefung; 
+		this.pruefung = pruefung;
 	}
 
 	public String getAufgabentitel() {
