@@ -12,11 +12,14 @@ public class DatenbankTest {
 		Nutzer nutzerD = new Nutzer("Fritz", "Mueller", "hMeier","1564",true);
 		Nutzer nutzerE = new Nutzer("Hainer", "Karsten", "hKarsten","1222",true);
 		
+		Pruefung p1 = new Pruefung("Test", 60);
+		
 		service.persistNutzer(nutzerA);
 		service.persistNutzer(nutzerB);
 		service.persistNutzer(nutzerC);
 		service.persistNutzer(nutzerD);
 		service.persistNutzer(nutzerE);
+		service.persistPruefung(p1);
 
 	}
 
