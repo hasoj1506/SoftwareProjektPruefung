@@ -15,6 +15,8 @@ public class DatenbankTest {
 		
 		Pruefung p1 = new Pruefung("Test", 60);
 		
+		Aufgabe a1 = new Aufgabe("Test", 30, "Funktionierts?", p1);
+		
 		service.persistNutzer(nutzerA);
 		service.persistNutzer(nutzerB);
 		service.persistNutzer(nutzerC);
