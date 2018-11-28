@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.AufgabenDetailsController;
+import Models.Aufgabe;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -57,6 +58,48 @@ public class AufgabendetailsView {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
+		
+		frame.setTitle("Aufgabendetails - Neu Aufgabe");
+		
+	}
+	
+	public AufgabendetailsView(Aufgabe aufgabe) {
+		
+		onCreate();
+		
+		controller = new AufgabenDetailsController();
+		
+		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonLoeschenAntwort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonSpeichernAufgabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdButtonLoescheAufgabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		afgdTitelTextField.setText(aufgabe.getAufgabentitel());
+		afgdFrageTextField.setText(aufgabe.getFrageStellung());
+		afgdPunkteTextField.setText(String.valueOf(aufgabe.getPunktzahl()));
+		
+		frame.setTitle("Aufgabendetails - " + aufgabe.getAufgabentitel());
+		
 		
 	}
 
