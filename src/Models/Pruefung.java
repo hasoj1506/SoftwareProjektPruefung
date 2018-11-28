@@ -22,7 +22,9 @@ public class Pruefung {
 	private String bezeichnung;
 	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer =
 						// gesamtpunktzahl
-	private ArrayList<Aufgabe> aufgaben;
+	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	ArrayList<Aufgabe> aufgaben;
 
 	@OneToMany(cascade = CascadeType.PERSIST)
 	Set<Termin> termine;

@@ -34,5 +34,11 @@ public class DatabaseService {
 		em.persist(pruefung);
 		em.getTransaction().commit();
 	}
+	
+	public void persistAufgabe(Aufgabe aufgabe) {
+		em.getTransaction().begin();
+		em.persist(aufgabe);
+		em.getTransaction().commit();
+	}
 
 }
