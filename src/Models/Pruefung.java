@@ -74,6 +74,14 @@ public class Pruefung {
 	public void addTermin(Termin termin) {
 		this.termine.add(termin);
 	}
+	
+	public Set<Aufgabe> getAufgaben() {
+		return aufgaben;
+	}
+
+	public void addAufgabe(Aufgabe aufgabe) {
+		this.aufgaben.add(aufgabe);
+	}
 
 	/*
 	 * public void setTermine(Set<Termin> termine) { this.termine = termine; }
