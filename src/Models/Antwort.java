@@ -26,4 +26,12 @@ public class Antwort {
 		this.antworttext = antworttext;
 	}
 
+	public boolean isAlsRichtigBeantwortet() {
+		return alsRichtigBeantwortet;
+	}
+
+	public void setAlsRichtigBeantwortet(boolean alsRichtigBeantwortet) {
+		this.alsRichtigBeantwortet = alsRichtigBeantwortet;
+	}
+
 }

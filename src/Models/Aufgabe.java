@@ -22,6 +22,7 @@ public class Aufgabe {
 	}
 
 	public Aufgabe(String aufgabentitel, int punktzahl, String frageStellung, Pruefung pruefung) {
+		
 		super();
 
 		this.aufgabentitel = aufgabentitel;
