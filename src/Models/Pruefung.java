@@ -24,7 +24,7 @@ public class Pruefung {
 						// gesamtpunktzahl
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
-	ArrayList<Aufgabe> aufgaben;
+	Set<Aufgabe> aufgaben;
 
 	@OneToMany(cascade = CascadeType.PERSIST)
 	Set<Termin> termine;
@@ -32,7 +32,7 @@ public class Pruefung {
 	public Pruefung() {
 		super();
 		termine = new HashSet<Termin>();
-		aufgaben = new ArrayList<Aufgabe>();
+		aufgaben = new HashSet<Aufgabe>();
 	}
 
 	public Pruefung(String bezeichnung, int dauer) {
