@@ -41,4 +41,9 @@ public class DatabaseService {
 		em.getTransaction().commit();
 	}
 
+	public void persistAntwort (Antwort antwort){
+		em.getTransaction().begin();
+		em.persist(antwort);
+		em.getTransaction().commit();
+	}
 }
