@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,10 +18,17 @@ public class Aufgabe {
 
 	@ManyToOne
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
+	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	Set<Antwort> antworten;
+	
+	
 
 	public Aufgabe() {
-
+		
 		super();
+		antworten = new HashSet<Antwort>();
+		
 	}
 
 	public Aufgabe(String aufgabentitel, int punktzahl, String frageStellung, Pruefung pruefung) {
@@ -29,6 +39,7 @@ public class Aufgabe {
 		this.frageStellung = frageStellung;
 		this.punktzahl = punktzahl;
 		this.pruefung = pruefung;
+		antworten = new HashSet<Antwort>();
 	}
 
 	public String getAufgabentitel() {
