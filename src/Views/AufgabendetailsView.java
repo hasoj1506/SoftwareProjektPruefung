@@ -33,21 +33,22 @@ public class AufgabendetailsView {
 	Pruefung pruefung;
 	Aufgabe aufgabe;
 
-	public AufgabendetailsView(Pruefung pruefung) {
+	public AufgabendetailsView(Pruefung pruefung) {	//Konstruktor falls Aufgabe neu erzeugt wird.
 
 		this.pruefung = pruefung;
 		this.controller = new AufgabenDetailsController(this, pruefung);
 		onCreate();
 		titleCheck();
 		btnAction();
+		aufgabenCheck();
 
 	}
 	
-	public AufgabendetailsView(Pruefung pruefung, Aufgabe aufgabe) {
+	public AufgabendetailsView(Aufgabe aufgabe) { //Konstruktor falls bestehende Aufgabe bearbeitet wird
 		
-		this.pruefung = pruefung;
+		this.pruefung = aufgabe.getPruefung();
 		this.aufgabe = aufgabe;
-		this.controller = new AufgabenDetailsController(this, this.pruefung, this.aufgabe);	
+		this.controller = new AufgabenDetailsController(this, this.aufgabe);	
 		onCreate();
 		titleCheck();
 		btnAction();
@@ -245,7 +246,7 @@ public class AufgabendetailsView {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.pack();
-		frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);	//Frame wird in der Mitte des Bildschirms erzeugt
 
 	}
 
@@ -280,7 +281,7 @@ public class AufgabendetailsView {
 
 	}
 
-	public void titleCheck() {
+	public void titleCheck() {	//Prüft ob Aufgabe neu erzeugt wird oder bestehende Aufgabe bearbeitet wird, und passt enstsprechend den Frame Titel an
 
 		if (this.aufgabe == null) {
 
@@ -291,29 +292,28 @@ public class AufgabendetailsView {
 		}
 
 	}
+	
+	public void aufgabenCheck() {	//Trägt die Daten einer bestehenden Aufgabe in die TextFields ein
+		
+		if(this.aufgabe != null) {
+			
+			afgdTitelTextField.setText(this.aufgabe.getAufgabentitel());
+			afgdFrageTextField.setText(this.aufgabe.getFrageStellung());
+			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
+			//afgdTable.setModel(arg0);
+		}
+	}
 
 	public JTextField getAfgdTitelTextField() {
 		return afgdTitelTextField;
-	}
-
-	public void setAfgdTitelTextField(JTextField afgdTitelTextField) {
-		this.afgdTitelTextField = afgdTitelTextField;
 	}
 
 	public JTextField getAfgdFrageTextField() {
 		return afgdFrageTextField;
 	}
 
-	public void setAfgdFrageTextField(JTextField afgdFrageTextField) {
-		this.afgdFrageTextField = afgdFrageTextField;
-	}
-
 	public JTextField getAfgdPunkteTextField() {
 		return afgdPunkteTextField;
-	}
-
-	public void setAfgdPunkteTextField(JTextField afgdPunkteTextField) {
-		this.afgdPunkteTextField = afgdPunkteTextField;
 	}
 
 	public JTable getAfgdTable() {

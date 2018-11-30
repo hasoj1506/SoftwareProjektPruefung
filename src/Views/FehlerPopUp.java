@@ -20,12 +20,12 @@ public class FehlerPopUp {
 	JButton btnOk;
 	
 	
-	public FehlerPopUp(String titel, String text){
+	public FehlerPopUp(String titel, String text){	//Neuer PopUp wird erzeugt mit einstellbarem Frametitel und Fehlermeldung
 		this.titel = titel;
 		onCreate();
 		this.textArea.setText(text);
 		
-		btnOk.addActionListener(new ActionListener() {
+		btnOk.addActionListener(new ActionListener() {	//Schließt das Fenster wenn "Ok" gedrückt wurde
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 			}
@@ -33,10 +33,10 @@ public class FehlerPopUp {
 		
 	}
 	
-	public void onCreate() {
+	public void onCreate() {	
 		
 		frame = new JFrame(titel);
-		frame.setSize(new Dimension(500, 250));
+		frame.setSize(new Dimension(500, 250));	//Frame hat nicht verstellbare feste Größe
 		frame.setResizable(false);
 		frame.setMinimumSize(new Dimension(500, 250));
 		frame.setMaximumSize(new Dimension(500, 250));
@@ -77,7 +77,7 @@ public class FehlerPopUp {
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 		frame.pack();
-		frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);	//Frame wird in der Mitte des Bildschirms erzeugt
 	}
 	
 	

@@ -11,14 +11,14 @@ public class AufgabenDetailsController {
 	AufgabendetailsView view;
 	Pruefung pruefung;
 
-	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung, Aufgabe aufgabe) {
+	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { //Konstruktor falls bestehende Aufgabe bearbeitet wird
 		this.aufgabe = aufgabe;
-		this.pruefung = pruefung;
+		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
 
 	}
 
-	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) {
+	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) { //Konstruktor falls neue Aufgabe erzeugt wird
 		this.view = view;
 		this.pruefung = pruefung;
 
@@ -26,7 +26,7 @@ public class AufgabenDetailsController {
 
 	public Aufgabe aufgabeSpeichern() {
 
-		if (this.aufgabe == null) {
+		if (this.aufgabe == null) {	//Prüft ob neue Aufgabe oder bestehene Aufgabe bearbeitet wird und erzeugt ggf. eine neue Aufgabe
 
 			aufgabe = new Aufgabe();
 			aufgabe.setPruefung(this.pruefung);
@@ -42,16 +42,16 @@ public class AufgabenDetailsController {
 			aufgabe.setAufgabentitel(titel);
 			aufgabe.setFrageStellung(frage);
 			
-		} catch (NullPointerException a) {
+		} catch (NullPointerException a) {	// Prüft ob Titel oder Frage leer zugewiesen werden
 
 			if(titel == ("")) {
-				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
+				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");	//Neues "PopUpFehler-Fenster"
 				
 			} else if(frage == ("")) {
 				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
 					
 			}
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {	//Prüft ob Punktzahl im Zahen Format ist
 
 			FehlerPopUp fehlermeldungPunkte = new FehlerPopUp("Fehler - Punktzahl",
 					"Angegebene Punktzahl nicht zulässig!");
