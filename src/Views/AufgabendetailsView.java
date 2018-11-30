@@ -32,7 +32,7 @@ public class AufgabendetailsView {
 	public AufgabendetailsView() {
 		onCreate();
 		
-		controller = new AufgabenDetailsController();
+		controller = new AufgabenDetailsController(this);
 		
 		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -51,6 +51,8 @@ public class AufgabendetailsView {
 		
 		afgdButtonSpeichernAufgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				controller.aufgabeSpeichern();
+				
 			}
 		});
 		
@@ -63,46 +65,6 @@ public class AufgabendetailsView {
 		
 	}
 	
-	public AufgabendetailsView(Aufgabe aufgabe) {
-		
-		onCreate();
-		
-		controller = new AufgabenDetailsController();
-		
-		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		afgdButtonLoeschenAntwort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		afgdButtonSpeichernAufgabe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		afgdButtonLoescheAufgabe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		afgdTitelTextField.setText(aufgabe.getAufgabentitel());
-		afgdFrageTextField.setText(aufgabe.getFrageStellung());
-		afgdPunkteTextField.setText(String.valueOf(aufgabe.getPunktzahl()));
-		
-		frame.setTitle("Aufgabendetails - " + aufgabe.getAufgabentitel());
-		
-		
-	}
-
 	public void onCreate() {
 
 		this.frame = new JFrame("Aufgabendetails");
@@ -338,6 +300,7 @@ public class AufgabendetailsView {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 
 	}
 

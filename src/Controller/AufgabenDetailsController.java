@@ -2,6 +2,7 @@ package Controller;
 
 import Models.Aufgabe;
 import Views.AufgabendetailsView;
+import Views.FehlerPopUp;
 
 public class AufgabenDetailsController {
 	
@@ -24,9 +25,28 @@ public class AufgabenDetailsController {
 	
 	public void aufgabeSpeichern() {
 		
+		
 		String titel = view.getAfgdTitelTextField().getText();
+		
+		if(titel.equals("")) {
+			FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
+		}
+		
+		try {
+		
 		int punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
+		
+		}catch(NumberFormatException e) {
+		
+			FehlerPopUp fehlermeldungPunkte = new FehlerPopUp("Fehler - Punktzahl", "Angegebene Punktzahl nicht zulässig!");
+		
+		}
+		
 		String frage = view.getAfgdFrageTextField().getText();
+		
+		if(frage.equals("")) {
+			FehlerPopUp fehlermeldungText = new FehlerPopUp("Fehler - Fragetext", "Angegebener Fragetext nicht zulässig!");
+		}
 		
 	}
 	
