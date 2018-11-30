@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 
 public class LoeschAbfrage extends JFrame{
+	
+	
+	
+	
 	public LoeschAbfrage() {
 		
 		JLabel lblAbfrage = new JLabel("       Soll wirklich gel\u00F6scht werden?       ");

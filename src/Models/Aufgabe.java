@@ -18,21 +18,19 @@ public class Aufgabe {
 
 	@ManyToOne
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
-	
+
 	@OneToMany(cascade = CascadeType.PERSIST)
 	Set<Antwort> antworten;
-	
-	
 
 	public Aufgabe() {
-		
+
 		super();
 		antworten = new HashSet<Antwort>();
-		
+
 	}
 
 	public Aufgabe(String aufgabentitel, int punktzahl, String frageStellung, Pruefung pruefung) {
-		
+
 		super();
 
 		this.aufgabentitel = aufgabentitel;
@@ -72,5 +70,13 @@ public class Aufgabe {
 
 	public void setPruefung(Pruefung pruefung) {
 		this.pruefung = pruefung;
+	}
+
+	public Set<Antwort> getAntworten() {
+		return antworten;
+	}
+
+	public void setAntworten(Set<Antwort> antworten) {
+		this.antworten = antworten;
 	}
 }
