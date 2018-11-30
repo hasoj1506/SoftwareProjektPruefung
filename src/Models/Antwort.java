@@ -24,10 +24,9 @@ public class Antwort {
 		super();
 	}
 	
-	public Antwort(boolean alsRichtigBeantwortet, boolean istRichtig, String antworttext){
+	public Antwort(boolean istRichtig, String antworttext){
 		super();
-		
-		this.alsRichtigBeantwortet = alsRichtigBeantwortet;
+
 		this.istRichtig = istRichtig;
 		this.antworttext = antworttext; 
 	}

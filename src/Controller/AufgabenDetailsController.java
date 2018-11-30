@@ -1,7 +1,9 @@
 package Controller;
 
+import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
+import Views.AntwortErstellenPopUp;
 import Views.AufgabendetailsView;
 import Views.FehlerPopUp;
 
@@ -10,6 +12,8 @@ public class AufgabenDetailsController {
 	Aufgabe aufgabe;
 	AufgabendetailsView view;
 	Pruefung pruefung;
+	
+	String[] columns = {"Name", "Age", "Gender"};
 
 	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { //Konstruktor falls bestehende Aufgabe bearbeitet wird
 		this.aufgabe = aufgabe;
@@ -70,7 +74,14 @@ public class AufgabenDetailsController {
 	}
 
 	public void antwortErstellen() {
-
+		
+		AntwortErstellenPopUp pop = new AntwortErstellenPopUp();
+		
+		
+		Antwort antwort = new Antwort(pop.isRichtig(), pop.getText());
+		
+		view.getTableModle().insertRow(view.getTableModle().getRowCount(), new Object[] {view.getTableModle().getRowCount(), pop.getText(), pop.isRichtig()});
+		
 	}
 
 	public void antwortLoeschen() {

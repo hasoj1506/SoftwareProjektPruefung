@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.AufgabenDetailsController;
+import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
 
@@ -33,7 +34,12 @@ public class AufgabendetailsView {
 	Pruefung pruefung;
 	Aufgabe aufgabe;
 
-	public AufgabendetailsView(Pruefung pruefung) {	//Konstruktor falls Aufgabe neu erzeugt wird.
+	DefaultTableModel tableModel;
+
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+	public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe neu erzeugt wird.
 
 		this.pruefung = pruefung;
 		this.controller = new AufgabenDetailsController(this, pruefung);
@@ -43,12 +49,12 @@ public class AufgabendetailsView {
 		aufgabenCheck();
 
 	}
-	
-	public AufgabendetailsView(Aufgabe aufgabe) { //Konstruktor falls bestehende Aufgabe bearbeitet wird
-		
+
+	public AufgabendetailsView(Aufgabe aufgabe) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
+
 		this.pruefung = aufgabe.getPruefung();
 		this.aufgabe = aufgabe;
-		this.controller = new AufgabenDetailsController(this, this.aufgabe);	
+		this.controller = new AufgabenDetailsController(this, this.aufgabe);
 		onCreate();
 		titleCheck();
 		btnAction();
@@ -152,29 +158,20 @@ public class AufgabendetailsView {
 		gbc_tableScrollPane.gridy = 0;
 		arbeitsPanel.add(tableScrollPane, gbc_tableScrollPane);
 
-		afgdTable = new JTable();
-		afgdTable.setMinimumSize(new Dimension(500, 300));
-		afgdTable.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, { null, null, null }, },
-				new String[] { "Nummer", "Antwort", "Richtig" }) {
-			Class[] columnTypes = new Class[] { Integer.class, Object.class, Boolean.class };
+		
+		tableModel = new DefaultTableModel(new Object[][] {
+				{null, null, null},
+			} , new String[] { "Nummer", "Antwort", "Richtig" }) {
+			Class[] columnTypes = new Class[] { Integer.class, String.class, Boolean.class };
 
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-		});
+		};
+		
+		afgdTable = new JTable();
+		afgdTable.setMinimumSize(new Dimension(500, 300));
+		afgdTable.setModel(tableModel);
 		tableScrollPane.setViewportView(afgdTable);
 
 		JPanel buttonPanel = new JPanel();
@@ -246,7 +243,7 @@ public class AufgabendetailsView {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.pack();
-		frame.setLocationRelativeTo(null);	//Frame wird in der Mitte des Bildschirms erzeugt
+		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
 
 	}
 
@@ -254,11 +251,13 @@ public class AufgabendetailsView {
 
 		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				controller.antwortErstellen();
 			}
 		});
 
 		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 
@@ -281,26 +280,26 @@ public class AufgabendetailsView {
 
 	}
 
-	public void titleCheck() {	//Prüft ob Aufgabe neu erzeugt wird oder bestehende Aufgabe bearbeitet wird, und passt enstsprechend den Frame Titel an
+	public void titleCheck() { // Prüft ob Aufgabe neu erzeugt wird oder bestehende Aufgabe bearbeitet wird,
+								// und passt enstsprechend den Frame Titel an
 
 		if (this.aufgabe == null) {
 
 			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - Neue Aufgabe");
 		} else {
-			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - "
-					+ aufgabe.getAufgabentitel());
+			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - " + aufgabe.getAufgabentitel());
 		}
 
 	}
-	
-	public void aufgabenCheck() {	//Trägt die Daten einer bestehenden Aufgabe in die TextFields ein
-		
-		if(this.aufgabe != null) {
-			
+
+	public void aufgabenCheck() { // Trägt die Daten einer bestehenden Aufgabe in die TextFields ein
+
+		if (this.aufgabe != null) {
+
 			afgdTitelTextField.setText(this.aufgabe.getAufgabentitel());
 			afgdFrageTextField.setText(this.aufgabe.getFrageStellung());
 			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
-			//afgdTable.setModel(arg0);
+			// afgdTable.setModel(arg0);
 		}
 	}
 
@@ -323,9 +322,13 @@ public class AufgabendetailsView {
 	public void setAfgdTable(JTable afgdTable) {
 		this.afgdTable = afgdTable;
 	}
+	
+	public DefaultTableModel getTableModle() {
+		return this.tableModel;
+	}
 
 	public static void main(String[] ar) {
-		//AufgabendetailsView view = new AufgabendetailsView();
+		// AufgabendetailsView view = new AufgabendetailsView();
 	}
 
 }

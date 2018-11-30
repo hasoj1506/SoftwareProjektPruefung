@@ -10,8 +10,7 @@ public class yaneksViewTest {
 	
 		
 		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);
-		Aufgabe aufgabe = new Aufgabe("Geometrie", 5, "Wie viele Ecken hat ein 19Eck?", pruefung);
-		AufgabendetailsView view = new AufgabendetailsView(aufgabe);
+		AufgabendetailsView view = new AufgabendetailsView(pruefung);
 
 	}
 
