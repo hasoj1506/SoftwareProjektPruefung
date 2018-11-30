@@ -31,15 +31,26 @@ public class AufgabendetailsView {
 	AufgabenDetailsController controller;
 
 	Pruefung pruefung;
+	Aufgabe aufgabe;
 
 	public AufgabendetailsView(Pruefung pruefung) {
 
 		this.pruefung = pruefung;
-		controller = new AufgabenDetailsController(this, pruefung);
+		this.controller = new AufgabenDetailsController(this, pruefung);
 		onCreate();
 		titleCheck();
 		btnAction();
 
+	}
+	
+	public AufgabendetailsView(Pruefung pruefung, Aufgabe aufgabe) {
+		
+		this.pruefung = pruefung;
+		this.aufgabe = aufgabe;
+		this.controller = new AufgabenDetailsController(this, this.pruefung, this.aufgabe);	
+		onCreate();
+		titleCheck();
+		btnAction();
 	}
 
 	public void onCreate() {
@@ -271,12 +282,12 @@ public class AufgabendetailsView {
 
 	public void titleCheck() {
 
-		if (controller.getAufgabe() == null) {
+		if (this.aufgabe == null) {
 
 			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - Neue Aufgabe");
 		} else {
 			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - "
-					+ controller.getAufgabe().getAufgabentitel());
+					+ aufgabe.getAufgabentitel());
 		}
 
 	}

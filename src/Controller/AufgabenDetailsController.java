@@ -11,7 +11,7 @@ public class AufgabenDetailsController {
 	AufgabendetailsView view;
 	Pruefung pruefung;
 
-	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe, Pruefung pruefung) {
+	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung, Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
 		this.pruefung = pruefung;
 		this.view = view;
@@ -21,10 +21,6 @@ public class AufgabenDetailsController {
 	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) {
 		this.view = view;
 		this.pruefung = pruefung;
-
-	}
-
-	public AufgabenDetailsController() {
 
 	}
 
@@ -40,28 +36,28 @@ public class AufgabenDetailsController {
 		int punkte = 0;
 		String frage = view.getAfgdFrageTextField().getText();
 
-		if (titel.equals("")) {
-			FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
-		}
-
-		if (frage.equals("")) {
-			FehlerPopUp fehlermeldungText = new FehlerPopUp("Fehler - Fragetext",
-					"Angegebener Fragetext nicht zulässig!");
-		}
-
 		try {
 
 			punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
+			aufgabe.setAufgabentitel(titel);
+			aufgabe.setFrageStellung(frage);
+			
+		} catch (NullPointerException a) {
 
+			if(titel == ("")) {
+				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
+				
+			} else if(frage == ("")) {
+				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
+					
+			}
 		} catch (NumberFormatException e) {
 
 			FehlerPopUp fehlermeldungPunkte = new FehlerPopUp("Fehler - Punktzahl",
 					"Angegebene Punktzahl nicht zulässig!");
 
 		}
-
-		aufgabe.setAufgabentitel(titel);
-		aufgabe.setFrageStellung(frage);
+	
 		aufgabe.setPunktzahl(punkte);
 		// aufgabe.setAntworten();
 
@@ -83,9 +79,5 @@ public class AufgabenDetailsController {
 
 	public void antwortBearbeiten() {
 
-	}
-
-	public Aufgabe getAufgabe() {
-		return this.aufgabe;
 	}
 }
