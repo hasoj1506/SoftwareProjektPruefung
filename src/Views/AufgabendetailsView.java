@@ -158,17 +158,14 @@ public class AufgabendetailsView {
 		gbc_tableScrollPane.gridy = 0;
 		arbeitsPanel.add(tableScrollPane, gbc_tableScrollPane);
 
-		
-		tableModel = new DefaultTableModel(new Object[][] {
-				{null, null, null},
-			} , new String[] { "Nummer", "Antwort", "Richtig" }) {
+		tableModel = new DefaultTableModel(new Object[][] {,}, new String[] { "Nummer", "Antwort", "Richtig" }) {
 			Class[] columnTypes = new Class[] { Integer.class, String.class, Boolean.class };
 
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 		};
-		
+
 		afgdTable = new JTable();
 		afgdTable.setMinimumSize(new Dimension(500, 300));
 		afgdTable.setModel(tableModel);
@@ -257,7 +254,7 @@ public class AufgabendetailsView {
 
 		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 			}
 		});
 
@@ -322,8 +319,8 @@ public class AufgabendetailsView {
 	public void setAfgdTable(JTable afgdTable) {
 		this.afgdTable = afgdTable;
 	}
-	
-	public DefaultTableModel getTableModle() {
+
+	public DefaultTableModel getTableModel() {
 		return this.tableModel;
 	}
 
