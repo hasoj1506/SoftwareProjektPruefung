@@ -15,6 +15,7 @@ public class Antwort {
 	private String antworttext;
 
 	@ManyToOne
+	@JoinColumn(nullable=false)
 	private Aufgabe aufgabe; // Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
 
 	public Antwort() {
