@@ -17,6 +17,7 @@ public class Aufgabe {
 	private int punktzahl;
 
 	@ManyToOne
+	@JoinColumn(nullable=false)
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
 
 	@OneToMany(cascade = CascadeType.PERSIST)
