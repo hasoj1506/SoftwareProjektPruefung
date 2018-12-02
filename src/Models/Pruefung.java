@@ -25,7 +25,7 @@ public class Pruefung {
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="pruefung")
 	Set<Aufgabe> aufgaben;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="pruefung")
 	Set<Termin> termine;
 
 	public Pruefung() {

@@ -14,6 +14,7 @@ public class Termin {
 	private String raum;
 	
 	@ManyToOne
+	@JoinColumn(nullable=false)
 	private Pruefung pruefung;	//Zu jedem Termin genau eine Pruefung
 	
 	public Termin() {
