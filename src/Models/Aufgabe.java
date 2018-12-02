@@ -79,4 +79,8 @@ public class Aufgabe {
 	public void setAntworten(Set<Antwort> antworten) {
 		this.antworten = antworten;
 	}
+	
+	public void addAntwort(Antwort antwort) {
+		this.antworten.add(antwort);
+	}
 }

@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.Set;
+
 import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
@@ -12,6 +14,7 @@ public class AufgabenDetailsController {
 	Aufgabe aufgabe;
 	AufgabendetailsView view;
 	Pruefung pruefung;
+	Set<Antwort> antworten;
 
 	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { // Konstruktor falls bestehende
 																					// Aufgabe bearbeitet wird
@@ -65,7 +68,7 @@ public class AufgabenDetailsController {
 		}
 
 		aufgabe.setPunktzahl(punkte);
-		// aufgabe.setAntworten();
+		aufgabe.setAntworten(this.antworten);
 
 		return this.aufgabe;
 
@@ -81,13 +84,30 @@ public class AufgabenDetailsController {
 
 		Antwort antwort = new Antwort(pop.isRichtig(), pop.getText());
 
+		this.antworten.add(antwort);
+
 	}
 
 	public void antwortLoeschen() {
 
+		view.getTableModel().removeRow(view.getAfgdTable().getSelectedRow());
+
 	}
 
-	public void antwortBearbeiten() {
+	public void antwortBearbeiten(Antwort antwort) {
 
+		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view, antwort);
+
+		antwort.setAntworttext(pop.getText());
+		antwort.setIstRichtig(pop.isRichtig());
+
+	}
+	
+	public void setAntworten(Set<Antwort> antworten) {
+		this.antworten = antworten;
+	}
+	
+	public Set<Antwort> getAntworten(){
+		return this.antworten;
 	}
 }

@@ -272,6 +272,7 @@ public class AufgabendetailsView {
 
 		afgdButtonLoescheAufgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				controller.antwortLoeschen();
 			}
 		});
 

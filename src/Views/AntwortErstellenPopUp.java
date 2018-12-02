@@ -2,6 +2,9 @@ package Views;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import Models.Antwort;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,23 +23,19 @@ public class AntwortErstellenPopUp {
 
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
-
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
-
-			public void actionPerformed(ActionEvent arg0) {
-
-				richtig = chckbxNewCheckBox.isSelected();
-				text = textField.getText();
-
-				view.getTableModel().insertRow(view.getTableModel().getRowCount(), new Object[] {
-						view.getTableModel().getRowCount() + 1, textField.getText(), chckbxNewCheckBox.isSelected() });
-
-				frame.dispose();
-			}
-		});
+		btnAction(view);
 
 	}
 
+	public AntwortErstellenPopUp(final AufgabendetailsView view, Antwort antwort) {
+		onCreate();
+		btnAction(view);
+		
+		this.chckbxNewCheckBox.setEnabled(antwort.isIstRichtig());
+		this.textField.setText(antwort.getAntworttext());
+		
+
+	}
 	public void onCreate() {
 
 		frame = new JFrame("Antwort");
@@ -104,7 +103,45 @@ public class AntwortErstellenPopUp {
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
 	}
+	
+	public void btnAction(final AufgabendetailsView view) {
+		
+		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
 
+			public void actionPerformed(ActionEvent arg0) {
+
+				richtig = chckbxNewCheckBox.isSelected();
+				text = textField.getText();
+
+				view.getTableModel().insertRow(view.getTableModel().getRowCount(), new Object[] {
+						view.getTableModel().getRowCount() + 1, textField.getText(), chckbxNewCheckBox.isSelected() });
+
+				frame.dispose();
+			}
+		});
+		
+		
+	}
+	
+	public void btnAction(final AufgabendetailsView view, final Antwort antwort) {
+		
+		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+
+			public void actionPerformed(ActionEvent arg0) {
+
+				richtig = chckbxNewCheckBox.isSelected();
+				text = textField.getText();
+
+				view.getTableModel().
+				
+				antwort.setAntworttext(text);
+				antwort.setIstRichtig(richtig);
+
+				frame.dispose();
+			}
+		});
+		
+	}
 	public String getText() {
 		return text;
 	}
