@@ -21,6 +21,7 @@ public class Pruefung {
 
 	private String bezeichnung;
 	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer = gesamtpunktzahl
+	private int punkte;
 	
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="pruefung")
 	Set<Aufgabe> aufgaben;
@@ -80,6 +81,14 @@ public class Pruefung {
 
 	public void addAufgabe(Aufgabe aufgabe) {
 		this.aufgaben.add(aufgabe);
+	}
+	
+	public int getPunkte(){
+		return punkte;
+	}
+	
+	public void setPunkte(int punkte){
+		this.punkte = punkte;
 	}
 
 }
