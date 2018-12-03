@@ -3,7 +3,7 @@ package Controller;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import Models.DatabaseService;
 import Models.Pruefung;
@@ -27,9 +27,9 @@ public class PruefungsverwaltungController {
 		// Liste von Pruefungsdatensätzen erstellen
 		try {
 
-			Query q = em.createQuery("select * from pruefung");
+			TypedQuery q = em.createQuery("select * from pruefung", Pruefung.class);
 
-			pruefungen = (List<Pruefung>)q.getResultList();
+			pruefungen = q.getResultList();
 
 			// Zeile für Zeile die Tabelle füllen
 			for (int i = 0; i < pruefungen.size(); i++) {
