@@ -54,9 +54,9 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();
 		gbl_PruefungenPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
-		gbl_PruefungenPanel.rowHeights = new int[] { 0, 0 };
+		gbl_PruefungenPanel.rowHeights = new int[] { 0, 0, 0 };
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_PruefungenPanel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
 
 		JLabel pruefungenLabel = new JLabel("Pruefungen:");
@@ -64,7 +64,7 @@ public class PruefungsverwaltungView {
 		gbc_pruefungenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_pruefungenLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_pruefungenLabel.gridx = 1;
-		gbc_pruefungenLabel.gridy = 0;
+		gbc_pruefungenLabel.gridy = 1;
 		PruefungenPanel.add(pruefungenLabel, gbc_pruefungenLabel);
 
 		JScrollPane tableScrollPane = new JScrollPane();
@@ -74,7 +74,7 @@ public class PruefungsverwaltungView {
 		gbc_tableScrollPane.insets = new Insets(0, 0, 0, 5);
 		gbc_tableScrollPane.fill = GridBagConstraints.BOTH;
 		gbc_tableScrollPane.gridx = 2;
-		gbc_tableScrollPane.gridy = 0;
+		gbc_tableScrollPane.gridy = 1;
 		PruefungenPanel.add(tableScrollPane, gbc_tableScrollPane);
 
 		tableModel = new DefaultTableModel(new Object[][] {,}, new String[] { "Titel", "Termin", "Dauer (Min)", "Punkte", "Teilnehmerzahl" }) {

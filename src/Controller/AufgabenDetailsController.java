@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import Models.Antwort;
@@ -21,6 +22,7 @@ public class AufgabenDetailsController {
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
+		antworten = new HashSet<Antwort>();
 
 	}
 
@@ -28,6 +30,7 @@ public class AufgabenDetailsController {
 																					// erzeugt wird
 		this.view = view;
 		this.pruefung = pruefung;
+		antworten = new HashSet<Antwort>();
 
 	}
 
@@ -95,6 +98,8 @@ public class AufgabenDetailsController {
 	}
 
 	public void antwortBearbeiten(Antwort antwort) {
+		
+		
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view, antwort);
 
