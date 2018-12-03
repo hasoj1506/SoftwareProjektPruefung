@@ -21,6 +21,10 @@ public class DatabaseService {
 		return instance;
 	}
 	
+	public EntityManager getEntityManager(){
+		return em;
+	}
+	
 	public void persistNutzer(Nutzer nutzer) {
 		
 		em.getTransaction().begin();
