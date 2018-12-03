@@ -143,6 +143,9 @@ public class LoginStudent extends JFrame {
 		gbc_textFieldPasswort.gridy = 1;
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
+		
+		setLocationRelativeTo(null);
+		
 	}
 
 }

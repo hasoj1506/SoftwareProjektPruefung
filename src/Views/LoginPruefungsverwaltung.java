@@ -133,6 +133,9 @@ public class LoginPruefungsverwaltung extends JFrame {
 		gbc_btnLogin.gridy = 3;
 		panel_1.add(btnLogin, gbc_btnLogin);
 		
+		setLocationRelativeTo(null);
+		
+		
 		
 	}
 

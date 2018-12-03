@@ -102,12 +102,12 @@ public class AufgabenDetailsController {
 		antwort.setIstRichtig(pop.isRichtig());
 
 	}
-	
+
 	public void setAntworten(Set<Antwort> antworten) {
 		this.antworten = antworten;
 	}
-	
-	public Set<Antwort> getAntworten(){
+
+	public Set<Antwort> getAntworten() {
 		return this.antworten;
 	}
 }
