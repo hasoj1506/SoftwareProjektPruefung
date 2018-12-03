@@ -27,7 +27,7 @@ public class PruefungsverwaltungController {
 		// Liste von Pruefungsdatensätzen erstellen
 		try {
 
-			TypedQuery q = em.createQuery("select * from pruefung", Pruefung.class);
+			TypedQuery q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
 
 			pruefungen = q.getResultList();
 
