@@ -21,6 +21,21 @@ public class PruefungsverwaltungController {
 	public PruefungsverwaltungController(PruefungsverwaltungView view) {
 		this.view = view;
 	}
+	
+	//Liste mit allen Prüfungen aus der Datenbank generieren
+	public List<Pruefung> getPruefungsliste(){
+		try {
+			List<Pruefung> pruefungen;
+			
+			TypedQuery q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
+
+			pruefungen = q.getResultList();
+
+		} catch (Exception e) {
+			// füllen, was beim Fehler passiert
+		}
+		return pruefungen;
+	}
 
 	public void fuelleTabellePruefungsverwaltung() {
 
