@@ -30,6 +30,10 @@ public class PruefungsDetails extends JFrame {
 	private JTextField textFieldPunkte;
 	
 	public PruefungsDetails() {
+		onCreate();
+	}
+	
+	public void onCreate() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
