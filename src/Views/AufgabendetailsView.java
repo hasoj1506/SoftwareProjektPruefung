@@ -254,6 +254,7 @@ public class AufgabendetailsView {
 
 		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(frame, "Test");
 
 			}
 		});
@@ -299,6 +300,10 @@ public class AufgabendetailsView {
 			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
 			// afgdTable.setModel(arg0);
 		}
+	}
+
+	public void fehlerMeldung(String text) {
+		JOptionPane.showMessageDialog(this.frame, text);
 	}
 
 	public JTextField getAfgdTitelTextField() {

@@ -43,30 +43,37 @@ public class AufgabenDetailsController {
 			aufgabe.setPruefung(this.pruefung);
 		}
 
-		String titel = view.getAfgdTitelTextField().getText();
 		int punkte = 0;
+		String titel = view.getAfgdTitelTextField().getText();
 		String frage = view.getAfgdFrageTextField().getText();
+
+		if (titel == ("") || titel.length() == 0) {
+
+			view.fehlerMeldung("Fehler: Der Titel darf nicht leer sein!");
+
+		} else {
+
+			aufgabe.setAufgabentitel(titel);
+
+		}
+
+		if (frage == ("") || frage.length() == 0) {
+
+			view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
+
+		} else {
+
+			aufgabe.setFrageStellung(frage);
+
+		}
 
 		try {
 
 			punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
-			aufgabe.setAufgabentitel(titel);
-			aufgabe.setFrageStellung(frage);
 
-		} catch (NullPointerException a) { // Prüft ob Titel oder Frage leer zugewiesen werden
+		} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
 
-			if (titel == ("")) {
-				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!"); // Neues
-																														// "PopUpFehler-Fenster"
-
-			} else if (frage == ("")) {
-				FehlerPopUp fehlermeldungTitel = new FehlerPopUp("Fehler - Titel", "Angegebner Titel nicht zulässig!");
-
-			}
-		} catch (NumberFormatException e) { // Prüft ob Punktzahl im Zahen Format ist
-
-			FehlerPopUp fehlermeldungPunkte = new FehlerPopUp("Fehler - Punktzahl",
-					"Angegebene Punktzahl nicht zulässig!");
+			view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
 
 		}
 
@@ -98,8 +105,6 @@ public class AufgabenDetailsController {
 	}
 
 	public void antwortBearbeiten(Antwort antwort) {
-		
-		
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view, antwort);
 
