@@ -42,7 +42,8 @@ public class PruefungsverwaltungController {
 
 		// Liste von Pruefungsdatensätzen erstellen
 		try {
-			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(getPruefungsliste());
+			pruefungen = getPruefungsliste();
+			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
 		} catch (Exception e) {
 			// füllen, was beim Fehler passiert
