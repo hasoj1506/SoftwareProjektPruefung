@@ -21,6 +21,7 @@ import javax.swing.ScrollPaneConstants;
 
 import Controller.PruefungsverwaltungController;
 import Models.Pruefung;
+import javax.swing.ListSelectionModel;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -45,8 +46,8 @@ public class PruefungsverwaltungView {
 
 		this.controller = new PruefungsverwaltungController(this);
 		onCreate();
-		tabelleFuellen();
 		btnAction();
+		tabelleFuellen();
 
 	}
 
@@ -87,6 +88,7 @@ public class PruefungsverwaltungView {
 		PruefungenPanel.add(tableScrollPane, gbc_tableScrollPane);
 
 		tablePruefungen = new JTable();
+		tablePruefungen.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablePruefungen.setMinimumSize(new Dimension(500, 300));
 		tableScrollPane.setViewportView(tablePruefungen);
 
@@ -171,6 +173,10 @@ public class PruefungsverwaltungView {
 
 	public JTable getTablePruefungen() {
 		return tablePruefungen;
+	}
+	
+	public JFrame getFrame(){
+		return frmPrfungsverwaltung;
 	}
 
 	public void setTablePruefungen(JTable tablePruefungen) {

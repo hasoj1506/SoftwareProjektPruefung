@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import Models.DatabaseService;
 import Models.Pruefung;
@@ -61,7 +63,13 @@ public class PruefungsverwaltungController {
 	
 	//bearbeiten Button wird geklickt / Doppelklick auf Prüfung
 	public void bearbeitePruefung() {
-
+		try{
+		pruefungen = getPruefungsliste();
+		int selection = view.getTablePruefungen().getSelectedRow();
+		PruefungsDetails detailView = new PruefungsDetails(pruefungen.get(selection));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(view.getFrame(), e);
+		}
 	}
 
 	public void loeschePruefung() {
