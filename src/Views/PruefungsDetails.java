@@ -31,9 +31,11 @@ public class PruefungsDetails extends JFrame {
 		onCreate();
 	}
 	
-	//Josah Weber
+	//Josah Weber (Konstruktor erstmal zum testen)
 	public PruefungsDetails(Pruefung pruefung){
 		this.pruefung = pruefung;
+		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
+		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
 	}
 	
 	public void onCreate() {
