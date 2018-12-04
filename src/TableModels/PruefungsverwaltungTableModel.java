@@ -15,7 +15,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		this.pruefungen = pruefungen;
 	}
 	
-	String[] columnNames = {"Titel", "Termin", "Dauer", "Punkte", "Teilnehmerzahl"};
+	String[] columnNames = {"Titel", "Dauer", "Punkte"};
 	
 	public String getColumnName(int col){
 		return columnNames[col];
@@ -36,10 +36,8 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		switch(col) {
 		case 0: return pruefungen.get(row).getBezeichnung();
-		case 1: return "Platzhalter"; //noch füllen
-		case 2: return pruefungen.get(row).getDauer();
-		case 3: return pruefungen.get(row).getPunkte();
-		case 4: return "Platzhalter"; //noch füllen
+		case 1: return pruefungen.get(row).getDauer();
+		case 2: return pruefungen.get(row).getPunkte();
 		default:
 			return null;
 		}

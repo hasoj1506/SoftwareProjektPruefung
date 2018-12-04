@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 import Models.DatabaseService;
 import Models.Pruefung;
 import TableModels.PruefungsverwaltungTableModel;
+import Views.PruefungsDetails;
 import Views.PruefungsverwaltungView;
 
 //Josah Weber
@@ -50,12 +51,16 @@ public class PruefungsverwaltungController {
 		}
 
 	}
-
-	public void erstellePruefung() {
+	
+	//Neu-Button wird geklickt
+	public void neuPruefung() {
+		PruefungsDetails detailView = new PruefungsDetails();
+		detailView.setTitle("Neue Prüfung");
 
 	}
-
-	public void editierePruefung() {
+	
+	//bearbeiten Button wird geklickt / Doppelklick auf Prüfung
+	public void bearbeitePruefung() {
 
 	}
 

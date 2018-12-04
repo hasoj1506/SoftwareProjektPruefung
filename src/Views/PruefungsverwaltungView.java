@@ -46,6 +46,7 @@ public class PruefungsverwaltungView {
 		this.controller = new PruefungsverwaltungController(this);
 		onCreate();
 		tabelleFuellen();
+		btnAction();
 
 	}
 
@@ -149,19 +150,19 @@ public class PruefungsverwaltungView {
 
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Pruefungsdetails leer öffnen
+				controller.neuPruefung();
 			}
 		});
 
 		btnBearbeitenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Pruefungsdetails mit passendem Datensatz öffnen
+				controller.bearbeitePruefung();
 			}
 		});
 
 		btnLoeschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Datensatz löschen und Tabelle aktualisieren
+				controller.loeschePruefung();
 			}
 		});
 
@@ -180,6 +181,7 @@ public class PruefungsverwaltungView {
 	public void tabelleFuellen() {
 		controller.fuelleTabellePruefungsverwaltung();
 	}
+
 
 	public static void main(String[] ar) {
 		PruefungsverwaltungView view = new PruefungsverwaltungView();

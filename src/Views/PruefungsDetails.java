@@ -1,27 +1,25 @@
 package Views;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.JButton;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridBagLayout;
-import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
-import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JTable;
-import java.awt.Font;
-import java.awt.GridLayout;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Color;
+
+import Models.Pruefung;
 
 public class PruefungsDetails extends JFrame {
+	private Pruefung pruefung;
 	private JTextField textFieldPrfungstitel;
 	private JTable tableAufgaben;
 	private JTable tableTeilnehmer;
@@ -31,6 +29,11 @@ public class PruefungsDetails extends JFrame {
 	
 	public PruefungsDetails() {
 		onCreate();
+	}
+	
+	//Josah Weber
+	public PruefungsDetails(Pruefung pruefung){
+		this.pruefung = pruefung;
 	}
 	
 	public void onCreate() {
