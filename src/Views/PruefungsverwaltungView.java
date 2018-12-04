@@ -1,19 +1,28 @@
 package Views;
 
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import Controller.AufgabenDetailsController;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+
 import Controller.PruefungsverwaltungController;
-import Models.Antwort;
-import Models.Aufgabe;
 import Models.Pruefung;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
+//Josah Weber
 public class PruefungsverwaltungView {
 
 	private JFrame frmPrfungsverwaltung;
@@ -28,7 +37,6 @@ public class PruefungsverwaltungView {
 
 	Pruefung pruefung;
 
-	DefaultTableModel tableModel;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -41,7 +49,7 @@ public class PruefungsverwaltungView {
 
 	}
 
-
+	//noch Refactoring?
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
@@ -77,17 +85,8 @@ public class PruefungsverwaltungView {
 		gbc_tableScrollPane.gridy = 1;
 		PruefungenPanel.add(tableScrollPane, gbc_tableScrollPane);
 
-		tableModel = new DefaultTableModel(new Object[][] {,}, new String[] { "Titel", "Termin", "Dauer (Min)", "Punkte", "Teilnehmerzahl" }) {
-			Class[] columnTypes = new Class[] { String.class, String.class, Integer.class, Integer.class, Integer.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		};
-
 		tablePruefungen = new JTable();
 		tablePruefungen.setMinimumSize(new Dimension(500, 300));
-		tablePruefungen.setModel(tableModel);
 		tableScrollPane.setViewportView(tablePruefungen);
 
 		JPanel buttonPanel = new JPanel();
@@ -177,9 +176,6 @@ public class PruefungsverwaltungView {
 		this.tablePruefungen = tablePruefungen;
 	}
 
-	public DefaultTableModel getTableModel() {
-		return this.tableModel;
-	}
 	
 	public void tabelleFuellen() {
 		controller.fuelleTabellePruefungsverwaltung();
