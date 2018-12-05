@@ -135,4 +135,15 @@ public class LoginPruefungsverwaltung {
 //		setMinimumSize(new Dimension(500, 300));
 //		setResizable(false);
 	}
+	
+	public JTextField getTFBenutzername() {
+		return this.textFieldBenutzername;
+	}
+	
+	public JPasswordField getTFPasswort() {
+		return this.textFieldPasswort;
+	}
+	
+	
+	
 }
