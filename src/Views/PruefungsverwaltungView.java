@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -165,6 +167,15 @@ public class PruefungsverwaltungView {
 		btnLoeschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.loeschePruefung();
+			}
+		});
+		
+		tablePruefungen.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 2) {
+					controller.bearbeitePruefung();
+				}
 			}
 		});
 
