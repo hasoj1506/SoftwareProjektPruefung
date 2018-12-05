@@ -34,7 +34,7 @@ public class LoginPruefungsverwaltungController {
 	}
 	
 	public void Einloggen() {
-		List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true)
+		List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 		String benutzername = getBenutzername();
 		String passwort = getPasswort();
 		
