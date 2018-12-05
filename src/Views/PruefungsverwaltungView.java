@@ -48,7 +48,7 @@ public class PruefungsverwaltungView {
 
 		this.controller = new PruefungsverwaltungController(this);
 		onCreate();
-		btnAction();
+		addActionListeners();
 		tabelleFuellen();
 
 	}
@@ -150,7 +150,7 @@ public class PruefungsverwaltungView {
 
 	}
 
-	public void btnAction() {
+	public void addActionListeners() {
 
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
