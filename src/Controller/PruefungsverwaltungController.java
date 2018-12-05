@@ -22,30 +22,18 @@ public class PruefungsverwaltungController {
 	private List<Pruefung> pruefungen;
 	
 	//um Zugriff auf die Datenbank zu bekommen
-	EntityManager em = DatabaseService.getInstance().getEntityManager();
+	DatabaseService db = DatabaseService.getInstance();
 
 	public PruefungsverwaltungController(PruefungsverwaltungView view) {
 		this.view = view;
 	}
 	
-	//Liste mit allen Prüfungen aus der Datenbank generieren
-	public List<Pruefung> getPruefungsliste(){
-		try {
-			TypedQuery q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
-
-			pruefungen = q.getResultList();
-
-		} catch (Exception e) {
-			// füllen, was beim Fehler passiert
-		}
-		return pruefungen;
-	}
 
 	public void fuelleTabellePruefungsverwaltung() {
 
 		// Liste von Pruefungsdatensätzen erstellen
 		try {
-			pruefungen = getPruefungsliste();
+			pruefungen = db.readPruefungen();
 			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
 		} catch (Exception e) {
@@ -64,7 +52,7 @@ public class PruefungsverwaltungController {
 	//bearbeiten Button wird geklickt / Doppelklick auf Prüfung
 	public void bearbeitePruefung() {
 		try{
-		pruefungen = getPruefungsliste();
+		pruefungen = db.readPruefungen();
 		int selection = view.getTablePruefungen().getSelectedRow();
 		PruefungsDetails detailView = new PruefungsDetails(pruefungen.get(selection));
 		} catch (Exception e) {

@@ -239,7 +239,7 @@ public class PruefungsDetails extends JFrame {
 		panelTermineButtons.add(btnNeu_2);
 		
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 	}
 	
