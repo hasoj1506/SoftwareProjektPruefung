@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -20,7 +21,7 @@ public class LoginPruefungsverwaltung {
 
 	private JFrame frame;
 	private JTextField textFieldBenutzername;
-	private JTextField textFieldPasswort;
+	private JPasswordField textFieldPasswort;
 
 	
 	/**
@@ -114,7 +115,7 @@ public class LoginPruefungsverwaltung {
 		gbc_lblPasswort.gridy = 1;
 		panel_1.add(lblPasswort, gbc_lblPasswort);
 		
-		textFieldPasswort = new JTextField();
+		textFieldPasswort = new JPasswordField();
 		GridBagConstraints gbc_textFieldPasswort = new GridBagConstraints();
 		gbc_textFieldPasswort.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPasswort.fill = GridBagConstraints.HORIZONTAL;
