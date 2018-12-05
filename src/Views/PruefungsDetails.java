@@ -16,7 +16,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controller.PruefungsDetailsController;
+import Models.Aufgabe;
+import Models.Nutzer;
 import Models.Pruefung;
+import Models.Termin;
 
 public class PruefungsDetails extends JFrame {
 	private Pruefung pruefung;
@@ -27,11 +31,20 @@ public class PruefungsDetails extends JFrame {
 	private JTextField textFieldDauer;
 	private JTextField textFieldPunkte;
 	
+	PruefungsDetailsController controller;
+	Aufgabe aufgabe;
+	Termin termin;
+	Nutzer nutzer;
+	
 	public PruefungsDetails() {
+		this.controller = new PruefungsDetailsController(this);
 		onCreate();
+		fuelleAufgaben();
 	}
 	
+	//Josah Weber (Konstruktor erstmal zum testen)
 	//Josah Weber (Konstruktor zum Bearbeiten der Pruefung)
+// branch 'master' of https://github.com/hasoj1506/SoftwareProjektPruefung.git
 	public PruefungsDetails(Pruefung pruefung){
 		this.pruefung = pruefung;
 		onCreate();
@@ -48,10 +61,6 @@ public class PruefungsDetails extends JFrame {
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 		
 		JButton btnSpeichern = new JButton("Speichern");
-		btnSpeichern.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		panelButtons.add(btnSpeichern);
 		
 		JButton btnLschen = new JButton("L\u00F6schen");
@@ -243,6 +252,14 @@ public class PruefungsDetails extends JFrame {
 	
 	public static void main(String[] args) {
 		PruefungsDetails p = new PruefungsDetails();
+	}
+	
+	public JTable getTableAufgaben() {
+		return tableAufgaben;
+	}
+	
+	public void fuelleAufgaben() {
+		controller.fuelleTabelleAufgaben();
 	}
 
 }
