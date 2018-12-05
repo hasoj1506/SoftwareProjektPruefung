@@ -21,6 +21,9 @@ public class AntwortErstellenPopUp{
 	boolean richtig;
 	String text;
 
+	/**
+	 * @wbp.parser.constructor
+	 */	
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
 		btnAction(view);
@@ -59,7 +62,7 @@ public class AntwortErstellenPopUp{
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
-		gbl_panel_1.rowHeights = new int[] { 20, 11, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 52, 11, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);

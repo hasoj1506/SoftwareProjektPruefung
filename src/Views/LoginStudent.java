@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import java.awt.GridBagLayout;
@@ -31,7 +32,7 @@ public class LoginStudent {
 	String yearS = String.valueOf(year);
 	
 	private JTextField textFieldBenutzer;
-	private JTextField textFieldPassword;
+	private JPasswordField textFieldPassword;
 
 
 	/**
@@ -140,7 +141,7 @@ public class LoginStudent {
 		gbc_lblPasswort.gridy = 1;
 		panel_1.add(lblPasswort, gbc_lblPasswort);
 		
-		textFieldPassword = new JTextField();
+		textFieldPassword = new JPasswordField();
 		GridBagConstraints gbc_textFieldPassword = new GridBagConstraints();
 		gbc_textFieldPassword.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPassword.fill = GridBagConstraints.HORIZONTAL;
