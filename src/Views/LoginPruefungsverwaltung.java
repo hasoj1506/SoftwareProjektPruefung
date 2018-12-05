@@ -3,6 +3,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
@@ -20,6 +22,7 @@ public class LoginPruefungsverwaltung {
 	private JTextField textFieldBenutzername;
 	private JTextField textFieldPasswort;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,6 +50,7 @@ public class LoginPruefungsverwaltung {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,5 +129,9 @@ public class LoginPruefungsverwaltung {
 		gbc_btnLogin.gridx = 1;
 		gbc_btnLogin.gridy = 2;
 		panel_1.add(btnLogin, gbc_btnLogin);
+		
+//		setLocationRelativeTo(null);
+//		setMinimumSize(new Dimension(500, 300));
+//		setResizable(false);
 	}
 }
