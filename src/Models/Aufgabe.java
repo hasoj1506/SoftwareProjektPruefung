@@ -10,7 +10,7 @@ public class Aufgabe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name = "aufgabenId")
-	private long id;
+	private int id;
 
 	private String aufgabentitel;
 	private String frageStellung;
@@ -83,5 +83,9 @@ public class Aufgabe {
 	
 	public void addAntwort(Antwort antwort) {
 		this.antworten.add(antwort);
+	}
+	
+	public int getAufgabenId(){
+		return id; 
 	}
 }

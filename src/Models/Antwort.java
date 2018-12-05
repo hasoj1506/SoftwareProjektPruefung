@@ -8,7 +8,7 @@ public class Antwort {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name = "antwortId")
-	private long antwortId;
+	private int antwortId;
 
 	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
@@ -60,6 +60,10 @@ public class Antwort {
 
 	public void setAufgabe(Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
+	}
+	
+	public int getAntwortId(){
+		return antwortId; 
 	}
 
 }

@@ -7,7 +7,7 @@ public class Termin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@JoinColumn(name = "terminId")
-	private long id;
+	private int id;
 	
 	private String datum;
 	private String uhrzeit;	//ggf. mit GregorianCalender anderer Parameter
@@ -63,6 +63,10 @@ public class Termin {
 
 	public void setPruefung(Pruefung pruefung) {
 		this.pruefung = pruefung;
+	}
+	
+	public int getTerminId(){
+		return id;  
 	}
 
 }
