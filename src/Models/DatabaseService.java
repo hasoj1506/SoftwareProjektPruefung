@@ -131,6 +131,6 @@ public class DatabaseService {
 		em.getTransaction().begin();
 		em.remove(pruefung);
 		em.getTransaction().commit();
-		
+		//test
 	}
 }
