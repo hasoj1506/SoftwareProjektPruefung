@@ -42,13 +42,15 @@ public class PruefungsDetails extends JFrame {
 		fuelleAufgaben();
 	}
 	
-	/*Josah Weber (Konstruktor erstmal zum testen)
+	//Josah Weber (Konstruktor erstmal zum testen)
+	//Josah Weber (Konstruktor zum Bearbeiten der Pruefung)
+// branch 'master' of https://github.com/hasoj1506/SoftwareProjektPruefung.git
 	public PruefungsDetails(Pruefung pruefung){
 		this.pruefung = pruefung;
-		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
-		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
+		onCreate();
+		fuellePruefungsDetailsZumBearbeiten();
 	}
-	*/
+	
 	public void onCreate() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -239,6 +241,13 @@ public class PruefungsDetails extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
+	}
+	
+	//Josah Weber
+	public void fuellePruefungsDetailsZumBearbeiten(){
+		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
+		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
+		
 	}
 	
 	public static void main(String[] args) {
