@@ -98,4 +98,11 @@ public class DatabaseService {
 		}
 		
 	}
+	
+	public void loeschePruefungAusPruefungsverwaltung(Pruefung pruefung){
+		em.getTransaction().begin();
+		em.remove(pruefung);
+		em.getTransaction().commit();
+		
+	}
 }

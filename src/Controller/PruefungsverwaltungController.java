@@ -61,6 +61,13 @@ public class PruefungsverwaltungController {
 	}
 
 	public void loeschePruefung() {
+		pruefungen = db.readPruefungen();
+		int selection = view.getTablePruefungen().getSelectedRow();
+		Pruefung zuLoeschendePruefung = pruefungen.get(selection);
+		db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
+		fuelleTabellePruefungsverwaltung();
+		
+		
 		
 	}
 
