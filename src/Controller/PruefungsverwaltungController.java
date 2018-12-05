@@ -57,7 +57,7 @@ public class PruefungsverwaltungController {
 	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
 	public void bearbeitePruefung() {
 		try {
-			//Wenn in der JTable eine Zeile ausgewählt ist
+			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTablePruefungen().getSelectedRow() > -1) {
 				// Identifizieren der zu bearbeitenden Prüfung
 				pruefungen = db.readPruefungen();
@@ -71,29 +71,40 @@ public class PruefungsverwaltungController {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
 		} catch (Exception e) {
+			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
 		}
 	}
 
 	// Löschen-Button wird geklickt
 	public void loeschePruefung() {
+
 		try {
-			//Wenn in der JTable eine Zeile ausgewählt ist
+			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTablePruefungen().getSelectedRow() > -1) {
+				
+				//Abfrage, ob wirklich gelöscht werden soll
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?",
+						"Abfrage", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
 
-				// Identifizieren der zu löschenden Prüfung
-				pruefungen = db.readPruefungen();
-				int selection = view.getTablePruefungen().getSelectedRow();
-				Pruefung zuLoeschendePruefung = pruefungen.get(selection);
+					// Identifizieren der zu löschenden Prüfung
+					pruefungen = db.readPruefungen();
+					int selection = view.getTablePruefungen().getSelectedRow();
+					Pruefung zuLoeschendePruefung = pruefungen.get(selection);
 
-				// Löschen der Prüfung aus der Datenbank und neuladen der
-				// Tabelle
-				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-				fuelleTabellePruefungsverwaltung();
+					// Löschen der Prüfung aus der Datenbank und neuladen der
+					// Tabelle
+					db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
+					fuelleTabellePruefungsverwaltung();
+				} else {
+					// nichts tun
+				}
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
 		} catch (Exception e) {
+			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
 		}
 
