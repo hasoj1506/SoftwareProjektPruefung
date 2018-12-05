@@ -2,10 +2,7 @@ package Controller;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 import Models.DatabaseService;
 import Models.Pruefung;
@@ -20,55 +17,97 @@ public class PruefungsverwaltungController {
 
 	private PruefungsverwaltungView view;
 	private List<Pruefung> pruefungen;
-	
-	//um Zugriff auf die Datenbank zu bekommen
+
+	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
 
 	public PruefungsverwaltungController(PruefungsverwaltungView view) {
 		this.view = view;
 	}
-	
 
+	// JTable in der Pruefungsverwaltung mit Datensätzen füllen
 	public void fuelleTabellePruefungsverwaltung() {
 
-		// Liste von Pruefungsdatensätzen erstellen
 		try {
+			// Liste mit allen Prüfungen der Datenbank erstellen
 			pruefungen = db.readPruefungen();
+
+			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
+
 		} catch (Exception e) {
-			// füllen, was beim Fehler passiert
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
 		}
 
 	}
-	
-	//Neu-Button wird geklickt
+
+	// Neu-Button wird geklickt
 	public void neuPruefung() {
+
+		// Leere Maske der Prüfungsdetails wird geöffnet
 		PruefungsDetails detailView = new PruefungsDetails();
+
+		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
 
 	}
-	
-	//bearbeiten Button wird geklickt / Doppelklick auf Prüfung
+
+	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
 	public void bearbeitePruefung() {
-		try{
-		pruefungen = db.readPruefungen();
-		int selection = view.getTablePruefungen().getSelectedRow();
-		PruefungsDetails detailView = new PruefungsDetails(pruefungen.get(selection));
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTablePruefungen().getSelectedRow() > -1) {
+				// Identifizieren der zu bearbeitenden Prüfung
+				pruefungen = db.readPruefungen();
+				int selection = view.getTablePruefungen().getSelectedRow();
+				Pruefung zuBearbeitendePrüfung = pruefungen.get(selection);
+
+				// Prüfungsdetails-Maske öffnen und zu bearbeitende Prüfung
+				// übergeben
+				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung);
+			} else {
+				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
+			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(view.getFrame(), e);
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
 		}
 	}
 
+	// Löschen-Button wird geklickt
 	public void loeschePruefung() {
-		pruefungen = db.readPruefungen();
-		int selection = view.getTablePruefungen().getSelectedRow();
-		Pruefung zuLoeschendePruefung = pruefungen.get(selection);
-		db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-		fuelleTabellePruefungsverwaltung();
-		
-		
-		
+
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTablePruefungen().getSelectedRow() > -1) {
+				
+				//Abfrage, ob wirklich gelöscht werden soll
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?",
+						"Abfrage", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+
+					// Identifizieren der zu löschenden Prüfung
+					pruefungen = db.readPruefungen();
+					int selection = view.getTablePruefungen().getSelectedRow();
+					Pruefung zuLoeschendePruefung = pruefungen.get(selection);
+
+					// Löschen der Prüfung aus der Datenbank und neuladen der
+					// Tabelle
+					db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
+					fuelleTabellePruefungsverwaltung();
+				} else {
+					// nichts tun
+				}
+			} else {
+				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
+			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
+		}
+
 	}
 
 }
