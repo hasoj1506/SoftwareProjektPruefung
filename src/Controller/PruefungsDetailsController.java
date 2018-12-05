@@ -1,10 +1,16 @@
 package Controller;
 
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import Models.Aufgabe;
+import Models.DatabaseService;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
+import TableModels.PruefungsDetailsAufgabenTableModel;
 import Views.PruefungsDetails;
 
 public class PruefungsDetailsController {
@@ -28,6 +34,28 @@ public class PruefungsDetailsController {
 	
 	public PruefungsDetailsController(PruefungsDetails view) {
 		this.view = view;
+	}
+	
+	EntityManager em = DatabaseService.getInstance().getEntityManager();
+	
+	public List<Aufgabe> getAufgabenListe(){
+		try {
+			TypedQuery q = em.createQuery("SELECT a FROM Aufgabe a", Aufgabe.class);
+			aufgaben = q.getResultList();
+		}catch(Exception e) {
+			//kommt noch
+		}
+		return aufgaben;
+	}
+	
+	public void fuelleTabelleAufgaben() {
+		try {
+			aufgaben = getAufgabenListe();
+			PruefungsDetailsAufgabenTableModel model = new PruefungsDetailsAufgabenTableModel(aufgaben);
+			view.getTableAufgaben().setModel(model);
+		}catch(Exception e) {
+			//kommt noch
+		}
 	}
 	
 	
