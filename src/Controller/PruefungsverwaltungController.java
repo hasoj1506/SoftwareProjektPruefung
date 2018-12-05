@@ -73,7 +73,7 @@ public class PruefungsverwaltungController {
 	}
 
 	public void loeschePruefung() {
-
+		
 	}
 
 }
