@@ -28,7 +28,6 @@ public class DatabaseService {
 	}
 
 	public void persistNutzer(Nutzer nutzer) {
-
 		em.getTransaction().begin();
 		em.persist(nutzer);
 		em.getTransaction().commit();
@@ -55,31 +54,58 @@ public class DatabaseService {
 
 	public List<Antwort> readAntworten(Aufgabe aufgabe) {
 
-		List<Antwort> antworten;
-		Query q = em.createQuery("select s from Aufgabe where id = " + aufgabe.getAufgabentitel());
-		antworten = q.getResultList();
+		try {
 
-		return antworten;
+			List<Antwort> antworten;
+
+			TypedQuery q = em.createQuery("select p from AUFGABE_ANTWORT where ID = ", Antwort.class);
+
+			antworten = q.getResultList();
+
+			return antworten;
+
+		} catch (Exception e) {
+
+			return null;
+		}
 
 	}
 
 	public List<Termin> readTermin(Pruefung pruefung) {
 
-		List<Termin> termin;
-		Query q = em.createQuery("select s from Aufgabe where id = " + aufgabe.getAufgabentitel());
-		termin = q.getResultList();
+		try {
 
-		return termin;
+			List<Termin> termine;
+
+			TypedQuery q = em.createQuery("select p from Pruefung p", Termin.class);
+
+			termine = q.getResultList();
+
+			return termine;
+
+		} catch (Exception e) {
+
+			return null;
+		}
 
 	}
 
-	public List<Antwort> readAufgabe(Pruefung pruefung) {
+	public List<Aufgabe> readAufgabe(Pruefung pruefung) {
 
-		List<Antwort> antworten;
-		Query q = em.createQuery("select s from Aufgabe where id = " + aufgabe.getAufgabentitel());
-		antworten = q.getResultList();
+		try {
 
-		return antworten;
+			List<Aufgabe> aufgaben;
+
+			TypedQuery q = em.createQuery("select p from Pruefung p", Aufgabe.class);
+
+			aufgaben = q.getResultList();
+
+			return aufgaben;
+
+		} catch (Exception e) {
+
+			return null;
+		}
 
 	}
 
@@ -113,7 +139,7 @@ public class DatabaseService {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("select s from Nutzer where username = " + username + " and passwort = "
+			TypedQuery q = em.createQuery("select p from Nutzer where username = " + username + " and passwort = "
 					+ passwort + " and isDozent = " + wahr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
@@ -126,11 +152,32 @@ public class DatabaseService {
 			return null;
 		}
 	}
-	
-	public void loeschePruefungAusPruefungsverwaltung(Pruefung pruefung){
+
+	public void loescheAntwort(Antwort antwort) {
+		em.getTransaction().begin();
+		em.remove(antwort);
+		em.getTransaction().commit();
+
+	}
+
+	public void loescheAufgabe(Aufgabe aufgabe) {
+		em.getTransaction().begin();
+		em.remove(aufgabe);
+		em.getTransaction().commit();
+
+	}
+
+	public void loescheTermin(Termin termin) {
+		em.getTransaction().begin();
+		em.remove(termin);
+		em.getTransaction().commit();
+
+	}
+
+	public void loeschePruefungAusPruefungsverwaltung(Pruefung pruefung) {
 		em.getTransaction().begin();
 		em.remove(pruefung);
 		em.getTransaction().commit();
-		//test
+
 	}
 }
