@@ -18,10 +18,7 @@ public class Antwort {
 	
 	@ManyToOne
 	@JoinColumn(nullable=false)
-	private Aufgabe aufgabe;// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
-
-	
-	
+	private Aufgabe aufgabe;	// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
 	
 	public Antwort() {
 
