@@ -7,8 +7,8 @@ public class Antwort {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JoinColumn(name = "antwortId")
-	private int antwortId;
+	@JoinColumn(name = "aID")
+	private int aID;
 	
 
 	private boolean alsRichtigBeantwortet;
@@ -68,7 +68,7 @@ public class Antwort {
 	}
 	
 	public int getAntwortId(){
-		return antwortId; 
+		return aID; 
 	}
 
 }
