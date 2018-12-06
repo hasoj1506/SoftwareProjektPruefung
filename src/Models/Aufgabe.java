@@ -21,8 +21,10 @@ public class Aufgabe {
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
 
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="aufgabe")
-	@JoinColumn(nullable=false)
 	Set<Antwort> antworten;
+	
+	//@OneToMany(cascade = CascadeType.PERSIST, mappedBy="pruefung")
+	//Set<Aufgabe> aufgaben;
 
 	public Aufgabe() {
 
