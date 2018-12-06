@@ -21,9 +21,7 @@ public class Antwort {
 	private Aufgabe aufgabe;// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
 
 	
-	//@ManyToOne
-	//@JoinColumn(nullable=false)
-	//private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
+	
 	
 	public Antwort() {
 
