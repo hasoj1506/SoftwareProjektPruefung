@@ -8,7 +8,7 @@ public class Antwort {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name = "antwortId")
-	private int antwortid;
+	private int aID;
 	
 
 	private boolean alsRichtigBeantwortet;
@@ -20,6 +20,10 @@ public class Antwort {
 	@JoinColumn(nullable=false)
 	private Aufgabe aufgabe;// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
 
+	
+	//@ManyToOne
+	//@JoinColumn(nullable=false)
+	//private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
 	
 	public Antwort() {
 
@@ -66,7 +70,7 @@ public class Antwort {
 	}
 	
 	public int getAntwortId(){
-		return antwortid; 
+		return aID; 
 	}
 
 }
