@@ -67,6 +67,7 @@ public class PruefungsverwaltungController {
 				// Prüfungsdetails-Maske öffnen und zu bearbeitende Prüfung
 				// übergeben
 				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung);
+				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
@@ -82,8 +83,8 @@ public class PruefungsverwaltungController {
 		try {
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTablePruefungen().getSelectedRow() > -1) {
-				
-				//Abfrage, ob wirklich gelöscht werden soll
+
+				// Abfrage, ob wirklich gelöscht werden soll
 				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?",
 						"Abfrage", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {

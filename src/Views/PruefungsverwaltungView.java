@@ -24,6 +24,7 @@ import javax.swing.ScrollPaneConstants;
 import Controller.PruefungsverwaltungController;
 import Models.Pruefung;
 import javax.swing.ListSelectionModel;
+import java.awt.Frame;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -57,6 +58,7 @@ public class PruefungsverwaltungView {
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
+		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
 		frmPrfungsverwaltung.setForeground(Color.WHITE);
 		frmPrfungsverwaltung.setMinimumSize(new Dimension(850, 650));
