@@ -18,15 +18,18 @@ public class yaneksViewTest {
 
 		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);
 		
+		
 		Termin termin = new Termin("test","test","test", pruefung);
 		Termin termin1 = new Termin("test5","test4","test3", pruefung);
 		Termin termin2 = new Termin("test35","test42","test2", pruefung);
 		
-		service.persistPruefung(pruefung);
+		pruefung.addTermin(termin);
+		pruefung.addTermin(termin1);
+		pruefung.addTermin(termin2);
 		
-		service.persistTermin(termin);
-		service.persistTermin(termin1);
-		service.persistTermin(termin2);
+		service.persistPruefung(pruefung); 
+		
+		
 	}
 
 }

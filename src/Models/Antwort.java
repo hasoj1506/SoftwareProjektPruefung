@@ -9,13 +9,11 @@ public class Antwort {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int antwortId;
 	
-
 	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
 	private String antworttext;
 	private int punkte;
 
-	
 	@ManyToOne
 	@JoinColumn(nullable=false)
 	private Aufgabe aufgabe;	// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
