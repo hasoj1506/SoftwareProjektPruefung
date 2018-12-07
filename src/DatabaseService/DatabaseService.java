@@ -123,7 +123,7 @@ public class DatabaseService {
 		try {
 			List<Pruefung> pruefungen;
 
-			TypedQuery q = em.createQuery("select p from PREUFUNG p", Pruefung.class);
+			TypedQuery q = em.createQuery("select p from PRUEFUNG p", Pruefung.class);
 
 			pruefungen = q.getResultList();
 
