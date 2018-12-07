@@ -7,9 +7,7 @@ public class Nutzer {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@JoinColumn(name = "nummer")
-	
-	private int idNummer;	// Dozentennummer oder Matrikelnummer
+	private int nutzerId;	// Dozentennummer oder Matrikelnummer
 	
 	private String vorname;
 	private String nachname;
@@ -78,15 +76,8 @@ public class Nutzer {
 		this.istDozent = istDozent;
 	}
 
-	public int getIdNummer() {
-		return idNummer;
+	public int getNutzerId() {
+		return nutzerId;
 	}
-
-	public void setIdNummer(int idNummer) {
-		this.idNummer = idNummer;
-	}
-	
-	
-	
 	
 }

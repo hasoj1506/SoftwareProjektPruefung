@@ -1,9 +1,9 @@
-package testPackage;
+package Testklassen;
 
-import Views.Aufgabendetails;
+import Views.AufgabendetailsView;
 import Views.PruefungView;
 import Views.PruefungsDetails;
-import Views.Pruefungsverwaltung;
+import Views.PruefungsverwaltungView;
 
 public class TestApp {
 

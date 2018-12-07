@@ -7,10 +7,10 @@ import javax.persistence.*;
 
 @Entity
 public class Aufgabe {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JoinColumn(name = "aufgabenId")
-	private int id;
+	private int aufgabeId;
 
 	private String aufgabentitel;
 	private String frageStellung;
@@ -86,7 +86,7 @@ public class Aufgabe {
 		this.antworten.add(antwort);
 	}
 	
-	public int getAufgabenId(){
-		return id; 
+	public int getAufgabeId(){
+		return aufgabeId; 
 	}
 }

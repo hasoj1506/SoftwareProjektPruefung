@@ -14,10 +14,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Pruefung {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JoinColumn(name = "pruefungsnummer")
-	private int pnr;
+	private int pruefungId;
 
 	private String bezeichnung;
 	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer = gesamtpunktzahl
@@ -59,12 +59,8 @@ public class Pruefung {
 		this.dauer = dauer;
 	}
 
-	public int getPnr() {
-		return pnr;
-	}
-
-	public void setPnr(int pnr) {
-		this.pnr = pnr;
+	public int getpruefungId() {
+		return pruefungId;
 	}
 
 	public Set<Termin> getTermine() {

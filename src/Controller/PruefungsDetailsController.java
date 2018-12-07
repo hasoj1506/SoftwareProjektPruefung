@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import Models.Aufgabe;
-import Models.DatabaseService;
+import DatabaseService.DatabaseService;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Models.DatabaseService;
+import DatabaseService.DatabaseService;
 import Models.Pruefung;
 import TableModels.PruefungsverwaltungTableModel;
 import Views.PruefungsDetails;

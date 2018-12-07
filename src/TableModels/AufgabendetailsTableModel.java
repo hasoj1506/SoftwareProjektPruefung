@@ -42,7 +42,7 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 		
 		case 0: return antworten.get(row).getAntworttext();
 		case 1: return antworten.get(row).isIstRichtig();
-		case 2: return antworten.get(row).getPunktzahl();
+		case 2: return antworten.get(row).getPunkte();
 		
 		default: return null;
 		
@@ -61,7 +61,7 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 			antwort.setIstRichtig((Boolean) value);
 			break;
 		case 2:
-			antwort.setPunktzahl((Integer) value);
+			antwort.setPunkte((Integer) value);
 			break;
 		}
 		

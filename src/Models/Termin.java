@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Termin {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@JoinColumn(name = "terminId")
-	private int id;
+	private int terminId;
 	
 	private String datum;
 	private String uhrzeit;	//ggf. mit GregorianCalender anderer Parameter
@@ -66,7 +66,7 @@ public class Termin {
 	}
 	
 	public int getTerminId(){
-		return id;  
+		return terminId;  
 	}
 
 }

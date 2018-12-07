@@ -2,12 +2,11 @@ package Controller;
 
 import java.awt.Component;
 import java.util.List;
-
+import DatabaseService.DatabaseService;
 import javax.swing.JOptionPane;
 
 import org.eclipse.persistence.internal.oxm.mappings.Login;
 
-import Models.DatabaseService;
 import Models.Nutzer;
 import Views.LoginPruefungsverwaltung;
 

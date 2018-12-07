@@ -1,6 +1,7 @@
 package Models;
 
 import java.util.List;
+import Models.*;
 
 import javax.persistence.*;
 
@@ -48,6 +49,12 @@ public class DatabaseService {
 	public void persistAntwort(Antwort antwort) {
 		em.getTransaction().begin();
 		em.persist(antwort);
+		em.getTransaction().commit();
+	}
+	
+	public void persistTermin(Termin termin) {
+		em.getTransaction().begin();
+		em.persist(termin);
 		em.getTransaction().commit();
 	}
 
