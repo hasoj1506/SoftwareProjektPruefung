@@ -6,7 +6,6 @@
 		<class>Models.Aufgabe</class>
 		<class>Models.Nutzer</class>
 		<class>Models.Pruefung</class>
-		<class>DatabaseService.DatabaseService</class>
 		<class>Models.Termin</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@aix1.fh-bielefeld.de:1521:d2"/>
