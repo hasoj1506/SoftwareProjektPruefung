@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AntwortErstellenPopUp{
+public class AntwortErstellenPopUp {
 
 	JFrame frame;
 	JButton btnOk;
@@ -20,10 +20,13 @@ public class AntwortErstellenPopUp{
 
 	boolean richtig;
 	String text;
+	int punkte;
+	private JLabel lblPunktzah;
+	private JTextField textField_1;
 
 	/**
 	 * @wbp.parser.constructor
-	 */	
+	 */
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
 		btnAction(view);
@@ -32,7 +35,7 @@ public class AntwortErstellenPopUp{
 
 	public AntwortErstellenPopUp(final AufgabendetailsView view, Antwort antwort) {
 		onCreate();
-		btnAction(view);
+		btnAction(view, antwort);
 
 		this.chckbxNewCheckBox.setEnabled(antwort.isIstRichtig());
 		this.textField.setText(antwort.getAntworttext());
@@ -62,9 +65,9 @@ public class AntwortErstellenPopUp{
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
-		gbl_panel_1.rowHeights = new int[] { 52, 11, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 45, 11, 0, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		lblNewLabel = new JLabel("Antwort:");
@@ -85,20 +88,38 @@ public class AntwortErstellenPopUp{
 		panel_1.add(textField, gbc_textField);
 		textField.setColumns(10);
 
+		lblPunktzah = new JLabel("Punktzahl:");
+		GridBagConstraints gbc_lblPunktzah = new GridBagConstraints();
+		gbc_lblPunktzah.anchor = GridBagConstraints.EAST;
+		gbc_lblPunktzah.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPunktzah.gridx = 1;
+		gbc_lblPunktzah.gridy = 2;
+		panel_1.add(lblPunktzah, gbc_lblPunktzah);
+
+		textField_1 = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.anchor = GridBagConstraints.WEST;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.gridx = 2;
+		gbc_textField_1.gridy = 2;
+		panel_1.add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
+
 		lblNewLabel_2 = new JLabel("Richtig:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 2;
+		gbc_lblNewLabel_2.gridy = 3;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-		chckbxNewCheckBox = new JCheckBox("Richtig");
+		chckbxNewCheckBox = new JCheckBox("");
 		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
+		gbc_chckbxNewCheckBox.anchor = GridBagConstraints.WEST;
 		gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxNewCheckBox.gridx = 2;
-		gbc_chckbxNewCheckBox.gridy = 2;
+		gbc_chckbxNewCheckBox.gridy = 3;
 		panel_1.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
 
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -116,8 +137,15 @@ public class AntwortErstellenPopUp{
 				richtig = chckbxNewCheckBox.isSelected();
 				text = textField.getText();
 
-				view.getTableModel().insertRow(view.getTableModel().getRowCount(), new Object[] {
-						view.getTableModel().getRowCount() + 1, textField.getText(), chckbxNewCheckBox.isSelected() });
+				try {
+					punkte = Integer.parseInt(textField_1.getText());
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+				}
+
+				view.getAfgdTable().setValueAt(text, view.getAfgdTable().getRowCount() + 1, 0);
+				view.getAfgdTable().setValueAt(richtig, view.getAfgdTable().getRowCount(), 1);
+				view.getAfgdTable().setValueAt(punkte, view.getAfgdTable().getRowCount(), 2);
 
 				frame.dispose();
 			}
@@ -134,12 +162,17 @@ public class AntwortErstellenPopUp{
 				richtig = chckbxNewCheckBox.isSelected();
 				text = textField.getText();
 
-				view.getTableModel();
+				try {
+					punkte = Integer.parseInt(textField_1.getText());
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+				}
 
-				//antwort.setAntworttext(text);
-				//antwort.setIstRichtig(richtig);
+				view.getAfgdTable().setValueAt(text, view.getAfgdTable().getSelectedRow(), 0);
+				view.getAfgdTable().setValueAt(richtig, view.getAfgdTable().getSelectedRow(), 1);
+				view.getAfgdTable().setValueAt(punkte, view.getAfgdTable().getSelectedRow(), 2);
 
-				//frame.dispose();
+				frame.dispose();
 			}
 		});
 
@@ -159,6 +192,14 @@ public class AntwortErstellenPopUp{
 
 	public void setRichtig(boolean richtig) {
 		this.richtig = richtig;
+	}
+
+	public int getPunktzahl() {
+		return this.punkte;
+	}
+
+	public void setPunktzahl(int punktzahl) {
+		this.punkte = punktzahl;
 	}
 
 }

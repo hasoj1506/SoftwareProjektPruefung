@@ -14,6 +14,7 @@ public class Antwort {
 	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
 	private String antworttext;
+	private int punkte;
 
 	
 	@ManyToOne
@@ -25,11 +26,12 @@ public class Antwort {
 		super();
 	}
 
-	public Antwort(boolean istRichtig, String antworttext) {
+	public Antwort(String antworttext, boolean istRichtig, int punkte) {
 		super();
 
 		this.istRichtig = istRichtig;
 		this.antworttext = antworttext;
+		this.punkte = punkte;
 	}
 
 	public boolean isIstRichtig() {
@@ -66,6 +68,14 @@ public class Antwort {
 	
 	public int getAntwortId(){
 		return aID; 
+	}
+
+	public int getPunkte() {
+		return punkte;
+	}
+
+	public void setPunkte(int punkte) {
+		this.punkte = punkte;
 	}
 
 }

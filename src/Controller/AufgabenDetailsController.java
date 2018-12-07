@@ -1,11 +1,13 @@
 package Controller;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import Models.Antwort;
 import Models.Aufgabe;
+import Models.DatabaseService;
 import Models.Pruefung;
+import TableModels.AufgabendetailsTableModel;
 import Views.AntwortErstellenPopUp;
 import Views.AufgabendetailsView;
 import Views.FehlerPopUp;
@@ -15,14 +17,18 @@ public class AufgabenDetailsController {
 	Aufgabe aufgabe;
 	AufgabendetailsView view;
 	Pruefung pruefung;
-	Set<Antwort> antworten;
+	DatabaseService service = DatabaseService.getInstance();
+	
+	AufgabendetailsTableModel model;
 
 	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { // Konstruktor falls bestehende
 																					// Aufgabe bearbeitet wird
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
-		antworten = new HashSet<Antwort>();
+		this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
+		view.getAfgdTable().setModel(model);
+		
 
 	}
 
@@ -30,7 +36,11 @@ public class AufgabenDetailsController {
 																					// erzeugt wird
 		this.view = view;
 		this.pruefung = pruefung;
-		antworten = new HashSet<Antwort>();
+		view.getAfgdTable().setModel(new AufgabendetailsTableModel());
+		this.model = new AufgabendetailsTableModel();
+		view.getAfgdTable().setModel(model);
+		
+		
 
 	}
 
@@ -78,7 +88,7 @@ public class AufgabenDetailsController {
 		}
 
 		aufgabe.setPunktzahl(punkte);
-		aufgabe.setAntworten(this.antworten);
+		//aufgabe.setAntworten(this.antworten);
 
 		return this.aufgabe;
 
@@ -92,32 +102,30 @@ public class AufgabenDetailsController {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
-		Antwort antwort = new Antwort(pop.isRichtig(), pop.getText());
-
-		this.antworten.add(antwort);
+		Antwort antwort = new Antwort(pop.isRichtig(), pop.getText(), pop.getPunktzahl());
+		
+		model.setValueAt(pop.getText(), model.getRowCount() + 1, 0);
+		model.setValueAt(pop.isRichtig(), model.getRowCount(), 1);
+		model.setValueAt(pop.getText(), model.getRowCount(), 2);
+		
+		view.getAfgdTable().setModel(model);
 
 	}
 
 	public void antwortLoeschen() {
 
-		view.getTableModel().removeRow(view.getAfgdTable().getSelectedRow());
-
 	}
 
-	public void antwortBearbeiten(Antwort antwort) {
+	public void antwortBearbeiten() {
+		
+		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
+		
+		pop.setPunktzahl(view.getAfgdTable().getSelectedRow());
+		pop.setRichtig(antwort.isIstRichtig());
+		pop.setText(antwort.getAntworttext());
+		
+		
+		
 
-		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view, antwort);
-
-		antwort.setAntworttext(pop.getText());
-		antwort.setIstRichtig(pop.isRichtig());
-
-	}
-
-	public void setAntworten(Set<Antwort> antworten) {
-		this.antworten = antworten;
-	}
-
-	public Set<Antwort> getAntworten() {
-		return this.antworten;
 	}
 }

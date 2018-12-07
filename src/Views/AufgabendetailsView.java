@@ -34,8 +34,6 @@ public class AufgabendetailsView {
 	Pruefung pruefung;
 	Aufgabe aufgabe;
 
-	DefaultTableModel tableModel;
-
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -157,18 +155,10 @@ public class AufgabendetailsView {
 		gbc_tableScrollPane.gridx = 2;
 		gbc_tableScrollPane.gridy = 0;
 		arbeitsPanel.add(tableScrollPane, gbc_tableScrollPane);
-
-		tableModel = new DefaultTableModel(new Object[][] {,}, new String[] { "Nummer", "Antwort", "Richtig" }) {
-			Class[] columnTypes = new Class[] { Integer.class, String.class, Boolean.class };
-
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		};
-
+		
 		afgdTable = new JTable();
 		afgdTable.setMinimumSize(new Dimension(500, 300));
-		afgdTable.setModel(tableModel);
+		afgdTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableScrollPane.setViewportView(afgdTable);
 
 		JPanel buttonPanel = new JPanel();
@@ -320,14 +310,6 @@ public class AufgabendetailsView {
 
 	public JTable getAfgdTable() {
 		return afgdTable;
-	}
-
-	public void setAfgdTable(JTable afgdTable) {
-		this.afgdTable = afgdTable;
-	}
-
-	public DefaultTableModel getTableModel() {
-		return this.tableModel;
 	}
 
 	public static void main(String[] ar) {

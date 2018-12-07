@@ -31,7 +31,6 @@ public class DatabaseService {
 		em.getTransaction().begin();
 		em.persist(nutzer);
 		em.getTransaction().commit();
-
 	}
 
 	public void persistPruefung(Pruefung pruefung) {
@@ -58,7 +57,8 @@ public class DatabaseService {
 
 			List<Antwort> antworten;
 
-			TypedQuery q = em.createQuery("select p from AUFGABE_ANTWORT where ID = ", Antwort.class);
+			TypedQuery q = em.createQuery("select p from ANTWORT where ID = " + aufgabe.getAufgabenId(),
+					Antwort.class);
 
 			antworten = q.getResultList();
 
@@ -77,7 +77,8 @@ public class DatabaseService {
 
 			List<Termin> termine;
 
-			TypedQuery q = em.createQuery("select p from Pruefung p", Termin.class);
+			TypedQuery q = em.createQuery("select p from PRUEFUNG_TERMIN where PNR =" + pruefung.getPnr(),
+					Termin.class);
 
 			termine = q.getResultList();
 
@@ -96,7 +97,8 @@ public class DatabaseService {
 
 			List<Aufgabe> aufgaben;
 
-			TypedQuery q = em.createQuery("select p from Pruefung p", Aufgabe.class);
+			TypedQuery q = em.createQuery("select p from PRUEFUNG_AUFGABE where where PNR =" + pruefung.getPnr(),
+					Aufgabe.class);
 
 			aufgaben = q.getResultList();
 
@@ -111,10 +113,10 @@ public class DatabaseService {
 
 	public List<Pruefung> readPruefungen() {
 
-		List<Pruefung> pruefungen;
-
 		try {
-			TypedQuery q = em.createQuery("select p from Pruefung p", Pruefung.class);
+			List<Pruefung> pruefungen;
+
+			TypedQuery q = em.createQuery("select p from PREUFUNG p", Pruefung.class);
 
 			pruefungen = q.getResultList();
 
@@ -139,23 +141,27 @@ public class DatabaseService {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("select p from Nutzer where username = " + username + " and passwort = "
-					+ passwort + " and isDozent = " + wahr, Nutzer.class);
+			TypedQuery q = em.createQuery("select p from NUTZER where USERNAME = " + username + " and PASSWORT = "
+					+ passwort + " and ISDOZENT = " + wahr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
 
 		} catch (Exception e) {
-
-		}
-
-		finally {
 			return null;
 		}
+
 	}
 
 	public void loescheAntwort(Antwort antwort) {
 		em.getTransaction().begin();
 		em.remove(antwort);
+		em.getTransaction().commit();
+
+	}
+
+	public void loescheNutzer(Nutzer nutzer) {
+		em.getTransaction().begin();
+		em.remove(nutzer);
 		em.getTransaction().commit();
 
 	}
