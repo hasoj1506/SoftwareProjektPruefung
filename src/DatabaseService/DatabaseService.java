@@ -1,4 +1,4 @@
-package Models;
+package DatabaseService;
 
 import java.util.List;
 import Models.*;
@@ -64,7 +64,7 @@ public class DatabaseService {
 
 			List<Antwort> antworten;
 
-			TypedQuery q = em.createQuery("select p from ANTWORT where ID = " + aufgabe.getAufgabenId(),
+			TypedQuery q = em.createQuery("select p from ANTWORT where ID = " + aufgabe.getAufgabeId(),
 					Antwort.class);
 
 			antworten = q.getResultList();
@@ -84,7 +84,7 @@ public class DatabaseService {
 
 			List<Termin> termine;
 
-			TypedQuery q = em.createQuery("select p from PRUEFUNG_TERMIN where PNR =" + pruefung.getPnr(),
+			TypedQuery q = em.createQuery("select p from PRUEFUNG_TERMIN where PNR =" + pruefung.getPruefungId(),
 					Termin.class);
 
 			termine = q.getResultList();
@@ -104,7 +104,7 @@ public class DatabaseService {
 
 			List<Aufgabe> aufgaben;
 
-			TypedQuery q = em.createQuery("select p from PRUEFUNG_AUFGABE where where PNR =" + pruefung.getPnr(),
+			TypedQuery q = em.createQuery("select p from PRUEFUNG_AUFGABE where where PNR =" + pruefung.getPruefungId(),
 					Aufgabe.class);
 
 			aufgaben = q.getResultList();

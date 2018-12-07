@@ -59,7 +59,7 @@ public class Pruefung {
 		this.dauer = dauer;
 	}
 
-	public int getpruefungId() {
+	public int getPruefungId() {
 		return pruefungId;
 	}
 
