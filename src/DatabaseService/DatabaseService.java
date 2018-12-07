@@ -64,7 +64,7 @@ public class DatabaseService {
 
 			List<Antwort> antworten;
 
-			TypedQuery q = em.createQuery("select p from ANTWORT where ID = " + aufgabe.getAufgabeId(),
+			TypedQuery q = em.createQuery("select p from Antwort where antwortId = " + aufgabe.getAufgabeId(),
 					Antwort.class);
 
 			antworten = q.getResultList();
@@ -84,7 +84,7 @@ public class DatabaseService {
 
 			List<Termin> termine;
 
-			TypedQuery q = em.createQuery("select p from PRUEFUNG_TERMIN where PNR =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("select p from Termin where pruefungId =" + pruefung.getPruefungId(),
 					Termin.class);
 
 			termine = q.getResultList();
@@ -104,7 +104,7 @@ public class DatabaseService {
 
 			List<Aufgabe> aufgaben;
 
-			TypedQuery q = em.createQuery("select p from PRUEFUNG_AUFGABE where where PNR =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("select p from Aufgabe where where aufgabenId =" + pruefung.getPruefungId(),
 					Aufgabe.class);
 
 			aufgaben = q.getResultList();
@@ -120,12 +120,13 @@ public class DatabaseService {
 
 	public List<Pruefung> readPruefungen() {
 
+		List<Pruefung> pruefungen;
+		
 		try {
-			List<Pruefung> pruefungen;
 
-			TypedQuery q = em.createQuery("select p from PRUEFUNG p", Pruefung.class);
+			Query q = em.createQuery("select p from Pruefung p", Pruefung.class);
 
-			pruefungen = q.getResultList();
+			pruefungen = (List<Pruefung>)q.getResultList();
 
 			return pruefungen;
 
@@ -148,8 +149,8 @@ public class DatabaseService {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("select p from NUTZER where USERNAME = " + username + " and PASSWORT = "
-					+ passwort + " and ISDOZENT = " + wahr, Nutzer.class);
+			TypedQuery q = em.createQuery("select p from Nutzer where username = " + username + " and passwort = "
+					+ passwort + " and isDozent = " + wahr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
 
