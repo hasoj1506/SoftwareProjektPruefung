@@ -10,6 +10,7 @@ import Models.Aufgabe;
 import Models.Pruefung;
 
 import java.awt.*;
+import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -48,11 +49,11 @@ public class AufgabendetailsView {
 
 	}
 
-	public AufgabendetailsView(Aufgabe aufgabe) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
+	public AufgabendetailsView(Aufgabe aufgabe, List<Antwort> antworten) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
 
 		this.pruefung = aufgabe.getPruefung();
 		this.aufgabe = aufgabe;
-		this.controller = new AufgabenDetailsController(this, this.aufgabe);
+		this.controller = new AufgabenDetailsController(this, this.aufgabe, antworten);
 		onCreate();
 		titleCheck();
 		btnAction();

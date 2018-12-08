@@ -60,11 +60,11 @@ public class DatabaseService {
 
 	public List<Antwort> readAntworten(Aufgabe aufgabe) {
 
+		List<Antwort> antworten;
+		
 		try {
 
-			List<Antwort> antworten;
-
-			TypedQuery q = em.createQuery("select p from Antwort where antwortId = " + aufgabe.getAufgabeId(),
+			TypedQuery q = em.createQuery("select p from Antwort p where p.aufgabeId = "  + aufgabe.getAufgabeId(),
 					Antwort.class);
 
 			antworten = q.getResultList();
@@ -84,7 +84,7 @@ public class DatabaseService {
 
 			List<Termin> termine;
 
-			TypedQuery q = em.createQuery("select p from Termin where pruefungId =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("select p from Termin p where p.pruefungId =" + pruefung.getPruefungId(),
 					Termin.class);
 
 			termine = q.getResultList();
@@ -104,7 +104,7 @@ public class DatabaseService {
 
 			List<Aufgabe> aufgaben;
 
-			TypedQuery q = em.createQuery("select p from Aufgabe where where aufgabenId =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("select p from Aufgabe p where p.aufgabenId =" + pruefung.getPruefungId(),
 					Aufgabe.class);
 
 			aufgaben = q.getResultList();
