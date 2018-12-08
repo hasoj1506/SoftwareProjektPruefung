@@ -64,7 +64,7 @@ public class DatabaseService {
 		
 		try {
 
-			TypedQuery q = em.createQuery("select p from Antwort p where p.aufgabeId = "  + aufgabe.getAufgabeId(),
+			TypedQuery q = em.createQuery("SELECT p FROM Antwort p WHERE p.aufgabeId = "  + aufgabe.getAufgabeId(),
 					Antwort.class);
 
 			antworten = q.getResultList();
@@ -84,7 +84,7 @@ public class DatabaseService {
 
 			List<Termin> termine;
 
-			TypedQuery q = em.createQuery("select p from Termin p where p.pruefungId =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("SELECT p FROM Termin p WHERE p.pruefungId =" + pruefung.getPruefungId(),
 					Termin.class);
 
 			termine = q.getResultList();
@@ -104,7 +104,7 @@ public class DatabaseService {
 
 			List<Aufgabe> aufgaben;
 
-			TypedQuery q = em.createQuery("select p from Aufgabe p where p.aufgabenId =" + pruefung.getPruefungId(),
+			TypedQuery q = em.createQuery("SELECT p FROM Aufgabe p WHERE p.aufgabenId =" + pruefung.getPruefungId(),
 					Aufgabe.class);
 
 			aufgaben = q.getResultList();
@@ -124,7 +124,7 @@ public class DatabaseService {
 		
 		try {
 
-			Query q = em.createQuery("select p from Pruefung p", Pruefung.class);
+			Query q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
 
 			pruefungen = (List<Pruefung>)q.getResultList();
 
@@ -149,7 +149,7 @@ public class DatabaseService {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("select p from Nutzer where username = " + username + " and passwort = "
+			TypedQuery q = em.createQuery("SELECT p FROM Nutzer WHERE username = " + username + " and passwort = "
 					+ passwort + " and isDozent = " + wahr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
