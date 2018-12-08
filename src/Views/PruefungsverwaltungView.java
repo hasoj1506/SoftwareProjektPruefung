@@ -56,7 +56,7 @@ public class PruefungsverwaltungView {
 
 	//noch Refactoring?
 	public void onCreate() {
-
+		
 		this.frmPrfungsverwaltung = new JFrame();
 		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
@@ -149,7 +149,8 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.setDefaultCloseOperation(frmPrfungsverwaltung.DISPOSE_ON_CLOSE);
 		frmPrfungsverwaltung.pack();
 		frmPrfungsverwaltung.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
-
+		
+		
 	}
 
 	public void addActionListeners() {
@@ -157,6 +158,10 @@ public class PruefungsverwaltungView {
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.neuPruefung();
+				
+				//um das Mainframe zu sperren während das Secondframe offen ist
+				//frmPrfungsverwaltung.setEnabled(false);
+				
 			}
 		});
 
