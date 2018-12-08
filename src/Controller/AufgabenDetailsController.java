@@ -20,12 +20,13 @@ public class AufgabenDetailsController {
 	
 	AufgabendetailsTableModel model;
 
-	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { // Konstruktor falls bestehende
+	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe, List<Antwort> antworten) { // Konstruktor falls bestehende
 																					// Aufgabe bearbeitet wird
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
-		this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
+		//this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
+		this.model = new AufgabendetailsTableModel(antworten);
 		view.getAfgdTable().setModel(model);
 		
 
@@ -101,7 +102,7 @@ public class AufgabenDetailsController {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
-		Antwort antwort = new Antwort(pop.isRichtig(), pop.getText(), pop.getPunktzahl());
+		Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(), pop.getPunktzahl());
 		
 		model.setValueAt(pop.getText(), model.getRowCount() + 1, 0);
 		model.setValueAt(pop.isRichtig(), model.getRowCount(), 1);
@@ -119,12 +120,14 @@ public class AufgabenDetailsController {
 		
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 		
-		pop.setPunktzahl(view.getAfgdTable().getSelectedRow());
+		/*pop.setPunktzahl(model.getview.getAfgdTable().getSelectedRow());
 		pop.setRichtig(antwort.isIstRichtig());
-		pop.setText(antwort.getAntworttext());
+		pop.setText(antwort.getAntworttext());*/
 		
 		
 		
 
 	}
+	
+
 }

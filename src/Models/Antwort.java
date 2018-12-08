@@ -23,12 +23,13 @@ public class Antwort {
 		super();
 	}
 
-	public Antwort(String antworttext, boolean istRichtig, int punkte) {
+	public Antwort(String antworttext, boolean istRichtig, int punkte, Aufgabe aufgabe) {
 		super();
 
 		this.istRichtig = istRichtig;
 		this.antworttext = antworttext;
 		this.punkte = punkte;
+		this.aufgabe = aufgabe;
 	}
 
 	public boolean isIstRichtig() {

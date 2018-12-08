@@ -17,17 +17,25 @@ public class yaneksViewTest {
 		DatabaseService service = DatabaseService.getInstance();
 
 		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);
+				
+		Aufgabe aufgabe3 = new Aufgabe("t", 5, "5", pruefung);
 		
+		Antwort antwort1 = new Antwort("text", true, 5, aufgabe3);
+		Antwort antwort2 = new Antwort("te33t", true, 7, aufgabe3);
+		Antwort antwort3 = new Antwort("te44", false, 4, aufgabe3);
 		
-		Termin termin = new Termin("test","test","test", pruefung);
-		Termin termin1 = new Termin("test5","test4","test3", pruefung);
-		Termin termin2 = new Termin("test35","test42","test2", pruefung);
+		aufgabe3.addAntwort(antwort1);
+		aufgabe3.addAntwort(antwort2);
+		aufgabe3.addAntwort(antwort3);
 		
-		pruefung.addTermin(termin);
-		pruefung.addTermin(termin1);
-		pruefung.addTermin(termin2);
+		pruefung.addAufgabe(aufgabe3);
 		
-		service.persistPruefung(pruefung); 
+		service.persistPruefung(pruefung);
+		
+		List<Antwort> antworten = service.readAntworten(aufgabe3);
+		
+		System.out.println(antworten.size());
+		
 		
 		
 	}
