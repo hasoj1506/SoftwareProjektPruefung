@@ -1,12 +1,16 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
-import Models.Aufgabe;
 import DatabaseService.DatabaseService;
+import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
@@ -58,6 +62,29 @@ public class PruefungsDetailsController {
 		}
 	}
 	
-	
-	
+	//Josah Weber
+	public void fuellePruefungsDetails(Pruefung pruefung){
+		this.pruefung = pruefung;
+		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
+		JTextField textFieldDauer = view.getTextFieldDauer();
+		JTextField textFieldPunkte = view.getTextFieldPunkte();
+		JTable tableAufgaben = view.getTableAufgaben();
+		
+		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
+		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
+		textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
+		
+		try {
+			// Liste mit Aufgaben der Prüfung erstellen
+			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
+
+			// Dem JTable das Model inklusive Liste zuweisen
+			PruefungsDetailsAufgabenTableModel model = new PruefungsDetailsAufgabenTableModel(aufgaben);
+			tableAufgaben.setModel(model);
+
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+	}
 }
