@@ -38,11 +38,13 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 	
 	public Object getValueAt(int row, int col) {
 		
+		Antwort antwort = antworten.get(row);
+		
 		switch(col) {
 		
-		case 0: return antworten.get(row).getAntworttext();
-		case 1: return antworten.get(row).isIstRichtig();
-		case 2: return antworten.get(row).getPunkte();
+		case 0: return antwort.getAntworttext();
+		case 1: return antwort.isIstRichtig();
+		case 2: return antwort.getPunkte();
 		
 		default: return null;
 		
@@ -64,7 +66,40 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 			antwort.setPunkte((Integer) value);
 			break;
 		}
+	}
 		
+		public void addColumn(Antwort antwort) {
+			
+			antworten.add(antwort);
+			this.setValueAt(antwort.getAntworttext(), antworten.size(), 0);
+			this.setValueAt(antwort.isIstRichtig(), antworten.size(), 1);
+			this.setValueAt(antwort.getPunkte(), antworten.size(), 2);
+			
+			
+		}
+		
+		public void removeRow(Antwort antwort) {
+			
+			/*for(int zaehler = 0; zaehler < antworten.size(); zaehler++) {
+				
+				if(antworten.get(zaehler) == antwort) {
+					antworten.remove(zaehler);
+				}
+				
+			}*/
+			
+			antworten.remove(antwort);
+			
+		}
+		
+		public void removeRow(int index) {
+			antworten.remove(index);
+			
+		}
+		
+		public Antwort get(int index) {
+			return antworten.get(index);
+		}
 	}
 
-}
+

@@ -8,6 +8,7 @@ import Models.Aufgabe;
 import DatabaseService.DatabaseService;
 import Models.Pruefung;
 import Models.Termin;
+import TableModels.AufgabendetailsTableModel;
 import Views.AufgabendetailsView;
 
 public class yaneksViewTest {
@@ -29,16 +30,10 @@ public class yaneksViewTest {
 		aufgabe3.addAntwort(antwort3);
 
 		pruefung.addAufgabe(aufgabe3);
-
-		List<Antwort> antworten = new ArrayList<Antwort>(aufgabe3.getAntworten());
 		
-		System.out.println(antworten.size());
-		
-		AufgabendetailsView view = new AufgabendetailsView(aufgabe3, antworten);
+		AufgabendetailsView view = new AufgabendetailsView(aufgabe3);
 		
 		
-
-		System.out.println(antworten.size());
 
 	}
 

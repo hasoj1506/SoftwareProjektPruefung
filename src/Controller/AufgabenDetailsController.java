@@ -1,12 +1,17 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import javax.swing.JOptionPane;
+
 import DatabaseService.DatabaseService;
 import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
 import TableModels.AufgabendetailsTableModel;
+import TableModels.PruefungsverwaltungTableModel;
 import Views.AntwortErstellenPopUp;
 import Views.AufgabendetailsView;
 import Views.FehlerPopUp;
@@ -17,18 +22,17 @@ public class AufgabenDetailsController {
 	AufgabendetailsView view;
 	Pruefung pruefung;
 	DatabaseService service = DatabaseService.getInstance();
-	
+
 	AufgabendetailsTableModel model;
 
-	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe, List<Antwort> antworten) { // Konstruktor falls bestehende
+	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { // Konstruktor falls bestehende
 																					// Aufgabe bearbeitet wird
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
-		//this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
-		this.model = new AufgabendetailsTableModel(antworten);
-		view.getAfgdTable().setModel(model); // hier kommt der Nullpointer obwohl das Model da ist
-		
+		// this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
+		model = new AufgabendetailsTableModel(new ArrayList<Antwort>(aufgabe.getAntworten()));
+		view.getAfgdTable().setModel(model);
 
 	}
 
@@ -39,8 +43,6 @@ public class AufgabenDetailsController {
 		view.getAfgdTable().setModel(new AufgabendetailsTableModel());
 		this.model = new AufgabendetailsTableModel();
 		view.getAfgdTable().setModel(model);
-		
-		
 
 	}
 
@@ -88,7 +90,7 @@ public class AufgabenDetailsController {
 		}
 
 		aufgabe.setPunktzahl(punkte);
-		//aufgabe.setAntworten(this.antworten);
+		// aufgabe.setAntworten(this.antworten);
 
 		return this.aufgabe;
 
@@ -96,38 +98,59 @@ public class AufgabenDetailsController {
 
 	public void aufgabeLoeschen() {
 
+		if (this.aufgabe != null) {
+
+			int reply = JOptionPane.showConfirmDialog(view.getAfgdFrame(), "Soll die Aufgabe wirklich gelöscht werden?",
+					"Abfrage", JOptionPane.YES_NO_OPTION);
+			if (reply == JOptionPane.YES_OPTION) {
+
+				try {
+					service.loescheAufgabe(this.aufgabe);
+				} catch (NullPointerException e) {
+					view.fehlerMeldung("Es ist ein Fehler aufgetreten!");
+				}
+				view.schliessen();
+			}
+		} else {
+			view.schliessen();
+		}
+
 	}
 
 	public void antwortErstellen() {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
-		Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(), pop.getPunktzahl(), this.aufgabe);
-		
-		model.setValueAt(pop.getText(), model.getRowCount() + 1, 0);
-		model.setValueAt(pop.isRichtig(), model.getRowCount(), 1);
-		model.setValueAt(pop.getText(), model.getRowCount(), 2);
-		
+		// Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(),
+		// pop.getPunktzahl(), this.aufgabe);
+		Antwort antwort = new Antwort("test", true, 4, this.aufgabe);
+		model.addColumn(antwort);
 		view.getAfgdTable().setModel(model);
 
 	}
 
 	public void antwortLoeschen() {
 
+		if (view.getAfgdTable().getModel().getRowCount() > 0) {
+
+			model.removeRow(model.get(view.getAfgdTable().getSelectedRow()));
+			view.getAfgdTable().clearSelection();
+			view.getAfgdTable().updateUI();
+		} else {
+			view.fehlerMeldung("Es sind keine Antworten vorhanden!");
+		}
 	}
 
 	public void antwortBearbeiten() {
-		
+
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
-		
-		/*pop.setPunktzahl(model.getview.getAfgdTable().getSelectedRow());
-		pop.setRichtig(antwort.isIstRichtig());
-		pop.setText(antwort.getAntworttext());*/
-		
-		
-		
+
+		/*
+		 * pop.setPunktzahl(model.getview.getAfgdTable().getSelectedRow());
+		 * pop.setRichtig(antwort.isIstRichtig());
+		 * pop.setText(antwort.getAntworttext());
+		 */
 
 	}
-	
 
 }
