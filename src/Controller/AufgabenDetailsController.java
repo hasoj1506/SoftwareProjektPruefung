@@ -27,7 +27,7 @@ public class AufgabenDetailsController {
 		this.view = view;
 		//this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
 		this.model = new AufgabendetailsTableModel(antworten);
-		view.getAfgdTable().setModel(model);
+		view.getAfgdTable().setModel(model); // hier kommt der Nullpointer obwohl das Model da ist
 		
 
 	}
@@ -102,7 +102,7 @@ public class AufgabenDetailsController {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
-		Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(), pop.getPunktzahl());
+		Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(), pop.getPunktzahl(), this.aufgabe);
 		
 		model.setValueAt(pop.getText(), model.getRowCount() + 1, 0);
 		model.setValueAt(pop.isRichtig(), model.getRowCount(), 1);

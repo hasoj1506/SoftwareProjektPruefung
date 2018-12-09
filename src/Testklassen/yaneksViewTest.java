@@ -30,9 +30,13 @@ public class yaneksViewTest {
 
 		pruefung.addAufgabe(aufgabe3);
 
-		service.persistPruefung(pruefung);
-
-		List<Antwort> antworten = service.readAntworten(aufgabe3);
+		List<Antwort> antworten = new ArrayList<Antwort>(aufgabe3.getAntworten());
+		
+		System.out.println(antworten.size());
+		
+		AufgabendetailsView view = new AufgabendetailsView(aufgabe3, antworten);
+		
+		
 
 		System.out.println(antworten.size());
 
