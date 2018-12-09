@@ -66,7 +66,7 @@ public class AufgabenDetailsController {
 		} else {
 
 			aufgabe.setAufgabentitel(titel);
-
+			//t
 		}
 
 		if (frage == ("") || frage.length() == 0) {

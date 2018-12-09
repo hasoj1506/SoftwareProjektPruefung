@@ -34,7 +34,7 @@ public class yaneksViewTest {
 		AufgabendetailsView view = new AufgabendetailsView(aufgabe3);
 		
 		
-
+//	t
 	}
 
 }

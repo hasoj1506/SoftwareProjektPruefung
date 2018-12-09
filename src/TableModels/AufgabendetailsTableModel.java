@@ -94,7 +94,7 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 		
 		public void removeRow(int index) {
 			antworten.remove(index);
-			
+			//t
 		}
 		
 		public Antwort get(int index) {
