@@ -31,6 +31,18 @@ public class JosahTestKlasse {
 
 			pruefung.addAufgabe(aufgabe3);
 			
+			Aufgabe aufgabe4 = new Aufgabe("Testaufgabe " + i, (50+i), "Fragestellung " + i, pruefung);
+
+			Antwort antwort6 = new Antwort("Antwort " + i, true, (i+5), aufgabe4);
+			Antwort antwort5 = new Antwort("Antwort " + i, true, (i+6), aufgabe4);
+			Antwort antwort7 = new Antwort("Antwort " + i, false, (i+7), aufgabe4);
+
+			aufgabe4.addAntwort(antwort6);
+			aufgabe4.addAntwort(antwort5);
+			aufgabe4.addAntwort(antwort7);
+
+			pruefung.addAufgabe(aufgabe4);
+			
 			service.persistPruefung(pruefung);
 
 		}
