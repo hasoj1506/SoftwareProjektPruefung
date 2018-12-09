@@ -1,16 +1,18 @@
 package Views;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -21,6 +23,7 @@ import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
+import TableModels.PruefungsDetailsAufgabenTableModel;
 
 public class PruefungsDetails extends JFrame {
 	private Pruefung pruefung;
@@ -39,20 +42,20 @@ public class PruefungsDetails extends JFrame {
 	public PruefungsDetails() {
 		this.controller = new PruefungsDetailsController(this);
 		onCreate();
-		fuelleAufgaben();
 	}
 	
-	//Josah Weber (Konstruktor erstmal zum testen)
 	//Josah Weber (Konstruktor zum Bearbeiten der Pruefung)
-// branch 'master' of https://github.com/hasoj1506/SoftwareProjektPruefung.git
 	public PruefungsDetails(Pruefung pruefung){
+		
 		this.pruefung = pruefung;
+		this.controller = new PruefungsDetailsController(this);
 		onCreate();
 		fuellePruefungsDetailsZumBearbeiten();
 	}
 	
 	public void onCreate() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setMinimumSize(new Dimension(850, 650));
 		
 		
 		JPanel panelButtons = new JPanel();
@@ -243,11 +246,25 @@ public class PruefungsDetails extends JFrame {
 		pack();
 	}
 	
+	
+	//Josah Weber
+	public JTextField getTextFieldPrfungstitel() {
+		return textFieldPrfungstitel;
+	}
+	
+	//Josah Weber
+	public JTextField getTextFieldDauer() {
+		return textFieldDauer;
+	}
+	
+	//Josah Weber
+	public JTextField getTextFieldPunkte() {
+		return textFieldPunkte;
+	}
+
 	//Josah Weber
 	public void fuellePruefungsDetailsZumBearbeiten(){
-		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
-		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
-		
+		controller.fuellePruefungsDetails(pruefung);	
 	}
 	
 	public static void main(String[] args) {
