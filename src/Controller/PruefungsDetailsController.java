@@ -71,6 +71,8 @@ public class PruefungsDetailsController {
 	// ab hier: Josah Weber
 	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
+		
+		//Felder mit Daten der Prüfung befüllen
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
@@ -113,17 +115,14 @@ public class PruefungsDetailsController {
 
 		// Leere Aufgaben-Details-Maske wird geöffnet
 		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(pruefung);
-
-		// Titel des Fensters wird gesetzt
-		aufgabenDetails.getAfgdFrame().setTitle("Neue Aufgabe");
 	}
 
-	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
+	// bearbeiten Button wird geklickt / Doppelklick auf Aufgabe
 	public void bearbeiteAufgabe() {
 		try {
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTableAufgaben().getSelectedRow() > -1) {
-				// Identifizieren der zu bearbeitenden Prüfung
+				// Identifizieren der zu bearbeitenden Aufgabe
 				aufgaben = new ArrayList(pruefung.getAufgaben());
 				int selection = view.getTableAufgaben().getSelectedRow();
 				Aufgabe zuBearbeitendeAufgabe = aufgaben.get(selection);
@@ -149,16 +148,16 @@ public class PruefungsDetailsController {
 			if (view.getTableAufgaben().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view, "Soll die Prüfung wirklich gelöscht werden?", "Abfrage",
+				int reply = JOptionPane.showConfirmDialog(view, "Soll die Aufgabe wirklich gelöscht werden?", "Abfrage",
 						JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
-					// Identifizieren der zu löschenden Prüfung
+					// Identifizieren der zu löschenden Aufgabe
 					aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 					int selection = view.getTableAufgaben().getSelectedRow();
 					Aufgabe zuLoeschendeAufgabe = aufgaben.get(selection);
 
-					// Löschen der Prüfung aus der Datenbank und neuladen der
+					// Löschen der Aufgabe aus der Datenbank und neuladen der
 					// Tabelle
 					
 					db.loescheAufgabe(zuLoeschendeAufgabe);

@@ -8,6 +8,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,6 +45,7 @@ public class PruefungsDetails extends JFrame {
 	public PruefungsDetails() {
 		this.controller = new PruefungsDetailsController(this);
 		onCreate();
+		addActionListeners();
 	}
 	
 	//Josah Weber (Konstruktor zum Bearbeiten der Pruefung)
@@ -248,32 +251,38 @@ public class PruefungsDetails extends JFrame {
 		pack();
 	}
 	
+	public JTable getTableAufgaben() {
+		return tableAufgaben;
+	}
 	
-	//Josah Weber
+	public void fuelleAufgaben() {
+		controller.fuelleTabelleAufgaben();
+	}
+	
+	
+	// ab hier: Josah Weber
 	public JTextField getTextFieldPrfungstitel() {
 		return textFieldPrfungstitel;
 	}
 	
-	//Josah Weber
 	public JTextField getTextFieldDauer() {
 		return textFieldDauer;
 	}
 	
-	//Josah Weber
 	public JTextField getTextFieldPunkte() {
 		return textFieldPunkte;
 	}
-
-	//Josah Weber
+	
+	//Wenn vorhandene Prüfung bearbeitet werden soll
 	public void fuellePruefungsDetailsZumBearbeiten(){
 		controller.fuellePruefungsDetails(pruefung);	
 	}
 	
-	//Josah Weber
 	public JTable getTableTermine() {
 		return tableTermine;
 	}
 	
+	//Zuweisung der ActionListener für Buttons etc
 	public void addActionListeners(){
 		
 		btnNeu.addActionListener(new ActionListener(){
@@ -293,18 +302,18 @@ public class PruefungsDetails extends JFrame {
 				controller.loescheAufgabe();
 			}
 		});
+		
+		tableAufgaben.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 2) {
+					controller.bearbeiteAufgabe();
+				}
+			}
+		});
 	}
 	
-	public static void main(String[] args) {
-		PruefungsDetails p = new PruefungsDetails();
-	}
 	
-	public JTable getTableAufgaben() {
-		return tableAufgaben;
-	}
 	
-	public void fuelleAufgaben() {
-		controller.fuelleTabelleAufgaben();
-	}
 
 }
