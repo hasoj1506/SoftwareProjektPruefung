@@ -19,6 +19,7 @@ import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
 import Views.AufgabendetailsView;
 import Views.PruefungsDetails;
+import Views.PruefungsverwaltungView;
 import Views.TerminErstellenPopUp;
 
 public class PruefungsDetailsController {
@@ -200,7 +201,30 @@ public class PruefungsDetailsController {
 	}
 	
 	public void speichernPruefung(){
+		String bezeichnung = view.getTextFieldPrfungstitel().getText();
 		
+		int dauer;
+		try {
+			dauer = Integer.parseInt(view.getTextFieldDauer().getText());
+		} catch(Exception e){
+			JOptionPane.showMessageDialog(view, e);
+			dauer = 0;
+		}
+		
+		int punkte;
+		try {
+			punkte = Integer.parseInt(view.getTextFieldPunkte().getText());
+		} catch(Exception e){
+			JOptionPane.showMessageDialog(view, e);
+			punkte = 0;
+		}
+		
+		pruefung.setBezeichnung(bezeichnung);
+		pruefung.setDauer(dauer);
+		pruefung.setPunkte(punkte);
+		db.persistPruefung(pruefung);
+		view.dispose();
+		PruefungsverwaltungView pruefungsverwaltung = new PruefungsverwaltungView();
 	}
 
 }
