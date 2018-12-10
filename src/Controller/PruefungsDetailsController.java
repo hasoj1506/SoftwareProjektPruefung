@@ -79,27 +79,39 @@ public class PruefungsDetailsController {
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
-		JTable tableAufgaben = view.getTableAufgaben();
-		JTable tableTermine = view.getTableTermine();
-		JTable tableTeilnehmer = view.getTableTeilnehmer();
-
+		
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
 		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
 		textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
 
+		fuelleAufgabenTable(pruefung);
+
+		fuelleTermineTable(pruefung);
+
+		fuelleTeilnehmerTable(pruefung);
+	}
+
+	public void fuelleTeilnehmerTable(Pruefung pruefung) {
+		this.pruefung = pruefung;
+		JTable tableTeilnehmer = view.getTableTeilnehmer();
 		try {
-			// Liste mit Aufgaben der Prüfung erstellen
-			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
+			// Liste mit Teilnehmern der Prüfung erstellen
+			teilnehmer = new ArrayList<String>(pruefung.getTeilnehmer());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsAufgabenTableModel tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
-			tableAufgaben.setModel(tableModelAufgaben);
+			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
+					teilnehmer);
+			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
+	}
 
+	public void fuelleTermineTable(Pruefung pruefung) {
+		this.pruefung = pruefung;
+		JTable tableTermine = view.getTableTermine();
 		try {
 			// Liste mit Terminen der Prüfung erstellen
 			termine = new ArrayList<Termin>(pruefung.getTermine());
@@ -112,15 +124,19 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
+	}
 
+	public void fuelleAufgabenTable(Pruefung pruefung) {
+		this.pruefung = pruefung;
+		JTable tableAufgaben = view.getTableAufgaben();
+		
 		try {
-			// Liste mit Teilnehmern der Prüfung erstellen
-			teilnehmer = new ArrayList<String>(pruefung.getTeilnehmer());
+			// Liste mit Aufgaben der Prüfung erstellen
+			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					teilnehmer);
-			tableTeilnehmer.setModel(tableModelTeilnehmer);
+			PruefungsDetailsAufgabenTableModel tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
+			tableAufgaben.setModel(tableModelAufgaben);
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert

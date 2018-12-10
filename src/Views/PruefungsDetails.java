@@ -300,6 +300,10 @@ public class PruefungsDetails extends JFrame {
 		return tableTeilnehmer;
 	}
 	
+	public PruefungsDetailsController getPruefungsDetailController() {
+		return this.controller;
+	}
+	
 	//Wenn vorhandene Prüfung bearbeitet werden soll
 	public void fuellePruefungsDetailsZumBearbeiten(){
 		controller.fuellePruefungsDetails(pruefung);	

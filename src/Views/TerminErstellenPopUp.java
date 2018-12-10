@@ -149,7 +149,7 @@ public class TerminErstellenPopUp {
 				Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
 
 				pruefung.addTermin(termin);
-				view.fuellePruefungsDetailsZumBearbeiten();
+				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
 
 				frmTermin.dispose();
 			}
