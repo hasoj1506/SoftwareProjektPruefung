@@ -267,6 +267,11 @@ public class PruefungsDetails extends JFrame {
 		controller.fuellePruefungsDetails(pruefung);	
 	}
 	
+	//Josah Weber
+	public JTable getTableTermine() {
+		return tableTermine;
+	}
+	
 	public static void main(String[] args) {
 		PruefungsDetails p = new PruefungsDetails();
 	}

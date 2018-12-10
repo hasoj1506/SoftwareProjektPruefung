@@ -15,6 +15,7 @@ import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
 import TableModels.PruefungsDetailsAufgabenTableModel;
+import TableModels.PruefungsDetailsTermineTableModel;
 import Views.PruefungsDetails;
 
 public class PruefungsDetailsController {
@@ -69,6 +70,7 @@ public class PruefungsDetailsController {
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
 		JTable tableAufgaben = view.getTableAufgaben();
+		JTable tableTermine = view.getTableTermine();
 		
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
 		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
@@ -79,11 +81,24 @@ public class PruefungsDetailsController {
 			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsAufgabenTableModel model = new PruefungsDetailsAufgabenTableModel(aufgaben);
-			tableAufgaben.setModel(model);
+			PruefungsDetailsAufgabenTableModel tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
+			tableAufgaben.setModel(tableModelAufgaben);
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+		
+		try{
+			//Liste mit Terminen der Prüfung erstellen
+			termine = new ArrayList<Termin>(pruefung.getTermine());
+			
+			//Dem JTable das Model inklusive Liste zuweisen
+			PruefungsDetailsTermineTableModel tableModelTermine = new PruefungsDetailsTermineTableModel(termine);
+			tableTermine.setModel(tableModelTermine);
+			
+		} catch (Exception e) {
+			//Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
 	}

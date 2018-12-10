@@ -7,6 +7,7 @@ import DatabaseService.DatabaseService;
 import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
+import Models.Termin;
 import Views.AufgabendetailsView;
 
 public class JosahTestKlasse {
@@ -24,12 +25,21 @@ public class JosahTestKlasse {
 			Antwort antwort1 = new Antwort("Antwort " + i, true, (i+5), aufgabe3);
 			Antwort antwort2 = new Antwort("Antwort " + i, true, (i+6), aufgabe3);
 			Antwort antwort3 = new Antwort("Antwort " + i, false, (i+7), aufgabe3);
+			
+			Termin termin1 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
+			Termin termin2 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
+			Termin termin3 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
+			Termin termin4 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
 
 			aufgabe3.addAntwort(antwort1);
 			aufgabe3.addAntwort(antwort2);
 			aufgabe3.addAntwort(antwort3);
 
 			pruefung.addAufgabe(aufgabe3);
+			pruefung.addTermin(termin1);
+			pruefung.addTermin(termin2);
+			pruefung.addTermin(termin3);
+			pruefung.addTermin(termin4);
 			
 			Aufgabe aufgabe4 = new Aufgabe("Testaufgabe " + i, (50+i), "Fragestellung " + i, pruefung);
 
