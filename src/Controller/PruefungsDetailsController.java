@@ -15,6 +15,7 @@ import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
 import TableModels.PruefungsDetailsAufgabenTableModel;
+import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
 import Views.AufgabendetailsView;
 import Views.PruefungsDetails;
@@ -25,14 +26,14 @@ public class PruefungsDetailsController {
 
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
-	private List<Nutzer> teilnehmer;
+	private List<String> teilnehmer;
 	private List<Termin> termine;
 	private Pruefung pruefung;
 
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
 
-	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<Nutzer> teilnehmer,
+	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<String> teilnehmer,
 			List<Termin> termine, Pruefung pruefung) {
 		super();
 		this.view = view;
@@ -78,6 +79,7 @@ public class PruefungsDetailsController {
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
 		JTable tableAufgaben = view.getTableAufgaben();
 		JTable tableTermine = view.getTableTermine();
+		JTable tableTeilnehmer = view.getTableTeilnehmer();
 
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
 		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
@@ -103,6 +105,19 @@ public class PruefungsDetailsController {
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTermineTableModel tableModelTermine = new PruefungsDetailsTermineTableModel(termine);
 			tableTermine.setModel(tableModelTermine);
+
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+		
+		try {
+			// Liste mit Teilnehmern der Prüfung erstellen
+			teilnehmer = new ArrayList<String>(pruefung.getTeilnehmer());
+
+			// Dem JTable das Model inklusive Liste zuweisen
+			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(teilnehmer);
+			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert

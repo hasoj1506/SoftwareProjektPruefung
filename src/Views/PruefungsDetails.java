@@ -24,6 +24,8 @@ import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class PruefungsDetails extends JFrame {
 	private Pruefung pruefung;
@@ -80,25 +82,25 @@ public class PruefungsDetails extends JFrame {
 		JPanel panelMain = new JPanel();
 		getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
-		gbl_panelMain.columnWidths = new int[]{0, 153, 300, 0, 0};
-		gbl_panelMain.rowHeights = new int[]{0, 0, 0, 0, 0, 50, 0, 50, 0, 50, 0, 0};
-		gbl_panelMain.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelMain.columnWidths = new int[]{153, 300, 0};
+		gbl_panelMain.rowHeights = new int[]{0, 0, 0, 0, 50, 0, 50, 0, 50, 0};
+		gbl_panelMain.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelMain.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panelMain.setLayout(gbl_panelMain);
 		
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel:");
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPrfungstitel.gridx = 1;
-		gbc_lblPrfungstitel.gridy = 1;
+		gbc_lblPrfungstitel.gridx = 0;
+		gbc_lblPrfungstitel.gridy = 0;
 		panelMain.add(lblPrfungstitel, gbc_lblPrfungstitel);
 		
 		textFieldPrfungstitel = new JTextField();
 		GridBagConstraints gbc_textFieldPrfungstitel = new GridBagConstraints();
-		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPrfungstitel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldPrfungstitel.gridx = 2;
-		gbc_textFieldPrfungstitel.gridy = 1;
+		gbc_textFieldPrfungstitel.gridx = 1;
+		gbc_textFieldPrfungstitel.gridy = 0;
 		panelMain.add(textFieldPrfungstitel, gbc_textFieldPrfungstitel);
 		textFieldPrfungstitel.setColumns(10);
 		
@@ -106,32 +108,32 @@ public class PruefungsDetails extends JFrame {
 		lblDauermin.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblDauermin = new GridBagConstraints();
 		gbc_lblDauermin.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDauermin.gridx = 1;
-		gbc_lblDauermin.gridy = 2;
+		gbc_lblDauermin.gridx = 0;
+		gbc_lblDauermin.gridy = 1;
 		panelMain.add(lblDauermin, gbc_lblDauermin);
 		
 		textFieldDauer = new JTextField();
 		GridBagConstraints gbc_textFieldDauer = new GridBagConstraints();
-		gbc_textFieldDauer.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldDauer.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldDauer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldDauer.gridx = 2;
-		gbc_textFieldDauer.gridy = 2;
+		gbc_textFieldDauer.gridx = 1;
+		gbc_textFieldDauer.gridy = 1;
 		panelMain.add(textFieldDauer, gbc_textFieldDauer);
 		textFieldDauer.setColumns(5);
 		
 		JLabel lblPunkte = new JLabel("Punkte:");
 		GridBagConstraints gbc_lblPunkte = new GridBagConstraints();
 		gbc_lblPunkte.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPunkte.gridx = 1;
-		gbc_lblPunkte.gridy = 3;
+		gbc_lblPunkte.gridx = 0;
+		gbc_lblPunkte.gridy = 2;
 		panelMain.add(lblPunkte, gbc_lblPunkte);
 		
 		textFieldPunkte = new JTextField();
 		GridBagConstraints gbc_textFieldPunkte = new GridBagConstraints();
-		gbc_textFieldPunkte.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldPunkte.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPunkte.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldPunkte.gridx = 2;
-		gbc_textFieldPunkte.gridy = 3;
+		gbc_textFieldPunkte.gridx = 1;
+		gbc_textFieldPunkte.gridy = 2;
 		panelMain.add(textFieldPunkte, gbc_textFieldPunkte);
 		textFieldPunkte.setColumns(5);
 		
@@ -139,17 +141,21 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_lblAufgaben = new GridBagConstraints();
 		gbc_lblAufgaben.anchor = GridBagConstraints.NORTH;
 		gbc_lblAufgaben.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAufgaben.gridx = 1;
-		gbc_lblAufgaben.gridy = 4;
+		gbc_lblAufgaben.gridx = 0;
+		gbc_lblAufgaben.gridy = 3;
 		panelMain.add(lblAufgaben, gbc_lblAufgaben);
 		
+		JScrollPane scrollPaneAufgabenTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneAufgabenTable = new GridBagConstraints();
+		gbc_scrollPaneAufgabenTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneAufgabenTable.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPaneAufgabenTable.gridx = 1;
+		gbc_scrollPaneAufgabenTable.gridy = 3;
+		panelMain.add(scrollPaneAufgabenTable, gbc_scrollPaneAufgabenTable);
+		
 		tableAufgaben = new JTable();
-		GridBagConstraints gbc_tableAufgaben = new GridBagConstraints();
-		gbc_tableAufgaben.insets = new Insets(0, 0, 5, 5);
-		gbc_tableAufgaben.fill = GridBagConstraints.BOTH;
-		gbc_tableAufgaben.gridx = 2;
-		gbc_tableAufgaben.gridy = 4;
-		panelMain.add(tableAufgaben, gbc_tableAufgaben);
+		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPaneAufgabenTable.setViewportView(tableAufgaben);
 		
 		JPanel panelAufgabenButtons = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panelAufgabenButtons.getLayout();
@@ -157,10 +163,10 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_panelAufgabenButtons = new GridBagConstraints();
 		gbc_panelAufgabenButtons.anchor = GridBagConstraints.NORTH;
 		gbc_panelAufgabenButtons.gridwidth = 2;
-		gbc_panelAufgabenButtons.insets = new Insets(0, 0, 5, 5);
+		gbc_panelAufgabenButtons.insets = new Insets(0, 0, 5, 0);
 		gbc_panelAufgabenButtons.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panelAufgabenButtons.gridx = 1;
-		gbc_panelAufgabenButtons.gridy = 5;
+		gbc_panelAufgabenButtons.gridx = 0;
+		gbc_panelAufgabenButtons.gridy = 4;
 		panelMain.add(panelAufgabenButtons, gbc_panelAufgabenButtons);
 		
 		btnLschen_1 = new JButton("L\u00F6schen");
@@ -176,16 +182,16 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 6;
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 5;
 		panelMain.add(lblNewLabel, gbc_lblNewLabel);
 		
 		tableTeilnehmer = new JTable();
 		GridBagConstraints gbc_tableTeilnehmer = new GridBagConstraints();
-		gbc_tableTeilnehmer.insets = new Insets(0, 0, 5, 5);
+		gbc_tableTeilnehmer.insets = new Insets(0, 0, 5, 0);
 		gbc_tableTeilnehmer.fill = GridBagConstraints.BOTH;
-		gbc_tableTeilnehmer.gridx = 2;
-		gbc_tableTeilnehmer.gridy = 6;
+		gbc_tableTeilnehmer.gridx = 1;
+		gbc_tableTeilnehmer.gridy = 5;
 		panelMain.add(tableTeilnehmer, gbc_tableTeilnehmer);
 		
 		JPanel panelTeilnehmerButtons = new JPanel();
@@ -194,10 +200,10 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_panelTeilnehmerButtons = new GridBagConstraints();
 		gbc_panelTeilnehmerButtons.anchor = GridBagConstraints.NORTH;
 		gbc_panelTeilnehmerButtons.gridwidth = 2;
-		gbc_panelTeilnehmerButtons.insets = new Insets(0, 0, 5, 5);
+		gbc_panelTeilnehmerButtons.insets = new Insets(0, 0, 5, 0);
 		gbc_panelTeilnehmerButtons.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panelTeilnehmerButtons.gridx = 1;
-		gbc_panelTeilnehmerButtons.gridy = 7;
+		gbc_panelTeilnehmerButtons.gridx = 0;
+		gbc_panelTeilnehmerButtons.gridy = 6;
 		panelMain.add(panelTeilnehmerButtons, gbc_panelTeilnehmerButtons);
 		
 		JButton btnLschen_2 = new JButton("L\u00F6schen");
@@ -213,16 +219,16 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_lblTermine = new GridBagConstraints();
 		gbc_lblTermine.anchor = GridBagConstraints.NORTH;
 		gbc_lblTermine.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTermine.gridx = 1;
-		gbc_lblTermine.gridy = 8;
+		gbc_lblTermine.gridx = 0;
+		gbc_lblTermine.gridy = 7;
 		panelMain.add(lblTermine, gbc_lblTermine);
 		
 		tableTermine = new JTable();
 		GridBagConstraints gbc_tableTermine = new GridBagConstraints();
-		gbc_tableTermine.insets = new Insets(0, 0, 5, 5);
+		gbc_tableTermine.insets = new Insets(0, 0, 5, 0);
 		gbc_tableTermine.fill = GridBagConstraints.BOTH;
-		gbc_tableTermine.gridx = 2;
-		gbc_tableTermine.gridy = 8;
+		gbc_tableTermine.gridx = 1;
+		gbc_tableTermine.gridy = 7;
 		panelMain.add(tableTermine, gbc_tableTermine);
 		
 		JPanel panelTermineButtons = new JPanel();
@@ -231,10 +237,9 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_panelTermineButtons = new GridBagConstraints();
 		gbc_panelTermineButtons.anchor = GridBagConstraints.NORTH;
 		gbc_panelTermineButtons.gridwidth = 2;
-		gbc_panelTermineButtons.insets = new Insets(0, 0, 5, 5);
 		gbc_panelTermineButtons.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panelTermineButtons.gridx = 1;
-		gbc_panelTermineButtons.gridy = 9;
+		gbc_panelTermineButtons.gridx = 0;
+		gbc_panelTermineButtons.gridy = 8;
 		panelMain.add(panelTermineButtons, gbc_panelTermineButtons);
 		
 		JButton btnLschen_3 = new JButton("L\u00F6schen");
@@ -271,6 +276,10 @@ public class PruefungsDetails extends JFrame {
 	
 	public JTextField getTextFieldPunkte() {
 		return textFieldPunkte;
+	}
+	
+	public JTable getTableTeilnehmer() {
+		return tableTeilnehmer;
 	}
 	
 	//Wenn vorhandene Prüfung bearbeitet werden soll

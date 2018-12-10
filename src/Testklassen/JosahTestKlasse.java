@@ -18,7 +18,7 @@ public class JosahTestKlasse {
 		for(int i = 0; i<20; i++){
 			
 
-			Pruefung pruefung = new Pruefung("Mathepruefung " + (i+1), (100+i));
+			Pruefung pruefung = new Pruefung("Mathepruefung " + (i+1), (100+i), (50 + i));
 
 			Aufgabe aufgabe3 = new Aufgabe("Testaufgabe " + i, (50+i), "Fragestellung " + i, pruefung);
 
@@ -30,6 +30,12 @@ public class JosahTestKlasse {
 			Termin termin2 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
 			Termin termin3 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
 			Termin termin4 = new Termin((i+1) + ".07.2019", "08:30", "B44" + i, pruefung);
+			
+			String teilnehmer1 = "Vorname " + (i+1) + " Nachname " +(i+1);
+			String teilnehmer2 = "Vorname " + (i+1) + " Nachname " +(i+1);
+			String teilnehmer3 = "Vorname " + (i+1) + " Nachname " +(i+1);
+			String teilnehmer4 = "Vorname " + (i+1) + " Nachname " +(i+1);
+			String teilnehmer5 = "Vorname " + (i+1) + " Nachname " +(i+1);
 
 			aufgabe3.addAntwort(antwort1);
 			aufgabe3.addAntwort(antwort2);
@@ -40,6 +46,12 @@ public class JosahTestKlasse {
 			pruefung.addTermin(termin2);
 			pruefung.addTermin(termin3);
 			pruefung.addTermin(termin4);
+			
+			pruefung.addTeilnehmer(teilnehmer1);
+			pruefung.addTeilnehmer(teilnehmer2);
+			pruefung.addTeilnehmer(teilnehmer3);
+			pruefung.addTeilnehmer(teilnehmer4);
+			pruefung.addTeilnehmer(teilnehmer5);
 			
 			Aufgabe aufgabe4 = new Aufgabe("Testaufgabe " + i, (50+i), "Fragestellung " + i, pruefung);
 
