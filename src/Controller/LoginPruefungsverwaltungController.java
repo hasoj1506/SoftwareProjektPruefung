@@ -1,12 +1,9 @@
 package Controller;
 
-import java.awt.Component;
+import java.util.ArrayList;
 import java.util.List;
+
 import DatabaseService.DatabaseService;
-import javax.swing.JOptionPane;
-
-import org.eclipse.persistence.internal.oxm.mappings.Login;
-
 import Models.Nutzer;
 import Views.LoginPruefungsverwaltung;
 
@@ -23,6 +20,7 @@ public class LoginPruefungsverwaltungController {
 		this.view = view;
 	}
 	
+	//Get Benutzer und passwort von textfeld in view
 	public String getBenutzername() {
 		return view.getTFBenutzername().getText();
 	}
@@ -37,22 +35,26 @@ public class LoginPruefungsverwaltungController {
 		String benutzername = getBenutzername();
 		String passwort = getPasswort();
 		
-		List<String> benutzernamen;
+		//Liste mit Benutzer und Passwort aus DB?
+		List<String> benutzernameListe = new ArrayList<String>();
 		
-		for(Nutzer nutzer1 : nutzer) {
-			benutzernamen.add(nutzer1.getBenutzername());
+		for(Nutzer i : nutzer) {
+			benutzernameListe.add(i.getBenutzername());
 		}
 		
+
 		
-		List<String> passwort1;
+		List<String> passwoerterListe = new ArrayList<String>();
 		
-		for(Nutzer nutzer1 : nutzer) {
-			passwort1.add(nutzer1.getPasswort());
+		for(Nutzer i : nutzer) {
+			passwoerterListe.add(i.getPasswort());
 		}
-//		
-//		if(benutzernamen.contains(benutzername){
-//			
-//		}
+		
+		if(benutzernameListe.contains(benutzername) && passwoerterListe.contains(passwort)){
+			
+			
+			
+		}
 		
 		
 		
