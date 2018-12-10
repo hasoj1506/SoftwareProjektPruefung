@@ -184,6 +184,7 @@ public class PruefungsDetailsController {
 					// Tabelle
 
 					pruefung.getAufgaben().remove(zuLoeschendeAufgabe);
+					db.loescheAufgabe(zuLoeschendeAufgabe);
 					fuelleAufgabenTable(pruefung);
 				} else {
 					// nichts tun
