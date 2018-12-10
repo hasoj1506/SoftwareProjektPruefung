@@ -28,7 +28,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 public class PruefungsDetails extends JFrame {
+	private PruefungsverwaltungView pruefungsverwaltung;
+	
 	private Pruefung pruefung;
+	
 	private JTextField textFieldPrfungstitel;
 	private JTable tableAufgaben;
 	private JTable tableTeilnehmer;
@@ -46,17 +49,19 @@ public class PruefungsDetails extends JFrame {
 	Termin termin;
 	Nutzer nutzer;
 	
-	public PruefungsDetails() {
+	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung) {
 		this.controller = new PruefungsDetailsController(this);
+		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
 		addActionListeners();
 	}
 	
 	//Josah Weber (Konstruktor zum Bearbeiten der Pruefung)
-	public PruefungsDetails(Pruefung pruefung){
+	public PruefungsDetails(Pruefung pruefung, PruefungsverwaltungView pruefungsverwaltung){
 		
 		this.pruefung = pruefung;
 		this.controller = new PruefungsDetailsController(this);
+		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
 		fuellePruefungsDetailsZumBearbeiten();
 		addActionListeners();
@@ -309,7 +314,7 @@ public class PruefungsDetails extends JFrame {
 		
 		btnSpeichern.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.speichernPruefung();
+				controller.speichernPruefung(pruefungsverwaltung);
 			}
 		});
 		

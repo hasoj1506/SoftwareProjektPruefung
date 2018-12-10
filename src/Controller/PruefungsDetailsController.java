@@ -200,7 +200,7 @@ public class PruefungsDetailsController {
 		TerminErstellenPopUp terminDetails = new TerminErstellenPopUp(view, pruefung);
 	}
 	
-	public void speichernPruefung(){
+	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung){
 		String bezeichnung = view.getTextFieldPrfungstitel().getText();
 		
 		int dauer;
@@ -224,7 +224,7 @@ public class PruefungsDetailsController {
 		pruefung.setPunkte(punkte);
 		db.persistPruefung(pruefung);
 		view.dispose();
-		PruefungsverwaltungView pruefungsverwaltung = new PruefungsverwaltungView();
+		pruefungsverwaltung.tabelleFuellen();
 	}
 
 }

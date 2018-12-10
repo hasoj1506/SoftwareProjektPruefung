@@ -47,7 +47,7 @@ public class PruefungsverwaltungController {
 	public void neuPruefung() {
 
 		// Leere Maske der Prüfungsdetails wird geöffnet
-		PruefungsDetails detailView = new PruefungsDetails();
+		PruefungsDetails detailView = new PruefungsDetails(view);
 
 		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
@@ -66,7 +66,7 @@ public class PruefungsverwaltungController {
 
 				// Prüfungsdetails-Maske öffnen und zu bearbeitende Prüfung
 				// übergeben
-				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung);
+				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung, view);
 				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
