@@ -3,6 +3,8 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
 import Views.LoginPruefungsverwaltung;
@@ -10,7 +12,7 @@ import Views.LoginPruefungsverwaltung;
 public class LoginPruefungsverwaltungController {
 	// alle Methoden, die durch Bedienung der LoginPruefungsverwaltung-View aufgerufen werden können
 	
-	LoginPruefungsverwaltung view;
+	private LoginPruefungsverwaltung view;
 	
 	//Zugriff auf die Datenbank
 	DatabaseService db = DatabaseService.getInstance();
@@ -51,9 +53,10 @@ public class LoginPruefungsverwaltungController {
 		}
 		
 		if(benutzernameListe.contains(benutzername) && passwoerterListe.contains(passwort)){
-			
-			
-			
+			JOptionPane.showMessageDialog(null, "Erfolg");			
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Fehler");
 		}
 		
 		
