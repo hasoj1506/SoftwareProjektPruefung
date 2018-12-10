@@ -38,6 +38,8 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnNeu;
 	private JButton btnBearbeiten;
 	private JButton btnLschen_1;
+	private JButton btnNeuTermin;
+	private JButton btnSpeichern;
 	
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
@@ -70,7 +72,7 @@ public class PruefungsDetails extends JFrame {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 		
-		JButton btnSpeichern = new JButton("Speichern");
+		btnSpeichern = new JButton("Speichern");
 		panelButtons.add(btnSpeichern);
 		
 		JButton btnLschen = new JButton("L\u00F6schen");
@@ -253,14 +255,14 @@ public class PruefungsDetails extends JFrame {
 		gbc_panelTermineButtons.gridy = 8;
 		panelMain.add(panelTermineButtons, gbc_panelTermineButtons);
 		
-		JButton btnLschen_3 = new JButton("L\u00F6schen");
-		panelTermineButtons.add(btnLschen_3);
+		JButton btnLschenTermin = new JButton("L\u00F6schen");
+		panelTermineButtons.add(btnLschenTermin);
 		
-		JButton btnBearbeiten_2 = new JButton("Bearbeiten");
-		panelTermineButtons.add(btnBearbeiten_2);
+		JButton btnBearbeitenTermin = new JButton("Bearbeiten");
+		panelTermineButtons.add(btnBearbeitenTermin);
 		
-		JButton btnNeu_2 = new JButton("Neu");
-		panelTermineButtons.add(btnNeu_2);
+		btnNeuTermin = new JButton("Neu");
+		panelTermineButtons.add(btnNeuTermin);
 		
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -305,6 +307,12 @@ public class PruefungsDetails extends JFrame {
 	//Zuweisung der ActionListener für Buttons etc
 	public void addActionListeners(){
 		
+		btnSpeichern.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.speichernPruefung();
+			}
+		});
+		
 		btnNeu.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.neuAufgabe();
@@ -329,6 +337,12 @@ public class PruefungsDetails extends JFrame {
 				if (evt.getClickCount() == 2) {
 					controller.bearbeiteAufgabe();
 				}
+			}
+		});
+		
+		btnNeuTermin.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.neuTermin();
 			}
 		});
 	}

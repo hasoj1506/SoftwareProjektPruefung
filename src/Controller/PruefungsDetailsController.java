@@ -19,6 +19,7 @@ import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
 import Views.AufgabendetailsView;
 import Views.PruefungsDetails;
+import Views.TerminErstellenPopUp;
 
 public class PruefungsDetailsController {
 	// alle Methoden, die durch Bedienung der PruefungsDetails-View aufgerufen
@@ -72,8 +73,8 @@ public class PruefungsDetailsController {
 	// ab hier: Josah Weber
 	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
-		
-		//Felder mit Daten der Prüfung befüllen
+
+		// Felder mit Daten der Prüfung befüllen
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
@@ -110,13 +111,14 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
-		
+
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
 			teilnehmer = new ArrayList<String>(pruefung.getTeilnehmer());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(teilnehmer);
+			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
+					teilnehmer);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
@@ -132,7 +134,7 @@ public class PruefungsDetailsController {
 		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(pruefung);
 	}
 
-	// bearbeiten Button wird geklickt / Doppelklick auf Aufgabe
+	// Aufgabe-bearbeiten Button wird geklickt / Doppelklick auf Aufgabe
 	public void bearbeiteAufgabe() {
 		try {
 			// Wenn in der JTable eine Zeile ausgewählt ist
@@ -155,7 +157,7 @@ public class PruefungsDetailsController {
 		}
 	}
 
-	// Löschen-Button wird geklickt
+	// Aufgabe-Löschen-Button wird geklickt
 	public void loescheAufgabe() {
 
 		try {
@@ -174,7 +176,7 @@ public class PruefungsDetailsController {
 
 					// Löschen der Aufgabe aus der Datenbank und neuladen der
 					// Tabelle
-					
+
 					db.loescheAufgabe(zuLoeschendeAufgabe);
 					fuellePruefungsDetails(pruefung);
 				} else {
@@ -189,4 +191,16 @@ public class PruefungsDetailsController {
 		}
 
 	}
+
+	// Neu-Termin-Button wird geklickt
+	public void neuTermin() {
+
+		// Leere Aufgaben-Details-Maske wird geöffnet
+		TerminErstellenPopUp terminDetails = new TerminErstellenPopUp(view, pruefung);
+	}
+	
+	public void speichernPruefung(){
+		
+	}
+
 }
