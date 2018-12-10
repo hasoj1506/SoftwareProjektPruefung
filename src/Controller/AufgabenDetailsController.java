@@ -110,11 +110,13 @@ public class AufgabenDetailsController {
 			if (reply == JOptionPane.YES_OPTION) {
 
 				try {
-					service.loescheAufgabe(this.aufgabe);
+//					service.loescheAufgabe(this.aufgabe);
+					pruefung.getAufgaben().remove(aufgabe);
 				} catch (NullPointerException e) {
 					view.fehlerMeldung("Es ist ein Fehler aufgetreten!");
 				}
 				view.schliessen();
+				view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
 			}
 		} else {
 			view.schliessen();
