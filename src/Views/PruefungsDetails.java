@@ -285,12 +285,7 @@ public class PruefungsDetails extends JFrame {
 	
 	public JTable getTableAufgaben() {
 		return tableAufgaben;
-	}
-	
-	public void fuelleAufgaben() {
-		controller.fuelleTabelleAufgaben();
-	}
-	
+	}	
 	
 	// ab hier: Josah Weber
 	public JTextField getTextFieldPrfungstitel() {

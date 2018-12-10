@@ -49,28 +49,6 @@ public class PruefungsDetailsController {
 		this.view = view;
 	}
 
-	EntityManager em = DatabaseService.getInstance().getEntityManager();
-
-	public List<Aufgabe> getAufgabenListe() {
-		try {
-			TypedQuery q = em.createQuery("SELECT a FROM Aufgabe a", Aufgabe.class);
-			aufgaben = q.getResultList();
-		} catch (Exception e) {
-			// kommt noch
-		}
-		return aufgaben;
-	}
-
-	public void fuelleTabelleAufgaben() {
-		try {
-			aufgaben = getAufgabenListe();
-			PruefungsDetailsAufgabenTableModel model = new PruefungsDetailsAufgabenTableModel(aufgaben);
-			view.getTableAufgaben().setModel(model);
-		} catch (Exception e) {
-			// kommt noch
-		}
-	}
-
 	// ab hier: Josah Weber
 	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
@@ -81,8 +59,18 @@ public class PruefungsDetailsController {
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
 
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
-		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
-		textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
+
+		try {
+			textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(view, "Die Dauer wurde nicht im richtigen Format eingegeben!");
+		}
+
+		try {
+			textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(view, "Die Punkte wurden nicht im richtigen Format eingegeben!");
+		}
 
 		fuelleAufgabenTable(pruefung);
 
@@ -146,9 +134,10 @@ public class PruefungsDetailsController {
 
 	// Neu-Aufgabe-Button wird geklickt
 	public void neuAufgabe() {
-
+		Aufgabe aufgabe = new Aufgabe();
+		aufgabe.setPruefung(pruefung);
 		// Leere Aufgaben-Details-Maske wird geöffnet
-		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(pruefung);
+		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(aufgabe, view);
 	}
 
 	// Aufgabe-bearbeiten Button wird geklickt / Doppelklick auf Aufgabe
@@ -163,7 +152,7 @@ public class PruefungsDetailsController {
 
 				// Aufgabendetails-Maske öffnen und zu bearbeitende Aufgabe
 				// übergeben
-				AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe);
+				AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe, view);
 				detailView.getAfgdFrame().setTitle("Bearbeiten: " + zuBearbeitendeAufgabe.getAufgabentitel());
 			} else {
 				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
@@ -215,64 +204,64 @@ public class PruefungsDetailsController {
 		// Leere Termin-Details-Maske wird geöffnet
 		TerminErstellenPopUp terminDetails = new TerminErstellenPopUp(view, pruefung);
 	}
-	
+
 	// Termin-bearbeiten Button wird geklickt / Doppelklick auf Termin
-		public void bearbeiteTermin() {
-			try {
-				// Wenn in der JTable eine Zeile ausgewählt ist
-				if (view.getTableTermine().getSelectedRow() > -1) {
-					// Identifizieren des zu bearbeitenden Termins
-					termine = new ArrayList(pruefung.getTermine());
+	public void bearbeiteTermin() {
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTableTermine().getSelectedRow() > -1) {
+				// Identifizieren des zu bearbeitenden Termins
+				termine = new ArrayList(pruefung.getTermine());
+				int selection = view.getTableTermine().getSelectedRow();
+				Termin zuBearbeitenderTermin = termine.get(selection);
+
+				// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
+				// übergeben
+				TerminErstellenPopUp detailView = new TerminErstellenPopUp(view, pruefung, zuBearbeitenderTermin);
+				detailView.getFrmTermin()
+						.setTitle("Bearbeiten - Termin für: " + zuBearbeitenderTermin.getPruefung().getBezeichnung());
+			} else {
+				JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+	}
+
+	// Termin-Löschen-Button wird geklickt
+	public void loescheTermin() {
+
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTableTermine().getSelectedRow() > -1) {
+
+				// Abfrage, ob wirklich gelöscht werden soll
+				int reply = JOptionPane.showConfirmDialog(view, "Soll der Termin wirklich gelöscht werden?", "Abfrage",
+						JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+
+					// Identifizieren des zu löschenden Termins
+					termine = new ArrayList<Termin>(pruefung.getTermine());
 					int selection = view.getTableTermine().getSelectedRow();
-					Termin zuBearbeitenderTermin = termine.get(selection);
+					Termin zuLoeschenderTermin = termine.get(selection);
 
-					// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
-					// übergeben
-					TerminErstellenPopUp detailView = new TerminErstellenPopUp(view, pruefung, zuBearbeitenderTermin);
-					detailView.getFrmTermin().setTitle("Bearbeiten - Termin für: " + zuBearbeitenderTermin.getPruefung().getBezeichnung());
+					// Löschen des Termins aus der Liste und neuladen der
+					// Tabelle
+					pruefung.getTermine().remove(zuLoeschenderTermin);
+					fuelleTermineTable(pruefung);
 				} else {
-					JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+					// nichts tun
 				}
-			} catch (Exception e) {
-				// Was beim Fehler passiert
-				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			} else {
+				JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
 			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
-		
-		// Termin-Löschen-Button wird geklickt
-		public void loescheTermin() {
 
-			try {
-				// Wenn in der JTable eine Zeile ausgewählt ist
-				if (view.getTableTermine().getSelectedRow() > -1) {
-
-					// Abfrage, ob wirklich gelöscht werden soll
-					int reply = JOptionPane.showConfirmDialog(view, "Soll der Termin wirklich gelöscht werden?", "Abfrage",
-							JOptionPane.YES_NO_OPTION);
-					if (reply == JOptionPane.YES_OPTION) {
-
-						// Identifizieren des zu löschenden Termins
-						termine = new ArrayList<Termin>(pruefung.getTermine());
-						int selection = view.getTableTermine().getSelectedRow();
-						Termin zuLoeschenderTermin = termine.get(selection);
-						
-
-						// Löschen des Termins aus der Liste und neuladen der
-						// Tabelle
-						pruefung.getTermine().remove(zuLoeschenderTermin);
-						fuelleTermineTable(pruefung);
-					} else {
-						// nichts tun
-					}
-				} else {
-					JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
-				}
-			} catch (Exception e) {
-				// Was beim Fehler passiert
-				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
-			}
-
-		}
+	}
 
 	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 		String bezeichnung = view.getTextFieldPrfungstitel().getText();

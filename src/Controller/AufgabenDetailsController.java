@@ -91,6 +91,8 @@ public class AufgabenDetailsController {
 				} else {
 					aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
 					view.setAufgabe(aufgabe);
+					pruefung.addAufgabe(aufgabe);
+					view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
 					view.schliessen();
 				}
 

@@ -35,6 +35,7 @@ public class AufgabendetailsView {
 	private JButton afgdButtonLoescheAufgabe;
 
 	AufgabenDetailsController controller;
+	PruefungsDetails pruefungsDetailsView;
 
 	Pruefung pruefung;
 	Aufgabe aufgabe;
@@ -52,8 +53,9 @@ public class AufgabendetailsView {
 
 	}
 
-	public AufgabendetailsView(Aufgabe aufgabe) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
-
+	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
+		
+		this.pruefungsDetailsView = pruefungsDetailsView;
 		this.pruefung = aufgabe.getPruefung();
 		this.aufgabe = aufgabe;
 		onCreate();
@@ -354,6 +356,11 @@ public class AufgabendetailsView {
 	public void setAufgabe(Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
 	}
+
+	public PruefungsDetails getPruefungsDetailsView() {
+		return pruefungsDetailsView;
+	}
+	
 
 
 }
