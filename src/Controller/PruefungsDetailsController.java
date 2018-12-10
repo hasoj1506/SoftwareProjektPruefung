@@ -20,14 +20,18 @@ import Views.AufgabendetailsView;
 import Views.PruefungsDetails;
 
 public class PruefungsDetailsController {
-	// alle Methoden, die durch Bedienung der PruefungsDetails-View aufgerufen werden können
-	
+	// alle Methoden, die durch Bedienung der PruefungsDetails-View aufgerufen
+	// werden können
+
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
 	private List<Nutzer> teilnehmer;
 	private List<Termin> termine;
 	private Pruefung pruefung;
-	
+
+	// um Zugriff auf die Datenbank zu bekommen
+	DatabaseService db = DatabaseService.getInstance();
+
 	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<Nutzer> teilnehmer,
 			List<Termin> termine, Pruefung pruefung) {
 		super();
@@ -37,46 +41,46 @@ public class PruefungsDetailsController {
 		this.termine = termine;
 		this.pruefung = pruefung;
 	}
-	
+
 	public PruefungsDetailsController(PruefungsDetails view) {
 		this.view = view;
 	}
-	
+
 	EntityManager em = DatabaseService.getInstance().getEntityManager();
-	
-	public List<Aufgabe> getAufgabenListe(){
+
+	public List<Aufgabe> getAufgabenListe() {
 		try {
 			TypedQuery q = em.createQuery("SELECT a FROM Aufgabe a", Aufgabe.class);
 			aufgaben = q.getResultList();
-		}catch(Exception e) {
-			//kommt noch
+		} catch (Exception e) {
+			// kommt noch
 		}
 		return aufgaben;
 	}
-	
+
 	public void fuelleTabelleAufgaben() {
 		try {
 			aufgaben = getAufgabenListe();
 			PruefungsDetailsAufgabenTableModel model = new PruefungsDetailsAufgabenTableModel(aufgaben);
 			view.getTableAufgaben().setModel(model);
-		}catch(Exception e) {
-			//kommt noch
+		} catch (Exception e) {
+			// kommt noch
 		}
 	}
-	
-	//ab hier: Josah Weber
-	public void fuellePruefungsDetails(Pruefung pruefung){
+
+	// ab hier: Josah Weber
+	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
 		JTable tableAufgaben = view.getTableAufgaben();
 		JTable tableTermine = view.getTableTermine();
-		
+
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
 		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
 		textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
-		
+
 		try {
 			// Liste mit Aufgaben der Prüfung erstellen
 			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
@@ -89,51 +93,86 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
-		
-		try{
-			//Liste mit Terminen der Prüfung erstellen
+
+		try {
+			// Liste mit Terminen der Prüfung erstellen
 			termine = new ArrayList<Termin>(pruefung.getTermine());
-			
-			//Dem JTable das Model inklusive Liste zuweisen
+
+			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTermineTableModel tableModelTermine = new PruefungsDetailsTermineTableModel(termine);
 			tableTermine.setModel(tableModelTermine);
-			
+
 		} catch (Exception e) {
-			//Was beim Fehler passiert
+			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
 	}
-	
-	//Neu-Aufgabe-Button wird geklickt
-	public void neuAufgabe(){
-		
-		//Leere Aufgaben-Details-Maske wird geöffnet
+
+	// Neu-Aufgabe-Button wird geklickt
+	public void neuAufgabe() {
+
+		// Leere Aufgaben-Details-Maske wird geöffnet
 		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(pruefung);
-		
-		//Titel des Fensters wird gesetzt
+
+		// Titel des Fensters wird gesetzt
 		aufgabenDetails.getAfgdFrame().setTitle("Neue Aufgabe");
 	}
-	
-	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
-		public void bearbeiteAufgabe() {
-			try {
-				// Wenn in der JTable eine Zeile ausgewählt ist
-				if (view.getTableAufgaben().getSelectedRow() > -1) {
-					// Identifizieren der zu bearbeitenden Prüfung
-					aufgaben = new ArrayList(pruefung.getAufgaben());
-					int selection = view.getTableAufgaben().getSelectedRow();
-					Aufgabe zuBearbeitendeAufgabe = aufgaben.get(selection);
 
-					// Aufgabendetails-Maske öffnen und zu bearbeitende Aufgabe
-					// übergeben
-					AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe);
-					detailView.getAfgdFrame().setTitle("Bearbeiten: " + zuBearbeitendeAufgabe.getAufgabentitel());
-				} else {
-					JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
-				}
-			} catch (Exception e) {
-				// Was beim Fehler passiert
-				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
+	public void bearbeiteAufgabe() {
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTableAufgaben().getSelectedRow() > -1) {
+				// Identifizieren der zu bearbeitenden Prüfung
+				aufgaben = new ArrayList(pruefung.getAufgaben());
+				int selection = view.getTableAufgaben().getSelectedRow();
+				Aufgabe zuBearbeitendeAufgabe = aufgaben.get(selection);
+
+				// Aufgabendetails-Maske öffnen und zu bearbeitende Aufgabe
+				// übergeben
+				AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe);
+				detailView.getAfgdFrame().setTitle("Bearbeiten: " + zuBearbeitendeAufgabe.getAufgabentitel());
+			} else {
+				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
 			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
+	}
+
+	// Löschen-Button wird geklickt
+	public void loescheAufgabe() {
+
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTableAufgaben().getSelectedRow() > -1) {
+
+				// Abfrage, ob wirklich gelöscht werden soll
+				int reply = JOptionPane.showConfirmDialog(view, "Soll die Prüfung wirklich gelöscht werden?", "Abfrage",
+						JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+
+					// Identifizieren der zu löschenden Prüfung
+					aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
+					int selection = view.getTableAufgaben().getSelectedRow();
+					Aufgabe zuLoeschendeAufgabe = aufgaben.get(selection);
+
+					// Löschen der Prüfung aus der Datenbank und neuladen der
+					// Tabelle
+					
+					db.loescheAufgabe(zuLoeschendeAufgabe);
+					fuellePruefungsDetails(pruefung);
+				} else {
+					// nichts tun
+				}
+			} else {
+				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
+			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+
+	}
 }

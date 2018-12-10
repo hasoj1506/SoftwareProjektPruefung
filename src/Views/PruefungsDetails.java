@@ -32,7 +32,8 @@ public class PruefungsDetails extends JFrame {
 	private JTextField textFieldDauer;
 	private JTextField textFieldPunkte;
 	private JButton btnNeu;
-	JButton btnBearbeiten;
+	private JButton btnBearbeiten;
+	private JButton btnLschen_1;
 	
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
@@ -159,7 +160,7 @@ public class PruefungsDetails extends JFrame {
 		gbc_panelAufgabenButtons.gridy = 5;
 		panelMain.add(panelAufgabenButtons, gbc_panelAufgabenButtons);
 		
-		JButton btnLschen_1 = new JButton("L\u00F6schen");
+		btnLschen_1 = new JButton("L\u00F6schen");
 		panelAufgabenButtons.add(btnLschen_1);
 		
 		btnBearbeiten = new JButton("Bearbeiten");
@@ -283,7 +284,13 @@ public class PruefungsDetails extends JFrame {
 		
 		btnBearbeiten.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.bearbeiteAufgabe();;
+				controller.bearbeiteAufgabe();
+			}
+		});
+		
+		btnLschen_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.loescheAufgabe();
 			}
 		});
 	}
