@@ -16,6 +16,7 @@ import Models.Pruefung;
 import Models.Termin;
 import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
+import Views.AufgabendetailsView;
 import Views.PruefungsDetails;
 
 public class PruefungsDetailsController {
@@ -63,7 +64,7 @@ public class PruefungsDetailsController {
 		}
 	}
 	
-	//Josah Weber
+	//ab hier: Josah Weber
 	public void fuellePruefungsDetails(Pruefung pruefung){
 		this.pruefung = pruefung;
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
@@ -102,4 +103,37 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
 		}
 	}
+	
+	//Neu-Aufgabe-Button wird geklickt
+	public void neuAufgabe(){
+		
+		//Leere Aufgaben-Details-Maske wird geöffnet
+		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(pruefung);
+		
+		//Titel des Fensters wird gesetzt
+		aufgabenDetails.getAfgdFrame().setTitle("Neue Aufgabe");
+	}
+	
+	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
+		public void bearbeiteAufgabe() {
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTableAufgaben().getSelectedRow() > -1) {
+					// Identifizieren der zu bearbeitenden Prüfung
+					aufgaben = new ArrayList(pruefung.getAufgaben());
+					int selection = view.getTableAufgaben().getSelectedRow();
+					Aufgabe zuBearbeitendeAufgabe = aufgaben.get(selection);
+
+					// Aufgabendetails-Maske öffnen und zu bearbeitende Aufgabe
+					// übergeben
+					AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe);
+					detailView.getAfgdFrame().setTitle("Bearbeiten: " + zuBearbeitendeAufgabe.getAufgabentitel());
+				} else {
+					JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			}
+		}
 }

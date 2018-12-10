@@ -6,13 +6,12 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -23,7 +22,6 @@ import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
-import TableModels.PruefungsDetailsAufgabenTableModel;
 
 public class PruefungsDetails extends JFrame {
 	private Pruefung pruefung;
@@ -33,6 +31,8 @@ public class PruefungsDetails extends JFrame {
 	private JTable tableTermine;
 	private JTextField textFieldDauer;
 	private JTextField textFieldPunkte;
+	private JButton btnNeu;
+	JButton btnBearbeiten;
 	
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
@@ -51,6 +51,7 @@ public class PruefungsDetails extends JFrame {
 		this.controller = new PruefungsDetailsController(this);
 		onCreate();
 		fuellePruefungsDetailsZumBearbeiten();
+		addActionListeners();
 	}
 	
 	public void onCreate() {
@@ -161,10 +162,10 @@ public class PruefungsDetails extends JFrame {
 		JButton btnLschen_1 = new JButton("L\u00F6schen");
 		panelAufgabenButtons.add(btnLschen_1);
 		
-		JButton btnBearbeiten = new JButton("Bearbeiten");
+		btnBearbeiten = new JButton("Bearbeiten");
 		panelAufgabenButtons.add(btnBearbeiten);
 		
-		JButton btnNeu = new JButton("Neu");
+		btnNeu = new JButton("Neu");
 		panelAufgabenButtons.add(btnNeu);
 		
 		JLabel lblNewLabel = new JLabel("Teilnehmer:");
@@ -270,6 +271,21 @@ public class PruefungsDetails extends JFrame {
 	//Josah Weber
 	public JTable getTableTermine() {
 		return tableTermine;
+	}
+	
+	public void addActionListeners(){
+		
+		btnNeu.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.neuAufgabe();
+			}
+		});
+		
+		btnBearbeiten.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.bearbeiteAufgabe();;
+			}
+		});
 	}
 	
 	public static void main(String[] args) {
