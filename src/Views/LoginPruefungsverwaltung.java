@@ -12,7 +12,14 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
+
+import Controller.LoginPruefungsverwaltungController;
+import Controller.PruefungsDetailsController;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -22,8 +29,11 @@ public class LoginPruefungsverwaltung {
 	private JFrame frame;
 	private JTextField textFieldBenutzername;
 	private JPasswordField textFieldPasswort;
-
+	private JButton btnLogin;
 	
+	LoginPruefungsverwaltungController controller;
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -44,6 +54,8 @@ public class LoginPruefungsverwaltung {
 	 * Create the application.
 	 */
 	public LoginPruefungsverwaltung() {
+		this.controller = new LoginPruefungsverwaltungController(this);
+		addActionListeners();
 		initialize();
 	}
 
@@ -124,7 +136,7 @@ public class LoginPruefungsverwaltung {
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
 		gbc_btnLogin.anchor = GridBagConstraints.EAST;
 		gbc_btnLogin.gridx = 1;
@@ -144,6 +156,14 @@ public class LoginPruefungsverwaltung {
 		return this.textFieldPasswort;
 	}
 	
+	public void addActionListeners(){
+		
+		btnLogin.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.Einloggen();
+			}
+		});
 	
 	
-}
+	
+	}}
