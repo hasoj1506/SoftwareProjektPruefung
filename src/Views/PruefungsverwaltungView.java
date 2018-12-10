@@ -67,7 +67,7 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();
 		gbl_PruefungenPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
-		gbl_PruefungenPanel.rowHeights = new int[] { 0, 0, 0 };
+		gbl_PruefungenPanel.rowHeights = new int[] { 44, 0, 0 };
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);

@@ -75,7 +75,7 @@ public class AufgabendetailsView {
 		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(eingabePanel, BorderLayout.NORTH);
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
-		gbl_eingabePanel.columnWidths = new int[] { 36, 95, 356, 65, 0 };
+		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 356, 65, 0 };
 		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
