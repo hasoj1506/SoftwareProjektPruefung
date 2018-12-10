@@ -35,7 +35,6 @@ public class LoginPruefungsverwaltung {
 	private JButton btnLogin;
 	
 	LoginPruefungsverwaltungController controller;
-	Nutzer nutzer;
 
 
 	/**
@@ -49,6 +48,7 @@ public class LoginPruefungsverwaltung {
 	public LoginPruefungsverwaltung() {
 		this.controller = new LoginPruefungsverwaltungController(this);
 		addActionListeners();
+		Einloggen();
 		initialize();
 	}
 

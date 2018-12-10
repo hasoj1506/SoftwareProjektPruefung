@@ -14,14 +14,22 @@ public class LoginPruefungsverwaltungController {
 	// aufgerufen werden können
 
 	private LoginPruefungsverwaltung view;
+	
+	private List<String> benutzernameListe;
+	private List<String> passwoerterListe;
 
 	// Zugriff auf die Datenbank
 	DatabaseService db = DatabaseService.getInstance();
 
 	// Konstruktor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
-		super();
 		this.view = view;
+	}
+	
+	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view, List<String> benutzernameListe, List<String> passwoerterListe) {
+		this.view = view;
+		this.benutzernameListe = benutzernameListe;
+		this.passwoerterListe = passwoerterListe;
 	}
 
 	// Get Benutzer und passwort von textfeld in view
@@ -40,13 +48,13 @@ public class LoginPruefungsverwaltungController {
 		String passwort = getPasswort();
 
 		// Liste mit Benutzer und Passwort aus DB?
-		List<String> benutzernameListe = new ArrayList<String>();
+		benutzernameListe = new ArrayList<String>();
 		try {
 			for (Nutzer i : nutzer) {
 				benutzernameListe.add(i.getBenutzername());
 			}
 
-			List<String> passwoerterListe = new ArrayList<String>();
+			passwoerterListe = new ArrayList<String>();
 
 			for (Nutzer i : nutzer) {
 				passwoerterListe.add(i.getPasswort());
