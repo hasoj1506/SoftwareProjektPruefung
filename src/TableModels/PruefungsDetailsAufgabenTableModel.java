@@ -6,6 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 import Models.Aufgabe;
 
+//Josah Weber
 public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel{
 	
 	private List<Aufgabe> aufgaben;
@@ -16,7 +17,7 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel{
 	
 	String[] columnNames = {"Aufgabentitel", "Punktzahl"};
 	
-	public String getColumnNames(int col) {
+	public String getColumnName(int col) {
 		return columnNames[col];
 	}
 	

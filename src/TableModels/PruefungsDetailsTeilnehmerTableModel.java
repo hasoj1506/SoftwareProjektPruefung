@@ -18,7 +18,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	
 	String[] columnNames = {"Name"};
 	
-	public String getColumnNames(int col) {
+	public String getColumnName(int col) {
 		return columnNames[col];
 	}
 	

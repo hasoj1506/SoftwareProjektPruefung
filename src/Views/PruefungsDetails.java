@@ -154,6 +154,7 @@ public class PruefungsDetails extends JFrame {
 		panelMain.add(scrollPaneAufgabenTable, gbc_scrollPaneAufgabenTable);
 		
 		tableAufgaben = new JTable();
+		tableAufgaben.setPreferredScrollableViewportSize(new Dimension(450, 300));
 		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneAufgabenTable.setViewportView(tableAufgaben);
 		
@@ -186,13 +187,18 @@ public class PruefungsDetails extends JFrame {
 		gbc_lblNewLabel.gridy = 5;
 		panelMain.add(lblNewLabel, gbc_lblNewLabel);
 		
+		JScrollPane scrollPaneTeilnehmerTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneTeilnehmerTable = new GridBagConstraints();
+		gbc_scrollPaneTeilnehmerTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneTeilnehmerTable.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPaneTeilnehmerTable.gridx = 1;
+		gbc_scrollPaneTeilnehmerTable.gridy = 5;
+		panelMain.add(scrollPaneTeilnehmerTable, gbc_scrollPaneTeilnehmerTable);
+		
 		tableTeilnehmer = new JTable();
-		GridBagConstraints gbc_tableTeilnehmer = new GridBagConstraints();
-		gbc_tableTeilnehmer.insets = new Insets(0, 0, 5, 0);
-		gbc_tableTeilnehmer.fill = GridBagConstraints.BOTH;
-		gbc_tableTeilnehmer.gridx = 1;
-		gbc_tableTeilnehmer.gridy = 5;
-		panelMain.add(tableTeilnehmer, gbc_tableTeilnehmer);
+		tableTeilnehmer.setPreferredScrollableViewportSize(new Dimension(450, 300));
+		tableTeilnehmer.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPaneTeilnehmerTable.setViewportView(tableTeilnehmer);
 		
 		JPanel panelTeilnehmerButtons = new JPanel();
 		FlowLayout fl_panelTeilnehmerButtons = (FlowLayout) panelTeilnehmerButtons.getLayout();
@@ -223,13 +229,18 @@ public class PruefungsDetails extends JFrame {
 		gbc_lblTermine.gridy = 7;
 		panelMain.add(lblTermine, gbc_lblTermine);
 		
+		JScrollPane scrollPaneTermineTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneTermineTable = new GridBagConstraints();
+		gbc_scrollPaneTermineTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneTermineTable.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPaneTermineTable.gridx = 1;
+		gbc_scrollPaneTermineTable.gridy = 7;
+		panelMain.add(scrollPaneTermineTable, gbc_scrollPaneTermineTable);
+		
 		tableTermine = new JTable();
-		GridBagConstraints gbc_tableTermine = new GridBagConstraints();
-		gbc_tableTermine.insets = new Insets(0, 0, 5, 0);
-		gbc_tableTermine.fill = GridBagConstraints.BOTH;
-		gbc_tableTermine.gridx = 1;
-		gbc_tableTermine.gridy = 7;
-		panelMain.add(tableTermine, gbc_tableTermine);
+		tableTermine.setPreferredScrollableViewportSize(new Dimension(450, 200));
+		tableTermine.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPaneTermineTable.setViewportView(tableTermine);
 		
 		JPanel panelTermineButtons = new JPanel();
 		FlowLayout flowLayout_3 = (FlowLayout) panelTermineButtons.getLayout();

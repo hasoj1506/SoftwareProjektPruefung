@@ -18,7 +18,7 @@ public class PruefungsDetailsTermineTableModel extends AbstractTableModel {
 	
 	String[] columnNames = {"Datum", "Uhrzeit", "Raum" };
 	
-	public String getColumnNames(int col) {
+	public String getColumnName(int col) {
 		return columnNames[col];
 	}
 	
