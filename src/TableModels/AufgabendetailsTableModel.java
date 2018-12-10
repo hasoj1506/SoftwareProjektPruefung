@@ -91,6 +91,10 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 		public void setAntworten(List<Antwort> antworten) {
 			this.antworten = antworten;
 		}
+		
+		public List<Antwort> getAntworten(){
+			return this.antworten;
+		}
 	}
 
 

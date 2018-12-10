@@ -14,6 +14,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class AufgabendetailsView {
@@ -269,6 +271,16 @@ public class AufgabendetailsView {
 				controller.aufgabeLoeschen();//t
 			}
 		});
+		
+		afgdTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 2) {
+					controller.antwortBearbeiten();
+				}
+			}
+		});
+
 
 	}
 
@@ -325,6 +337,22 @@ public class AufgabendetailsView {
 	
 	public AufgabenDetailsController getController() {
 		return this.controller;
+	}
+
+	public Pruefung getPruefung() {
+		return pruefung;
+	}
+
+	public void setPruefung(Pruefung pruefung) {
+		this.pruefung = pruefung;
+	}
+
+	public Aufgabe getAufgabe() {
+		return aufgabe;
+	}
+
+	public void setAufgabe(Aufgabe aufgabe) {
+		this.aufgabe = aufgabe;
 	}
 
 

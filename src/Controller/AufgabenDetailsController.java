@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +30,6 @@ public class AufgabenDetailsController {
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
-		// this.model = new AufgabendetailsTableModel(service.readAntworten(aufgabe));
 		model = new AufgabendetailsTableModel(new ArrayList<Antwort>(aufgabe.getAntworten()));
 		view.getAfgdTable().setModel(model);
 
@@ -45,7 +45,7 @@ public class AufgabenDetailsController {
 
 	}
 
-	public Aufgabe aufgabeSpeichern() {
+	public void aufgabeSpeichern() {
 
 		if (this.aufgabe == null) { // Prüft ob neue Aufgabe oder bestehene Aufgabe bearbeitet wird und erzeugt ggf.
 									// eine neue Aufgabe
@@ -65,33 +65,37 @@ public class AufgabenDetailsController {
 		} else {
 
 			aufgabe.setAufgabentitel(titel);
-			// t
+
+			if (frage == ("") || frage.length() == 0) {
+
+				view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
+
+			} else {
+
+				aufgabe.setFrageStellung(frage);
+
+				try {
+
+					punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
+
+				} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
+
+					view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
+
+				}
+
+				aufgabe.setPunktzahl(punkte);
+
+				if (model.getRowCount() < 2) {
+					view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
+				} else {
+					aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
+					view.setAufgabe(aufgabe);
+					view.schliessen();
+				}
+
+			}
 		}
-
-		if (frage == ("") || frage.length() == 0) {
-
-			view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
-
-		} else {
-
-			aufgabe.setFrageStellung(frage);
-
-		}
-
-		try {
-
-			punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
-
-		} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
-
-			view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
-
-		}
-
-		aufgabe.setPunktzahl(punkte);
-		// aufgabe.setAntworten(this.antworten);
-
-		return this.aufgabe;
 
 	}
 
@@ -136,8 +140,16 @@ public class AufgabenDetailsController {
 
 	public void antwortBearbeiten() {
 
-		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view,
-				model.get(view.getAfgdTable().getSelectedRow()));
+		if (view.getAfgdTable().getModel().getRowCount() > 0) {
+			if (view.getAfgdTable().getSelectedRow() == -1) {
+				view.fehlerMeldung("Es wurde keine Antwort ausgewählt!");
+			} else {
+				AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view,
+						model.get(view.getAfgdTable().getSelectedRow()));
+			}
+		} else {
+			view.fehlerMeldung("Es sind keine Antworten vorhanden!");
+		}
 
 	}
 
