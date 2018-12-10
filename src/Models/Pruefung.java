@@ -23,6 +23,8 @@ public class Pruefung {
 	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer = gesamtpunktzahl
 	private int punkte;
 	
+	Set<String> teilnehmer;
+	
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="pruefung")
 	Set<Aufgabe> aufgaben;
 
@@ -35,12 +37,14 @@ public class Pruefung {
 		aufgaben = new HashSet<Aufgabe>();
 	}
 
-	public Pruefung(String bezeichnung, int dauer) {
+	public Pruefung(String bezeichnung, int dauer, int punkte) {
 		super();
 		this.dauer = dauer;
 		this.bezeichnung = bezeichnung;
+		this.punkte = punkte;
 		termine = new HashSet<Termin>();
 		aufgaben = new HashSet<Aufgabe>();
+		teilnehmer = new HashSet<String>();
 	}
 
 	public String getBezeichnung() {
@@ -61,6 +65,14 @@ public class Pruefung {
 
 	public int getPruefungId() {
 		return pruefungId;
+	}
+	
+	public Set<String> getTeilnehmer(){
+		return teilnehmer;
+	}
+	
+	public void addTeilnehmer(String teilnehmer){
+		this.teilnehmer.add(teilnehmer);
 	}
 
 	public Set<Termin> getTermine() {
