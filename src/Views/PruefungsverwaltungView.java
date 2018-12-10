@@ -54,7 +54,7 @@ public class PruefungsverwaltungView {
 
 	}
 
-	//noch Refactoring?
+	//noch Refactoring??
 	public void onCreate() {
 		
 		this.frmPrfungsverwaltung = new JFrame();
