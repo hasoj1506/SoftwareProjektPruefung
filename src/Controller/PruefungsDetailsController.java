@@ -79,7 +79,7 @@ public class PruefungsDetailsController {
 		JTextField textFieldPrfungstitel = view.getTextFieldPrfungstitel();
 		JTextField textFieldDauer = view.getTextFieldDauer();
 		JTextField textFieldPunkte = view.getTextFieldPunkte();
-		
+
 		textFieldPrfungstitel.setText(pruefung.getBezeichnung());
 		textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
 		textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
@@ -129,7 +129,7 @@ public class PruefungsDetailsController {
 	public void fuelleAufgabenTable(Pruefung pruefung) {
 		this.pruefung = pruefung;
 		JTable tableAufgaben = view.getTableAufgaben();
-		
+
 		try {
 			// Liste mit Aufgaben der Prüfung erstellen
 			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
@@ -210,31 +210,89 @@ public class PruefungsDetailsController {
 	}
 
 	// Neu-Termin-Button wird geklickt
-	public void neuTermin() {
+	public void neuTermin(Pruefung pruefung) {
 
-		// Leere Aufgaben-Details-Maske wird geöffnet
+		// Leere Termin-Details-Maske wird geöffnet
 		TerminErstellenPopUp terminDetails = new TerminErstellenPopUp(view, pruefung);
 	}
 	
-	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung){
-		String bezeichnung = view.getTextFieldPrfungstitel().getText();
+	// Termin-bearbeiten Button wird geklickt / Doppelklick auf Termin
+		public void bearbeiteTermin() {
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTableTermine().getSelectedRow() > -1) {
+					// Identifizieren des zu bearbeitenden Termins
+					termine = new ArrayList(pruefung.getTermine());
+					int selection = view.getTableTermine().getSelectedRow();
+					Termin zuBearbeitenderTermin = termine.get(selection);
+
+					// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
+					// übergeben
+					TerminErstellenPopUp detailView = new TerminErstellenPopUp(view, pruefung, zuBearbeitenderTermin);
+					detailView.getFrmTermin().setTitle("Bearbeiten - Termin für: " + zuBearbeitenderTermin.getPruefung().getBezeichnung());
+				} else {
+					JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			}
+		}
 		
+		// Termin-Löschen-Button wird geklickt
+		public void loescheTermin() {
+
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTableTermine().getSelectedRow() > -1) {
+
+					// Abfrage, ob wirklich gelöscht werden soll
+					int reply = JOptionPane.showConfirmDialog(view, "Soll der Termin wirklich gelöscht werden?", "Abfrage",
+							JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+
+						// Identifizieren des zu löschenden Termins
+						termine = new ArrayList<Termin>(pruefung.getTermine());
+						int selection = view.getTableTermine().getSelectedRow();
+						Termin zuLoeschenderTermin = termine.get(selection);
+						
+
+						// Löschen des Termins aus der Liste und neuladen der
+						// Tabelle
+						pruefung.getTermine().remove(zuLoeschenderTermin);
+						fuelleTermineTable(pruefung);
+					} else {
+						// nichts tun
+					}
+				} else {
+					JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			}
+
+		}
+
+	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung) {
+		String bezeichnung = view.getTextFieldPrfungstitel().getText();
+
 		int dauer;
 		try {
 			dauer = Integer.parseInt(view.getTextFieldDauer().getText());
-		} catch(Exception e){
+		} catch (Exception e) {
 			JOptionPane.showMessageDialog(view, e);
 			dauer = 0;
 		}
-		
+
 		int punkte;
 		try {
 			punkte = Integer.parseInt(view.getTextFieldPunkte().getText());
-		} catch(Exception e){
+		} catch (Exception e) {
 			JOptionPane.showMessageDialog(view, e);
 			punkte = 0;
 		}
-		
+
 		pruefung.setBezeichnung(bezeichnung);
 		pruefung.setDauer(dauer);
 		pruefung.setPunkte(punkte);

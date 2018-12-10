@@ -3,6 +3,7 @@ package Views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -43,13 +44,20 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnLschen_1;
 	private JButton btnNeuTermin;
 	private JButton btnSpeichern;
+	private JButton btnBearbeitenTermin;
+	private JButton btnLschenTermin;
 	
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
 	Termin termin;
 	Nutzer nutzer;
 	
-	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung) {
+	/**
+	 * @wbp.parser.constructor
+	 */
+	//Konstruktor für leere Maske
+	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
+		this.pruefung = pruefung;
 		this.controller = new PruefungsDetailsController(this);
 		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
@@ -70,6 +78,7 @@ public class PruefungsDetails extends JFrame {
 	public void onCreate() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(850, 650));
+		setPreferredSize(new Dimension(850, 650));
 		
 		
 		JPanel panelButtons = new JPanel();
@@ -260,10 +269,10 @@ public class PruefungsDetails extends JFrame {
 		gbc_panelTermineButtons.gridy = 8;
 		panelMain.add(panelTermineButtons, gbc_panelTermineButtons);
 		
-		JButton btnLschenTermin = new JButton("L\u00F6schen");
+		btnLschenTermin = new JButton("L\u00F6schen");
 		panelTermineButtons.add(btnLschenTermin);
 		
-		JButton btnBearbeitenTermin = new JButton("Bearbeiten");
+		btnBearbeitenTermin = new JButton("Bearbeiten");
 		panelTermineButtons.add(btnBearbeitenTermin);
 		
 		btnNeuTermin = new JButton("Neu");
@@ -351,7 +360,28 @@ public class PruefungsDetails extends JFrame {
 		
 		btnNeuTermin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.neuTermin();
+				controller.neuTermin(pruefung);
+			}
+		});
+		
+		btnBearbeitenTermin.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.bearbeiteTermin();
+			}
+		});
+		
+		tableTermine.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 2) {
+					controller.bearbeiteTermin();
+				}
+			}
+		});
+		
+		btnLschenTermin.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.loescheTermin();
 			}
 		});
 	}

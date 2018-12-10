@@ -32,17 +32,20 @@ public class TerminErstellenPopUp {
 	/**
 	 * @wbp.parser.constructor
 	 */
+	
+	//Konstruktor zum neu-erstellen eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung) {
 		this.pruefung = pruefung;
 		onCreate();
-		btnAction(view);
+		btnActionNeu(view, pruefung);
 
 	}
-
+	
+	//Konstruktor zum bearbeiten eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Termin termin) {
 		this.pruefung = pruefung;
 		onCreate();
-		btnAction(view);
+		btnActionBearbeiten(view, pruefung, termin);
 
 		this.textFieldDatum.setText(termin.getDatum());
 		this.textFieldUhrzeit.setText(termin.getUhrzeit());
@@ -136,8 +139,35 @@ public class TerminErstellenPopUp {
 		frmTermin.pack();
 		frmTermin.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
 	}
+	
+	
 
-	public void btnAction(final PruefungsDetails view) {
+	public JFrame getFrmTermin() {
+		return frmTermin;
+	}
+
+	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
+
+		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+
+			public void actionPerformed(ActionEvent arg0) {
+
+				datum = textFieldDatum.getText();
+				uhrzeit = textFieldUhrzeit.getText();
+				raum = textFieldRaum.getText();
+				termin.setDatum(datum);
+				termin.setUhrzeit(uhrzeit);
+				termin.setRaum(raum);
+
+				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+
+				frmTermin.dispose();
+			}
+		});
+
+	}
+	
+	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
 

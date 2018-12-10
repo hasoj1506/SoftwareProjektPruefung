@@ -45,9 +45,10 @@ public class PruefungsverwaltungController {
 
 	// Neu-Button wird geklickt
 	public void neuPruefung() {
-
+		
+		Pruefung pruefung = new Pruefung();
 		// Leere Maske der Prüfungsdetails wird geöffnet
-		PruefungsDetails detailView = new PruefungsDetails(view);
+		PruefungsDetails detailView = new PruefungsDetails(view, pruefung);
 
 		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
