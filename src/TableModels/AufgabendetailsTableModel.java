@@ -11,7 +11,6 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 	private List<Antwort> antworten;
 	String[] columnNames = {"Antworttext" , "Richtig" , "Punkte"};
 	
-	
 	public AufgabendetailsTableModel(List<Antwort> antworten) {
 		this.antworten = antworten;
 	}
@@ -68,37 +67,29 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 		}
 	}
 		
-		public void addColumn(Antwort antwort) {
+		public void addRow(Antwort antwort) {
 			
 			antworten.add(antwort);
-			this.setValueAt(antwort.getAntworttext(), antworten.size(), 0);
-			this.setValueAt(antwort.isIstRichtig(), antworten.size(), 1);
-			this.setValueAt(antwort.getPunkte(), antworten.size(), 2);
-			
-			
+				
 		}
 		
 		public void removeRow(Antwort antwort) {
-			
-			/*for(int zaehler = 0; zaehler < antworten.size(); zaehler++) {
 				
-				if(antworten.get(zaehler) == antwort) {
-					antworten.remove(zaehler);
-				}
-				
-			}*/
-			
 			antworten.remove(antwort);
 			
 		}
 		
 		public void removeRow(int index) {
 			antworten.remove(index);
-			//t
+			
 		}
 		
 		public Antwort get(int index) {
 			return antworten.get(index);
+		}
+		
+		public void setAntworten(List<Antwort> antworten) {
+			this.antworten = antworten;
 		}
 	}
 

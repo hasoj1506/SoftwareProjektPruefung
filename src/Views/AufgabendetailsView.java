@@ -47,7 +47,6 @@ public class AufgabendetailsView {
 		this.controller = new AufgabenDetailsController(this, pruefung);
 		titleCheck();
 		btnAction();
-		aufgabenCheck();
 
 	}
 
@@ -59,6 +58,7 @@ public class AufgabendetailsView {
 		this.controller = new AufgabenDetailsController(this, this.aufgabe);
 		titleCheck();
 		btnAction();
+		aufgabenCheck();
 	}
 
 	public void onCreate() {
@@ -247,8 +247,7 @@ public class AufgabendetailsView {
 
 		afgdButtonBearbeitenAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(frame, "Test");
-
+				controller.antwortBearbeiten();
 			}
 		});
 
@@ -292,7 +291,7 @@ public class AufgabendetailsView {
 			afgdTitelTextField.setText(this.aufgabe.getAufgabentitel());
 			afgdFrageTextField.setText(this.aufgabe.getFrageStellung());
 			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
-			// afgdTable.setModel(arg0);
+			controller.getModel().setAntworten(new ArrayList<Antwort>(aufgabe.getAntworten()));
 		}
 	}
 
@@ -323,9 +322,10 @@ public class AufgabendetailsView {
 	public JFrame getAfgdFrame() {
 		return this.frame;
 	}
-
-	public static void main(String[] ar) {
-		// AufgabendetailsView view = new AufgabendetailsView();
+	
+	public AufgabenDetailsController getController() {
+		return this.controller;
 	}
+
 
 }

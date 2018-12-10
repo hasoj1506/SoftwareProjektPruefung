@@ -29,6 +29,7 @@ public class AntwortErstellenPopUp {
 	 */
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
+		//view.getAfgdFrame().setEnabled(false);
 		btnAction(view);
 
 	}
@@ -39,6 +40,7 @@ public class AntwortErstellenPopUp {
 
 		this.chckbxNewCheckBox.setEnabled(antwort.isIstRichtig());
 		this.textField.setText(antwort.getAntworttext());
+		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
 
 	}
 
@@ -65,7 +67,7 @@ public class AntwortErstellenPopUp {
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
-		gbl_panel_1.rowHeights = new int[] { 45, 11, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 51, 11, 0, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
@@ -137,17 +139,25 @@ public class AntwortErstellenPopUp {
 				richtig = chckbxNewCheckBox.isSelected();
 				text = textField.getText();
 
-				try {
-					punkte = Integer.parseInt(textField_1.getText());
-				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+				if (text == ("") || text.length() == 0) {
+					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
+				} else {
+
+					try {
+						punkte = Integer.parseInt(textField_1.getText());
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+					}
+
+					Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
+
+					view.getController().getModel().addRow(antwort);
+
+					view.getAfgdTable().updateUI();
+
+					view.getAfgdFrame().setEnabled(true);
+					frame.dispose();
 				}
-
-				view.getAfgdTable().setValueAt(text, view.getAfgdTable().getRowCount() + 1, 0);
-				view.getAfgdTable().setValueAt(richtig, view.getAfgdTable().getRowCount(), 1);
-				view.getAfgdTable().setValueAt(punkte, view.getAfgdTable().getRowCount(), 2);
-
-				frame.dispose();
 			}
 		});
 
@@ -162,17 +172,25 @@ public class AntwortErstellenPopUp {
 				richtig = chckbxNewCheckBox.isSelected();
 				text = textField.getText();
 
-				try {
-					punkte = Integer.parseInt(textField_1.getText());
-				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+				if (text == ("") || text.length() == 0) {
+					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
+				} else {
+
+					try {
+						punkte = Integer.parseInt(textField_1.getText());
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
+					}
+
+					antwort.setAntworttext(text);
+					antwort.setIstRichtig(richtig);
+					antwort.setPunkte(punkte);
+
+					view.getAfgdTable().updateUI();
+
+					view.getAfgdFrame().setEnabled(true);
+					frame.dispose();
 				}
-
-				view.getAfgdTable().setValueAt(text, view.getAfgdTable().getSelectedRow(), 0);
-				view.getAfgdTable().setValueAt(richtig, view.getAfgdTable().getSelectedRow(), 1);
-				view.getAfgdTable().setValueAt(punkte, view.getAfgdTable().getSelectedRow(), 2);
-
-				frame.dispose();
 			}
 		});
 

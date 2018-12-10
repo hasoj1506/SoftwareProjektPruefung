@@ -14,7 +14,6 @@ import TableModels.AufgabendetailsTableModel;
 import TableModels.PruefungsverwaltungTableModel;
 import Views.AntwortErstellenPopUp;
 import Views.AufgabendetailsView;
-import Views.FehlerPopUp;
 
 public class AufgabenDetailsController {
 
@@ -66,7 +65,7 @@ public class AufgabenDetailsController {
 		} else {
 
 			aufgabe.setAufgabentitel(titel);
-			//t
+			// t
 		}
 
 		if (frage == ("") || frage.length() == 0) {
@@ -121,12 +120,6 @@ public class AufgabenDetailsController {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
-		// Antwort antwort = new Antwort(pop.getText(), pop.isRichtig(),
-		// pop.getPunktzahl(), this.aufgabe);
-		Antwort antwort = new Antwort("test", true, 4, this.aufgabe);
-		model.addColumn(antwort);
-		view.getAfgdTable().setModel(model);
-
 	}
 
 	public void antwortLoeschen() {
@@ -143,14 +136,17 @@ public class AufgabenDetailsController {
 
 	public void antwortBearbeiten() {
 
-		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
+		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view,
+				model.get(view.getAfgdTable().getSelectedRow()));
 
-		/*
-		 * pop.setPunktzahl(model.getview.getAfgdTable().getSelectedRow());
-		 * pop.setRichtig(antwort.isIstRichtig());
-		 * pop.setText(antwort.getAntworttext());
-		 */
+	}
 
+	public Aufgabe getAufgabe() {
+		return this.aufgabe;
+	}
+
+	public AufgabendetailsTableModel getModel() {
+		return this.model;
 	}
 
 }

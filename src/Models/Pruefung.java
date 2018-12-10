@@ -37,7 +37,7 @@ public class Pruefung {
 		aufgaben = new HashSet<Aufgabe>();
 	}
 
-	public Pruefung(String bezeichnung, int dauer, int punkte) {
+	public Pruefung(String bezeichnung, int dauer) {
 		super();
 		this.dauer = dauer;
 		this.bezeichnung = bezeichnung;
