@@ -41,11 +41,10 @@ public class PruefungsverwaltungView {
 
 	Pruefung pruefung;
 
-
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public PruefungsverwaltungView() { 
+	public PruefungsverwaltungView() {
 
 		this.controller = new PruefungsverwaltungController(this);
 		onCreate();
@@ -54,9 +53,9 @@ public class PruefungsverwaltungView {
 
 	}
 
-	//noch Refactoring??
+	// noch Refactoring??
 	public void onCreate() {
-		
+
 		this.frmPrfungsverwaltung = new JFrame();
 		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
@@ -148,9 +147,11 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.setVisible(true);
 		frmPrfungsverwaltung.setDefaultCloseOperation(frmPrfungsverwaltung.DISPOSE_ON_CLOSE);
 		frmPrfungsverwaltung.pack();
-		frmPrfungsverwaltung.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
-		
-		
+		frmPrfungsverwaltung.setLocationRelativeTo(null); // Frame wird in der
+															// Mitte des
+															// Bildschirms
+															// erzeugt
+
 	}
 
 	public void addActionListeners() {
@@ -158,10 +159,10 @@ public class PruefungsverwaltungView {
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.neuPruefung();
-				
-				//um das Mainframe zu sperren während das Secondframe offen ist
-				//frmPrfungsverwaltung.setEnabled(false);
-				
+
+				// um das Mainframe zu sperren während das Secondframe offen ist
+				// frmPrfungsverwaltung.setEnabled(false);
+
 			}
 		});
 
@@ -176,7 +177,7 @@ public class PruefungsverwaltungView {
 				controller.loeschePruefung();
 			}
 		});
-		
+
 		tablePruefungen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
@@ -187,13 +188,12 @@ public class PruefungsverwaltungView {
 		});
 
 	}
-	
 
 	public JTable getTablePruefungen() {
 		return tablePruefungen;
 	}
-	
-	public JFrame getFrame(){
+
+	public JFrame getFrame() {
 		return frmPrfungsverwaltung;
 	}
 
@@ -201,11 +201,9 @@ public class PruefungsverwaltungView {
 		this.tablePruefungen = tablePruefungen;
 	}
 
-	
 	public void tabelleFuellen() {
 		controller.fuelleTabellePruefungsverwaltung();
 	}
-
 
 	public static void main(String[] ar) {
 		PruefungsverwaltungView view = new PruefungsverwaltungView();

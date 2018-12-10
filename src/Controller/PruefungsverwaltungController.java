@@ -45,7 +45,7 @@ public class PruefungsverwaltungController {
 
 	// Neu-Button wird geklickt
 	public void neuPruefung() {
-		
+
 		Pruefung pruefung = new Pruefung();
 		// Leere Maske der Prüfungsdetails wird geöffnet
 		PruefungsDetails detailView = new PruefungsDetails(view, pruefung);

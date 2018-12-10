@@ -22,6 +22,7 @@ import Views.PruefungsDetails;
 import Views.PruefungsverwaltungView;
 import Views.TerminErstellenPopUp;
 
+//Josah Weber
 public class PruefungsDetailsController {
 	// alle Methoden, die durch Bedienung der PruefungsDetails-View aufgerufen
 	// werden können
@@ -49,7 +50,6 @@ public class PruefungsDetailsController {
 		this.view = view;
 	}
 
-	// ab hier: Josah Weber
 	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
 

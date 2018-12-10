@@ -32,16 +32,16 @@ public class TerminErstellenPopUp {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	
-	//Konstruktor zum neu-erstellen eines Termins
+
+	// Konstruktor zum neu-erstellen eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung) {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
 
 	}
-	
-	//Konstruktor zum bearbeiten eines Termins
+
+	// Konstruktor zum bearbeiten eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Termin termin) {
 		this.pruefung = pruefung;
 		onCreate();
@@ -56,7 +56,8 @@ public class TerminErstellenPopUp {
 	public void onCreate() {
 
 		frmTermin = new JFrame("Termin");
-		frmTermin.setSize(new Dimension(500, 250)); // Frame hat nicht verstellbare feste Größe
+		frmTermin.setSize(new Dimension(500, 250)); // Frame hat nicht
+													// verstellbare feste Größe
 		frmTermin.setResizable(false);
 		frmTermin.setMinimumSize(new Dimension(500, 250));
 		frmTermin.setMaximumSize(new Dimension(500, 250));
@@ -124,7 +125,7 @@ public class TerminErstellenPopUp {
 		gbc_lblRaum.gridx = 1;
 		gbc_lblRaum.gridy = 3;
 		panel_1.add(lblRaum, gbc_lblRaum);
-		
+
 		textFieldRaum = new JTextField();
 		textFieldRaum.setColumns(10);
 		GridBagConstraints gbc_textFieldRaum = new GridBagConstraints();
@@ -137,10 +138,9 @@ public class TerminErstellenPopUp {
 		frmTermin.setDefaultCloseOperation(frmTermin.DISPOSE_ON_CLOSE);
 		frmTermin.setVisible(true);
 		frmTermin.pack();
-		frmTermin.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
+		frmTermin.setLocationRelativeTo(null); // Frame wird in der Mitte des
+												// Bildschirms erzeugt
 	}
-	
-	
 
 	public JFrame getFrmTermin() {
 		return frmTermin;
@@ -148,7 +148,9 @@ public class TerminErstellenPopUp {
 
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
 
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
+														// wenn "Ok" gedrückt
+														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -166,10 +168,12 @@ public class TerminErstellenPopUp {
 		});
 
 	}
-	
+
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
+														// wenn "Ok" gedrückt
+														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
 
