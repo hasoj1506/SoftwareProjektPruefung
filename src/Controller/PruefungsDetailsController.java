@@ -183,8 +183,8 @@ public class PruefungsDetailsController {
 					// Löschen der Aufgabe aus der Datenbank und neuladen der
 					// Tabelle
 
-					db.loescheAufgabe(zuLoeschendeAufgabe);
-					fuellePruefungsDetails(pruefung);
+					pruefung.getAufgaben().remove(zuLoeschendeAufgabe);
+					fuelleAufgabenTable(pruefung);
 				} else {
 					// nichts tun
 				}
