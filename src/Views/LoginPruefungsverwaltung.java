@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -19,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import Controller.LoginPruefungsverwaltungController;
 import Controller.PruefungsDetailsController;
+import Models.Nutzer;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -32,23 +35,13 @@ public class LoginPruefungsverwaltung {
 	private JButton btnLogin;
 	
 	LoginPruefungsverwaltungController controller;
+	Nutzer nutzer;
 
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginPruefungsverwaltung window = new LoginPruefungsverwaltung();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
@@ -58,6 +51,8 @@ public class LoginPruefungsverwaltung {
 		addActionListeners();
 		initialize();
 	}
+
+//
 
 	/**
 	 * Initialize the contents of the frame.
@@ -143,9 +138,11 @@ public class LoginPruefungsverwaltung {
 		gbc_btnLogin.gridy = 2;
 		panel_1.add(btnLogin, gbc_btnLogin);
 		
-//		setLocationRelativeTo(null);
-//		setMinimumSize(new Dimension(500, 300));
-//		setResizable(false);
+
+		frame.setLocationRelativeTo(null);
+		frame.setMinimumSize(new Dimension(500, 300));
+		frame.setResizable(false);
+		
 	}
 	
 	public JTextField getTFBenutzername() {
@@ -163,7 +160,20 @@ public class LoginPruefungsverwaltung {
 				controller.Einloggen();
 			}
 		});
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginPruefungsverwaltung window = new LoginPruefungsverwaltung();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 	
-	
-	}}
+}
