@@ -252,6 +252,7 @@ public class PruefungsDetailsController {
 					// Löschen des Termins aus der Liste und neuladen der
 					// Tabelle
 					pruefung.getTermine().remove(zuLoeschenderTermin);
+					db.loescheTermin(zuLoeschenderTermin);
 					fuelleTermineTable(pruefung);
 				} else {
 					// nichts tun
@@ -320,6 +321,7 @@ public class PruefungsDetailsController {
 					// Löschen des Teilnehmers aus der Liste und neuladen der
 					// Tabelle
 					pruefung.getNutzer().remove(zuLoeschenderTeilnehmer);
+					db.loescheNutzer(zuLoeschenderTeilnehmer);
 					fuelleTeilnehmerTable(pruefung);
 				} else {
 					// nichts tun

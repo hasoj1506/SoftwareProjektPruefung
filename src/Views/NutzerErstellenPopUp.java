@@ -195,7 +195,7 @@ public class NutzerErstellenPopUp {
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else {
 					Nutzer nutzer = new Nutzer(vorname, nachname, benutzername, passwort, false);
-
+					nutzer.setPruefung(pruefung);
 					pruefung.addNutzer(nutzer);
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
