@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -207,11 +208,11 @@ public class PruefungsDetailsController {
 
 	// Termin-bearbeiten Button wird geklickt / Doppelklick auf Termin
 	public void bearbeiteTermin() {
-		
+
 		try {
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTableTermine().getSelectedRow() > -1) {
-				
+
 				// Identifizieren des zu bearbeitenden Termins
 				termine = new ArrayList(pruefung.getTermine());
 				int selection = view.getTableTermine().getSelectedRow();
@@ -276,10 +277,10 @@ public class PruefungsDetailsController {
 	// Teilnehmer-bearbeiten Button wird geklickt / Doppelklick auf Teilnehmer
 	public void bearbeiteTeilnehmer() {
 		try {
-			
+
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTableTeilnehmer().getSelectedRow() > -1) {
-				
+
 				// Identifizieren des zu bearbeitenden Teilnehmers
 				teilnehmer = new ArrayList(pruefung.getNutzer());
 				int selection = view.getTableTeilnehmer().getSelectedRow();
@@ -333,14 +334,16 @@ public class PruefungsDetailsController {
 
 	}
 
+	// Prüfung-speichern-Button wird geklickt
 	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung) {
+
+		// Werte aus den Feldern holen
 		String bezeichnung = view.getTextFieldPrfungstitel().getText();
 
 		int dauer;
 		try {
 			dauer = Integer.parseInt(view.getTextFieldDauer().getText());
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(view, e);
 			dauer = 0;
 		}
 
@@ -348,18 +351,36 @@ public class PruefungsDetailsController {
 		try {
 			punkte = Integer.parseInt(view.getTextFieldPunkte().getText());
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(view, e);
 			punkte = 0;
 		}
 
-		pruefung.setBezeichnung(bezeichnung);
-		pruefung.setDauer(dauer);
-		pruefung.setPunkte(punkte);
-		db.persistPruefung(pruefung);
-		view.dispose();
-		pruefungsverwaltung.tabelleFuellen();
-	}
+		// Standard-Füllfarbe der Felder
+		view.getTextFieldPrfungstitel().setBackground(Color.WHITE);
+		view.getTextFieldDauer().setBackground(Color.WHITE);
+		view.getTextFieldPunkte().setBackground(Color.WHITE);
 
+		// Wenn die Felder gefüllt sind, Pruefung mit Daten versehen,
+		// andernfalls zum Füllen auffordern
+		if (bezeichnung == "") {
+			view.getTextFieldPrfungstitel().setBackground(Color.RED);
+			JOptionPane.showMessageDialog(view, "Bitte Bezeichnung korrekt füllen!");
+		} else if (dauer == 0) {
+			view.getTextFieldDauer().setBackground(Color.RED);
+			JOptionPane.showMessageDialog(view, "Bitte Dauer korrekt füllen!");
+		} else if (punkte == 0) {
+			view.getTextFieldPunkte().setBackground(Color.RED);
+			JOptionPane.showMessageDialog(view, "Bitte Punkte korrekt füllen!");
+		} else {
+			pruefung.setBezeichnung(bezeichnung);
+			pruefung.setDauer(dauer);
+			pruefung.setPunkte(punkte);
+			db.persistPruefung(pruefung);
+			view.dispose();
+			pruefungsverwaltung.tabelleFuellen();
+		}
+	}
+	
+	//Prüfung-löschen-Button wird geklickt
 	public void loeschenPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 		try {
 
@@ -382,7 +403,7 @@ public class PruefungsDetailsController {
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
 
