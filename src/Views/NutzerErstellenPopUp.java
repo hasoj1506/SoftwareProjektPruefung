@@ -123,7 +123,7 @@ public class NutzerErstellenPopUp {
 												// Bildschirms erzeugt
 	}
 
-	public JFrame getFrmTermin() {
+	public JFrame getFrmNutzer() {
 		return frmTermin;
 	}
 
