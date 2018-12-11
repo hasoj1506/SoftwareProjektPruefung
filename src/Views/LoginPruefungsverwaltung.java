@@ -131,7 +131,7 @@ public class LoginPruefungsverwaltung {
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
-		btnLogin = new JButton("Login");
+		JButton btnLogin = new JButton("Login");
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
 		gbc_btnLogin.anchor = GridBagConstraints.EAST;
 		gbc_btnLogin.gridx = 1;
@@ -176,5 +176,5 @@ public class LoginPruefungsverwaltung {
 		});
 	}
 	
-	
+	//
 }

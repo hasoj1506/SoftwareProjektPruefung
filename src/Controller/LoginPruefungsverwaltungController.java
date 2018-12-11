@@ -3,8 +3,6 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
 import Views.LoginPruefungsverwaltung;
@@ -26,11 +24,11 @@ public class LoginPruefungsverwaltungController {
 		this.view = view;
 	}
 	
-	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view, List<String> benutzernameListe, List<String> passwoerterListe) {
-		this.view = view;
-		this.benutzernameListe = benutzernameListe;
-		this.passwoerterListe = passwoerterListe;
-	}
+//	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view, List<String> benutzernameListe, List<String> passwoerterListe) {
+//		this.view = view;
+//		this.benutzernameListe = benutzernameListe;
+//		this.passwoerterListe = passwoerterListe;
+//	}
 
 	// Get Benutzer und passwort von textfeld in view
 	public String getBenutzername() {
