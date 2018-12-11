@@ -47,9 +47,9 @@ public class LoginPruefungsverwaltung {
 	 */
 	public LoginPruefungsverwaltung() {
 		this.controller = new LoginPruefungsverwaltungController(this);
-		addActionListeners();
-		Einloggen();
 		initialize();
+		addActionListeners();
+		
 	}
 
 //
@@ -162,6 +162,7 @@ public class LoginPruefungsverwaltung {
 		});
 	}
 	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
