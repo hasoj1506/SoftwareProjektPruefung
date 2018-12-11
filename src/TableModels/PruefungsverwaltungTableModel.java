@@ -40,7 +40,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		case 0:
 			return pruefungen.get(row).getBezeichnung();
 		case 1:
-			return pruefungen.get(row).getDauer() + " Minuten";
+			return pruefungen.get(row).getDauer() + " Min";
 		case 2:
 			return pruefungen.get(row).getPunkte();
 		case 3:

@@ -37,12 +37,12 @@ public class PruefungsverwaltungController {
 			view.getTablePruefungen().setModel(model);
 			
 			//Spaltenbreiten anpassen
-			view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(100);
-			view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(20);
+			view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(120);
+			view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(30);
 			view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(10);
 			view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
 			view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
-			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(20);
+			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert

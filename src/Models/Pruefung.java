@@ -108,7 +108,7 @@ public class Pruefung {
 		try {
 			Termin letzterTermin = termine.get(termine.size() - 1);
 
-			return letzterTermin.getDatum() + ", " + letzterTermin.getUhrzeit() + " Uhr";
+			return letzterTermin.getDatum();
 		} catch (Exception e) {
 			return "Keine Termine";
 		}
