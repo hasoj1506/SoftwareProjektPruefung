@@ -76,7 +76,7 @@ public class PruefungView {
 		gbc_lblPrfungstitel.gridx = 0;
 		gbc_lblPrfungstitel.gridy = 0;
 		infoPanel.add(lblPrfungstitel, gbc_lblPrfungstitel);
-
+//t
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
 		gbc_lblMatrikelnummer.anchor = GridBagConstraints.WEST;

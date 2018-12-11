@@ -173,7 +173,7 @@ public class AufgabendetailsView {
 		gbc_afgdButtonLoescheAufgabe.gridx = 1;
 		gbc_afgdButtonLoescheAufgabe.gridy = 0;
 		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
-
+//t
 		northPanel = new JPanel();
 		northPanel.setBackground(new Color(204, 204, 204));
 		frame.getContentPane().add(northPanel, BorderLayout.NORTH);

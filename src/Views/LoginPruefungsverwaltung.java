@@ -84,7 +84,7 @@ public class LoginPruefungsverwaltung {
 		gbc_lblPruefungsverwaltung.gridx = 0;
 		gbc_lblPruefungsverwaltung.gridy = 0;
 		panel.add(lblPruefungsverwaltung, gbc_lblPruefungsverwaltung);
-		
+		//t
 		JLabel lblVersion = new JLabel("Version");
 		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
