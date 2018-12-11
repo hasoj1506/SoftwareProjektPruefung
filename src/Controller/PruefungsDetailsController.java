@@ -48,8 +48,9 @@ public class PruefungsDetailsController {
 		this.pruefung = pruefung;
 	}
 
-	public PruefungsDetailsController(PruefungsDetails view) {
+	public PruefungsDetailsController(PruefungsDetails view, Pruefung pruefung) {
 		this.view = view;
+		this.pruefung = pruefung;
 	}
 
 	public void fuellePruefungsDetails(Pruefung pruefung) {

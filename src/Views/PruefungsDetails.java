@@ -65,7 +65,7 @@ public class PruefungsDetails extends JFrame {
 	// Konstruktor für leere Maske
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
 		this.pruefung = pruefung;
-		this.controller = new PruefungsDetailsController(this);
+		this.controller = new PruefungsDetailsController(this, pruefung);
 		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
 		addActionListeners();
@@ -75,7 +75,7 @@ public class PruefungsDetails extends JFrame {
 	public PruefungsDetails(Pruefung pruefung, PruefungsverwaltungView pruefungsverwaltung) {
 
 		this.pruefung = pruefung;
-		this.controller = new PruefungsDetailsController(this);
+		this.controller = new PruefungsDetailsController(this, pruefung);
 		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
 		fuellePruefungsDetailsZumBearbeiten();
