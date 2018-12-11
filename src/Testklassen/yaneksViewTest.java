@@ -3,6 +3,9 @@ package Testklassen;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import Models.Antwort;
 import Models.Aufgabe;
 import DatabaseService.DatabaseService;
@@ -10,6 +13,7 @@ import Models.Pruefung;
 import Models.Termin;
 import TableModels.AufgabendetailsTableModel;
 import Views.AufgabendetailsView;
+import Views.PruefungsverwaltungView;
 
 public class yaneksViewTest {
 
@@ -17,7 +21,7 @@ public class yaneksViewTest {
 
 		DatabaseService service = DatabaseService.getInstance();
 
-		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);
+		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120, 6);
 
 		Aufgabe aufgabe3 = new Aufgabe("t", 5, "5", pruefung);
 
@@ -31,8 +35,26 @@ public class yaneksViewTest {
 
 		pruefung.addAufgabe(aufgabe3);
 		
-		AufgabendetailsView view = new AufgabendetailsView(aufgabe3);
 		
+	  try {
+	  
+	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    } 
+	    catch (UnsupportedLookAndFeelException e) {
+	       
+	    }
+	    catch (ClassNotFoundException e) {
+	       
+	    }
+	    catch (InstantiationException e) {
+	       
+	    }
+	    catch (IllegalAccessException e) {
+	       
+	    }
+		;
+		
+		PruefungsverwaltungView view = new PruefungsverwaltungView();
 		
 //	t
 	}
