@@ -26,6 +26,7 @@ import Models.Nutzer;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Color;
 
 public class LoginPruefungsverwaltung {
 
@@ -66,6 +67,7 @@ public class LoginPruefungsverwaltung {
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
 		gbl_panel.rowHeights = new int[] {40, 40};
@@ -74,14 +76,17 @@ public class LoginPruefungsverwaltung {
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblPruefungsverwaltung = new JLabel("Pruefungsverwaltung");
-		lblPruefungsverwaltung.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPruefungsverwaltung.setBackground(new Color(51, 51, 51));
+		lblPruefungsverwaltung.setForeground(new Color(0, 155, 187));
+		lblPruefungsverwaltung.setFont(new Font("Verdana", Font.BOLD, 20));
 		GridBagConstraints gbc_lblPruefungsverwaltung = new GridBagConstraints();
 		gbc_lblPruefungsverwaltung.insets = new Insets(0, 0, 5, 0);
 		gbc_lblPruefungsverwaltung.gridx = 0;
 		gbc_lblPruefungsverwaltung.gridy = 0;
 		panel.add(lblPruefungsverwaltung, gbc_lblPruefungsverwaltung);
-		
+		//t
 		JLabel lblVersion = new JLabel("Version");
+		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
 		gbc_lblVersion.anchor = GridBagConstraints.NORTH;
 		gbc_lblVersion.gridx = 0;
@@ -89,6 +94,7 @@ public class LoginPruefungsverwaltung {
 		panel.add(lblVersion, gbc_lblVersion);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 155, 187));
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{0, 0, 0};
@@ -98,6 +104,7 @@ public class LoginPruefungsverwaltung {
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblBenutzername = new JLabel("Benutzername");
+		lblBenutzername.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblBenutzername = new GridBagConstraints();
 		gbc_lblBenutzername.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBenutzername.anchor = GridBagConstraints.EAST;
@@ -115,6 +122,7 @@ public class LoginPruefungsverwaltung {
 		textFieldBenutzername.setColumns(10);
 		
 		JLabel lblPasswort = new JLabel("Passwort");
+		lblPasswort.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPasswort = new GridBagConstraints();
 		gbc_lblPasswort.anchor = GridBagConstraints.EAST;
 		gbc_lblPasswort.insets = new Insets(0, 0, 5, 5);
@@ -132,6 +140,8 @@ public class LoginPruefungsverwaltung {
 		textFieldPasswort.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setForeground(new Color(51, 51, 51));
+		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
 		gbc_btnLogin.anchor = GridBagConstraints.EAST;
 		gbc_btnLogin.gridx = 1;

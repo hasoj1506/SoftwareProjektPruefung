@@ -35,50 +35,40 @@ public class yaneksViewTest {
 		aufgabe3.addAntwort(antwort3);
 
 		pruefung.addAufgabe(aufgabe3);
-		
-		
-	/*try {
-	  
-	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    } 
-	    catch (UnsupportedLookAndFeelException e) {
-	       
-	    }
-	    catch (ClassNotFoundException e) {
-	       
-	    }
-	    catch (InstantiationException e) {
-	       
-	    }
-	    catch (IllegalAccessException e) {
-	       
-	    }
-		;
-		
-		PruefungsverwaltungView view = new PruefungsverwaltungView();
-		
-//	t*/
-		//Nutzer nutzer = new Nutzer("Peter", "Wolf", "pwolf", "1235", false);
-		//service.persistNutzer(nutzer);
-		
-		int tester;
-		
+
 		try {
-		List<Nutzer> n = service.readLogin("pwolf", "1235", false);
-		tester = n.size();
-		System.out.println(n.size());
-		
-		if(tester == 1) {
-			System.out.println("Login erfolgreich!");
-			}
-			
+
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (UnsupportedLookAndFeelException e) {
+
+		} catch (ClassNotFoundException e) {
+
+		} catch (InstantiationException e) {
+
+		} catch (IllegalAccessException e) {
+
 		}
-		
-		catch(NullPointerException e) {
+		;
+
+		PruefungsverwaltungView view = new PruefungsverwaltungView();
+
+		int tester;
+
+		try {
+			List<Nutzer> n = service.readLogin("pwolf", "1235", false);
+			tester = n.size();
+			System.out.println(n.size());
+
+			if (tester == 1) {
+				System.out.println("Login erfolgreich!");
+			}
+
+		}
+
+		catch (NullPointerException e) {
 			System.out.println("Login fehlgeschlagen!");
 		}
 
-		
 	}
 
 }
