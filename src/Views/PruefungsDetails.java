@@ -52,6 +52,7 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnNeuTeilnehmer;
 	private JButton btnBearbeitenTeilnehmer;
 	private JButton btnLschenTeilnehmer;
+	private JButton btnLschenPruefung;
 
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
@@ -110,7 +111,7 @@ public class PruefungsDetails extends JFrame {
 		gbc_btnSpeichernPruefung.gridy = 0;
 		panel.add(btnSpeichernPruefung, gbc_btnSpeichernPruefung);
 
-		JButton btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
+		btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
 		GridBagConstraints gbc_btnLschenPruefung = new GridBagConstraints();
 		gbc_btnLschenPruefung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnLschenPruefung.gridx = 1;
@@ -366,6 +367,12 @@ public class PruefungsDetails extends JFrame {
 		btnSpeichernPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.speichernPruefung(pruefungsverwaltung);
+			}
+		});
+		
+		btnLschenPruefung.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.loeschenPruefung(pruefungsverwaltung);
 			}
 		});
 

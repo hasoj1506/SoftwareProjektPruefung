@@ -357,5 +357,31 @@ public class PruefungsDetailsController {
 		view.dispose();
 		pruefungsverwaltung.tabelleFuellen();
 	}
+	
+	public void loeschenPruefung(PruefungsverwaltungView pruefungsverwaltung){
+		try {
+
+				// Abfrage, ob wirklich gelöscht werden soll
+				int reply = JOptionPane.showConfirmDialog(view, "Soll die Prüfung wirklich gelöscht werden?",
+						"Abfrage", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+
+					// Identifizieren der zu löschenden Prüfung
+					List<Pruefung> pruefungen = db.readPruefungen();
+					Pruefung zuLoeschendePruefung = pruefung;
+
+					// Löschen der Prüfung aus der Datenbank und neuladen der
+					// Tabelle
+					db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
+					view.dispose();
+					pruefungsverwaltung.tabelleFuellen();
+				} else {
+					// nichts tun
+				}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+		}
+	}
 
 }
