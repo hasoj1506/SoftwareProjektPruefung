@@ -23,7 +23,8 @@ public class Pruefung {
 	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer = gesamtpunktzahl
 	private int punkte;
 	
-	Set<String> teilnehmer;
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
+	Set<Nutzer> nutzer;
 	
 	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
 	Set<Aufgabe> aufgaben;
@@ -44,7 +45,7 @@ public class Pruefung {
 		this.punkte = punkte;
 		termine = new HashSet<Termin>();
 		aufgaben = new HashSet<Aufgabe>();
-		teilnehmer = new HashSet<String>();
+		nutzer = new HashSet<Nutzer>();
 	}
 
 	public String getBezeichnung() {
@@ -67,12 +68,12 @@ public class Pruefung {
 		return pruefungId;
 	}
 	
-	public Set<String> getTeilnehmer(){
-		return teilnehmer;
+	public Set<Nutzer> getNutzer(){
+		return nutzer;
 	}
 	
-	public void addTeilnehmer(String teilnehmer){
-		this.teilnehmer.add(teilnehmer);
+	public void addTeilnehmer(Nutzer nutzer){
+		this.nutzer.add(nutzer);
 	}
 
 	public Set<Termin> getTermine() {

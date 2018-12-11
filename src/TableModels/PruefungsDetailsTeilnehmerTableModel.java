@@ -5,15 +5,16 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import Models.Aufgabe;
+import Models.Nutzer;
 import Models.Termin;
 
 //Josah Weber
 public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 
-	private List<String> teilnehmer;
+	private List<Nutzer> nutzer;
 
-	public PruefungsDetailsTeilnehmerTableModel(List<String> teilnehmer) {
-		this.teilnehmer = teilnehmer;
+	public PruefungsDetailsTeilnehmerTableModel(List<Nutzer> nutzer) {
+		this.nutzer = nutzer;
 	}
 
 	String[] columnNames = { "Name" };
@@ -27,7 +28,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
-		return teilnehmer.size();
+		return nutzer.size();
 	}
 
 	public Class getColumnClass(int col) {
@@ -37,7 +38,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		switch (col) {
 		case 0:
-			return teilnehmer.get(row);
+			return nutzer.get(row);
 		default:
 			return null;
 		}

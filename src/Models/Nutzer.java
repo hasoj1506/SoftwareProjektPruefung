@@ -17,6 +17,10 @@ public class Nutzer {
 	
 	private boolean istDozent;
 	
+	@ManyToOne
+	@JoinColumn(nullable=true)
+	private Pruefung pruefung;	//Zu jedem Nutzer genau eine Pruefung
+	
 	public Nutzer() {
 		
 		super();

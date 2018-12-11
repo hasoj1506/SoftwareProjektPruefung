@@ -29,19 +29,19 @@ public class PruefungsDetailsController {
 
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
-	private List<String> teilnehmer;
+	private List<Nutzer> nutzer;
 	private List<Termin> termine;
 	private Pruefung pruefung;
 
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
 
-	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<String> teilnehmer,
+	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<Nutzer> nutzer,
 			List<Termin> termine, Pruefung pruefung) {
 		super();
 		this.view = view;
 		this.aufgaben = aufgaben;
-		this.teilnehmer = teilnehmer;
+		this.nutzer = nutzer;
 		this.termine = termine;
 		this.pruefung = pruefung;
 	}
@@ -84,11 +84,11 @@ public class PruefungsDetailsController {
 		JTable tableTeilnehmer = view.getTableTeilnehmer();
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
-			teilnehmer = new ArrayList<String>(pruefung.getTeilnehmer());
+			nutzer = new ArrayList<Nutzer>(pruefung.getNutzer());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					teilnehmer);
+					nutzer);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
