@@ -49,6 +49,9 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnSpeichernPruefung;
 	private JButton btnBearbeitenTermin;
 	private JButton btnLschenTermin;
+	private JButton btnNeuTeilnehmer;
+	private JButton btnBearbeitenTeilnehmer;
+	private JButton btnLschenTeilnehmer;
 
 	PruefungsDetailsController controller;
 	Aufgabe aufgabe;
@@ -205,13 +208,13 @@ public class PruefungsDetails extends JFrame {
 			}
 		});
 
-		JButton btnNeuTeilnehmer = new JButton("Neu");
+		btnNeuTeilnehmer = new JButton("Neu");
 		panelTeilnehmerButtons.add(btnNeuTeilnehmer);
 
-		JButton btnBearbeitenTeilnehmer = new JButton("Bearbeiten");
+		btnBearbeitenTeilnehmer = new JButton("Bearbeiten");
 		panelTeilnehmerButtons.add(btnBearbeitenTeilnehmer);
 
-		JButton btnLschenTeilnehmer = new JButton("L\u00F6schen");
+		btnLschenTeilnehmer = new JButton("L\u00F6schen");
 		panelTeilnehmerButtons.add(btnLschenTeilnehmer);
 
 		JLabel lblTermine = new JLabel("Termine:");
@@ -417,6 +420,33 @@ public class PruefungsDetails extends JFrame {
 		btnLschenTermin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loescheTermin();
+			}
+		});
+		
+		btnNeuTeilnehmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.neuTeilnehmer(pruefung);
+			}
+		});
+
+		btnBearbeitenTeilnehmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.bearbeiteTeilnehmer();
+			}
+		});
+
+		tableTeilnehmer.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 2) {
+					controller.bearbeiteTeilnehmer();
+				}
+			}
+		});
+
+		btnLschenTeilnehmer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.loescheTeilnehmer();
 			}
 		});
 	}

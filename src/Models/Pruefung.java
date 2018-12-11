@@ -36,6 +36,7 @@ public class Pruefung {
 		super();
 		termine = new HashSet<Termin>();
 		aufgaben = new HashSet<Aufgabe>();
+		nutzer = new HashSet<Nutzer>();
 	}
 
 	public Pruefung(String bezeichnung, int dauer, int punkte) {
@@ -72,7 +73,7 @@ public class Pruefung {
 		return nutzer;
 	}
 	
-	public void addTeilnehmer(Nutzer nutzer){
+	public void addNutzer(Nutzer nutzer){
 		this.nutzer.add(nutzer);
 	}
 

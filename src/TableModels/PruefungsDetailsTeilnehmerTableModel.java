@@ -17,7 +17,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.nutzer = nutzer;
 	}
 
-	String[] columnNames = { "Name" };
+	String[] columnNames = { "Name", "Vorname", "Benutzername", "Passwort", "ID"};
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -38,7 +38,15 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		switch (col) {
 		case 0:
-			return nutzer.get(row);
+			return nutzer.get(row).getNachname();
+		case 1:
+			return nutzer.get(row).getVorname();
+		case 2:
+			return nutzer.get(row).getBenutzername();
+		case 3:
+			return nutzer.get(row).getPasswort();
+		case 4:
+			return nutzer.get(row).getNutzerId();
 		default:
 			return null;
 		}

@@ -18,6 +18,7 @@ import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
 import Views.AufgabendetailsView;
+import Views.NutzerErstellenPopUp;
 import Views.PruefungsDetails;
 import Views.PruefungsverwaltungView;
 import Views.TerminErstellenPopUp;
@@ -31,6 +32,7 @@ public class PruefungsDetailsController {
 	private List<Aufgabe> aufgaben;
 	private List<Nutzer> nutzer;
 	private List<Termin> termine;
+	private List<Nutzer> teilnehmer;
 	private Pruefung pruefung;
 
 	// um Zugriff auf die Datenbank zu bekommen
@@ -263,6 +265,71 @@ public class PruefungsDetailsController {
 		}
 
 	}
+	
+	// Neu-Teilnehmer-Button wird geklickt
+		public void neuTeilnehmer(Pruefung pruefung) {
+
+			// Leere Teilnehmer-Details-Maske wird geöffnet
+			NutzerErstellenPopUp nutzerDetails = new NutzerErstellenPopUp(view, pruefung);
+		}
+		
+		// Teilnehmer-bearbeiten Button wird geklickt / Doppelklick auf Teilnehmer
+		public void bearbeiteTeilnehmer() {
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTableTeilnehmer().getSelectedRow() > -1) {
+					// Identifizieren des zu bearbeitenden Teilnehmers
+					teilnehmer = new ArrayList(pruefung.getNutzer());
+					int selection = view.getTableTeilnehmer().getSelectedRow();
+					Nutzer zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
+
+					// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
+					// übergeben
+					NutzerErstellenPopUp detailView = new NutzerErstellenPopUp(view, pruefung, zuBearbeitenderTeilnehmer);
+					detailView.getFrmTermin()
+							.setTitle("Bearbeiten - Teilnehmer für: " + zuBearbeitenderTeilnehmer.getPruefung().getBezeichnung());
+				} else {
+					JOptionPane.showMessageDialog(view, "Kein Teilnehmer ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			}
+		}
+		
+		// Teilnehmer-Löschen-Button wird geklickt
+		public void loescheTeilnehmer() {
+
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTableTeilnehmer().getSelectedRow() > -1) {
+
+					// Abfrage, ob wirklich gelöscht werden soll
+					int reply = JOptionPane.showConfirmDialog(view, "Soll der Teilnehmer wirklich gelöscht werden?", "Abfrage",
+							JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+
+						// Identifizieren des zu löschenden Teilnehmers
+						teilnehmer = new ArrayList<Nutzer>(pruefung.getNutzer());
+						int selection = view.getTableTeilnehmer().getSelectedRow();
+						Nutzer zuLoeschenderTeilnehmer = teilnehmer.get(selection);
+
+						// Löschen des Teilnehmers aus der Liste und neuladen der
+						// Tabelle
+						pruefung.getNutzer().remove(zuLoeschenderTeilnehmer);
+						fuelleTeilnehmerTable(pruefung);
+					} else {
+						// nichts tun
+					}
+				} else {
+					JOptionPane.showMessageDialog(view, "Kein Teilnehmer ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view, "Ein Fehler ist aufgetreten!" + e);
+			}
+
+		}
 
 	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 		String bezeichnung = view.getTextFieldPrfungstitel().getText();

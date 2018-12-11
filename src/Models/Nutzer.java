@@ -27,7 +27,7 @@ public class Nutzer {
 		
 	}
 	
-	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent) {
+	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent, Pruefung pruefung) {
 		
 		super();
 		
@@ -36,6 +36,7 @@ public class Nutzer {
 		this.benutzername = benutzername;
 		this.passwort = passwort;
 		this.istDozent = istDozent;
+		this.pruefung = pruefung;
 		
 		
 	}
@@ -83,5 +84,10 @@ public class Nutzer {
 	public int getNutzerId() {
 		return nutzerId;
 	}
+
+	public Pruefung getPruefung() {
+		return pruefung;
+	}
+	
 	
 }
