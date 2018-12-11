@@ -14,19 +14,19 @@ import java.awt.event.ActionListener;
 //Josah Weber
 public class TerminErstellenPopUp {
 
+	String datum;
+	String uhrzeit;
+	String raum;
+
 	JFrame frmTermin;
 	JButton btnOk;
 	private JLabel lblDatum;
 	private JLabel lblRaum;
 	private JTextField textFieldDatum;
-
-	boolean richtig;
-	String datum;
-	String uhrzeit;
-	String raum;
 	private JLabel lblUhrzeit;
 	private JTextField textFieldUhrzeit;
 	private JTextField textFieldRaum;
+
 	private Pruefung pruefung;
 
 	/**
@@ -35,22 +35,19 @@ public class TerminErstellenPopUp {
 
 	// Konstruktor zum neu-erstellen eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung) {
+
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
-
 	}
 
 	// Konstruktor zum bearbeiten eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Termin termin) {
+
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, termin);
-
-		this.textFieldDatum.setText(termin.getDatum());
-		this.textFieldUhrzeit.setText(termin.getUhrzeit());
-		this.textFieldRaum.setText(termin.getRaum());
-
+		fuelleTerminPopUp(termin);
 	}
 
 	public void onCreate() {
@@ -146,6 +143,14 @@ public class TerminErstellenPopUp {
 		return frmTermin;
 	}
 
+	public void fuelleTerminPopUp(Termin termin) {
+
+		this.textFieldDatum.setText(termin.getDatum());
+		this.textFieldUhrzeit.setText(termin.getUhrzeit());
+		this.textFieldRaum.setText(termin.getRaum());
+	}
+
+	//ActionListener beim Bearbeiten eines Termins
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
 
 		btnOk.addActionListener(new ActionListener() { // Schlieﬂt das Fenster
@@ -168,7 +173,8 @@ public class TerminErstellenPopUp {
 		});
 
 	}
-
+	
+	//ActionListener beim Erstellen eines Termins
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
 		btnOk.addActionListener(new ActionListener() { // Schlieﬂt das Fenster
