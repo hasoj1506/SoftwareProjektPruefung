@@ -14,22 +14,23 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Pruefung {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int pruefungId;
 
 	private String bezeichnung;
-	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer = gesamtpunktzahl
+	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer =
+						// gesamtpunktzahl
 	private int punkte;
-	
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
+
+	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Nutzer> nutzer;
-	
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
+
+	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Aufgabe> aufgaben;
 
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
+	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Termin> termine;
 
 	public Pruefung() {
@@ -68,12 +69,12 @@ public class Pruefung {
 	public int getPruefungId() {
 		return pruefungId;
 	}
-	
-	public Set<Nutzer> getNutzer(){
+
+	public Set<Nutzer> getNutzer() {
 		return nutzer;
 	}
-	
-	public void addNutzer(Nutzer nutzer){
+
+	public void addNutzer(Nutzer nutzer) {
 		this.nutzer.add(nutzer);
 	}
 
@@ -84,7 +85,7 @@ public class Pruefung {
 	public void addTermin(Termin termin) {
 		this.termine.add(termin);
 	}
-	
+
 	public Set<Aufgabe> getAufgaben() {
 		return aufgaben;
 	}
@@ -92,13 +93,25 @@ public class Pruefung {
 	public void addAufgabe(Aufgabe aufgabe) {
 		this.aufgaben.add(aufgabe);
 	}
-	
-	public int getPunkte(){
+
+	public int getPunkte() {
 		return punkte;
 	}
-	
-	public void setPunkte(int punkte){
+
+	public void setPunkte(int punkte) {
 		this.punkte = punkte;
+	}
+
+	public String getLetzterTermin() {
+
+		ArrayList<Termin> termine = new ArrayList<Termin>(this.termine);
+		try {
+			Termin letzterTermin = termine.get(termine.size() - 1);
+
+			return letzterTermin.getDatum() + ", " + letzterTermin.getUhrzeit() + " Uhr";
+		} catch (Exception e) {
+			return "Keine Termine";
+		}
 	}
 
 }
