@@ -20,7 +20,7 @@ public class Aufgabe {
 	@JoinColumn(nullable=false)
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
 	
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy="aufgabe")
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="aufgabe")
 	Set<Antwort> antworten;
 	
 

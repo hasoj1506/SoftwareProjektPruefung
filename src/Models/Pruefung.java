@@ -25,10 +25,10 @@ public class Pruefung {
 	
 	Set<String> teilnehmer;
 	
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy="pruefung")
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
 	Set<Aufgabe> aufgaben;
 
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy="pruefung")
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="pruefung")
 	Set<Termin> termine;
 
 	public Pruefung() {
