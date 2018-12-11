@@ -150,7 +150,7 @@ public class TerminErstellenPopUp {
 		this.textFieldRaum.setText(termin.getRaum());
 	}
 
-	//ActionListener beim Bearbeiten eines Termins
+	// ActionListener beim Bearbeiten eines Termins
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -158,23 +158,42 @@ public class TerminErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				//Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
-				termin.setDatum(datum);
-				termin.setUhrzeit(uhrzeit);
-				termin.setRaum(raum);
 
-				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+				// Standard-Füllfarben
+				textFieldDatum.setBackground(Color.WHITE);
+				textFieldUhrzeit.setBackground(Color.WHITE);
+				textFieldRaum.setBackground(Color.WHITE);
+				
+				//Bei gültigen Eingaben Termin bearbeiten
+				if (datum.length() != 10) {
+					textFieldDatum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
+				} else if (uhrzeit.length() != 5) {
+					textFieldUhrzeit.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				} else if (raum.length() <= 0) {
+					textFieldRaum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
+				} else {
+					termin.setDatum(datum);
+					termin.setUhrzeit(uhrzeit);
+					termin.setRaum(raum);
 
-				frmTermin.dispose();
+					view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+
+					frmTermin.dispose();
+				}
 			}
 		});
 
 	}
-	
-	//ActionListener beim Erstellen eines Termins
+
+	// ActionListener beim Erstellen eines Termins
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -182,16 +201,35 @@ public class TerminErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				//Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
-				Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
 
-				pruefung.addTermin(termin);
-				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+				// Standard-Füllfarben
+				textFieldDatum.setBackground(Color.WHITE);
+				textFieldUhrzeit.setBackground(Color.WHITE);
+				textFieldRaum.setBackground(Color.WHITE);
+				
+				//Bei gültigen Eingaben Termin erstellen
+				if (datum.length() != 10) {
+					textFieldDatum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
+				} else if (uhrzeit.length() != 5) {
+					textFieldUhrzeit.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				} else if (raum.length() <= 0) {
+					textFieldRaum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
+				} else {
+					Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
 
-				frmTermin.dispose();
+					pruefung.addTermin(termin);
+					view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+
+					frmTermin.dispose();
+				}
 			}
 		});
 
