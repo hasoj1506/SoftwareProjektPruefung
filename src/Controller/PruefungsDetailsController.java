@@ -380,7 +380,7 @@ public class PruefungsDetailsController {
 		}
 	}
 	
-	//Prüfung-löschen-Button wird geklickt
+	//Prüfung-löschen-Button wird geklickt 
 	public void loeschenPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 		try {
 
