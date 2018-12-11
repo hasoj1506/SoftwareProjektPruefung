@@ -133,7 +133,7 @@ public class PruefungsDetailsController {
 	}
 
 	// Neu-Aufgabe-Button wird geklickt
-	public void neuAufgabe() {
+	public void neuAufgabe(Pruefung pruefung) {
 		Aufgabe aufgabe = new Aufgabe();
 		aufgabe.setPruefung(pruefung);
 		// Leere Aufgaben-Details-Maske wird geöffnet

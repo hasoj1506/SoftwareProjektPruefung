@@ -368,7 +368,7 @@ public class PruefungsDetails extends JFrame {
 
 		btnNeuAufgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.neuAufgabe();
+				controller.neuAufgabe(pruefung);
 			}
 		});
 
