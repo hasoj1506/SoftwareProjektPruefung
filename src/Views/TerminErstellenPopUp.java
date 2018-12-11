@@ -202,7 +202,7 @@ public class TerminErstellenPopUp {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//Werte der Felder holen
+				//Werte der Felder holen 
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
