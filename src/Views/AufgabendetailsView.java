@@ -39,22 +39,28 @@ public class AufgabendetailsView {
 
 	Pruefung pruefung;
 	Aufgabe aufgabe;
+	private JPanel panel;
+	private JPanel panel_1;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe neu erzeugt wird.
+	/*
+	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe
+	 * neu erzeugt wird.
+	 * 
+	 * this.pruefung = pruefung; onCreate(); this.controller = new
+	 * AufgabenDetailsController(this, pruefung); titleCheck(); btnAction();
+	 * 
+	 * }
+	 */
 
-		this.pruefung = pruefung;
-		onCreate();
-		this.controller = new AufgabenDetailsController(this, pruefung);
-		titleCheck();
-		btnAction();
+	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor falls bestehende
+																							// Aufgabe bearbeitet wird
 
-	}
-
-	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor falls bestehende Aufgabe bearbeitet wird
-		
 		this.pruefungsDetailsView = pruefungsDetailsView;
 		this.pruefung = aufgabe.getPruefung();
 		this.aufgabe = aufgabe;
@@ -68,72 +74,9 @@ public class AufgabendetailsView {
 	public void onCreate() {
 
 		this.frame = new JFrame("Aufgabendetails");
+		frame.setBackground(new Color(0, 155, 187));
 		frame.setForeground(Color.WHITE);
 		frame.setMinimumSize(new Dimension(850, 650));
-
-		JPanel eingabePanel = new JPanel();
-		eingabePanel.setMinimumSize(new Dimension(400, 300));
-		frame.getContentPane().add(eingabePanel, BorderLayout.NORTH);
-		GridBagLayout gbl_eingabePanel = new GridBagLayout();
-		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 356, 65, 0 };
-		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		eingabePanel.setLayout(gbl_eingabePanel);
-
-		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
-		GridBagConstraints gbc_afgdTitelLabel = new GridBagConstraints();
-		gbc_afgdTitelLabel.anchor = GridBagConstraints.NORTHEAST;
-		gbc_afgdTitelLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdTitelLabel.gridx = 1;
-		gbc_afgdTitelLabel.gridy = 1;
-		eingabePanel.add(afgdTitelLabel, gbc_afgdTitelLabel);
-
-		afgdTitelTextField = new JTextField();
-		GridBagConstraints gbc_afgdTitelTextField = new GridBagConstraints();
-		gbc_afgdTitelTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdTitelTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdTitelTextField.gridx = 2;
-		gbc_afgdTitelTextField.gridy = 1;
-		eingabePanel.add(afgdTitelTextField, gbc_afgdTitelTextField);
-		afgdTitelTextField.setColumns(10);
-
-		JLabel afgdFrageLabel = new JLabel("Fragestellung:");
-		GridBagConstraints gbc_afgdFrageLabel = new GridBagConstraints();
-		gbc_afgdFrageLabel.anchor = GridBagConstraints.NORTHEAST;
-		gbc_afgdFrageLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdFrageLabel.gridx = 1;
-		gbc_afgdFrageLabel.gridy = 2;
-		eingabePanel.add(afgdFrageLabel, gbc_afgdFrageLabel);
-
-		afgdFrageTextField = new JTextField();
-		afgdFrageTextField.setText("\r\n");
-		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
-		gbc_afgdFrageTextField.anchor = GridBagConstraints.NORTH;
-		gbc_afgdFrageTextField.gridheight = 3;
-		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdFrageTextField.fill = GridBagConstraints.BOTH;
-		gbc_afgdFrageTextField.gridx = 2;
-		gbc_afgdFrageTextField.gridy = 2;
-		eingabePanel.add(afgdFrageTextField, gbc_afgdFrageTextField);
-		afgdFrageTextField.setColumns(10);
-
-		JLabel afgdPunkteLabel = new JLabel("Punktzahl:");
-		GridBagConstraints gbc_afgdPunkteLabel = new GridBagConstraints();
-		gbc_afgdPunkteLabel.anchor = GridBagConstraints.EAST;
-		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdPunkteLabel.gridx = 1;
-		gbc_afgdPunkteLabel.gridy = 5;
-		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
-
-		afgdPunkteTextField = new JTextField();
-		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
-		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
-		gbc_afgdPunkteTextField.gridx = 2;
-		gbc_afgdPunkteTextField.gridy = 5;
-		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
-		afgdPunkteTextField.setColumns(10);
 
 		JPanel arbeitsPanel = new JPanel();
 		arbeitsPanel.setMinimumSize(new Dimension(400, 300));
@@ -146,6 +89,8 @@ public class AufgabendetailsView {
 		arbeitsPanel.setLayout(gbl_arbeitsPanel);
 
 		JLabel afgdAntwortenLabel = new JLabel("Antworten:");
+		afgdAntwortenLabel.setForeground(new Color(153, 153, 153));
+		afgdAntwortenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_afgdAntwortenLabel = new GridBagConstraints();
 		gbc_afgdAntwortenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdAntwortenLabel.insets = new Insets(0, 0, 0, 5);
@@ -162,18 +107,21 @@ public class AufgabendetailsView {
 		gbc_tableScrollPane.gridx = 2;
 		gbc_tableScrollPane.gridy = 0;
 		arbeitsPanel.add(tableScrollPane, gbc_tableScrollPane);
-		
+
 		afgdTable = new JTable();
 		afgdTable.setMinimumSize(new Dimension(500, 300));
 		afgdTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableScrollPane.setViewportView(afgdTable);
 
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 70, 10));
 
 		JPanel unterPanel = new JPanel();
+		unterPanel.setBackground(new Color(204, 204, 204));
+		unterPanel.setBorder(null);
 		buttonPanel.add(unterPanel);
 		GridBagLayout gbl_unterPanel = new GridBagLayout();
 		gbl_unterPanel.columnWidths = new int[] { 46, 33, 54, 0, 39, 57, 0 };
@@ -234,6 +182,136 @@ public class AufgabendetailsView {
 		gbc_afgdButtonLoescheAufgabe.gridy = 2;
 		unterPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
 
+		panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 204));
+		frame.getContentPane().add(panel, BorderLayout.NORTH);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[] { 596, 0 };
+		gbl_panel.rowHeights = new int[] { 81, 93, 0 };
+		gbl_panel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		panel.setLayout(gbl_panel);
+
+		panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 0;
+		panel_1.setBackground(new Color(0, 155, 187));
+		panel.add(panel_1, gbc_panel_1);
+		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		gbl_panel_1.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panel_1.setLayout(gbl_panel_1);
+
+		lblNewLabel = new JLabel("Aufgabendetails");
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 2;
+		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 1;
+		panel_1.add(lblNewLabel, gbc_lblNewLabel);
+
+		lblNewLabel_1 = new JLabel("Lege die Eigenschaften der Aufgabe fest");
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_1.gridx = 2;
+		gbc_lblNewLabel_1.gridy = 3;
+		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Yanek\\Desktop\\Logo_FH_Bielefeld-652.png"));
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.fill = GridBagConstraints.VERTICAL;
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_2.gridx = 3;
+		gbc_lblNewLabel_2.gridy = 3;
+		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
+
+		JPanel eingabePanel = new JPanel();
+		eingabePanel.setBackground(new Color(204, 204, 204));
+		GridBagConstraints gbc_eingabePanel = new GridBagConstraints();
+		gbc_eingabePanel.fill = GridBagConstraints.BOTH;
+		gbc_eingabePanel.gridx = 0;
+		gbc_eingabePanel.gridy = 1;
+		panel.add(eingabePanel, gbc_eingabePanel);
+		eingabePanel.setMinimumSize(new Dimension(400, 300));
+		GridBagLayout gbl_eingabePanel = new GridBagLayout();
+		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 356, 65, 0 };
+		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		eingabePanel.setLayout(gbl_eingabePanel);
+
+		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
+		afgdTitelLabel.setForeground(new Color(255, 255, 255));
+		afgdTitelLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_afgdTitelLabel = new GridBagConstraints();
+		gbc_afgdTitelLabel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_afgdTitelLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdTitelLabel.gridx = 1;
+		gbc_afgdTitelLabel.gridy = 1;
+		eingabePanel.add(afgdTitelLabel, gbc_afgdTitelLabel);
+
+		afgdTitelTextField = new JTextField();
+		GridBagConstraints gbc_afgdTitelTextField = new GridBagConstraints();
+		gbc_afgdTitelTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdTitelTextField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdTitelTextField.gridx = 2;
+		gbc_afgdTitelTextField.gridy = 1;
+		eingabePanel.add(afgdTitelTextField, gbc_afgdTitelTextField);
+		afgdTitelTextField.setColumns(10);
+
+		JLabel afgdFrageLabel = new JLabel("Fragestellung:");
+		afgdFrageLabel.setForeground(new Color(255, 255, 255));
+		afgdFrageLabel.setBackground(new Color(255, 255, 255));
+		afgdFrageLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_afgdFrageLabel = new GridBagConstraints();
+		gbc_afgdFrageLabel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_afgdFrageLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdFrageLabel.gridx = 1;
+		gbc_afgdFrageLabel.gridy = 2;
+		eingabePanel.add(afgdFrageLabel, gbc_afgdFrageLabel);
+
+		afgdFrageTextField = new JTextField();
+		afgdFrageTextField.setText("\r\n");
+		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
+		gbc_afgdFrageTextField.anchor = GridBagConstraints.NORTH;
+		gbc_afgdFrageTextField.gridheight = 3;
+		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdFrageTextField.fill = GridBagConstraints.BOTH;
+		gbc_afgdFrageTextField.gridx = 2;
+		gbc_afgdFrageTextField.gridy = 2;
+		eingabePanel.add(afgdFrageTextField, gbc_afgdFrageTextField);
+		afgdFrageTextField.setColumns(10);
+
+		JLabel afgdPunkteLabel = new JLabel("Punktzahl:");
+		afgdPunkteLabel.setForeground(new Color(255, 255, 255));
+		afgdPunkteLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_afgdPunkteLabel = new GridBagConstraints();
+		gbc_afgdPunkteLabel.anchor = GridBagConstraints.EAST;
+		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdPunkteLabel.gridx = 1;
+		gbc_afgdPunkteLabel.gridy = 5;
+		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
+
+		afgdPunkteTextField = new JTextField();
+		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
+		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 5, 5);
+		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
+		gbc_afgdPunkteTextField.gridx = 2;
+		gbc_afgdPunkteTextField.gridy = 5;
+		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
+		afgdPunkteTextField.setColumns(10);
+
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.pack();
@@ -270,10 +348,10 @@ public class AufgabendetailsView {
 
 		afgdButtonLoescheAufgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.aufgabeLoeschen();//t
+				controller.aufgabeLoeschen();// t
 			}
 		});
-		
+
 		afgdTable.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
@@ -282,7 +360,6 @@ public class AufgabendetailsView {
 				}
 			}
 		});
-
 
 	}
 
@@ -312,7 +389,7 @@ public class AufgabendetailsView {
 	public void fehlerMeldung(String text) {
 		JOptionPane.showMessageDialog(this.frame, text);
 	}
-	
+
 	public void schliessen() {
 		this.frame.dispose();
 	}
@@ -332,11 +409,11 @@ public class AufgabendetailsView {
 	public JTable getAfgdTable() {
 		return afgdTable;
 	}
-	
+
 	public JFrame getAfgdFrame() {
 		return this.frame;
 	}
-	
+
 	public AufgabenDetailsController getController() {
 		return this.controller;
 	}
@@ -360,7 +437,5 @@ public class AufgabendetailsView {
 	public PruefungsDetails getPruefungsDetailsView() {
 		return pruefungsDetailsView;
 	}
-	
-
 
 }
