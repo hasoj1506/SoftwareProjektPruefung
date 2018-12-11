@@ -14,12 +14,12 @@ import java.awt.event.ActionListener;
 
 //Josah Weber
 public class NutzerErstellenPopUp {
-	
+
 	String vorname;
 	String nachname;
 	String benutzername;
 	String passwort;
-	
+
 	JFrame frmNutzer;
 	JButton btnOk;
 	private JLabel lblVorname;
@@ -126,7 +126,7 @@ public class NutzerErstellenPopUp {
 		return frmNutzer;
 	}
 
-	//ActionListener für den Fall, dass ein Nutzer bearbeitet wird
+	// ActionListener für den Fall, dass ein Nutzer bearbeitet wird
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Nutzer nutzer) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -134,26 +134,40 @@ public class NutzerErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-				
+
+				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
 				benutzername = vorname + nachname;
 				passwort = benutzername;
 				
-				nutzer.setVorname(vorname);;
-				nutzer.setNachname(nachname);
-				nutzer.setBenutzername(benutzername);
-				nutzer.setPasswort(passwort);
+				//Standard-Farbfüllung der Felder
+				textFieldVorname.setBackground(Color.WHITE);
+				textFieldNachname.setBackground(Color.WHITE);
 				
-				
-				view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
+				//Nutzer die Daten zuweisen, sofern korrekt eingegeben
+				if (vorname.length() <= 0) {
+					textFieldVorname.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
+				} else if (nachname.length() <= 0) {
+					textFieldNachname.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
+				} else {
+					nutzer.setVorname(vorname);
+					nutzer.setNachname(nachname);
+					nutzer.setBenutzername(benutzername);
+					nutzer.setPasswort(passwort);
 
-				frmNutzer.dispose();
+					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
+
+					frmNutzer.dispose();
+				}
 			}
 		});
 
 	}
 
+	// ActionListener für den Fall, dass ein neuer Nutzer angelegt wird
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -161,28 +175,33 @@ public class NutzerErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
 				benutzername = vorname + nachname;
 				passwort = benutzername;
 				
-				if(vorname.length() <= 0){
+				//Standard-Farbfüllung der Felder
+				textFieldVorname.setBackground(Color.WHITE);
+				textFieldNachname.setBackground(Color.WHITE);
+				
+				//Nutzer die Daten zuweisen, sofern korrekt eingegeben
+				if (vorname.length() <= 0) {
 					textFieldVorname.setBackground(Color.RED);
-					JOptionPane.showMessageDialog(view, "Bitte Vornamen korrekt eingeben!");
-				} else if(nachname.length() <=0){
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
+				} else if (nachname.length() <= 0) {
 					textFieldNachname.setBackground(Color.RED);
-					JOptionPane.showMessageDialog(view, "Bitte Nachnamen korrekt eingeben!");
-				} else{
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
+				} else {
 					Nutzer nutzer = new Nutzer(vorname, nachname, benutzername, passwort, false);
-					nutzer.setPruefung(pruefung);
 
 					pruefung.addNutzer(nutzer);
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
 					frmNutzer.dispose();
 				}
-				
+
 			}
 		});
 
