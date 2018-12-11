@@ -27,7 +27,7 @@ public class Nutzer {
 		
 	}
 	
-	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent, Pruefung pruefung) {
+	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent) {
 		
 		super();
 		

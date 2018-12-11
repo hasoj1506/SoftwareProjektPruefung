@@ -8,6 +8,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import Models.Antwort;
 import Models.Aufgabe;
+import Models.Nutzer;
 import DatabaseService.DatabaseService;
 import Models.Pruefung;
 import Models.Termin;
@@ -36,7 +37,7 @@ public class yaneksViewTest {
 		pruefung.addAufgabe(aufgabe3);
 		
 		
-	  try {
+	/*try {
 	  
 	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	    } 
@@ -56,7 +57,28 @@ public class yaneksViewTest {
 		
 		PruefungsverwaltungView view = new PruefungsverwaltungView();
 		
-//	t
+//	t*/
+		//Nutzer nutzer = new Nutzer("Peter", "Wolf", "pwolf", "1235", false);
+		//service.persistNutzer(nutzer);
+		
+		int tester;
+		
+		try {
+		List<Nutzer> n = service.readLogin("pwolf", "1235", false);
+		tester = n.size();
+		System.out.println(n.size());
+		
+		if(tester == 1) {
+			System.out.println("Login erfolgreich!");
+			}
+			
+		}
+		
+		catch(NullPointerException e) {
+			System.out.println("Login fehlgeschlagen!");
+		}
+
+		
 	}
 
 }
