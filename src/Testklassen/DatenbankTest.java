@@ -25,6 +25,7 @@ public class DatenbankTest {
 			pruefung.addTermin(termin1);
 			pruefung.addTermin(termin2);
 
+			//
 			// persistiert(in die Datenbank schreiben) die Prüfung in der
 			// Datenbank
 			service.persistPruefung(pruefung);
