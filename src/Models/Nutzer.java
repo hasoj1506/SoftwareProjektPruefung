@@ -6,39 +6,38 @@ import javax.persistence.*;
 public class Nutzer {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int nutzerId;	// Dozentennummer oder Matrikelnummer
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int nutzerId; // Dozentennummer oder Matrikelnummer
+
 	private String vorname;
 	private String nachname;
-	
+
 	private String benutzername;
 	private String passwort;
-	
+
 	private boolean istDozent;
-	
+
 	@ManyToOne
-	@JoinColumn(nullable=true)
-	private Pruefung pruefung;	//Zu jedem Nutzer genau eine Pruefung
-	
+	@JoinColumn(nullable = true)
+	private Pruefung pruefung; // Zu jedem Nutzer genau eine Pruefung
+
 	public Nutzer() {
-		
+
 		super();
-		
+
 	}
-	
+
 	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent) {
-		
+
 		super();
-		
+
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.benutzername = benutzername;
 		this.passwort = passwort;
 		this.istDozent = istDozent;
 		this.pruefung = pruefung;
-		
-		
+
 	}
 
 	public String getVorname() {
@@ -88,6 +87,9 @@ public class Nutzer {
 	public Pruefung getPruefung() {
 		return pruefung;
 	}
-	
-	
+
+	public void setPruefung(Pruefung pruefung) {
+		this.pruefung = pruefung;
+	}
+
 }

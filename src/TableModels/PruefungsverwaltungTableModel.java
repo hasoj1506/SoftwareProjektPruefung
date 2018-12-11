@@ -1,10 +1,12 @@
 package TableModels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import Models.Pruefung;
+import Models.Termin;
 
 //Josah Weber
 public class PruefungsverwaltungTableModel extends AbstractTableModel {
@@ -15,7 +17,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		this.pruefungen = pruefungen;
 	}
 
-	String[] columnNames = { "Titel", "Dauer", "Punkte" };
+	String[] columnNames = { "Titel", "Dauer", "Punkte", "Aufgaben", "Zuletzt erstellter Termin", "Teilnehmer" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -38,26 +40,17 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		case 0:
 			return pruefungen.get(row).getBezeichnung();
 		case 1:
-			return pruefungen.get(row).getDauer();
+			return pruefungen.get(row).getDauer() + " Minuten";
 		case 2:
 			return pruefungen.get(row).getPunkte();
+		case 3:
+			return pruefungen.get(row).getAufgaben().size();
+		case 4:
+			return pruefungen.get(row).getLetzterTermin();
+		case 5:
+			return pruefungen.get(row).getNutzer().size();
 		default:
 			return null;
 		}
 	}
-
-	// public void setValueAt(Object value, int row, int col) {
-	// Pruefung pruefung = pruefungen.get(row);
-	// switch(col){
-	// case 0:
-	// pruefung.setBezeichnung((String)value);
-	// break;
-	// case 1:
-	// //pruefung.setTermin((String)value);
-	// case 2:
-	// pruefung.setDauer((Integer)value);
-	// break;
-	// }
-	// }
-
 }

@@ -32,9 +32,7 @@ import javax.swing.ImageIcon;
 public class PruefungsverwaltungView {
 
 	private JFrame frmPrfungsverwaltung;
-
 	private JTable tablePruefungen;
-
 	private JButton btnNeuPruefung;
 	private JButton btnBearbeitenPruefung;
 	private JButton btnLoeschenPruefung;
@@ -55,7 +53,6 @@ public class PruefungsverwaltungView {
 
 	}
 
-	// noch Refactoring?
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
@@ -214,6 +211,7 @@ public class PruefungsverwaltungView {
 
 	}
 
+	// Hinzufügen der ActionListener
 	public void addActionListeners() {
 
 		btnNeuPruefung.addActionListener(new ActionListener() {

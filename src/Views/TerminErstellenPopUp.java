@@ -14,19 +14,19 @@ import java.awt.event.ActionListener;
 //Josah Weber
 public class TerminErstellenPopUp {
 
+	String datum;
+	String uhrzeit;
+	String raum;
+
 	JFrame frmTermin;
 	JButton btnOk;
 	private JLabel lblDatum;
 	private JLabel lblRaum;
 	private JTextField textFieldDatum;
-
-	boolean richtig;
-	String datum;
-	String uhrzeit;
-	String raum;
 	private JLabel lblUhrzeit;
 	private JTextField textFieldUhrzeit;
 	private JTextField textFieldRaum;
+
 	private Pruefung pruefung;
 
 	/**
@@ -35,22 +35,19 @@ public class TerminErstellenPopUp {
 
 	// Konstruktor zum neu-erstellen eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung) {
+
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
-
 	}
 
 	// Konstruktor zum bearbeiten eines Termins
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Termin termin) {
+
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, termin);
-
-		this.textFieldDatum.setText(termin.getDatum());
-		this.textFieldUhrzeit.setText(termin.getUhrzeit());
-		this.textFieldRaum.setText(termin.getRaum());
-
+		fuelleTerminPopUp(termin);
 	}
 
 	public void onCreate() {
@@ -146,6 +143,14 @@ public class TerminErstellenPopUp {
 		return frmTermin;
 	}
 
+	public void fuelleTerminPopUp(Termin termin) {
+
+		this.textFieldDatum.setText(termin.getDatum());
+		this.textFieldUhrzeit.setText(termin.getUhrzeit());
+		this.textFieldRaum.setText(termin.getRaum());
+	}
+
+	// ActionListener beim Bearbeiten eines Termins
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -153,22 +158,42 @@ public class TerminErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				//Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
-				termin.setDatum(datum);
-				termin.setUhrzeit(uhrzeit);
-				termin.setRaum(raum);
 
-				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+				// Standard-Füllfarben
+				textFieldDatum.setBackground(Color.WHITE);
+				textFieldUhrzeit.setBackground(Color.WHITE);
+				textFieldRaum.setBackground(Color.WHITE);
+				
+				//Bei gültigen Eingaben Termin bearbeiten
+				if (datum.length() != 10) {
+					textFieldDatum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
+				} else if (uhrzeit.length() != 5) {
+					textFieldUhrzeit.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				} else if (raum.length() <= 0) {
+					textFieldRaum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
+				} else {
+					termin.setDatum(datum);
+					termin.setUhrzeit(uhrzeit);
+					termin.setRaum(raum);
 
-				frmTermin.dispose();
+					view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+
+					frmTermin.dispose();
+				}
 			}
 		});
 
 	}
 
+	// ActionListener beim Erstellen eines Termins
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -176,16 +201,35 @@ public class TerminErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				//Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
-				Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
 
-				pruefung.addTermin(termin);
-				view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+				// Standard-Füllfarben
+				textFieldDatum.setBackground(Color.WHITE);
+				textFieldUhrzeit.setBackground(Color.WHITE);
+				textFieldRaum.setBackground(Color.WHITE);
+				
+				//Bei gültigen Eingaben Termin erstellen
+				if (datum.length() != 10) {
+					textFieldDatum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
+				} else if (uhrzeit.length() != 5) {
+					textFieldUhrzeit.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				} else if (raum.length() <= 0) {
+					textFieldRaum.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
+				} else {
+					Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
 
-				frmTermin.dispose();
+					pruefung.addTermin(termin);
+					view.getPruefungsDetailController().fuelleTermineTable(pruefung);
+
+					frmTermin.dispose();
+				}
 			}
 		});
 

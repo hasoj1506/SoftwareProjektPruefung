@@ -32,6 +32,7 @@ import javax.swing.JSeparator;
 
 //Josah Weber
 public class PruefungsDetails extends JFrame {
+	
 	private PruefungsverwaltungView pruefungsverwaltung;
 
 	private Pruefung pruefung;
@@ -55,15 +56,13 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnLschenPruefung;
 
 	PruefungsDetailsController controller;
-	Aufgabe aufgabe;
-	Termin termin;
-	Nutzer nutzer;
 
 	/**
 	 * @wbp.parser.constructor
 	 */
 	// Konstruktor für leere Maske
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
+		
 		this.pruefung = pruefung;
 		this.controller = new PruefungsDetailsController(this, pruefung);
 		this.pruefungsverwaltung = pruefungsverwaltung;
@@ -81,7 +80,8 @@ public class PruefungsDetails extends JFrame {
 		fuellePruefungsDetailsZumBearbeiten();
 		addActionListeners();
 	}
-
+	
+	//Refactoring?
 	public void onCreate() {
 		
 		setMinimumSize(new Dimension(850, 650));
@@ -351,17 +351,17 @@ public class PruefungsDetails extends JFrame {
 	public PruefungsDetailsController getPruefungsDetailController() {
 		return this.controller;
 	}
+	
+	public JTable getTableTermine() {
+		return tableTermine;
+	}
 
 	// Wenn vorhandene Prüfung bearbeitet werden soll
 	public void fuellePruefungsDetailsZumBearbeiten() {
 		controller.fuellePruefungsDetails(pruefung);
 	}
 
-	public JTable getTableTermine() {
-		return tableTermine;
-	}
-
-	// Zuweisung der ActionListener für Buttons etc
+	// Zuweisung der ActionListener für Buttons etc.
 	public void addActionListeners() {
 
 		btnSpeichernPruefung.addActionListener(new ActionListener() {
