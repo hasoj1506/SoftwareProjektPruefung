@@ -361,7 +361,7 @@ public class PruefungsDetailsController {
 
 		// Wenn die Felder gefüllt sind, Pruefung mit Daten versehen,
 		// andernfalls zum Füllen auffordern
-		if (bezeichnung == "") {
+		if (bezeichnung.length() <= 0) {
 			view.getTextFieldPrfungstitel().setBackground(Color.RED);
 			JOptionPane.showMessageDialog(view, "Bitte Bezeichnung korrekt füllen!");
 		} else if (dauer == 0) {

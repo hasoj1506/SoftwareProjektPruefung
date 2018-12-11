@@ -14,17 +14,16 @@ import java.awt.event.ActionListener;
 
 //Josah Weber
 public class NutzerErstellenPopUp {
-
-	JFrame frmTermin;
-	JButton btnOk;
-	private JLabel lblVorname;
-	private JTextField textFieldVorname;
-
-	boolean richtig;
+	
 	String vorname;
 	String nachname;
 	String benutzername;
 	String passwort;
+	
+	JFrame frmNutzer;
+	JButton btnOk;
+	private JLabel lblVorname;
+	private JTextField textFieldVorname;
 	private JLabel lblNachname;
 	private JTextField textFieldNachname;
 	private Pruefung pruefung;
@@ -54,16 +53,16 @@ public class NutzerErstellenPopUp {
 
 	public void onCreate() {
 
-		frmTermin = new JFrame("Nutzer");
-		frmTermin.setSize(new Dimension(500, 250)); // Frame hat nicht
+		frmNutzer = new JFrame("Nutzer");
+		frmNutzer.setSize(new Dimension(500, 250)); // Frame hat nicht
 													// verstellbare feste Größe
-		frmTermin.setResizable(false);
-		frmTermin.setMinimumSize(new Dimension(500, 250));
-		frmTermin.setMaximumSize(new Dimension(500, 250));
-		frmTermin.setFocusable(false);
+		frmNutzer.setResizable(false);
+		frmNutzer.setMinimumSize(new Dimension(500, 250));
+		frmNutzer.setMaximumSize(new Dimension(500, 250));
+		frmNutzer.setFocusable(false);
 
 		JPanel panel = new JPanel();
-		frmTermin.getContentPane().add(panel, BorderLayout.SOUTH);
+		frmNutzer.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
 		btnOk = new JButton("Speichern");
@@ -73,7 +72,7 @@ public class NutzerErstellenPopUp {
 		panel.add(btnOk);
 
 		JPanel panel_1 = new JPanel();
-		frmTermin.getContentPane().add(panel_1, BorderLayout.CENTER);
+		frmNutzer.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
 		gbl_panel_1.rowHeights = new int[] { 45, 11, 0, 0, 0, 0 };
@@ -116,17 +115,18 @@ public class NutzerErstellenPopUp {
 		panel_1.add(textFieldNachname, gbc_textFieldNachname);
 		textFieldNachname.setColumns(10);
 
-		frmTermin.setDefaultCloseOperation(frmTermin.DISPOSE_ON_CLOSE);
-		frmTermin.setVisible(true);
-		frmTermin.pack();
-		frmTermin.setLocationRelativeTo(null); // Frame wird in der Mitte des
+		frmNutzer.setDefaultCloseOperation(frmNutzer.DISPOSE_ON_CLOSE);
+		frmNutzer.setVisible(true);
+		frmNutzer.pack();
+		frmNutzer.setLocationRelativeTo(null); // Frame wird in der Mitte des
 												// Bildschirms erzeugt
 	}
 
 	public JFrame getFrmNutzer() {
-		return frmTermin;
+		return frmNutzer;
 	}
 
+	//ActionListener für den Fall, dass ein Nutzer bearbeitet wird
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Nutzer nutzer) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
@@ -134,20 +134,21 @@ public class NutzerErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-
+				
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
 				benutzername = vorname + nachname;
 				passwort = benutzername;
+				
 				nutzer.setVorname(vorname);;
 				nutzer.setNachname(nachname);
 				nutzer.setBenutzername(benutzername);
 				nutzer.setPasswort(passwort);
 				
-
+				
 				view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
-				frmTermin.dispose();
+				frmNutzer.dispose();
 			}
 		});
 
@@ -165,12 +166,23 @@ public class NutzerErstellenPopUp {
 				nachname = textFieldNachname.getText();
 				benutzername = vorname + nachname;
 				passwort = benutzername;
-				Nutzer nutzer = new Nutzer(vorname, nachname, benutzername, passwort, false, pruefung);
+				
+				if(vorname.length() <= 0){
+					textFieldVorname.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(view, "Bitte Vornamen korrekt eingeben!");
+				} else if(nachname.length() <=0){
+					textFieldNachname.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(view, "Bitte Nachnamen korrekt eingeben!");
+				} else{
+					Nutzer nutzer = new Nutzer(vorname, nachname, benutzername, passwort, false);
+					nutzer.setPruefung(pruefung);
 
-				pruefung.addNutzer(nutzer);
-				view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
+					pruefung.addNutzer(nutzer);
+					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
-				frmTermin.dispose();
+					frmNutzer.dispose();
+				}
+				
 			}
 		});
 

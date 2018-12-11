@@ -45,19 +45,4 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-
-	// public void setValueAt(Object value, int row, int col) {
-	// Pruefung pruefung = pruefungen.get(row);
-	// switch(col){
-	// case 0:
-	// pruefung.setBezeichnung((String)value);
-	// break;
-	// case 1:
-	// //pruefung.setTermin((String)value);
-	// case 2:
-	// pruefung.setDauer((Integer)value);
-	// break;
-	// }
-	// }
-
 }

@@ -40,20 +40,6 @@ public class Nutzer {
 
 	}
 
-	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent,
-			Pruefung pruefung) {
-
-		super();
-
-		this.vorname = vorname;
-		this.nachname = nachname;
-		this.benutzername = benutzername;
-		this.passwort = passwort;
-		this.istDozent = istDozent;
-		this.pruefung = pruefung;
-
-	}
-
 	public String getVorname() {
 		return vorname;
 	}
@@ -100,6 +86,10 @@ public class Nutzer {
 
 	public Pruefung getPruefung() {
 		return pruefung;
+	}
+
+	public void setPruefung(Pruefung pruefung) {
+		this.pruefung = pruefung;
 	}
 
 }
