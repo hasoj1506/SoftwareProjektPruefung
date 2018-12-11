@@ -38,21 +38,12 @@ public class PruefungsDetailsController {
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
 
-	public PruefungsDetailsController(PruefungsDetails view, List<Aufgabe> aufgaben, List<Nutzer> nutzer,
-			List<Termin> termine, Pruefung pruefung) {
-		super();
-		this.view = view;
-		this.aufgaben = aufgaben;
-		this.nutzer = nutzer;
-		this.termine = termine;
-		this.pruefung = pruefung;
-	}
-
 	public PruefungsDetailsController(PruefungsDetails view, Pruefung pruefung) {
 		this.view = view;
 		this.pruefung = pruefung;
 	}
-
+	
+	//Felder und Tabellen mit den Daten der Pruefung füllen
 	public void fuellePruefungsDetails(Pruefung pruefung) {
 		this.pruefung = pruefung;
 

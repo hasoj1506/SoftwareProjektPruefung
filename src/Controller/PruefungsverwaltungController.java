@@ -38,7 +38,7 @@ public class PruefungsverwaltungController {
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
+			JOptionPane.showMessageDialog(view.getFrame(), "Datensätze konnten nicht geladen werden!");
 		}
 
 	}
@@ -68,13 +68,15 @@ public class PruefungsverwaltungController {
 				// Prüfungsdetails-Maske öffnen und zu bearbeitende Prüfung
 				// übergeben
 				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung, view);
+				
+				// Frame-Titel wird geändert
 				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
+			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht bearbeitet werden!");
 		}
 	}
 
@@ -107,7 +109,7 @@ public class PruefungsverwaltungController {
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view.getFrame(), "Ein Fehler ist aufgetreten!" + e);
+			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung konnte nicht gelöscht werden!");
 		}
 
 	}
