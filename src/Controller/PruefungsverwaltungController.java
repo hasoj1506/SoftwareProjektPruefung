@@ -22,6 +22,8 @@ public class PruefungsverwaltungController {
 
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
+	private PruefungsverwaltungTableModel model;
+	private DefaultTableCellRenderer centerRenderer;
 
 	public PruefungsverwaltungController(PruefungsverwaltungView view) {
 		this.view = view;
@@ -34,8 +36,7 @@ public class PruefungsverwaltungController {
 			// Liste mit allen Prüfungen der Datenbank erstellen
 			pruefungen = db.readPruefungen();
 
-			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(pruefungen);
+			model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
 
 			// Spaltenbreiten anpassen
@@ -46,8 +47,7 @@ public class PruefungsverwaltungController {
 			view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
 			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
 
-			// Ausrichtung in den Spalten zentrieren
-			DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			centerRenderer = new DefaultTableCellRenderer();
 			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 			for (int i = 0; i < view.getTablePruefungen().getColumnCount(); i++) {
 				view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
