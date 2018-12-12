@@ -57,7 +57,6 @@ public class PruefungsverwaltungView {
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
-		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
 		frmPrfungsverwaltung.setForeground(Color.WHITE);
 		frmPrfungsverwaltung.setMinimumSize(new Dimension(850, 650));
@@ -210,6 +209,9 @@ public class PruefungsverwaltungView {
 															// Mitte des
 															// Bildschirms
 															// erzeugt
+		
+		//Fenster maximiert starten
+		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
 
