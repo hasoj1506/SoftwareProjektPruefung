@@ -139,7 +139,7 @@ public class LoginPruefungsverwaltung {
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		btnLogin.setForeground(new Color(51, 51, 51));
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();

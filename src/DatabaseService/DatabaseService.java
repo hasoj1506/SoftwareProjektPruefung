@@ -149,7 +149,7 @@ public class DatabaseService {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("SELECT p FROM p.Nutzer WHERE p.benutzername = 'HansWurst'", Nutzer.class);
+			TypedQuery q = em.createQuery("SELECT p FROM Nutzer p WHERE p.benutzername = '" + username + "' and p.passwort = '" + passwort + "' and p.istDozent = " + wahr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
 
