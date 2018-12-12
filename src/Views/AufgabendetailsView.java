@@ -219,7 +219,8 @@ public class AufgabendetailsView {
 		headPanel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Yanek\\Desktop\\Logo_FH_Bielefeld-652.png"));
+		Image icon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
+		lblNewLabel_2.setIcon(new ImageIcon(icon));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.fill = GridBagConstraints.VERTICAL;
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
