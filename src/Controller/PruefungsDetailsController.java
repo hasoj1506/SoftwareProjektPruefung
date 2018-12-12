@@ -138,8 +138,6 @@ public class PruefungsDetailsController {
 
 		// Leere Aufgaben-Details-Maske wird geöffnet
 		AufgabendetailsView aufgabenDetails = new AufgabendetailsView(aufgabe, view);
-		
-		view.dispose();
 	}
 
 	// Aufgabe-bearbeiten Button wird geklickt / Doppelklick auf Aufgabe
@@ -156,8 +154,6 @@ public class PruefungsDetailsController {
 				// Aufgabendetails-Maske öffnen und zu bearbeitende Aufgabe
 				// übergeben
 				AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe, view);
-				
-				view.dispose();
 			} else {
 				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
 			}
