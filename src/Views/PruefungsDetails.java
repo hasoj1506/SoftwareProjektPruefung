@@ -429,6 +429,9 @@ public class PruefungsDetails extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);
+
+		// Fenster maximiert starten
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	public JTable getTableAufgaben() {
@@ -559,12 +562,12 @@ public class PruefungsDetails extends JFrame {
 				controller.loescheTeilnehmer();
 			}
 		});
-		
+
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
-		    @Override
-		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-		            PruefungsverwaltungView viewNachSchlieﬂen = new PruefungsverwaltungView();
-		    }
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				PruefungsverwaltungView viewNachSchlieﬂen = new PruefungsverwaltungView();
+			}
 		});
 	}
 
