@@ -89,11 +89,17 @@ public class AufgabenDetailsController {
 				if (model.getRowCount() < 2) {
 					view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
 				} else {
-					aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
-					view.setAufgabe(aufgabe);
-					pruefung.addAufgabe(aufgabe);
-					view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
-					view.schliessen();
+
+					if (model.getMindestensEineRichtig() == true) {
+						aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
+						view.setAufgabe(aufgabe);
+						pruefung.addAufgabe(aufgabe);
+						view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
+						view.schliessen();
+					} else {
+						view.fehlerMeldung("Es muss mindestens eine Aufgabe geben die richtig ist.");
+
+					}
 				}
 
 			}

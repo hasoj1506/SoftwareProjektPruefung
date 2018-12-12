@@ -15,7 +15,7 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel {
 		this.aufgaben = aufgaben;
 	}
 
-	String[] columnNames = { "Aufgabentitel", "Punktzahl" };
+	String[] columnNames = { "Aufgabentitel", "Antwortanzahl", "Punktzahl" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -38,6 +38,8 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel {
 		case 0:
 			return aufgaben.get(row).getAufgabentitel();
 		case 1:
+			return aufgaben.get(row).getAntworten().size();
+		case 2:
 			return aufgaben.get(row).getPunktzahl();
 		default:
 			return null;

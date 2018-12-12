@@ -162,6 +162,7 @@ public class PruefungsDetails extends JFrame {
 		panelMain.add(scrollPaneAufgabenTable, gbc_scrollPaneAufgabenTable);
 
 		tableAufgaben = new JTable();
+		tableAufgaben.setRowHeight(25);
 		tableAufgaben.setPreferredScrollableViewportSize(new Dimension(450, 300));
 		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneAufgabenTable.setViewportView(tableAufgaben);
@@ -208,6 +209,7 @@ public class PruefungsDetails extends JFrame {
 		panelMain.add(scrollPaneTeilnehmerTable, gbc_scrollPaneTeilnehmerTable);
 
 		tableTeilnehmer = new JTable();
+		tableTeilnehmer.setRowHeight(25);
 		tableTeilnehmer.setPreferredScrollableViewportSize(new Dimension(450, 300));
 		tableTeilnehmer.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneTeilnehmerTable.setViewportView(tableTeilnehmer);
@@ -263,6 +265,7 @@ public class PruefungsDetails extends JFrame {
 		panelMain.add(scrollPaneTermineTable, gbc_scrollPaneTermineTable);
 
 		tableTermine = new JTable();
+		tableTermine.setRowHeight(25);
 		tableTermine.setPreferredScrollableViewportSize(new Dimension(450, 200));
 		tableTermine.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneTermineTable.setViewportView(tableTermine);
