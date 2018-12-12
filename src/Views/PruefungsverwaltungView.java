@@ -221,7 +221,6 @@ public class PruefungsverwaltungView {
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.neuPruefung();
-
 				// um das Mainframe zu sperren während das Secondframe offen ist
 				// frmPrfungsverwaltung.setEnabled(false);
 
@@ -248,7 +247,6 @@ public class PruefungsverwaltungView {
 				}
 			}
 		});
-
 	}
 
 	public JTable getTablePruefungen() {

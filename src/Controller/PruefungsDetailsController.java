@@ -378,6 +378,7 @@ public class PruefungsDetailsController {
 			pruefung.setPunkte(punkte);
 			db.persistPruefung(pruefung);
 			view.dispose();
+			pruefungsverwaltung = new PruefungsverwaltungView();
 			pruefungsverwaltung.tabelleFuellen();
 		}
 	}
@@ -399,6 +400,7 @@ public class PruefungsDetailsController {
 				// Tabelle
 				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
 				view.dispose();
+				pruefungsverwaltung = new PruefungsverwaltungView();
 				pruefungsverwaltung.tabelleFuellen();
 			} else {
 				// nichts tun

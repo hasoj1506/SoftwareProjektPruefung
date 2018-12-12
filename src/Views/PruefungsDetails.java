@@ -456,6 +456,13 @@ public class PruefungsDetails extends JFrame {
 				controller.loescheTeilnehmer();
 			}
 		});
+		
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		            PruefungsverwaltungView viewNachSchlieﬂen = new PruefungsverwaltungView();
+		    }
+		});
 	}
 
 }
