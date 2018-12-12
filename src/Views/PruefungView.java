@@ -2,41 +2,30 @@ package Views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-
-import javax.swing.JComboBox;
-import java.awt.Component;
-import javax.swing.SwingConstants;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.ScrollPaneConstants;
-import java.awt.SystemColor;
-import java.awt.ComponentOrientation;
+
+import Controller.PruefungViewController;
 
 public class PruefungView {
 
@@ -44,6 +33,9 @@ public class PruefungView {
 	private int timerZeit;
 	private JTextField txtAufgabentext;
 	private JTable antwortenTable;
+	private JTable tableAufgaben;
+	
+	PruefungViewController controller;
 
 	public PruefungView() {
 		erstellePruefungView();
@@ -110,7 +102,7 @@ public class PruefungView {
 		for (int i = 0; i < aufgaben.length; i++) {
 			aufgaben[i] = "Aufgabe" + (i + 1);
 		}
-		JTable tableAufgaben = new JTable();
+		tableAufgaben = new JTable();
 		tableAufgaben.setBackground(SystemColor.activeCaption);
 		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
 		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -250,10 +242,24 @@ public class PruefungView {
 		PruefungView pruefungView = new PruefungView();
 	}
 	
+	public void addActionListeners() {
+		tableAufgaben.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 1) {
+					controller.fuelleAufgabe();
+				}
+				
+			}
+		});
+	}
+	
 	public JTable getAntwortenTable() {
 		return antwortenTable;
 	}
 	
-	public JTable 
+	public JTable getAufgabenTable() {
+		return tableAufgaben;
+	}
 
 }
