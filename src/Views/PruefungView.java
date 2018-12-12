@@ -231,8 +231,7 @@ public class PruefungView {
 
 	}
 
-	public static void main(String[] args) {
-	}
+	
 	
 	public void btnAction() {
 		
@@ -268,5 +267,8 @@ public class PruefungView {
 		return txtAufgabentext;
 	}
 	
-
+/*	public static void main(String[] args) {
+		PruefungView view = new PruefungView();
+	}
+*/
 }
