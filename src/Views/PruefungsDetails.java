@@ -66,7 +66,6 @@ public class PruefungsDetails extends JFrame {
 	private JLabel lblPrfungsdetails;
 	private JLabel lblLegeDieEigenschaften;
 	private JLabel label_2;
-	private JLabel lblNewLabel;
 
 	/**
 	 * @wbp.parser.constructor
@@ -301,7 +300,7 @@ public class PruefungsDetails extends JFrame {
 		getContentPane().add(panel_2, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] { 475, 0 };
-		gbl_panel_2.rowHeights = new int[] { 110, 0, 0, 0 };
+		gbl_panel_2.rowHeights = new int[] { 110, 32, 0, 0 };
 		gbl_panel_2.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_panel_2.rowWeights = new double[] { 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		panel_2.setLayout(gbl_panel_2);
@@ -330,17 +329,7 @@ public class PruefungsDetails extends JFrame {
 		gbc_lblPrfungsdetails.gridx = 1;
 		gbc_lblPrfungsdetails.gridy = 1;
 		panel_3.add(lblPrfungsdetails, gbc_lblPrfungsdetails);
-
-		lblNewLabel = new JLabel("");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		Image icon2 = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
-		lblNewLabel.setIcon(new ImageIcon(icon2));
-		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel.gridheight = 3;
-		gbc_lblNewLabel.gridx = 3;
-		gbc_lblNewLabel.gridy = 2;
-		panel_3.add(lblNewLabel, gbc_lblNewLabel);
 
 		lblLegeDieEigenschaften = new JLabel("Lege die Eigenschaften der Pr\u00FCfung fest");
 		lblLegeDieEigenschaften.setFont(new Font("Verdana", Font.BOLD, 17));
@@ -352,6 +341,7 @@ public class PruefungsDetails extends JFrame {
 		panel_3.add(lblLegeDieEigenschaften, gbc_lblLegeDieEigenschaften);
 
 		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(icon2));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.anchor = GridBagConstraints.EAST;
 		gbc_label_2.fill = GridBagConstraints.VERTICAL;
