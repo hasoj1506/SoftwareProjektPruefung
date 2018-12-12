@@ -3,9 +3,12 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
 import Views.LoginPruefungsverwaltung;
+import Views.PruefungsverwaltungView;
 
 public class LoginPruefungsverwaltungController {
 	// alle Methoden, die durch Bedienung der LoginPruefungsverwaltung-View
@@ -41,36 +44,52 @@ public class LoginPruefungsverwaltungController {
 	}
 
 	public void Einloggen() {
-		List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
-		String benutzername = getBenutzername();
-		String passwort = getPasswort();
-
-		// Liste mit Benutzer und Passwort aus DB?
-		benutzernameListe = new ArrayList<String>();
 		try {
-			for (Nutzer i : nutzer) {
-				benutzernameListe.add(i.getBenutzername());
-			}
+			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 
-			passwoerterListe = new ArrayList<String>();
+			if (nutzer != null) {
 
-			for (Nutzer i : nutzer) {
-				passwoerterListe.add(i.getPasswort());
-			}
-
-			if (benutzernameListe.contains(benutzername) && passwoerterListe.contains(passwort)) {
-//				JOptionPane.showMessageDialog(null, "Erfolg");	
-				System.out.println("erf");
+				PruefungsverwaltungView pruefungView = new PruefungsverwaltungView();
+				
 			} else {
-//				JOptionPane.showMessageDialog(null, "Fehler");
-				System.out.println("miss");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
 
 			}
-		} catch (Exception e) {
-			// Fehler
+		} catch (NullPointerException e) {
+			System.out.println("Nullpointerexception");
 
 		}
-
 	}
+//		List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
+//		String benutzername = getBenutzername();
+//		String passwort = getPasswort();
+//
+//		// Liste mit Benutzer und Passwort aus DB?
+//		benutzernameListe = new ArrayList<String>();
+//		try {
+//			for (Nutzer i : nutzer) {
+//				benutzernameListe.add(i.getBenutzername());
+//			}
+//
+//			passwoerterListe = new ArrayList<String>();
+//
+//			for (Nutzer i : nutzer) {
+//				passwoerterListe.add(i.getPasswort());
+//			}
+//
+//			if (benutzernameListe.contains(benutzername) && passwoerterListe.contains(passwort)) {
+////				JOptionPane.showMessageDialog(null, "Erfolg");	
+//				System.out.println("erf");
+//			} else {
+////				JOptionPane.showMessageDialog(null, "Fehler");
+//				System.out.println("miss");
+//
+//			}
+//		} catch (Exception e) {
+//			// Fehler
+//
+//		}
+//
+//	}
 
 }
