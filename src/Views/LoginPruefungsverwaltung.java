@@ -161,6 +161,11 @@ public class LoginPruefungsverwaltung {
 	
 	public JPasswordField getTFPasswort() {
 		return this.textFieldPasswort;
+		
+	}
+	
+	public JFrame getLoginPruefungsverwaltungFrame() {
+		return this.frame;
 	}
 	
 	public void addActionListeners(){
