@@ -34,6 +34,7 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 
 //Josah Weber 
 public class PruefungsDetails extends JFrame {
@@ -66,6 +67,7 @@ public class PruefungsDetails extends JFrame {
 	private JLabel lblPrfungsdetails;
 	private JLabel lblLegeDieEigenschaften;
 	private JLabel label_2;
+	private JCheckBox chckbxAufgabenVerwrfeln;
 
 	/**
 	 * @wbp.parser.constructor
@@ -358,9 +360,9 @@ public class PruefungsDetails extends JFrame {
 		gbc_panel_1.gridy = 2;
 		panel_2.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 55, 85, 104, 80, 0, 55, 0 };
+		gbl_panel_1.columnWidths = new int[] { 55, 85, 104, 30, 0, 80, 30, 0, 55, 0 };
 		gbl_panel_1.rowHeights = new int[] { 44, 0, 35, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
@@ -375,7 +377,7 @@ public class PruefungsDetails extends JFrame {
 
 		textFieldPrfungstitel = new JTextField();
 		GridBagConstraints gbc_textFieldPrfungstitel = new GridBagConstraints();
-		gbc_textFieldPrfungstitel.gridwidth = 3;
+		gbc_textFieldPrfungstitel.gridwidth = 6;
 		gbc_textFieldPrfungstitel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPrfungstitel.gridx = 2;
@@ -407,7 +409,7 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_lblPunkte = new GridBagConstraints();
 		gbc_lblPunkte.anchor = GridBagConstraints.EAST;
 		gbc_lblPunkte.insets = new Insets(0, 0, 0, 5);
-		gbc_lblPunkte.gridx = 3;
+		gbc_lblPunkte.gridx = 4;
 		gbc_lblPunkte.gridy = 2;
 		panel_1.add(lblPunkte, gbc_lblPunkte);
 
@@ -416,10 +418,18 @@ public class PruefungsDetails extends JFrame {
 		GridBagConstraints gbc_textFieldPunkte = new GridBagConstraints();
 		gbc_textFieldPunkte.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPunkte.insets = new Insets(0, 0, 0, 5);
-		gbc_textFieldPunkte.gridx = 4;
+		gbc_textFieldPunkte.gridx = 5;
 		gbc_textFieldPunkte.gridy = 2;
 		panel_1.add(textFieldPunkte, gbc_textFieldPunkte);
 		textFieldPunkte.setColumns(5);
+
+		chckbxAufgabenVerwrfeln = new JCheckBox("Aufgaben verw\u00FCrfeln");
+		chckbxAufgabenVerwrfeln.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_chckbxAufgabenVerwrfeln = new GridBagConstraints();
+		gbc_chckbxAufgabenVerwrfeln.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxAufgabenVerwrfeln.gridx = 7;
+		gbc_chckbxAufgabenVerwrfeln.gridy = 2;
+		panel_1.add(chckbxAufgabenVerwrfeln, gbc_chckbxAufgabenVerwrfeln);
 
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -569,6 +579,16 @@ public class PruefungsDetails extends JFrame {
 				controller.loescheTeilnehmer();
 			}
 		});
+
+		chckbxAufgabenVerwrfeln.addActionListener((new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+
+				controller.getTableModelAufgaben().verwuerfeln();
+				tableAufgaben.updateUI();
+
+			}
+		}));
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override

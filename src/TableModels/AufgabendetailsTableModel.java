@@ -1,9 +1,8 @@
 package TableModels;
 
 import java.util.*;
-
 import javax.swing.table.AbstractTableModel;
-
+import java.util.Collections;
 import Models.Antwort;
 
 public class AufgabendetailsTableModel extends AbstractTableModel {
@@ -130,6 +129,12 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 
 		return punkte;
 
+	}
+	
+	public void verwuerfeln() {
+		
+		Collections.shuffle(antworten);
+		
 	}
 
 }

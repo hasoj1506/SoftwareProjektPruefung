@@ -45,6 +45,7 @@ public class AufgabendetailsView {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JPanel panel_2;
+	private JCheckBox chckbxAntwortenVerwrfenl;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -243,9 +244,9 @@ public class AufgabendetailsView {
 		northPanel.add(eingabePanel, gbc_eingabePanel);
 		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
-		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 356, 65, 0 };
+		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 169, 215, 0, 65, 0 };
 		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		eingabePanel.setLayout(gbl_eingabePanel);
 
@@ -261,6 +262,7 @@ public class AufgabendetailsView {
 
 		afgdTitelTextField = new JTextField();
 		GridBagConstraints gbc_afgdTitelTextField = new GridBagConstraints();
+		gbc_afgdTitelTextField.gridwidth = 3;
 		gbc_afgdTitelTextField.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdTitelTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_afgdTitelTextField.gridx = 2;
@@ -282,6 +284,7 @@ public class AufgabendetailsView {
 		afgdFrageTextField = new JTextField();
 		afgdFrageTextField.setText("\r\n");
 		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
+		gbc_afgdFrageTextField.gridwidth = 3;
 		gbc_afgdFrageTextField.anchor = GridBagConstraints.NORTH;
 		gbc_afgdFrageTextField.gridheight = 3;
 		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
@@ -310,6 +313,14 @@ public class AufgabendetailsView {
 		gbc_afgdPunkteTextField.gridy = 5;
 		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
 		afgdPunkteTextField.setColumns(10);
+		
+		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
+		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_chckbxAntwortenVerwrfenl = new GridBagConstraints();
+		gbc_chckbxAntwortenVerwrfenl.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxAntwortenVerwrfenl.gridx = 3;
+		gbc_chckbxAntwortenVerwrfenl.gridy = 5;
+		eingabePanel.add(chckbxAntwortenVerwrfenl, gbc_chckbxAntwortenVerwrfenl);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -363,6 +374,17 @@ public class AufgabendetailsView {
 				}
 			}
 		});
+		
+		chckbxAntwortenVerwrfenl.addActionListener((new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				
+				controller.getModel().verwuerfeln();
+				afgdTable.updateUI();
+
+				
+			}
+		}));
 
 	}
 

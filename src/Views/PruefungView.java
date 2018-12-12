@@ -13,7 +13,6 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,15 +26,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.PruefungViewController;
-import DatabaseService.DatabaseService;
-import Models.Antwort;
-import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
+import javax.swing.SwingConstants;
+import javax.swing.Box;
 
 public class PruefungView {
-	private Pruefung pruefung;
-	private Nutzer nutzer;
+	Pruefung pruefung;
+	Nutzer nutzer;
 
 	private JFrame frame;
 	private int timerZeit;
@@ -43,7 +41,7 @@ public class PruefungView {
 	private JTable antwortenTable;
 	private JTable tableAufgaben;
 	private JTextField txtAufgabentitel;
-	
+
 	PruefungViewController controller;
 
 	public PruefungView(Pruefung pruefung, Nutzer nutzer) {
@@ -58,140 +56,109 @@ public class PruefungView {
 	public void erstellePruefungView() {
 
 		this.frame = new JFrame("Prüfung");
-		frame.getContentPane().setBackground(SystemColor.control);
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		BorderLayout borderLayout = (BorderLayout) frame.getContentPane().getLayout();
-		borderLayout.setVgap(50);
-		borderLayout.setHgap(20);
 		frame.setPreferredSize(new Dimension(800, 500));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		JPanel infoPanel = new JPanel();
-		infoPanel.setBackground(Color.LIGHT_GRAY);
-		frame.getContentPane().add(infoPanel, BorderLayout.NORTH);
-		GridBagLayout gbl_infoPanel = new GridBagLayout();
-		gbl_infoPanel.rowHeights = new int[] { 20 };
-		gbl_infoPanel.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0 };
-		gbl_infoPanel.rowWeights = new double[] { 0.0 };
-		infoPanel.setLayout(gbl_infoPanel);
-
-		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
-		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
-		gbc_lblPrfungstitel.anchor = GridBagConstraints.WEST;
-		gbc_lblPrfungstitel.insets = new Insets(0, 0, 0, 50);
-		gbc_lblPrfungstitel.gridx = 0;
-		gbc_lblPrfungstitel.gridy = 0;
-		infoPanel.add(lblPrfungstitel, gbc_lblPrfungstitel);
-//t
-		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
-		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
-		gbc_lblMatrikelnummer.anchor = GridBagConstraints.WEST;
-		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 0, 50);
-		gbc_lblMatrikelnummer.gridx = 1;
-		gbc_lblMatrikelnummer.gridy = 0;
-		infoPanel.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
-
-		JLabel lblVersion = new JLabel("Version 1.01");
-		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
-		gbc_lblVersion.anchor = GridBagConstraints.WEST;
-		gbc_lblVersion.insets = new Insets(0, 0, 0, 50);
-		gbc_lblVersion.gridx = 2;
-		gbc_lblVersion.gridy = 0;
-		infoPanel.add(lblVersion, gbc_lblVersion);
-
-		JLabel lblRestzeit = new JLabel("Restzeit: 24:32");
-		GridBagConstraints gbc_lblRestzeit = new GridBagConstraints();
-		gbc_lblRestzeit.insets = new Insets(0, 0, 0, 5);
-		gbc_lblRestzeit.anchor = GridBagConstraints.EAST;
-		gbc_lblRestzeit.gridx = 3;
-		gbc_lblRestzeit.gridy = 0;
-		infoPanel.add(lblRestzeit, gbc_lblRestzeit);
-
 		JScrollPane aufgabenlisteScrollPane = new JScrollPane();
 		aufgabenlisteScrollPane.setPreferredSize(new Dimension(100, 2));
-		aufgabenlisteScrollPane.setBackground(SystemColor.activeCaption);
+		aufgabenlisteScrollPane.setBackground(new Color(255, 255, 255));
 		frame.getContentPane().add(aufgabenlisteScrollPane, BorderLayout.WEST);
 
 		tableAufgaben = new JTable();
-		tableAufgaben.setBackground(SystemColor.activeCaption);
+		tableAufgaben.setBackground(new Color(255, 255, 255));
 		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
 		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableAufgaben.setBorder(null);
 
 		JPanel aufgabenstellungPanel = new JPanel();
-		aufgabenstellungPanel.setBackground(SystemColor.activeCaption);
+		aufgabenstellungPanel.setBackground(new Color(255, 255, 255));
+		aufgabenstellungPanel.setMinimumSize(new Dimension(100, 100));
 		frame.getContentPane().add(aufgabenstellungPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_aufgabenstellungPanel = new GridBagLayout();
-		gbl_aufgabenstellungPanel.columnWidths = new int[] { 0, 768 };
-		gbl_aufgabenstellungPanel.rowHeights = new int[] { 30, 150, 150, 30 };
-		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 1.0 };
-		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 1.0, 1.0 };
+		gbl_aufgabenstellungPanel.columnWidths = new int[] { 0, 0, 91, 0, 207, 0 };
+		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 0, 30, 150, 150, 30 };
+		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 1.0, 0.0 };
+		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0 };
 		aufgabenstellungPanel.setLayout(gbl_aufgabenstellungPanel);
-
-		JLabel lblAufgabentitel = new JLabel("Aufgabentitel:");
-		lblAufgabentitel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		GridBagConstraints gbc_lblAufgabentitel = new GridBagConstraints();
-		gbc_lblAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
-		gbc_lblAufgabentitel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAufgabentitel.gridx = 0;
-		gbc_lblAufgabentitel.gridy = 0;
-		aufgabenstellungPanel.add(lblAufgabentitel, gbc_lblAufgabentitel);
-
-		txtAufgabentitel = new JTextField("Aufgabentitel");
-		txtAufgabentitel.setBackground(SystemColor.inactiveCaption);
-		txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		GridBagConstraints gbc_txtAufgabentitel = new GridBagConstraints();
-		gbc_txtAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
-		gbc_txtAufgabentitel.fill = GridBagConstraints.BOTH;
-		gbc_txtAufgabentitel.insets = new Insets(0, 0, 5, 0);
-		gbc_txtAufgabentitel.gridx = 1;
-		gbc_txtAufgabentitel.gridy = 0;
-		aufgabenstellungPanel.add(txtAufgabentitel, gbc_txtAufgabentitel);
+				
+				JButton button = new JButton("<Voherige");
+				GridBagConstraints gbc_button = new GridBagConstraints();
+				gbc_button.insets = new Insets(0, 0, 5, 5);
+				gbc_button.gridx = 1;
+				gbc_button.gridy = 1;
+				aufgabenstellungPanel.add(button, gbc_button);
+		
+				txtAufgabentitel = new JTextField("");
+				txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
+				txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
+				txtAufgabentitel.setEditable(false);
+				txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
+				txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
+				GridBagConstraints gbc_txtAufgabentitel = new GridBagConstraints();
+				gbc_txtAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
+				gbc_txtAufgabentitel.fill = GridBagConstraints.BOTH;
+				gbc_txtAufgabentitel.insets = new Insets(0, 0, 5, 5);
+				gbc_txtAufgabentitel.gridx = 2;
+				gbc_txtAufgabentitel.gridy = 1;
+				aufgabenstellungPanel.add(txtAufgabentitel, gbc_txtAufgabentitel);
+		
+		JButton btnNchste = new JButton("N\u00E4chste>");
+		GridBagConstraints gbc_btnNchste = new GridBagConstraints();
+		gbc_btnNchste.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNchste.gridx = 3;
+		gbc_btnNchste.gridy = 1;
+		aufgabenstellungPanel.add(btnNchste, gbc_btnNchste);
 
 		JLabel lblAufgabenstellung = new JLabel("Aufgabenstellung:");
-		lblAufgabenstellung.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblAufgabenstellung.setFont(new Font("Verdana", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblAufgabenstellung = new GridBagConstraints();
 		gbc_lblAufgabenstellung.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAufgabenstellung.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAufgabenstellung.gridx = 0;
-		gbc_lblAufgabenstellung.gridy = 1;
+		gbc_lblAufgabenstellung.gridy = 3;
 		aufgabenstellungPanel.add(lblAufgabenstellung, gbc_lblAufgabenstellung);
+		
+				txtAufgabentext = new JTextField();
+				GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
+				gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;
+				gbc_txtAufgabentext.gridwidth = 4;
+				gbc_txtAufgabentext.insets = new Insets(0, 0, 5, 5);
+				gbc_txtAufgabentext.gridx = 1;
+				gbc_txtAufgabentext.gridy = 3;
+				aufgabenstellungPanel.add(txtAufgabentext, gbc_txtAufgabentext);
+				txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
+				txtAufgabentext.setColumns(10);
 
 		JScrollPane aufgabentextScrollPane = new JScrollPane();
 		aufgabentextScrollPane.setBackground(SystemColor.inactiveCaption);
 		GridBagConstraints gbc_aufgabentextScrollPane = new GridBagConstraints();
 		gbc_aufgabentextScrollPane.anchor = GridBagConstraints.NORTHEAST;
 		gbc_aufgabentextScrollPane.fill = GridBagConstraints.BOTH;
-		gbc_aufgabentextScrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_aufgabentextScrollPane.gridx = 1;
-		gbc_aufgabentextScrollPane.gridy = 1;
+		gbc_aufgabentextScrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_aufgabentextScrollPane.gridx = 4;
+		gbc_aufgabentextScrollPane.gridy = 3;
 		aufgabenstellungPanel.add(aufgabentextScrollPane, gbc_aufgabentextScrollPane);
 
-		txtAufgabentext = new JTextField();
-		txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtAufgabentext.setBackground(SystemColor.inactiveCaption);
-		txtAufgabentext.setText("Welche der folgenden Aussagen sind korrekt?");
-		aufgabentextScrollPane.setViewportView(txtAufgabentext);
-		txtAufgabentext.setColumns(10);
-
 		JLabel lblAntworten = new JLabel("Antworten:");
-		lblAntworten.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblAntworten.setFont(new Font("Verdana", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblAntworten = new GridBagConstraints();
 		gbc_lblAntworten.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAntworten.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAntworten.gridx = 0;
-		gbc_lblAntworten.gridy = 2;
+		gbc_lblAntworten.gridy = 4;
 		aufgabenstellungPanel.add(lblAntworten, gbc_lblAntworten);
 
 		JScrollPane antwortenScrollPane = new JScrollPane();
 		antwortenScrollPane.setMaximumSize(new Dimension(0, 0));
 		antwortenScrollPane.setBackground(SystemColor.inactiveCaption);
 		GridBagConstraints gbc_antwortenScrollPane = new GridBagConstraints();
-		gbc_antwortenScrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_antwortenScrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_antwortenScrollPane.fill = GridBagConstraints.BOTH;
-		gbc_antwortenScrollPane.gridx = 1;
-		gbc_antwortenScrollPane.gridy = 2;
+		gbc_antwortenScrollPane.gridx = 4;
+		gbc_antwortenScrollPane.gridy = 4;
 		aufgabenstellungPanel.add(antwortenScrollPane, gbc_antwortenScrollPane);
 
 		antwortenTable = new JTable();
@@ -200,30 +167,63 @@ public class PruefungView {
 		antwortenTable.setRowHeight(20);
 		antwortenTable.setFont(new Font("Tahoma", Font.BOLD, 11));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
-//		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-//		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
+		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
 		antwortenTable.setTableHeader(null);
 		antwortenScrollPane.setViewportView(antwortenTable);
 
-		JLabel lblPunktzahl = new JLabel("Punktzahl: 5");
-		lblPunktzahl.setFont(new Font("Tahoma", Font.BOLD, 11));
-		GridBagConstraints gbc_lblPunktzahl = new GridBagConstraints();
-		gbc_lblPunktzahl.insets = new Insets(0, 0, 0, 5);
-		gbc_lblPunktzahl.anchor = GridBagConstraints.EAST;
-		gbc_lblPunktzahl.gridx = 1;
-		gbc_lblPunktzahl.gridy = 3;
-		aufgabenstellungPanel.add(lblPunktzahl, gbc_lblPunktzahl);
-
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(new Color(204, 204, 204));
+		buttonPanel.setForeground(new Color(204, 204, 204));
 		FlowLayout flowLayout = (FlowLayout) buttonPanel.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 		JButton btnAbgabe = new JButton("Abgabe");
+		btnAbgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnAbgabe.setPreferredSize(new Dimension(100, 29));
+		btnAbgabe.setMinimumSize(new Dimension(30, 29));
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
-		btnAbgabe.setIcon(new ImageIcon(abgabeIcon));
+		
+				JLabel lblVersion = new JLabel("Version 1.01");
+				lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
+				buttonPanel.add(lblVersion);
+		btnAbgabe.setIcon(null);
 		btnAbgabe.setBackground(SystemColor.activeCaption);
 		buttonPanel.add(btnAbgabe);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 155, 187));
+		frame.getContentPane().add(panel, BorderLayout.NORTH);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[] { 66, 630, -355, 0, -164, 0, 10, 0 };
+		gbl_panel.rowHeights = new int[] { 70, 0, 0, 0 };
+		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panel.setLayout(gbl_panel);
+				// t
+				JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
+				GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
+				gbc_lblMatrikelnummer.fill = GridBagConstraints.HORIZONTAL;
+				gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
+				gbc_lblMatrikelnummer.gridx = 1;
+				gbc_lblMatrikelnummer.gridy = 0;
+				panel.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
+		
+				JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
+				GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
+				gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
+				gbc_lblPrfungstitel.gridx = 3;
+				gbc_lblPrfungstitel.gridy = 0;
+				panel.add(lblPrfungstitel, gbc_lblPrfungstitel);
+				lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.PLAIN, 26));
+
+		JLabel lblRestzeit = new JLabel("Restzeit: 24:32");
+		GridBagConstraints gbc_lblRestzeit = new GridBagConstraints();
+		gbc_lblRestzeit.insets = new Insets(0, 0, 5, 5);
+		gbc_lblRestzeit.gridx = 5;
+		gbc_lblRestzeit.gridy = 0;
+		panel.add(lblRestzeit, gbc_lblRestzeit);
 		timerZeit = 60;
 
 		String[] antworten = new String[7];
@@ -235,52 +235,42 @@ public class PruefungView {
 
 	}
 
-	
-	
 	public void btnAction() {
-		
+
 		tableAufgaben.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
 				if (evt.getClickCount() == 1) {
-					controller.fuelleAufgabe(pruefung);
+					controller.fuelleAufgabe();
 				}
-				
+
 			}
 		});
-		
+
 	}
-	
+
 	public JTable getAntwortenTable() {
 		return antwortenTable;
 	}
-	
+
 	public JTable getAufgabenTable() {
 		return tableAufgaben;
 	}
-	
+
 	public JFrame getFrame() {
 		return frame;
 	}
-	
+
 	public JTextField getTxtAufgabentitel() {
 		return txtAufgabentitel;
 	}
-	
+
 	public JTextField getTxtAufgabentext() {
 		return txtAufgabentext;
 	}
-	
-	public static void main(String[] args) {
-		
-		DatabaseService service = DatabaseService.getInstance();
-		
-		List<Nutzer> liste = service.readNutzer();
-		Nutzer nutzer = liste.get(3);
-		Pruefung pruefung = nutzer.getPruefung();
-		
-		
-		PruefungView view = new PruefungView(pruefung, nutzer);
-	}
 
+	/*
+	 * public static void main(String[] args) { PruefungView view = new
+	 * PruefungView(); }
+	 */
 }

@@ -29,7 +29,7 @@ public class AntwortErstellenPopUp {
 	 */
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
-		// view.getAfgdFrame().setEnabled(false); 
+		// view.getAfgdFrame().setEnabled(false);
 		btnAction(view);
 		punkteCheckBoxTest();
 
@@ -246,12 +246,13 @@ public class AntwortErstellenPopUp {
 
 	private void attributCheck(Antwort antwort) {
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());
-		if(antwort.isIstRichtig() == false) {
+		if (antwort.isIstRichtig() == false) {
 			textField_1.setEnabled(false);
 		}
 		this.textField.setText(antwort.getAntworttext());
 		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
 	}
+
 	public String getText() {
 		return text;
 	}
