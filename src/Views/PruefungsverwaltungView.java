@@ -57,6 +57,8 @@ public class PruefungsverwaltungView {
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		frmPrfungsverwaltung.setIconImage(icon1);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
 		frmPrfungsverwaltung.setForeground(Color.WHITE);
 		frmPrfungsverwaltung.setMinimumSize(new Dimension(850, 650));
@@ -153,7 +155,7 @@ public class PruefungsverwaltungView {
 		gbl_panel_1.columnWidths = new int[]{472, 0};
 		gbl_panel_1.rowHeights = new int[]{159, 32, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JPanel panel = new JPanel();
@@ -192,8 +194,8 @@ public class PruefungsverwaltungView {
 		panel.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
 		
 		JLabel label_2 = new JLabel("");
-		Image fhIcon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
-		label_2.setIcon(new ImageIcon(fhIcon));
+		Image icon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
+		label_2.setIcon(new ImageIcon(icon));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.fill = GridBagConstraints.VERTICAL;
 		gbc_label_2.anchor = GridBagConstraints.EAST;

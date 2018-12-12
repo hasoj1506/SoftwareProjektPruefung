@@ -77,6 +77,8 @@ public class AufgabendetailsView {
 		this.frame = new JFrame("Aufgabendetails");
 		frame.setBackground(new Color(0, 155, 187));
 		frame.setForeground(Color.WHITE);
+		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		frame.setIconImage(icon1);
 		frame.setMinimumSize(new Dimension(850, 650));
 
 		JPanel middleArbeitsPanel = new JPanel();
