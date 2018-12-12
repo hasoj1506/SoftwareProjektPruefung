@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -192,7 +193,8 @@ public class PruefungsverwaltungView {
 		panel.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("C:\\Users\\Yanek\\Desktop\\Logo_FH_Bielefeld-652.png"));
+		Image fhIcon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
+		label_2.setIcon(new ImageIcon(fhIcon));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.fill = GridBagConstraints.VERTICAL;
 		gbc_label_2.anchor = GridBagConstraints.EAST;
