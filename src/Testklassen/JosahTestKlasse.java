@@ -1,21 +1,19 @@
 package Testklassen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import DatabaseService.DatabaseService;
-import Models.Antwort;
-import Models.Aufgabe;
-import Models.Pruefung;
-import Models.Termin;
-import Views.AufgabendetailsView;
-import Views.PruefungsverwaltungView;
+import Models.Nutzer;
 
 public class JosahTestKlasse {
 
 	public static void main(String[] args) {
 		
-		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		DatabaseService service = DatabaseService.getInstance();
+//		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		
+		List<Nutzer> nutzer = service.readLogin("HansWurst", "HansWurst", false);
+		System.out.println(nutzer.size());
 		
 	}
 
