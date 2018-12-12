@@ -184,7 +184,7 @@ public class PruefungsverwaltungView {
 		gbc_lblPrfungsverwaltung.gridy = 1;
 		panel.add(lblPrfungsverwaltung, gbc_lblPrfungsverwaltung);
 		
-		JLabel lblVerwaltungAllerAnstehenden = new JLabel("Verwaltung aller anstehenden Pr\u00FCfung");
+		JLabel lblVerwaltungAllerAnstehenden = new JLabel("Verwaltung aller anstehenden Pr\u00FCfungen");
 		lblVerwaltungAllerAnstehenden.setFont(new Font("Verdana", Font.BOLD, 17));
 		GridBagConstraints gbc_lblVerwaltungAllerAnstehenden = new GridBagConstraints();
 		gbc_lblVerwaltungAllerAnstehenden.anchor = GridBagConstraints.WEST;
