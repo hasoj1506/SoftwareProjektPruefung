@@ -13,6 +13,7 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,12 +27,15 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.PruefungViewController;
+import DatabaseService.DatabaseService;
+import Models.Antwort;
+import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
 
 public class PruefungView {
-	static Pruefung pruefung;
-	static Nutzer nutzer;
+	private Pruefung pruefung;
+	private Nutzer nutzer;
 
 	private JFrame frame;
 	private int timerZeit;
@@ -196,8 +200,8 @@ public class PruefungView {
 		antwortenTable.setRowHeight(20);
 		antwortenTable.setFont(new Font("Tahoma", Font.BOLD, 11));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
-		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
+//		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+//		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
 		antwortenTable.setTableHeader(null);
 		antwortenScrollPane.setViewportView(antwortenTable);
 
@@ -239,7 +243,7 @@ public class PruefungView {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
 				if (evt.getClickCount() == 1) {
-					controller.fuelleAufgabe();
+					controller.fuelleAufgabe(pruefung);
 				}
 				
 			}
@@ -268,6 +272,14 @@ public class PruefungView {
 	}
 	
 	public static void main(String[] args) {
+		
+		DatabaseService service = DatabaseService.getInstance();
+		
+		List<Nutzer> liste = service.readNutzer();
+		Nutzer nutzer = liste.get(3);
+		Pruefung pruefung = nutzer.getPruefung();
+		
+		
 		PruefungView view = new PruefungView(pruefung, nutzer);
 	}
 

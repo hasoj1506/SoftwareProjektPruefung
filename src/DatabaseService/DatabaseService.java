@@ -136,6 +136,25 @@ public class DatabaseService {
 		}
 
 	}
+	
+	public List<Nutzer> readNutzer() {
+
+		List<Nutzer> nutzer;
+		
+		try {
+
+			Query q = em.createQuery("SELECT p FROM Nutzer p", Nutzer.class);
+
+			nutzer = (List<Nutzer>)q.getResultList();
+
+			return nutzer;
+
+		} catch (Exception e) {
+			// füllen, was beim Fehler passiert
+			return null;
+		}
+
+	}
 
 	public List<Nutzer> readLogin(String username, String passwort, boolean isDozent) {
 

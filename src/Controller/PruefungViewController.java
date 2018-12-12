@@ -39,12 +39,12 @@ public class PruefungViewController {
 		
 	}
 	
-	public void fuelleAufgabe() {
+	public void fuelleAufgabe(Pruefung pruefung) {
 		/* Table ausfüllen
 	 Textfelder ausfüllen */
 		try {
 			if(view.getAufgabenTable().getSelectedRow() > -1) {
-				aufgaben = service.readAufgabe(pruefung);
+				aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 				int selection = view.getAufgabenTable().getSelectedRow();
 				Aufgabe ausgewaehlteAufgabe = aufgaben.get(selection);
 				
