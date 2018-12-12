@@ -50,8 +50,8 @@ public class AufgabendetailsView {
 	 * @wbp.parser.entryPoint
 	 */
 	/*
-	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe
-	 * neu erzeugt wird.
+	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls
+	 * Aufgabe neu erzeugt wird.
 	 * 
 	 * this.pruefung = pruefung; onCreate(); this.controller = new
 	 * AufgabenDetailsController(this, pruefung); titleCheck(); btnAction();
@@ -59,8 +59,12 @@ public class AufgabendetailsView {
 	 * }
 	 */
 
-	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor falls bestehende
-																							// Aufgabe bearbeitet wird
+	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor
+																							// falls
+																							// bestehende
+																							// Aufgabe
+																							// bearbeitet
+																							// wird
 
 		this.pruefungsDetailsView = pruefungsDetailsView;
 		this.pruefung = aufgabe.getPruefung();
@@ -175,7 +179,7 @@ public class AufgabendetailsView {
 		gbc_afgdButtonLoescheAufgabe.gridx = 1;
 		gbc_afgdButtonLoescheAufgabe.gridy = 0;
 		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
-//t
+		// t
 		northPanel = new JPanel();
 		northPanel.setBackground(new Color(204, 204, 204));
 		frame.getContentPane().add(northPanel, BorderLayout.NORTH);
@@ -309,7 +313,11 @@ public class AufgabendetailsView {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.pack();
-		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
+		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des
+											// Bildschirms erzeugt
+
+		// Fenster maximiert starten
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
 
@@ -357,7 +365,8 @@ public class AufgabendetailsView {
 
 	}
 
-	public void titleCheck() { // Prüft ob Aufgabe neu erzeugt wird oder bestehende Aufgabe bearbeitet wird,
+	public void titleCheck() { // Prüft ob Aufgabe neu erzeugt wird oder
+								// bestehende Aufgabe bearbeitet wird,
 								// und passt enstsprechend den Frame Titel an
 
 		if (this.aufgabe == null) {
@@ -369,7 +378,8 @@ public class AufgabendetailsView {
 
 	}
 
-	public void aufgabenCheck() { // Trägt die Daten einer bestehenden Aufgabe in die TextFields ein
+	public void aufgabenCheck() { // Trägt die Daten einer bestehenden Aufgabe
+									// in die TextFields ein
 
 		if (this.aufgabe != null) {
 
