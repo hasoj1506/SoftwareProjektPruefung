@@ -47,7 +47,7 @@ public class LoginPruefungsverwaltungController {
 		try {
 			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 
-			if (nutzer != null) {
+			if (nutzer.size() > 0) {
 
 				PruefungsverwaltungView pruefungView = new PruefungsverwaltungView();
 				

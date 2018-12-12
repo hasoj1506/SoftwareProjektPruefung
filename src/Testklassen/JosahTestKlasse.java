@@ -11,8 +11,10 @@ public class JosahTestKlasse {
 		
 		DatabaseService service = DatabaseService.getInstance();
 //		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		Nutzer n1 = new Nutzer("Alex", "Förster", "AlexFörster", "AlexFörster", true);
+		service.persistNutzer(n1);
 		
-		List<Nutzer> nutzer = service.readLogin("HansWurst", "HansWurst", false);
+		List<Nutzer> nutzer = service.readLogin("drgdrg", "srgwg", false);
 		System.out.println(nutzer.size());
 		
 	}
