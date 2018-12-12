@@ -217,7 +217,7 @@ public class PruefungsverwaltungView {
 
 	}
 
-	// Hinzufügen der ActionListener
+	// Hinzufügen der ActionListener 
 	public void addActionListeners() {
 
 		btnNeuPruefung.addActionListener(new ActionListener() {
