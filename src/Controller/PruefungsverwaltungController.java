@@ -3,6 +3,8 @@ package Controller;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import DatabaseService.DatabaseService;
 import Models.Pruefung;
@@ -35,14 +37,21 @@ public class PruefungsverwaltungController {
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsverwaltungTableModel model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
-			
-			//Spaltenbreiten anpassen
+
+			// Spaltenbreiten anpassen
 			view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(120);
 			view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(30);
 			view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(10);
 			view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
 			view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
 			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
+
+			// Ausrichtung in den Spalten zentrieren
+			DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			for (int i = 0; i < view.getTablePruefungen().getColumnCount(); i++) {
+				view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+			}
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
@@ -60,7 +69,7 @@ public class PruefungsverwaltungController {
 
 		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
-		
+
 		view.getFrame().dispose();
 
 	}
@@ -78,10 +87,10 @@ public class PruefungsverwaltungController {
 				// Prüfungsdetails-Maske öffnen und zu bearbeitende Prüfung
 				// übergeben
 				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung, view);
-				
+
 				// Frame-Titel wird geändert
 				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
-				
+
 				view.getFrame().dispose();
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
