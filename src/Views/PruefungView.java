@@ -26,19 +26,29 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.PruefungViewController;
+import Models.Nutzer;
+import Models.Pruefung;
 
 public class PruefungView {
+	Pruefung pruefung;
+	Nutzer nutzer;
 
 	private JFrame frame;
 	private int timerZeit;
 	private JTextField txtAufgabentext;
 	private JTable antwortenTable;
 	private JTable tableAufgaben;
+	private JTextField txtAufgabentitel;
 	
 	PruefungViewController controller;
 
-	public PruefungView() {
+	public PruefungView(Pruefung pruefung, Nutzer nutzer) {
+		this.pruefung = nutzer.getPruefung();
+		this.pruefung = pruefung;
+
 		erstellePruefungView();
+		this.controller = new PruefungViewController(this, pruefung, nutzer);
+		btnAction();
 	}
 
 	public void erstellePruefungView() {
@@ -98,10 +108,6 @@ public class PruefungView {
 		aufgabenlisteScrollPane.setBackground(SystemColor.activeCaption);
 		frame.getContentPane().add(aufgabenlisteScrollPane, BorderLayout.WEST);
 
-		String[] aufgaben = new String[10];
-		for (int i = 0; i < aufgaben.length; i++) {
-			aufgaben[i] = "Aufgabe" + (i + 1);
-		}
 		tableAufgaben = new JTable();
 		tableAufgaben.setBackground(SystemColor.activeCaption);
 		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
@@ -127,7 +133,7 @@ public class PruefungView {
 		gbc_lblAufgabentitel.gridy = 0;
 		aufgabenstellungPanel.add(lblAufgabentitel, gbc_lblAufgabentitel);
 
-		JTextField txtAufgabentitel = new JTextField("Aufgabentitel");
+		txtAufgabentitel = new JTextField("Aufgabentitel");
 		txtAufgabentitel.setBackground(SystemColor.inactiveCaption);
 		txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -190,19 +196,6 @@ public class PruefungView {
 		antwortenTable.setRowHeight(20);
 		antwortenTable.setFont(new Font("Tahoma", Font.BOLD, 11));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
-		antwortenTable.setModel(
-				new DefaultTableModel(
-						new Object[][] { { Boolean.FALSE, "Java ist eine objektorientierte Programmiersprache" },
-								{ null, "Integer sind unbegrenzt" }, { null, "Interfaces haben nur Nachteile" },
-								{ null, "Vererbung schafft \u00FCberfl\u00FCssigen Code" },
-								{ null, "Methoden k\u00F6nnen einen R\u00FCckgabewert haben" }, },
-						new String[] { "", "" }) {
-					Class[] columnTypes = new Class[] { Boolean.class, Object.class };
-
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-				});
 		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
 		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
 		antwortenTable.setTableHeader(null);
@@ -239,10 +232,10 @@ public class PruefungView {
 	}
 
 	public static void main(String[] args) {
-		PruefungView pruefungView = new PruefungView();
 	}
 	
-	public void addActionListeners() {
+	public void btnAction() {
+		
 		tableAufgaben.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
@@ -252,6 +245,7 @@ public class PruefungView {
 				
 			}
 		});
+		
 	}
 	
 	public JTable getAntwortenTable() {
@@ -261,5 +255,18 @@ public class PruefungView {
 	public JTable getAufgabenTable() {
 		return tableAufgaben;
 	}
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+	
+	public JTextField getTxtAufgabentitel() {
+		return txtAufgabentitel;
+	}
+	
+	public JTextField getTxtAufgabentext() {
+		return txtAufgabentext;
+	}
+	
 
 }
