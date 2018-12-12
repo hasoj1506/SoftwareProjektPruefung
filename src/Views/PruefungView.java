@@ -30,8 +30,8 @@ import Models.Nutzer;
 import Models.Pruefung;
 
 public class PruefungView {
-	Pruefung pruefung;
-	Nutzer nutzer;
+	static Pruefung pruefung;
+	static Nutzer nutzer;
 
 	private JFrame frame;
 	private int timerZeit;
@@ -267,8 +267,8 @@ public class PruefungView {
 		return txtAufgabentext;
 	}
 	
-/*	public static void main(String[] args) {
-		PruefungView view = new PruefungView();
+	public static void main(String[] args) {
+		PruefungView view = new PruefungView(pruefung, nutzer);
 	}
-*/
+
 }
