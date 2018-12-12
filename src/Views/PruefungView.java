@@ -110,11 +110,11 @@ public class PruefungView {
 		for (int i = 0; i < aufgaben.length; i++) {
 			aufgaben[i] = "Aufgabe" + (i + 1);
 		}
-		JList listAufgaben = new JList(aufgaben);
-		listAufgaben.setBackground(SystemColor.activeCaption);
-		aufgabenlisteScrollPane.setViewportView(listAufgaben);
-		listAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listAufgaben.setBorder(null);
+		JTable tableAufgaben = new JTable();
+		tableAufgaben.setBackground(SystemColor.activeCaption);
+		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
+		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableAufgaben.setBorder(null);
 
 		JPanel aufgabenstellungPanel = new JPanel();
 		aufgabenstellungPanel.setBackground(SystemColor.activeCaption);
@@ -249,5 +249,11 @@ public class PruefungView {
 	public static void main(String[] args) {
 		PruefungView pruefungView = new PruefungView();
 	}
+	
+	public JTable getAntwortenTable() {
+		return antwortenTable;
+	}
+	
+	public JTable 
 
 }
