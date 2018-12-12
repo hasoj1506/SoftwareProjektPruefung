@@ -29,7 +29,7 @@ public class AntwortErstellenPopUp {
 	 */
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
-		// view.getAfgdFrame().setEnabled(false);
+		// view.getAfgdFrame().setEnabled(false); 
 		btnAction(view);
 		punkteCheckBoxTest();
 

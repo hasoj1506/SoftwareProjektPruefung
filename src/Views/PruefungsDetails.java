@@ -35,7 +35,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
-//Josah Weber
+//Josah Weber 
 public class PruefungsDetails extends JFrame {
 
 	private PruefungsverwaltungView pruefungsverwaltung;

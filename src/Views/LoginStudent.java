@@ -64,11 +64,11 @@ public class LoginStudent {
 	public LoginStudent() {
 		initialize();
 	}
-
+	//
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { 
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(0, 155, 187));
 		frame.getContentPane().setMinimumSize(new Dimension(700, 400));
