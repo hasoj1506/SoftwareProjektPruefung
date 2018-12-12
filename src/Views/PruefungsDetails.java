@@ -79,6 +79,7 @@ public class PruefungsDetails extends JFrame {
 		this.pruefungsverwaltung = pruefungsverwaltung;
 		onCreate();
 		addActionListeners();
+		punkteCheck();
 	}
 
 	// Konstruktor zum Bearbeiten der Pruefung
@@ -90,6 +91,7 @@ public class PruefungsDetails extends JFrame {
 		onCreate();
 		fuellePruefungsDetailsZumBearbeiten();
 		addActionListeners();
+		punkteCheck();
 	}
 
 	// Refactoring?
@@ -420,6 +422,7 @@ public class PruefungsDetails extends JFrame {
 		panel_1.add(lblPunkte, gbc_lblPunkte);
 
 		textFieldPunkte = new JTextField();
+		textFieldPunkte.setEditable(false);
 		GridBagConstraints gbc_textFieldPunkte = new GridBagConstraints();
 		gbc_textFieldPunkte.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPunkte.insets = new Insets(0, 0, 0, 5);
@@ -435,6 +438,17 @@ public class PruefungsDetails extends JFrame {
 
 		// Fenster maximiert starten
 		setExtendedState(Frame.MAXIMIZED_BOTH);
+	}
+
+	public void punkteCheck() {
+
+		try {
+
+			textFieldPunkte.setText(String.valueOf(controller.getTableModelAufgaben().berechnePunktzahl()));
+		} catch (NullPointerException e) {
+			textFieldPunkte.setText("0");
+		}
+
 	}
 
 	public JTable getTableAufgaben() {

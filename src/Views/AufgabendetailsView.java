@@ -50,8 +50,8 @@ public class AufgabendetailsView {
 	 * @wbp.parser.entryPoint
 	 */
 	/*
-	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls
-	 * Aufgabe neu erzeugt wird.
+	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe
+	 * neu erzeugt wird.
 	 * 
 	 * this.pruefung = pruefung; onCreate(); this.controller = new
 	 * AufgabenDetailsController(this, pruefung); titleCheck(); btnAction();
@@ -302,6 +302,7 @@ public class AufgabendetailsView {
 		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
 
 		afgdPunkteTextField = new JTextField();
+		afgdPunkteTextField.setEditable(false);
 		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
 		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
@@ -388,6 +389,12 @@ public class AufgabendetailsView {
 			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
 			controller.getModel().setAntworten(new ArrayList<Antwort>(aufgabe.getAntworten()));
 		}
+	}
+	
+	public void punkteCheck() {
+		
+		
+		afgdPunkteTextField.setText(String.valueOf(controller.getModel().berechnePunktzahl()));
 	}
 
 	public void fehlerMeldung(String text) {

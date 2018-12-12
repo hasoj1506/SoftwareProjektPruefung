@@ -114,4 +114,22 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 
 	}
 
+	public int berechnePunktzahl() {
+
+		int punkte = 0;
+
+		try {
+
+			for (int zaehler = 0; zaehler < antworten.size(); zaehler++) {
+
+				punkte = punkte + antworten.get(zaehler).getPunkte();
+			}
+		} catch (NullPointerException e) {
+			return 0;
+		}
+
+		return punkte;
+
+	}
+
 }

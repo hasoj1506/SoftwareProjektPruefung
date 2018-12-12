@@ -35,6 +35,7 @@ public class PruefungsDetailsController {
 	private List<Termin> termine;
 	private List<Nutzer> teilnehmer;
 	private Pruefung pruefung;
+	private PruefungsDetailsAufgabenTableModel tableModelAufgaben;
 
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
@@ -122,7 +123,8 @@ public class PruefungsDetailsController {
 			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsAufgabenTableModel tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
+
+			tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
 			tableAufgaben.setModel(tableModelAufgaben);
 
 		} catch (Exception e) {
@@ -410,5 +412,10 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
+
+	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
+		return tableModelAufgaben;
+	}
+
 
 }

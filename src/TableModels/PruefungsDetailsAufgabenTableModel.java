@@ -46,4 +46,19 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel {
 		}
 	}
 
+	public int berechnePunktzahl() {
+
+		int punkte = 0;
+
+		try {
+			for (int zaehler = 0; zaehler < aufgaben.size(); zaehler++) {
+
+				punkte = punkte + aufgaben.get(zaehler).getPunktzahl();
+			}
+		} catch (NullPointerException e) {
+			return 0;
+		}
+		return punkte;
+
+	}
 }

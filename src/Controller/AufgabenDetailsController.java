@@ -95,6 +95,7 @@ public class AufgabenDetailsController {
 						view.setAufgabe(aufgabe);
 						pruefung.addAufgabe(aufgabe);
 						view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
+						view.getPruefungsDetailsView().punkteCheck();
 						view.schliessen();
 					} else {
 						view.fehlerMeldung("Es muss mindestens eine Aufgabe geben die richtig ist.");

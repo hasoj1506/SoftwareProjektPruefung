@@ -38,10 +38,7 @@ public class AntwortErstellenPopUp {
 	public AntwortErstellenPopUp(final AufgabendetailsView view, Antwort antwort) {
 		onCreate();
 		btnAction(view, antwort);
-
-		this.chckbxNewCheckBox.setEnabled(antwort.isIstRichtig());
-		this.textField.setText(antwort.getAntworttext());
-		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
+		attributCheck(antwort);
 		punkteCheckBoxTest();
 
 	}
@@ -166,6 +163,7 @@ public class AntwortErstellenPopUp {
 							view.getAfgdTable().updateUI();
 
 							view.getAfgdFrame().setEnabled(true);
+							view.punkteCheck();
 							frame.dispose();
 						}
 					}
@@ -209,6 +207,7 @@ public class AntwortErstellenPopUp {
 							view.getAfgdTable().updateUI();
 
 							view.getAfgdFrame().setEnabled(true);
+							view.punkteCheck();
 							frame.dispose();
 						}
 					}
@@ -236,6 +235,14 @@ public class AntwortErstellenPopUp {
 		}));
 	}
 
+	private void attributCheck(Antwort antwort) {
+		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());
+		if(antwort.isIstRichtig() == false) {
+			textField_1.setEnabled(false);
+		}
+		this.textField.setText(antwort.getAntworttext());
+		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
+	}
 	public String getText() {
 		return text;
 	}
