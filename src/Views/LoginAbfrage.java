@@ -11,6 +11,8 @@ import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,6 +20,8 @@ import java.awt.Font;
 public class LoginAbfrage {
 
 	private JFrame frame;
+	private JButton btnProfessor;
+	private JButton btnStudent;
 
 	/**
 	 * Launch the application.
@@ -40,6 +44,7 @@ public class LoginAbfrage {
 	 */
 	public LoginAbfrage() {
 		initialize();
+		addActionListeners();
 	}
 
 	/**
@@ -73,7 +78,7 @@ public class LoginAbfrage {
 		gbc_panel_3.gridy = 0;
 		panel_1.add(panel_3, gbc_panel_3);
 		
-		JButton btnStudent = new JButton("Student");
+		btnStudent = new JButton("Student");
 		btnStudent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStudent.setPreferredSize(new Dimension(150, 40));
 		btnStudent.setMinimumSize(new Dimension(99, 29));
@@ -84,7 +89,7 @@ public class LoginAbfrage {
 		gbc_btnStudent.gridy = 0;
 		panel_1.add(btnStudent, gbc_btnStudent);
 		
-		JButton btnProfessor = new JButton("Professor");
+		btnProfessor = new JButton("Professor");
 		btnProfessor.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnProfessor.setPreferredSize(new Dimension(150, 40));
 		GridBagConstraints gbc_btnProfessor = new GridBagConstraints();
@@ -121,6 +126,22 @@ public class LoginAbfrage {
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
+		frame.setVisible(true);
+	}
+	
+	public void addActionListeners(){
+		
+		btnStudent.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				LoginStudent studentView = new LoginStudent();
+			}
+		});
+		
+		btnStudent.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
+			}
+		});
 	}
 
 }

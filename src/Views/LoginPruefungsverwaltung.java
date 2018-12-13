@@ -152,6 +152,7 @@ public class LoginPruefungsverwaltung {
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
+		frame.setVisible(true);
 		
 	}
 	

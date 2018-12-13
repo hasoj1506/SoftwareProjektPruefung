@@ -70,6 +70,7 @@ public class LoginStudent {
 	 */
 	private void initialize() { 
 		frame = new JFrame();
+		frame.setVisible(true);
 		frame.getContentPane().setBackground(new Color(0, 155, 187));
 		frame.getContentPane().setMinimumSize(new Dimension(700, 400));
 		frame.getContentPane().setMaximumSize(new Dimension(700, 400));
@@ -208,6 +209,10 @@ public class LoginStudent {
 		gbc_lblVersion.gridy = 5;
 		panel_1.add(lblVersion, gbc_lblVersion);
 		frame.pack();
+		
+		frame.setLocationRelativeTo(null);
+		frame.setMinimumSize(new Dimension(500, 300));
+		frame.setResizable(false);
 	}
 
 }
