@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
+import Models.Pruefung;
 import Views.LoginPruefungsverwaltung;
 import Views.LoginStudent;
 import Views.PruefungView;
@@ -18,6 +19,9 @@ public class LoginPruefungsverwaltungController {
 
 	private LoginPruefungsverwaltung view;
 	private LoginStudent viewS;
+	
+	Pruefung pruefung;
+	Nutzer nutzers;
 	
 	private List<String> benutzernameListe;
 	private List<String> passwoerterListe;
@@ -31,8 +35,8 @@ public class LoginPruefungsverwaltungController {
 	}
 	
 	//Konstruktor Student
-	public LoginPruefungsverwaltungController(LoginStudent view) {
-		this.view = view;
+	public LoginPruefungsverwaltungController(LoginStudent viewS) {
+		this.viewS = viewS;
 	}
 	
 
@@ -49,7 +53,7 @@ public class LoginPruefungsverwaltungController {
 
 	public void Einloggen() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
+			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), false);
 
 			if (nutzer.size() > 0) {
 
@@ -83,7 +87,7 @@ public class LoginPruefungsverwaltungController {
 
 			if (nutzer.size() > 0) {
 
-				PruefungView pruefungViewS = new PruefungView();
+				PruefungView pruefungViewS = new PruefungView(pruefung, nutzers);
 				
 			} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
