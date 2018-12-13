@@ -51,7 +51,7 @@ public class LoginPruefungsverwaltungController {
 		return String.valueOf(passwort);
 	}
 
-	public void Einloggen() {
+	public void einloggen() {
 		try {
 			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), false);
 

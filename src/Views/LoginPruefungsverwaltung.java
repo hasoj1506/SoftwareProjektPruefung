@@ -173,7 +173,7 @@ public class LoginPruefungsverwaltung {
 		
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.Einloggen();
+				controller.einloggen();
 			}
 		});
 	}
