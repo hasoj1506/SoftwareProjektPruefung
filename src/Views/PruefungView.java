@@ -232,6 +232,7 @@ public class PruefungView {
 		}
 
 		frame.pack();
+		frame.setVisible(true);
 
 	}
 
