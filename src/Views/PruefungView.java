@@ -43,6 +43,9 @@ public class PruefungView {
 	private JTextField txtAufgabentitel;
 
 	PruefungViewController controller;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	public PruefungView(Pruefung pruefung, Nutzer nutzer) {
 		this.pruefung = nutzer.getPruefung();
@@ -68,6 +71,7 @@ public class PruefungView {
 		frame.getContentPane().add(aufgabenlisteScrollPane, BorderLayout.WEST);
 
 		tableAufgaben = new JTable();
+		tableAufgaben.setGridColor(new Color(255, 255, 255));
 		tableAufgaben.setBackground(new Color(255, 255, 255));
 		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
 		tableAufgaben.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -78,87 +82,73 @@ public class PruefungView {
 		aufgabenstellungPanel.setMinimumSize(new Dimension(100, 100));
 		frame.getContentPane().add(aufgabenstellungPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_aufgabenstellungPanel = new GridBagLayout();
-		gbl_aufgabenstellungPanel.columnWidths = new int[] { 0, 0, 91, 0, 207, 0 };
-		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 0, 30, 150, 150, 30 };
-		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 1.0, 0.0 };
-		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0 };
+		gbl_aufgabenstellungPanel.columnWidths = new int[] { 0, 0, 0, 32 };
+		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 30, 60, 150, 30 };
+		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0 };
+		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0 };
 		aufgabenstellungPanel.setLayout(gbl_aufgabenstellungPanel);
-
-		JButton button = new JButton("<Voherige");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 1;
-		gbc_button.gridy = 1;
-		aufgabenstellungPanel.add(button, gbc_button);
-
-		txtAufgabentitel = new JTextField("");
-		txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
-		txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
-		txtAufgabentitel.setEditable(false);
-		txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		GridBagConstraints gbc_txtAufgabentitel = new GridBagConstraints();
-		gbc_txtAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
-		gbc_txtAufgabentitel.fill = GridBagConstraints.BOTH;
-		gbc_txtAufgabentitel.insets = new Insets(0, 0, 5, 5);
-		gbc_txtAufgabentitel.gridx = 2;
-		gbc_txtAufgabentitel.gridy = 1;
-		aufgabenstellungPanel.add(txtAufgabentitel, gbc_txtAufgabentitel);
-
-		JButton btnNchste = new JButton("N\u00E4chste>");
-		GridBagConstraints gbc_btnNchste = new GridBagConstraints();
-		gbc_btnNchste.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNchste.gridx = 3;
-		gbc_btnNchste.gridy = 1;
-		aufgabenstellungPanel.add(btnNchste, gbc_btnNchste);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(255, 255, 255));
+		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+		gbc_panel_5.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_5.fill = GridBagConstraints.BOTH;
+		gbc_panel_5.gridx = 2;
+		gbc_panel_5.gridy = 1;
+		aufgabenstellungPanel.add(panel_5, gbc_panel_5);
+		
+				JButton button = new JButton("<Voherige");
+				panel_5.add(button);
+				button.setHorizontalAlignment(SwingConstants.RIGHT);
+				
+						txtAufgabentitel = new JTextField("Mathepruefung 1");
+						panel_5.add(txtAufgabentitel);
+						txtAufgabentitel.setForeground(new Color(51, 51, 51));
+						txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
+						txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
+						txtAufgabentitel.setEditable(false);
+						txtAufgabentitel.setFont(new Font("Verdana", Font.BOLD, 16));
+						txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
+						
+								JButton btnNchste = new JButton("N\u00E4chste>");
+								panel_5.add(btnNchste);
 
 		JLabel lblAufgabenstellung = new JLabel("Aufgabenstellung:");
-		lblAufgabenstellung.setFont(new Font("Verdana", Font.PLAIN, 11));
+		lblAufgabenstellung.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblAufgabenstellung = new GridBagConstraints();
 		gbc_lblAufgabenstellung.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAufgabenstellung.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAufgabenstellung.gridx = 0;
-		gbc_lblAufgabenstellung.gridy = 3;
+		gbc_lblAufgabenstellung.gridx = 1;
+		gbc_lblAufgabenstellung.gridy = 2;
 		aufgabenstellungPanel.add(lblAufgabenstellung, gbc_lblAufgabenstellung);
 
 		txtAufgabentext = new JTextField();
 		GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
 		gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;
-		gbc_txtAufgabentext.gridwidth = 4;
 		gbc_txtAufgabentext.insets = new Insets(0, 0, 5, 5);
-		gbc_txtAufgabentext.gridx = 1;
-		gbc_txtAufgabentext.gridy = 3;
+		gbc_txtAufgabentext.gridx = 2;
+		gbc_txtAufgabentext.gridy = 2;
 		aufgabenstellungPanel.add(txtAufgabentext, gbc_txtAufgabentext);
 		txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtAufgabentext.setColumns(10);
 
-		JScrollPane aufgabentextScrollPane = new JScrollPane();
-		aufgabentextScrollPane.setBackground(SystemColor.inactiveCaption);
-		GridBagConstraints gbc_aufgabentextScrollPane = new GridBagConstraints();
-		gbc_aufgabentextScrollPane.anchor = GridBagConstraints.NORTHEAST;
-		gbc_aufgabentextScrollPane.fill = GridBagConstraints.BOTH;
-		gbc_aufgabentextScrollPane.insets = new Insets(0, 0, 5, 5);
-		gbc_aufgabentextScrollPane.gridx = 4;
-		gbc_aufgabentextScrollPane.gridy = 3;
-		aufgabenstellungPanel.add(aufgabentextScrollPane, gbc_aufgabentextScrollPane);
-
 		JLabel lblAntworten = new JLabel("Antworten:");
-		lblAntworten.setFont(new Font("Verdana", Font.PLAIN, 11));
+		lblAntworten.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblAntworten = new GridBagConstraints();
 		gbc_lblAntworten.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAntworten.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAntworten.gridx = 0;
-		gbc_lblAntworten.gridy = 4;
+		gbc_lblAntworten.gridx = 1;
+		gbc_lblAntworten.gridy = 3;
 		aufgabenstellungPanel.add(lblAntworten, gbc_lblAntworten);
 
 		JScrollPane antwortenScrollPane = new JScrollPane();
 		antwortenScrollPane.setMaximumSize(new Dimension(0, 0));
-		antwortenScrollPane.setBackground(SystemColor.inactiveCaption);
+		antwortenScrollPane.setBackground(new Color(255, 255, 255));
 		GridBagConstraints gbc_antwortenScrollPane = new GridBagConstraints();
 		gbc_antwortenScrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_antwortenScrollPane.fill = GridBagConstraints.BOTH;
-		gbc_antwortenScrollPane.gridx = 4;
-		gbc_antwortenScrollPane.gridy = 4;
+		gbc_antwortenScrollPane.gridx = 2;
+		gbc_antwortenScrollPane.gridy = 3;
 		aufgabenstellungPanel.add(antwortenScrollPane, gbc_antwortenScrollPane);
 
 		antwortenTable = new JTable();
@@ -171,59 +161,153 @@ public class PruefungView {
 		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
 		antwortenTable.setTableHeader(null);
 		antwortenScrollPane.setViewportView(antwortenTable);
-
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBackground(new Color(204, 204, 204));
-		buttonPanel.setForeground(new Color(204, 204, 204));
-		FlowLayout flowLayout = (FlowLayout) buttonPanel.getLayout();
-		flowLayout.setAlignment(FlowLayout.RIGHT);
-		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-
-		JButton btnAbgabe = new JButton("Abgabe");
-		btnAbgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnAbgabe.setPreferredSize(new Dimension(100, 29));
-		btnAbgabe.setMinimumSize(new Dimension(30, 29));
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
 
-		JLabel lblVersion = new JLabel("Version 1.01");
-		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
-		buttonPanel.add(lblVersion);
-		btnAbgabe.setIcon(null);
-		btnAbgabe.setBackground(SystemColor.activeCaption);
-		buttonPanel.add(btnAbgabe);
-
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 155, 187));
+		panel.setBackground(new Color(0,155,187));
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 66, 630, -355, 0, -164, 0, 10, 0 };
-		gbl_panel.rowHeights = new int[] { 70, 0, 0, 0 };
+		gbl_panel.columnWidths = new int[] { 32, 121, 75, 104, 75, 121, 32, 0 };
+		gbl_panel.rowHeights = new int[] { 41, 0, 0, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
+
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(0, 155, 187));
+		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_4.fill = GridBagConstraints.BOTH;
+		gbc_panel_4.gridx = 1;
+		gbc_panel_4.gridy = 0;
+		panel.add(panel_4, gbc_panel_4);
+		GridBagLayout gbl_panel_4 = new GridBagLayout();
+		gbl_panel_4.columnWidths = new int[] { 0, 0 };
+		gbl_panel_4.rowHeights = new int[] { 20, 0, 0 };
+		gbl_panel_4.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel_4.rowWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		panel_4.setLayout(gbl_panel_4);
 		// t
-		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
+		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: \r\n");
+		lblMatrikelnummer.setForeground(new Color(255, 255, 255));
+		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 12));
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
-		gbc_lblMatrikelnummer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
-		gbc_lblMatrikelnummer.gridx = 1;
+		gbc_lblMatrikelnummer.fill = GridBagConstraints.VERTICAL;
+		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMatrikelnummer.anchor = GridBagConstraints.WEST;
+		gbc_lblMatrikelnummer.gridx = 0;
 		gbc_lblMatrikelnummer.gridy = 0;
-		panel.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
+		panel_4.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
+
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(0, 155, 187));
+		textField_1.setEditable(false);
+		textField_1.setSelectedTextColor(new Color(0, 155, 187));
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.gridx = 0;
+		gbc_textField_1.gridy = 1;
+		panel_4.add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
 
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
+		lblPrfungstitel.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrfungstitel.gridx = 3;
 		gbc_lblPrfungstitel.gridy = 0;
 		panel.add(lblPrfungstitel, gbc_lblPrfungstitel);
-		lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.PLAIN, 26));
+		lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.BOLD, 30));
 
-		JLabel lblRestzeit = new JLabel("Restzeit: 24:32");
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0, 155, 187));
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 5;
+		gbc_panel_3.gridy = 0;
+		panel.add(panel_3, gbc_panel_3);
+		GridBagLayout gbl_panel_3 = new GridBagLayout();
+		gbl_panel_3.columnWidths = new int[] { 65, 0 };
+		gbl_panel_3.rowHeights = new int[] { 20, 23, 0 };
+		gbl_panel_3.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel_3.rowWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		panel_3.setLayout(gbl_panel_3);
+
+		JLabel lblRestzeit = new JLabel("Restzeit: ");
+		lblRestzeit.setForeground(new Color(255, 255, 255));
+		lblRestzeit.setFont(new Font("Verdana", Font.BOLD, 12));
 		GridBagConstraints gbc_lblRestzeit = new GridBagConstraints();
-		gbc_lblRestzeit.insets = new Insets(0, 0, 5, 5);
-		gbc_lblRestzeit.gridx = 5;
+		gbc_lblRestzeit.fill = GridBagConstraints.BOTH;
+		gbc_lblRestzeit.insets = new Insets(0, 0, 5, 0);
+		gbc_lblRestzeit.gridx = 0;
 		gbc_lblRestzeit.gridy = 0;
-		panel.add(lblRestzeit, gbc_lblRestzeit);
+		panel_3.add(lblRestzeit, gbc_lblRestzeit);
+
+		textField = new JTextField();
+		textField.setBackground(new Color(0, 155, 187));
+		textField.setEditable(false);
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 0;
+		gbc_textField.gridy = 1;
+		panel_3.add(textField, gbc_textField);
+		textField.setColumns(10);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(204, 204, 204));
+		frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
+		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		gbl_panel_1.columnWidths = new int[] { 279, 205, 0 };
+		gbl_panel_1.rowHeights = new int[] { 39, 0, 0 };
+		gbl_panel_1.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		panel_1.setLayout(gbl_panel_1);
+
+		JPanel buttonPanel = new JPanel();
+		GridBagConstraints gbc_buttonPanel = new GridBagConstraints();
+		gbc_buttonPanel.anchor = GridBagConstraints.EAST;
+		gbc_buttonPanel.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonPanel.gridx = 1;
+		gbc_buttonPanel.gridy = 0;
+		panel_1.add(buttonPanel, gbc_buttonPanel);
+		buttonPanel.setBackground(new Color(204, 204, 204));
+		buttonPanel.setForeground(new Color(204, 204, 204));
+		FlowLayout flowLayout = (FlowLayout) buttonPanel.getLayout();
+		flowLayout.setVgap(7);
+		flowLayout.setHgap(36);
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+
+		JButton btnAbgabe = new JButton("Abgabe");
+		btnAbgabe.setSize(new Dimension(50, 0));
+		btnAbgabe.setMaximumSize(new Dimension(50, 29));
+		btnAbgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnAbgabe.setPreferredSize(new Dimension(100, 29));
+		btnAbgabe.setMinimumSize(new Dimension(50, 29));
+		btnAbgabe.setIcon(null);
+		btnAbgabe.setBackground(SystemColor.activeCaption);
+		buttonPanel.add(btnAbgabe);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(204, 204, 204));
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		flowLayout_1.setHgap(10);
+		flowLayout_1.setVgap(7);
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 0;
+		panel_1.add(panel_2, gbc_panel_2);
+
+		JLabel lblVersion = new JLabel("Version:");
+		panel_2.add(lblVersion);
+		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		panel_2.add(textField_2);
+		textField_2.setColumns(10);
 		timerZeit = 60;
 
 		String[] antworten = new String[7];
@@ -271,7 +355,7 @@ public class PruefungView {
 	}
 
 	/*
-	 * public static void main(String[] args) { PruefungView view = new 
+	 * public static void main(String[] args) { PruefungView view = new
 	 * PruefungView(); }
 	 */
 }

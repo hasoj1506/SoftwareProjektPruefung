@@ -94,7 +94,7 @@ public class LoginStudent {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
-		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
 		
 		JLabel lblNewLabel = new JLabel("");

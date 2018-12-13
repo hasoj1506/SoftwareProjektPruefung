@@ -87,6 +87,7 @@ public class AufgabendetailsView {
 		frame.setMinimumSize(new Dimension(850, 650));
 
 		JPanel middleArbeitsPanel = new JPanel();
+		middleArbeitsPanel.setBackground(Color.WHITE);
 		middleArbeitsPanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(middleArbeitsPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_middleArbeitsPanel = new GridBagLayout();
@@ -237,6 +238,7 @@ public class AufgabendetailsView {
 		headPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		JPanel eingabePanel = new JPanel();
+		eingabePanel.setBackground(Color.WHITE);
 		GridBagConstraints gbc_eingabePanel = new GridBagConstraints();
 		gbc_eingabePanel.fill = GridBagConstraints.BOTH;
 		gbc_eingabePanel.gridx = 0;
