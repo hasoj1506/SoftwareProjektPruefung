@@ -15,17 +15,23 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+
+import Controller.LoginPruefungsverwaltungController;
+
 import java.awt.Color;
 
 public class LoginStudent {
 
 	private JFrame frame;
+	private JButton btnLogin;
 	
 	private GregorianCalendar calender = new GregorianCalendar();
 	
@@ -40,6 +46,8 @@ public class LoginStudent {
 	
 	private JTextField textFieldBenutzer;
 	private JPasswordField textFieldPassword;
+	
+	LoginPruefungsverwaltungController controller;
 
 
 	/**
@@ -62,7 +70,9 @@ public class LoginStudent {
 	 * Create the application.
 	 */
 	public LoginStudent() {
+		this.controller = new LoginPruefungsverwaltungController(this);
 		initialize();
+		addActionListeners();
 	}
 	//
 	/**
@@ -195,7 +205,7 @@ public class LoginStudent {
 		panel_1.add(textFieldPassword, gbc_textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
 		gbc_btnLogin.insets = new Insets(0, 0, 5, 0);
@@ -216,6 +226,28 @@ public class LoginStudent {
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
+	}
+	
+	public JTextField getTFBenutzername() {
+		return this.textFieldBenutzer;
+	}
+	
+	public JPasswordField getTFPasswort() {
+		return this.textFieldPassword;
+		
+	}
+	
+	public JFrame getLoginPruefungsverwaltungFrame() {
+		return this.frame;
+	}
+	
+	public void addActionListeners(){
+		
+		btnLogin.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.EinloggenStudent();;
+			}
+		});
 	}
 
 }

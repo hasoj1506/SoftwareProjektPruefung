@@ -7,7 +7,10 @@ import javax.swing.JOptionPane;
 
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
+import Models.Pruefung;
 import Views.LoginPruefungsverwaltung;
+import Views.LoginStudent;
+import Views.PruefungView;
 import Views.PruefungsverwaltungView;
 
 public class LoginPruefungsverwaltungController {
@@ -15,6 +18,10 @@ public class LoginPruefungsverwaltungController {
 	// aufgerufen werden können
 
 	private LoginPruefungsverwaltung view;
+	private LoginStudent viewS;
+	
+	Pruefung pruefung;
+	Nutzer nutzers;
 	
 	private List<String> benutzernameListe;
 	private List<String> passwoerterListe;
@@ -22,18 +29,19 @@ public class LoginPruefungsverwaltungController {
 	// Zugriff auf die Datenbank
 	DatabaseService db = DatabaseService.getInstance();
 
-	// Konstruktor
+	// Konstruktor Professor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
 		this.view = view;
 	}
 	
-//	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view, List<String> benutzernameListe, List<String> passwoerterListe) {
-//		this.view = view;
-//		this.benutzernameListe = benutzernameListe;
-//		this.passwoerterListe = passwoerterListe;
-//	}
+	//Konstruktor Student
+	public LoginPruefungsverwaltungController(LoginStudent viewS) {
+		this.viewS = viewS;
+	}
+	
 
-	// Get Benutzer und passwort von textfeld in view
+
+	// Get Benutzer und passwort von textfeld in view von Professor
 	public String getBenutzername() {
 		return view.getTFBenutzername().getText();
 	}
@@ -45,7 +53,7 @@ public class LoginPruefungsverwaltungController {
 
 	public void Einloggen() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
+			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), false);
 
 			if (nutzer.size() > 0) {
 
@@ -60,36 +68,39 @@ public class LoginPruefungsverwaltungController {
 
 		}
 	}
-//		List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
-//		String benutzername = getBenutzername();
-//		String passwort = getPasswort();
-//
-//		// Liste mit Benutzer und Passwort aus DB?
-//		benutzernameListe = new ArrayList<String>();
-//		try {
-//			for (Nutzer i : nutzer) {
-//				benutzernameListe.add(i.getBenutzername());
-//			}
-//
-//			passwoerterListe = new ArrayList<String>();
-//
-//			for (Nutzer i : nutzer) {
-//				passwoerterListe.add(i.getPasswort());
-//			}
-//
-//			if (benutzernameListe.contains(benutzername) && passwoerterListe.contains(passwort)) {
-////				JOptionPane.showMessageDialog(null, "Erfolg");	
-//				System.out.println("erf");
-//			} else {
-////				JOptionPane.showMessageDialog(null, "Fehler");
-//				System.out.println("miss");
-//
-//			}
-//		} catch (Exception e) {
-//			// Fehler
-//
-//		}
-//
-//	}
+	
+	
+	
+	// Get Benutzer und passwort von textfeld in view von Student
+	public String getBenutzernameS() {
+		return viewS.getTFBenutzername().getText();
+	}
+
+	public String getPasswortS() {
+		char[] passwort = viewS.getTFPasswort().getPassword();
+		return String.valueOf(passwort);
+	}
+
+	public void EinloggenStudent() {
+		try {
+			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), true);
+
+			if (nutzer.size() > 0) {
+
+				PruefungView pruefungViewS = new PruefungView(pruefung, nutzers);
+				
+			} else {
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
+
+			}
+		} catch (NullPointerException e) {
+			System.out.println("Nullpointerexception");
+
+		}
+	}
+	
+	//
+	
+
 
 }

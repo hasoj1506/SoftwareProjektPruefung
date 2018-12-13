@@ -2,6 +2,7 @@ package Testklassen;
 
 import java.util.ArrayList;
 import DatabaseService.DatabaseService;
+import Models.Nutzer;
 import Models.Pruefung;
 import Models.Termin;
 
@@ -10,7 +11,7 @@ public class DatenbankTest {
 	public static void main(String[] args) {
 
 		DatabaseService service = DatabaseService.getInstance();
-
+		
 		for (int i = 0; i < 20; i++) {
 			// erzeugt ein Prüfungsobjekt mit Daten (siehe Konstruktor)
 			Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);

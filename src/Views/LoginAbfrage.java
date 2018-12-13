@@ -137,7 +137,7 @@ public class LoginAbfrage {
 			}
 		});
 		
-		btnStudent.addActionListener(new ActionListener(){
+		btnProfessor.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
 			}
