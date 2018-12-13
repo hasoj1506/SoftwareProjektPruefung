@@ -271,7 +271,7 @@ public class PruefungView {
 	}
 
 	/*
-	 * public static void main(String[] args) { PruefungView view = new
+	 * public static void main(String[] args) { PruefungView view = new 
 	 * PruefungView(); }
 	 */
 }
