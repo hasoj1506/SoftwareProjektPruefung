@@ -241,7 +241,7 @@ public class PruefungView {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
 				if (evt.getClickCount() == 1) {
-					controller.fuelleAufgabe();
+					controller.fuelleAufgabe(nutzer.getPruefung());
 				}
 
 			}
