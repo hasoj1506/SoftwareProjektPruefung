@@ -51,6 +51,9 @@ public class AntwortErstellenPopUp {
 		frame.setMinimumSize(new Dimension(500, 250));
 		frame.setMaximumSize(new Dimension(500, 250));
 		frame.setFocusable(false);
+		
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frame.setIconImage(icon1);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 204));
@@ -65,7 +68,7 @@ public class AntwortErstellenPopUp {
 		panel.add(btnOk);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 155, 187));
+		panel_1.setBackground(new Color(255, 255, 255));
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
@@ -75,8 +78,8 @@ public class AntwortErstellenPopUp {
 		panel_1.setLayout(gbl_panel_1);
 
 		lblNewLabel = new JLabel("Antwort:");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -95,8 +98,8 @@ public class AntwortErstellenPopUp {
 		textField.setColumns(10);
 
 		lblPunktzah = new JLabel("Punktzahl:");
-		lblPunktzah.setForeground(new Color(255, 255, 255));
-		lblPunktzah.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblPunktzah.setForeground(new Color(0, 0, 0));
+		lblPunktzah.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblPunktzah = new GridBagConstraints();
 		gbc_lblPunktzah.anchor = GridBagConstraints.EAST;
 		gbc_lblPunktzah.insets = new Insets(0, 0, 5, 5);
@@ -114,8 +117,8 @@ public class AntwortErstellenPopUp {
 		textField_1.setColumns(10);
 
 		lblNewLabel_2 = new JLabel("Richtig:");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;

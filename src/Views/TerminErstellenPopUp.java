@@ -60,17 +60,23 @@ public class TerminErstellenPopUp {
 		frmTermin.setMaximumSize(new Dimension(500, 250));
 		frmTermin.setFocusable(false);
 
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frmTermin.setIconImage(icon1);
+		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 204));
 		frmTermin.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
 		btnOk = new JButton("Speichern");
+		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
 		btnOk.setMinimumSize(new Dimension(100, 35));
 		btnOk.setMaximumSize(new Dimension(100, 35));
 		btnOk.setSize(new Dimension(100, 35));
 		panel.add(btnOk);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 		frmTermin.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
@@ -80,6 +86,7 @@ public class TerminErstellenPopUp {
 		panel_1.setLayout(gbl_panel_1);
 
 		lblDatum = new JLabel("Datum:");
+		lblDatum.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblDatum.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblDatum = new GridBagConstraints();
 		gbc_lblDatum.anchor = GridBagConstraints.EAST;
@@ -98,6 +105,7 @@ public class TerminErstellenPopUp {
 		textFieldDatum.setColumns(10);
 
 		lblUhrzeit = new JLabel("Uhrzeit:");
+		lblUhrzeit.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblUhrzeit = new GridBagConstraints();
 		gbc_lblUhrzeit.anchor = GridBagConstraints.EAST;
 		gbc_lblUhrzeit.insets = new Insets(0, 0, 5, 5);
@@ -115,6 +123,7 @@ public class TerminErstellenPopUp {
 		textFieldUhrzeit.setColumns(10);
 
 		lblRaum = new JLabel("Raum:");
+		lblRaum.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblRaum.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblRaum = new GridBagConstraints();
 		gbc_lblRaum.anchor = GridBagConstraints.EAST;

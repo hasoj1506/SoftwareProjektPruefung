@@ -82,7 +82,7 @@ public class AufgabendetailsView {
 		this.frame = new JFrame("Aufgabendetails");
 		frame.setBackground(new Color(0, 155, 187));
 		frame.setForeground(Color.WHITE);
-		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
 		frame.setMinimumSize(new Dimension(850, 650));
 
@@ -126,6 +126,7 @@ public class AufgabendetailsView {
 		tableScrollPane.setViewportView(afgdTable);
 
 		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 255, 255));
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -317,6 +318,7 @@ public class AufgabendetailsView {
 		afgdPunkteTextField.setColumns(10);
 		
 		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
+		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
 		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_chckbxAntwortenVerwrfenl = new GridBagConstraints();
 		gbc_chckbxAntwortenVerwrfenl.insets = new Insets(0, 0, 5, 5);

@@ -60,18 +60,24 @@ public class NutzerErstellenPopUp {
 		frmNutzer.setMinimumSize(new Dimension(500, 250));
 		frmNutzer.setMaximumSize(new Dimension(500, 250));
 		frmNutzer.setFocusable(false);
+		
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frmNutzer.setIconImage(icon1);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 204));
 		frmNutzer.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
 		btnOk = new JButton("Speichern");
+		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
 		btnOk.setMinimumSize(new Dimension(100, 35));
 		btnOk.setMaximumSize(new Dimension(100, 35));
 		btnOk.setSize(new Dimension(100, 35));
 		panel.add(btnOk);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 		frmNutzer.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
@@ -81,6 +87,7 @@ public class NutzerErstellenPopUp {
 		panel_1.setLayout(gbl_panel_1);
 
 		lblVorname = new JLabel("Vorname:");
+		lblVorname.setFont(new Font("Verdana", Font.BOLD, 16));
 		lblVorname.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblVorname = new GridBagConstraints();
 		gbc_lblVorname.anchor = GridBagConstraints.EAST;
@@ -99,6 +106,7 @@ public class NutzerErstellenPopUp {
 		textFieldVorname.setColumns(10);
 
 		lblNachname = new JLabel("Nachname:");
+		lblNachname.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblNachname = new GridBagConstraints();
 		gbc_lblNachname.anchor = GridBagConstraints.EAST;
 		gbc_lblNachname.insets = new Insets(0, 0, 5, 5);

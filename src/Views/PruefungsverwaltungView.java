@@ -57,13 +57,14 @@ public class PruefungsverwaltungView {
 	public void onCreate() {
 
 		this.frmPrfungsverwaltung = new JFrame();
-		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frmPrfungsverwaltung.setIconImage(icon1);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
 		frmPrfungsverwaltung.setForeground(Color.WHITE);
 		frmPrfungsverwaltung.setMinimumSize(new Dimension(850, 650));
 
 		JPanel PruefungenPanel = new JPanel();
+		PruefungenPanel.setBackground(new Color(255, 255, 255));
 		PruefungenPanel.setMinimumSize(new Dimension(400, 300));
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();

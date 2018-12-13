@@ -100,7 +100,7 @@ public class PruefungsDetails extends JFrame {
 
 		setMinimumSize(new Dimension(850, 650));
 		setPreferredSize(new Dimension(850, 650));
-		Image icon1 = new ImageIcon(this.getClass().getResource("/Logo.png")).getImage();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		setIconImage(icon1);
 
 		JPanel panelButtons = new JPanel();
@@ -139,6 +139,7 @@ public class PruefungsDetails extends JFrame {
 		panel.add(btnLschenPruefung, gbc_btnLschenPruefung);
 
 		JPanel panelMain = new JPanel();
+		panelMain.setBackground(new Color(255, 255, 255));
 		getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
 		gbl_panelMain.columnWidths = new int[] { 55, 100, 300, 55, 0 };
@@ -171,6 +172,7 @@ public class PruefungsDetails extends JFrame {
 		scrollPaneAufgabenTable.setViewportView(tableAufgaben);
 
 		JPanel panelAufgabenButtons = new JPanel();
+		panelAufgabenButtons.setBackground(new Color(255, 255, 255));
 		FlowLayout flowLayout_2 = (FlowLayout) panelAufgabenButtons.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panelAufgabenButtons = new GridBagConstraints();
@@ -218,6 +220,7 @@ public class PruefungsDetails extends JFrame {
 		scrollPaneTeilnehmerTable.setViewportView(tableTeilnehmer);
 
 		JPanel panelTeilnehmerButtons = new JPanel();
+		panelTeilnehmerButtons.setBackground(new Color(255, 255, 255));
 		FlowLayout fl_panelTeilnehmerButtons = (FlowLayout) panelTeilnehmerButtons.getLayout();
 		fl_panelTeilnehmerButtons.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panelTeilnehmerButtons = new GridBagConstraints();
@@ -274,6 +277,7 @@ public class PruefungsDetails extends JFrame {
 		scrollPaneTermineTable.setViewportView(tableTermine);
 
 		JPanel panelTermineButtons = new JPanel();
+		panelTermineButtons.setBackground(new Color(255, 255, 255));
 		FlowLayout flowLayout_3 = (FlowLayout) panelTermineButtons.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panelTermineButtons = new GridBagConstraints();
@@ -353,6 +357,7 @@ public class PruefungsDetails extends JFrame {
 		panel_3.add(label_2, gbc_label_2);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_1.anchor = GridBagConstraints.NORTH;
@@ -424,6 +429,7 @@ public class PruefungsDetails extends JFrame {
 		textFieldPunkte.setColumns(5);
 
 		chckbxAufgabenVerwrfeln = new JCheckBox("Aufgaben verw\u00FCrfeln");
+		chckbxAufgabenVerwrfeln.setBackground(new Color(255, 255, 255));
 		chckbxAufgabenVerwrfeln.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_chckbxAufgabenVerwrfeln = new GridBagConstraints();
 		gbc_chckbxAufgabenVerwrfeln.insets = new Insets(0, 0, 0, 5);

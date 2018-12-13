@@ -64,6 +64,9 @@ public class PruefungView {
 		frame.setPreferredSize(new Dimension(800, 500));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frame.setIconImage(icon1);
 
 		JScrollPane aufgabenlisteScrollPane = new JScrollPane();
 		aufgabenlisteScrollPane.setPreferredSize(new Dimension(100, 2));

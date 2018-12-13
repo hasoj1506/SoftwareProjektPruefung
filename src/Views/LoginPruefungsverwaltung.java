@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -24,9 +25,11 @@ import Controller.PruefungsDetailsController;
 import Models.Nutzer;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JCheckBox;
 
 public class LoginPruefungsverwaltung {
 
@@ -65,88 +68,113 @@ public class LoginPruefungsverwaltung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frame.setIconImage(icon1);
+		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[] {40, 40};
+		gbl_panel.rowHeights = new int[] {70, 0};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0};
 		panel.setLayout(gbl_panel);
 		
-		JLabel lblPruefungsverwaltung = new JLabel("Pruefungsverwaltung");
-		lblPruefungsverwaltung.setBackground(new Color(51, 51, 51));
-		lblPruefungsverwaltung.setForeground(new Color(0, 155, 187));
-		lblPruefungsverwaltung.setFont(new Font("Verdana", Font.BOLD, 20));
-		GridBagConstraints gbc_lblPruefungsverwaltung = new GridBagConstraints();
-		gbc_lblPruefungsverwaltung.insets = new Insets(0, 0, 5, 0);
-		gbc_lblPruefungsverwaltung.gridx = 0;
-		gbc_lblPruefungsverwaltung.gridy = 0;
-		panel.add(lblPruefungsverwaltung, gbc_lblPruefungsverwaltung);
-		//t
-		JLabel lblVersion = new JLabel("Version");
-		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
-		gbc_lblVersion.anchor = GridBagConstraints.NORTH;
-		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 1;
-		panel.add(lblVersion, gbc_lblVersion);
+		JLabel lblNewLabel = new JLabel("examo");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Gill Sans MT", Font.BOLD, 72));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		panel.add(lblNewLabel, gbc_lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Instructor Tools");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Gill Sans MT", Font.BOLD, 24));
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 1;
+		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 155, 187));
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0};
-		gbl_panel_1.rowHeights = new int[] {0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWidths = new int[]{20, 0, 0, 20, 0};
+		gbl_panel_1.rowHeights = new int[] {41, 0, 0, -18, 0};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblBenutzername = new JLabel("Benutzername");
-		lblBenutzername.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblBenutzername.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblBenutzername = new GridBagConstraints();
 		gbc_lblBenutzername.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBenutzername.anchor = GridBagConstraints.EAST;
-		gbc_lblBenutzername.gridx = 0;
+		gbc_lblBenutzername.gridx = 1;
 		gbc_lblBenutzername.gridy = 0;
 		panel_1.add(lblBenutzername, gbc_lblBenutzername);
 		
 		textFieldBenutzername = new JTextField();
 		GridBagConstraints gbc_textFieldBenutzername = new GridBagConstraints();
-		gbc_textFieldBenutzername.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldBenutzername.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldBenutzername.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldBenutzername.gridx = 1;
+		gbc_textFieldBenutzername.gridx = 2;
 		gbc_textFieldBenutzername.gridy = 0;
 		panel_1.add(textFieldBenutzername, gbc_textFieldBenutzername);
 		textFieldBenutzername.setColumns(10);
 		
 		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblPasswort.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblPasswort = new GridBagConstraints();
 		gbc_lblPasswort.anchor = GridBagConstraints.EAST;
 		gbc_lblPasswort.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPasswort.gridx = 0;
+		gbc_lblPasswort.gridx = 1;
 		gbc_lblPasswort.gridy = 1;
 		panel_1.add(lblPasswort, gbc_lblPasswort);
 		
 		textFieldPasswort = new JPasswordField();
 		GridBagConstraints gbc_textFieldPasswort = new GridBagConstraints();
-		gbc_textFieldPasswort.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldPasswort.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPasswort.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldPasswort.gridx = 1;
+		gbc_textFieldPasswort.gridx = 2;
 		gbc_textFieldPasswort.gridy = 1;
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0,155,187));
+		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.RIGHT);
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 2;
+		gbc_panel_3.gridy = 2;
+		panel_1.add(panel_3, gbc_panel_3);
+		
+		JCheckBox chckbxBenutzernameSpeichern = new JCheckBox("Benutzername speichern");
+		chckbxBenutzernameSpeichern.setFont(new Font("Verdana", Font.BOLD, 12));
+		chckbxBenutzernameSpeichern.setBackground(new Color(0,155,187));
+		panel_3.add(chckbxBenutzernameSpeichern);
+		
 		btnLogin = new JButton("Login");
+		panel_3.add(btnLogin);
 		btnLogin.setForeground(new Color(51, 51, 51));
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
-		gbc_btnLogin.anchor = GridBagConstraints.EAST;
-		gbc_btnLogin.gridx = 1;
-		gbc_btnLogin.gridy = 2;
-		panel_1.add(btnLogin, gbc_btnLogin);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(204, 204, 204));
+		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		frame.getContentPane().add(panel_2, BorderLayout.SOUTH);
+		//t
+		JLabel lblVersion = new JLabel("Version");
+		lblVersion.setForeground(new Color(102, 102, 102));
+		panel_2.add(lblVersion);
+		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
 		
 
 		frame.setLocationRelativeTo(null);
