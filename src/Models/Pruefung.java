@@ -40,7 +40,7 @@ public class Pruefung {
 		nutzer = new HashSet<Nutzer>();
 	}
 
-	public Pruefung(String bezeichnung, int dauer, int punkte) {
+	public Pruefung(String bezeichnung, int dauer) {
 		super();
 		this.dauer = dauer;
 		this.bezeichnung = bezeichnung;
@@ -96,10 +96,6 @@ public class Pruefung {
 
 	public int getPunkte() {
 		return punkte;
-	}
-
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
 	}
 
 	public String getLetzterTermin() {

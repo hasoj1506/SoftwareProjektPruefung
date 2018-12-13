@@ -64,12 +64,13 @@ public class PruefungView {
 		frame.setPreferredSize(new Dimension(800, 500));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
 
 		JScrollPane aufgabenlisteScrollPane = new JScrollPane();
-		aufgabenlisteScrollPane.setPreferredSize(new Dimension(100, 2));
+		aufgabenlisteScrollPane.setMinimumSize(new Dimension(200, 32));
+		aufgabenlisteScrollPane.setPreferredSize(new Dimension(200, 2));
 		aufgabenlisteScrollPane.setBackground(new Color(255, 255, 255));
 		frame.getContentPane().add(aufgabenlisteScrollPane, BorderLayout.WEST);
 
@@ -85,13 +86,14 @@ public class PruefungView {
 		aufgabenstellungPanel.setMinimumSize(new Dimension(100, 100));
 		frame.getContentPane().add(aufgabenstellungPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_aufgabenstellungPanel = new GridBagLayout();
-		gbl_aufgabenstellungPanel.columnWidths = new int[] { 0, 0, 0, 32 };
-		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 30, 60, 150, 30 };
-		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0 };
+		gbl_aufgabenstellungPanel.columnWidths = new int[] { 32, 114, 0, 0, 32 };
+		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 30, 34, 150, 30 };
+		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0 };
 		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0 };
 		aufgabenstellungPanel.setLayout(gbl_aufgabenstellungPanel);
-		
+
 		JPanel panel_5 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_5.getLayout();
 		panel_5.setBackground(new Color(255, 255, 255));
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
 		gbc_panel_5.insets = new Insets(0, 0, 5, 5);
@@ -99,27 +101,31 @@ public class PruefungView {
 		gbc_panel_5.gridx = 2;
 		gbc_panel_5.gridy = 1;
 		aufgabenstellungPanel.add(panel_5, gbc_panel_5);
-		
-				JButton button = new JButton("<Voherige");
-				panel_5.add(button);
-				button.setHorizontalAlignment(SwingConstants.RIGHT);
-				
-						txtAufgabentitel = new JTextField("Mathepruefung 1");
-						panel_5.add(txtAufgabentitel);
-						txtAufgabentitel.setForeground(new Color(51, 51, 51));
-						txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
-						txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
-						txtAufgabentitel.setEditable(false);
-						txtAufgabentitel.setFont(new Font("Verdana", Font.BOLD, 16));
-						txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
-						
-								JButton btnNchste = new JButton("N\u00E4chste>");
-								panel_5.add(btnNchste);
+
+		JButton button = new JButton("<Voherige");
+		button.setFont(new Font("Verdana", Font.PLAIN, 16));
+		panel_5.add(button);
+		button.setHorizontalAlignment(SwingConstants.RIGHT);
+
+		txtAufgabentitel = new JTextField("Mathepruefung 1");
+		txtAufgabentitel.setBackground(new Color(255, 255, 255));
+		txtAufgabentitel.setBorder(null);
+		panel_5.add(txtAufgabentitel);
+		txtAufgabentitel.setForeground(new Color(51, 51, 51));
+		txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
+		txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
+		txtAufgabentitel.setEditable(false);
+		txtAufgabentitel.setFont(new Font("Verdana", Font.BOLD, 16));
+		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		JButton btnNchste = new JButton("N\u00E4chste>");
+		btnNchste.setFont(new Font("Verdana", Font.PLAIN, 16));
+		panel_5.add(btnNchste);
 
 		JLabel lblAufgabenstellung = new JLabel("Aufgabenstellung:");
 		lblAufgabenstellung.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblAufgabenstellung = new GridBagConstraints();
-		gbc_lblAufgabenstellung.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblAufgabenstellung.anchor = GridBagConstraints.NORTH;
 		gbc_lblAufgabenstellung.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAufgabenstellung.gridx = 1;
 		gbc_lblAufgabenstellung.gridy = 2;
@@ -127,12 +133,13 @@ public class PruefungView {
 
 		txtAufgabentext = new JTextField();
 		GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
+		gbc_txtAufgabentext.gridwidth = 2;
 		gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;
 		gbc_txtAufgabentext.insets = new Insets(0, 0, 5, 5);
 		gbc_txtAufgabentext.gridx = 2;
 		gbc_txtAufgabentext.gridy = 2;
 		aufgabenstellungPanel.add(txtAufgabentext, gbc_txtAufgabentext);
-		txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAufgabentext.setFont(new Font("Verdana", Font.BOLD, 16));
 		txtAufgabentext.setColumns(10);
 
 		JLabel lblAntworten = new JLabel("Antworten:");
@@ -148,6 +155,7 @@ public class PruefungView {
 		antwortenScrollPane.setMaximumSize(new Dimension(0, 0));
 		antwortenScrollPane.setBackground(new Color(255, 255, 255));
 		GridBagConstraints gbc_antwortenScrollPane = new GridBagConstraints();
+		gbc_antwortenScrollPane.gridwidth = 2;
 		gbc_antwortenScrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_antwortenScrollPane.fill = GridBagConstraints.BOTH;
 		gbc_antwortenScrollPane.gridx = 2;
@@ -167,12 +175,13 @@ public class PruefungView {
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0,155,187));
+		panel.setBorder(null);
+		panel.setBackground(new Color(0, 155, 187));
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 32, 121, 75, 104, 75, 121, 32, 0 };
+		gbl_panel.columnWidths = new int[] { 121, 75, 104, 75, 150, 0 };
 		gbl_panel.rowHeights = new int[] { 41, 0, 0, 0, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
@@ -181,13 +190,13 @@ public class PruefungView {
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_4.fill = GridBagConstraints.BOTH;
-		gbc_panel_4.gridx = 1;
+		gbc_panel_4.gridx = 0;
 		gbc_panel_4.gridy = 0;
 		panel.add(panel_4, gbc_panel_4);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[] { 0, 0 };
+		gbl_panel_4.columnWidths = new int[] { 50, 0, 0 };
 		gbl_panel_4.rowHeights = new int[] { 20, 0, 0 };
-		gbl_panel_4.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel_4.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_4.rowWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		panel_4.setLayout(gbl_panel_4);
 		// t
@@ -197,17 +206,21 @@ public class PruefungView {
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
 		gbc_lblMatrikelnummer.fill = GridBagConstraints.VERTICAL;
 		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 0);
-		gbc_lblMatrikelnummer.anchor = GridBagConstraints.WEST;
-		gbc_lblMatrikelnummer.gridx = 0;
+		gbc_lblMatrikelnummer.gridx = 1;
 		gbc_lblMatrikelnummer.gridy = 0;
 		panel_4.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 
 		textField_1 = new JTextField();
+		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_1.setForeground(Color.WHITE);
+		textField_1.setFont(new Font("Verdana", Font.BOLD, 12));
+		textField_1.setText("115462");
+		textField_1.setBorder(null);
 		textField_1.setBackground(new Color(0, 155, 187));
 		textField_1.setEditable(false);
 		textField_1.setSelectedTextColor(new Color(0, 155, 187));
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridx = 0;
+		gbc_textField_1.gridx = 1;
 		gbc_textField_1.gridy = 1;
 		panel_4.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
@@ -216,7 +229,7 @@ public class PruefungView {
 		lblPrfungstitel.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPrfungstitel.gridx = 3;
+		gbc_lblPrfungstitel.gridx = 2;
 		gbc_lblPrfungstitel.gridy = 0;
 		panel.add(lblPrfungstitel, gbc_lblPrfungstitel);
 		lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.BOLD, 30));
@@ -224,9 +237,9 @@ public class PruefungView {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 155, 187));
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 5;
+		gbc_panel_3.gridx = 4;
 		gbc_panel_3.gridy = 0;
 		panel.add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
@@ -240,17 +253,21 @@ public class PruefungView {
 		lblRestzeit.setForeground(new Color(255, 255, 255));
 		lblRestzeit.setFont(new Font("Verdana", Font.BOLD, 12));
 		GridBagConstraints gbc_lblRestzeit = new GridBagConstraints();
-		gbc_lblRestzeit.fill = GridBagConstraints.BOTH;
+		gbc_lblRestzeit.fill = GridBagConstraints.VERTICAL;
 		gbc_lblRestzeit.insets = new Insets(0, 0, 5, 0);
 		gbc_lblRestzeit.gridx = 0;
 		gbc_lblRestzeit.gridy = 0;
 		panel_3.add(lblRestzeit, gbc_lblRestzeit);
 
 		textField = new JTextField();
+		textField.setForeground(Color.WHITE);
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setFont(new Font("Verdana", Font.BOLD, 24));
+		textField.setText("18:42");
+		textField.setBorder(null);
 		textField.setBackground(new Color(0, 155, 187));
 		textField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 0;
 		gbc_textField.gridy = 1;
 		panel_3.add(textField, gbc_textField);
@@ -306,8 +323,11 @@ public class PruefungView {
 		JLabel lblVersion = new JLabel("Version:");
 		panel_2.add(lblVersion);
 		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
-		
+
 		textField_2 = new JTextField();
+		textField_2.setBorder(null);
+		textField_2.setBackground(new Color(204, 204, 204));
+		textField_2.setSelectedTextColor(new Color(204, 204, 204));
 		textField_2.setEditable(false);
 		panel_2.add(textField_2);
 		textField_2.setColumns(10);

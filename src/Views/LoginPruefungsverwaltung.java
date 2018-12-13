@@ -76,9 +76,9 @@ public class LoginPruefungsverwaltung {
 		panel.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[] {70, 0};
+		gbl_panel.rowHeights = new int[] {70, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 1.0};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblNewLabel = new JLabel("examo");
@@ -94,6 +94,7 @@ public class LoginPruefungsverwaltung {
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Gill Sans MT", Font.BOLD, 24));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 1;
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
@@ -108,7 +109,7 @@ public class LoginPruefungsverwaltung {
 		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel lblBenutzername = new JLabel("Benutzername");
+		JLabel lblBenutzername = new JLabel("Benutzername:");
 		lblBenutzername.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblBenutzername = new GridBagConstraints();
 		gbc_lblBenutzername.insets = new Insets(0, 0, 5, 5);
@@ -126,7 +127,7 @@ public class LoginPruefungsverwaltung {
 		panel_1.add(textFieldBenutzername, gbc_textFieldBenutzername);
 		textFieldBenutzername.setColumns(10);
 		
-		JLabel lblPasswort = new JLabel("Passwort");
+		JLabel lblPasswort = new JLabel("Passwort:");
 		lblPasswort.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblPasswort = new GridBagConstraints();
 		gbc_lblPasswort.anchor = GridBagConstraints.EAST;

@@ -14,6 +14,7 @@ import Models.Pruefung;
 import Models.Termin;
 import TableModels.AufgabendetailsTableModel;
 import Views.AufgabendetailsView;
+import Views.PruefungView;
 import Views.PruefungsverwaltungView;
 
 public class yaneksViewTest {
@@ -35,8 +36,12 @@ public class yaneksViewTest {
 
 		}
 		;
+		
+		Pruefung pruefung = new Pruefung("test", 5);
+		
+		Nutzer nutzer = new Nutzer("test","tes","t","tt", true);
 
-		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		PruefungView view = new PruefungView(pruefung, nutzer);
 
 	}
 
