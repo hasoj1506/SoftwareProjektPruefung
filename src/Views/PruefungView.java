@@ -83,28 +83,28 @@ public class PruefungView {
 		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 1.0, 0.0 };
 		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0 };
 		aufgabenstellungPanel.setLayout(gbl_aufgabenstellungPanel);
-				
-				JButton button = new JButton("<Voherige");
-				GridBagConstraints gbc_button = new GridBagConstraints();
-				gbc_button.insets = new Insets(0, 0, 5, 5);
-				gbc_button.gridx = 1;
-				gbc_button.gridy = 1;
-				aufgabenstellungPanel.add(button, gbc_button);
-		
-				txtAufgabentitel = new JTextField("");
-				txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
-				txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
-				txtAufgabentitel.setEditable(false);
-				txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
-				txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
-				GridBagConstraints gbc_txtAufgabentitel = new GridBagConstraints();
-				gbc_txtAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
-				gbc_txtAufgabentitel.fill = GridBagConstraints.BOTH;
-				gbc_txtAufgabentitel.insets = new Insets(0, 0, 5, 5);
-				gbc_txtAufgabentitel.gridx = 2;
-				gbc_txtAufgabentitel.gridy = 1;
-				aufgabenstellungPanel.add(txtAufgabentitel, gbc_txtAufgabentitel);
-		
+
+		JButton button = new JButton("<Voherige");
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 1;
+		gbc_button.gridy = 1;
+		aufgabenstellungPanel.add(button, gbc_button);
+
+		txtAufgabentitel = new JTextField("");
+		txtAufgabentitel.setDisabledTextColor(new Color(255, 255, 255));
+		txtAufgabentitel.setSelectionColor(new Color(255, 255, 255));
+		txtAufgabentitel.setEditable(false);
+		txtAufgabentitel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		GridBagConstraints gbc_txtAufgabentitel = new GridBagConstraints();
+		gbc_txtAufgabentitel.anchor = GridBagConstraints.NORTHEAST;
+		gbc_txtAufgabentitel.fill = GridBagConstraints.BOTH;
+		gbc_txtAufgabentitel.insets = new Insets(0, 0, 5, 5);
+		gbc_txtAufgabentitel.gridx = 2;
+		gbc_txtAufgabentitel.gridy = 1;
+		aufgabenstellungPanel.add(txtAufgabentitel, gbc_txtAufgabentitel);
+
 		JButton btnNchste = new JButton("N\u00E4chste>");
 		GridBagConstraints gbc_btnNchste = new GridBagConstraints();
 		gbc_btnNchste.insets = new Insets(0, 0, 5, 5);
@@ -120,17 +120,17 @@ public class PruefungView {
 		gbc_lblAufgabenstellung.gridx = 0;
 		gbc_lblAufgabenstellung.gridy = 3;
 		aufgabenstellungPanel.add(lblAufgabenstellung, gbc_lblAufgabenstellung);
-		
-				txtAufgabentext = new JTextField();
-				GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
-				gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;
-				gbc_txtAufgabentext.gridwidth = 4;
-				gbc_txtAufgabentext.insets = new Insets(0, 0, 5, 5);
-				gbc_txtAufgabentext.gridx = 1;
-				gbc_txtAufgabentext.gridy = 3;
-				aufgabenstellungPanel.add(txtAufgabentext, gbc_txtAufgabentext);
-				txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
-				txtAufgabentext.setColumns(10);
+
+		txtAufgabentext = new JTextField();
+		GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
+		gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;
+		gbc_txtAufgabentext.gridwidth = 4;
+		gbc_txtAufgabentext.insets = new Insets(0, 0, 5, 5);
+		gbc_txtAufgabentext.gridx = 1;
+		gbc_txtAufgabentext.gridy = 3;
+		aufgabenstellungPanel.add(txtAufgabentext, gbc_txtAufgabentext);
+		txtAufgabentext.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAufgabentext.setColumns(10);
 
 		JScrollPane aufgabentextScrollPane = new JScrollPane();
 		aufgabentextScrollPane.setBackground(SystemColor.inactiveCaption);
@@ -184,10 +184,10 @@ public class PruefungView {
 		btnAbgabe.setPreferredSize(new Dimension(100, 29));
 		btnAbgabe.setMinimumSize(new Dimension(30, 29));
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
-		
-				JLabel lblVersion = new JLabel("Version 1.01");
-				lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
-				buttonPanel.add(lblVersion);
+
+		JLabel lblVersion = new JLabel("Version 1.01");
+		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
+		buttonPanel.add(lblVersion);
 		btnAbgabe.setIcon(null);
 		btnAbgabe.setBackground(SystemColor.activeCaption);
 		buttonPanel.add(btnAbgabe);
@@ -201,22 +201,22 @@ public class PruefungView {
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-				// t
-				JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
-				GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
-				gbc_lblMatrikelnummer.fill = GridBagConstraints.HORIZONTAL;
-				gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
-				gbc_lblMatrikelnummer.gridx = 1;
-				gbc_lblMatrikelnummer.gridy = 0;
-				panel.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
-		
-				JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
-				GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
-				gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
-				gbc_lblPrfungstitel.gridx = 3;
-				gbc_lblPrfungstitel.gridy = 0;
-				panel.add(lblPrfungstitel, gbc_lblPrfungstitel);
-				lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.PLAIN, 26));
+		// t
+		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer: 1587953");
+		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
+		gbc_lblMatrikelnummer.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMatrikelnummer.gridx = 1;
+		gbc_lblMatrikelnummer.gridy = 0;
+		panel.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
+
+		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
+		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
+		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrfungstitel.gridx = 3;
+		gbc_lblPrfungstitel.gridy = 0;
+		panel.add(lblPrfungstitel, gbc_lblPrfungstitel);
+		lblPrfungstitel.setFont(new Font("Gill Sans MT", Font.PLAIN, 26));
 
 		JLabel lblRestzeit = new JLabel("Restzeit: 24:32");
 		GridBagConstraints gbc_lblRestzeit = new GridBagConstraints();
