@@ -85,7 +85,7 @@ public class LoginPruefungsverwaltungController {
 		try {
 			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), true);
 
-			if (nutzer.size() > 0) {
+			if (nutzer.size() >= 0) {
 
 				PruefungView pruefungViewS = new PruefungView(pruefung, nutzers);
 				
@@ -99,7 +99,7 @@ public class LoginPruefungsverwaltungController {
 		}
 	}
 	
-	//
+	
 	
 
 

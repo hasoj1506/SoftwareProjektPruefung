@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DatabaseService.DatabaseService;
+import Models.Nutzer;
 import Models.Pruefung;
 import Views.AufgabendetailsView;
 import Views.PruefungView;
