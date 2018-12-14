@@ -40,8 +40,9 @@ public class yaneksViewTest {
 		Pruefung pruefung = new Pruefung("test", 5);
 		
 		Nutzer nutzer = new Nutzer("test","tes","t","tt", true);
+		nutzer.setPruefung(pruefung);
 
-		PruefungView view = new PruefungView(pruefung, nutzer);
+		PruefungView view = new PruefungView(nutzer);
 
 	}
 

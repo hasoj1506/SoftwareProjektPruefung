@@ -50,7 +50,7 @@ public class PruefungView {
 	private JTextField txtTimer;
 	private JTextField txtMatrNr;
 	private JTextField textField_2;
-	
+
 	Timer timer;
 	int count = 0;
 	int delay = 1000;
@@ -62,7 +62,7 @@ public class PruefungView {
 		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, nutzer);
 		btnAction();
-		timerAction(pruefung.getDauer()*60);
+		timerAction(pruefung.getDauer() * 60);
 	}
 
 	public void erstellePruefungView() {
@@ -95,14 +95,15 @@ public class PruefungView {
 		aufgabenstellungPanel.setMinimumSize(new Dimension(100, 100));
 		frame.getContentPane().add(aufgabenstellungPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_aufgabenstellungPanel = new GridBagLayout();
-		gbl_aufgabenstellungPanel.columnWidths = new int[] { 32, 114, 0, 0, 32 };
-		gbl_aufgabenstellungPanel.rowHeights = new int[] { 0, 30, 34, 150, 30 };
+		gbl_aufgabenstellungPanel.columnWidths = new int[] { 32, 114, 0, 0, 65 };
+		gbl_aufgabenstellungPanel.rowHeights = new int[] { 30, 30, 34, 150, 30 };
 		gbl_aufgabenstellungPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0 };
 		gbl_aufgabenstellungPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0 };
 		aufgabenstellungPanel.setLayout(gbl_aufgabenstellungPanel);
 
 		JPanel panel_5 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_5.getLayout();
+		flowLayout_2.setHgap(50);
 		panel_5.setBackground(new Color(255, 255, 255));
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
 		gbc_panel_5.insets = new Insets(0, 0, 5, 5);
@@ -177,8 +178,6 @@ public class PruefungView {
 		antwortenTable.setRowHeight(20);
 		antwortenTable.setFont(new Font("Tahoma", Font.BOLD, 11));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
-		antwortenTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-		antwortenTable.getColumnModel().getColumn(0).setMaxWidth(50);
 		antwortenTable.setTableHeader(null);
 		antwortenScrollPane.setViewportView(antwortenTable);
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
@@ -189,7 +188,7 @@ public class PruefungView {
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 121, 75, 104, 75, 150, 0 };
-		gbl_panel.rowHeights = new int[] { 41, 0, 0, 0, 0 };
+		gbl_panel.rowHeights = new int[] { 41, 30, 0, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
@@ -365,16 +364,16 @@ public class PruefungView {
 		});
 
 	}
-	
+
 	public void timerAction(int countPassed) {
 		ActionListener action = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(count == 0) {
+				if (count == 0) {
 					timer.stop();
 					txtTimer.setText("Zeit abgelaufen");
 					controller.timerAbgelaufen();
-				}else {
-					txtTimer.setText(""+count/60);
+				} else {
+					txtTimer.setText("" + count / 60);
 				}
 			}
 		};
@@ -383,7 +382,6 @@ public class PruefungView {
 		timer.start();
 		count = countPassed;
 	}
-	
 
 	public JTable getAntwortenTable() {
 		return antwortenTable;
@@ -404,11 +402,10 @@ public class PruefungView {
 	public JTextField getTxtAufgabentext() {
 		return txtAufgabentext;
 	}
-	
+
 	public JTextField getTxtMatrikelnummer() {
 		return txtMatrNr;
 	}
-	
 
 	/*
 	 * public static void main(String[] args) { PruefungView view = new
