@@ -11,8 +11,11 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,6 +32,7 @@ import Controller.PruefungViewController;
 import Models.Nutzer;
 import Models.Pruefung;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.Box;
 
 public class PruefungView {
@@ -43,9 +47,13 @@ public class PruefungView {
 	private JTextField txtAufgabentitel;
 
 	PruefungViewController controller;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtTimer;
+	private JTextField txtMatrNr;
 	private JTextField textField_2;
+	
+	Timer timer;
+	int count = 0;
+	int delay = 1000;
 
 	public PruefungView(Pruefung pruefung, Nutzer nutzer) {
 		this.pruefung = nutzer.getPruefung();
@@ -54,6 +62,7 @@ public class PruefungView {
 		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, nutzer);
 		btnAction();
+		timerAction(pruefung.getDauer()*60);
 	}
 
 	public void erstellePruefungView() {
@@ -210,20 +219,20 @@ public class PruefungView {
 		gbc_lblMatrikelnummer.gridy = 0;
 		panel_4.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setForeground(Color.WHITE);
-		textField_1.setFont(new Font("Verdana", Font.BOLD, 12));
-		textField_1.setText("115462");
-		textField_1.setBorder(null);
-		textField_1.setBackground(new Color(0, 155, 187));
-		textField_1.setEditable(false);
-		textField_1.setSelectedTextColor(new Color(0, 155, 187));
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 1;
-		panel_4.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		txtMatrNr = new JTextField();
+		txtMatrNr.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMatrNr.setForeground(Color.WHITE);
+		txtMatrNr.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtMatrNr.setText("115462");
+		txtMatrNr.setBorder(null);
+		txtMatrNr.setBackground(new Color(0, 155, 187));
+		txtMatrNr.setEditable(false);
+		txtMatrNr.setSelectedTextColor(new Color(0, 155, 187));
+		GridBagConstraints gbc_txtMatrNr = new GridBagConstraints();
+		gbc_txtMatrNr.gridx = 1;
+		gbc_txtMatrNr.gridy = 1;
+		panel_4.add(txtMatrNr, gbc_txtMatrNr);
+		txtMatrNr.setColumns(10);
 
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
 		lblPrfungstitel.setForeground(new Color(255, 255, 255));
@@ -259,19 +268,19 @@ public class PruefungView {
 		gbc_lblRestzeit.gridy = 0;
 		panel_3.add(lblRestzeit, gbc_lblRestzeit);
 
-		textField = new JTextField();
-		textField.setForeground(Color.WHITE);
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("Verdana", Font.BOLD, 24));
-		textField.setText("18:42");
-		textField.setBorder(null);
-		textField.setBackground(new Color(0, 155, 187));
-		textField.setEditable(false);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridx = 0;
-		gbc_textField.gridy = 1;
-		panel_3.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtTimer = new JTextField();
+		txtTimer.setForeground(Color.WHITE);
+		txtTimer.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTimer.setFont(new Font("Verdana", Font.BOLD, 24));
+		txtTimer.setText("18:42");
+		txtTimer.setBorder(null);
+		txtTimer.setBackground(new Color(0, 155, 187));
+		txtTimer.setEditable(false);
+		GridBagConstraints gbc_txtTimer = new GridBagConstraints();
+		gbc_txtTimer.gridx = 0;
+		gbc_txtTimer.gridy = 1;
+		panel_3.add(txtTimer, gbc_txtTimer);
+		txtTimer.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(204, 204, 204));
@@ -356,6 +365,25 @@ public class PruefungView {
 		});
 
 	}
+	
+	public void timerAction(int countPassed) {
+		ActionListener action = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(count == 0) {
+					timer.stop();
+					txtTimer.setText("Zeit abgelaufen");
+					controller.timerAbgelaufen();
+				}else {
+					txtTimer.setText(""+count/60);
+				}
+			}
+		};
+		timer = new Timer(delay, action);
+		timer.setInitialDelay(0);
+		timer.start();
+		count = countPassed;
+	}
+	
 
 	public JTable getAntwortenTable() {
 		return antwortenTable;
@@ -376,6 +404,11 @@ public class PruefungView {
 	public JTextField getTxtAufgabentext() {
 		return txtAufgabentext;
 	}
+	
+	public JTextField getTxtMatrikelnummer() {
+		return txtMatrNr;
+	}
+	
 
 	/*
 	 * public static void main(String[] args) { PruefungView view = new

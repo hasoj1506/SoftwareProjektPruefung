@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JOptionPane;
 
@@ -30,6 +32,7 @@ public class PruefungViewController {
 		this.view = view;
 		this.pruefung = pruefung;
 		this.nutzer = nutzer;
+		setMatrNummer(nutzer);
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 		view.getAufgabenTable().setModel(model);
 	}
@@ -59,6 +62,18 @@ public class PruefungViewController {
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(view.getFrame(), "Fehler!");
 		}
+	}
+	
+	public void setMatrNummer(Nutzer nutzer) {
+		
+		view.getTxtMatrikelnummer().setText(nutzer.getNutzerId()+"");
+		
+	}
+	
+	public void timerAbgelaufen() {
+		
+			
+		//kommt
 	}
 	
 
