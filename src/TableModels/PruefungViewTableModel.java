@@ -9,6 +9,8 @@ import Models.Antwort;
 public class PruefungViewTableModel extends AbstractTableModel{
 	
 	private List<Antwort> antworten;
+	
+	String[] columnNames = { "Antwort", "Richtig"};
 
 	public PruefungViewTableModel(List<Antwort> antworten) {
 		this.antworten = antworten;
@@ -25,9 +27,10 @@ public class PruefungViewTableModel extends AbstractTableModel{
 	public Object getValueAt(int row, int col) {
 		switch (col) {
 		case 0:
-			return antworten.get(row).isAlsRichtigBeantwortet();
-		case 1:
 			return antworten.get(row).getAntworttext();
+		case 1:
+			return antworten.get(row).isAlsRichtigBeantwortet();
+					
 		default:
 			return null;
 		}

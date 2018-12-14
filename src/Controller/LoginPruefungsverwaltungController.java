@@ -53,7 +53,7 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggen() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), false);
+			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 
 			if (nutzer.size() > 0) {
 
@@ -81,13 +81,13 @@ public class LoginPruefungsverwaltungController {
 		return String.valueOf(passwort);
 	}
 
-	public void EinloggenStudent() {
+	public void einloggenStudent() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), true);
+			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), false);
 
 			if (nutzer.size() > 0) {
 
-				PruefungView pruefungViewS = new PruefungView(pruefung, nutzers);
+				PruefungView pruefungViewS = new PruefungView(nutzer.get(0));
 				
 			} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");

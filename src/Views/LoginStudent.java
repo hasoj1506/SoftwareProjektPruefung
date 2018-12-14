@@ -246,7 +246,7 @@ public class LoginStudent {
 		
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.EinloggenStudent();;
+				controller.einloggenStudent();;
 			}
 		});
 	}

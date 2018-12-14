@@ -50,6 +50,11 @@ public class PruefungView {
 	private JTextField txtTimer;
 	private JTextField txtMatrNr;
 	private JTextField textField_2;
+	
+	JButton btnNchste;
+	JButton btnVorher;
+	JButton btnAbgabe;
+	
 
 	Timer timer;
 	int count = 0;
@@ -112,10 +117,10 @@ public class PruefungView {
 		gbc_panel_5.gridy = 1;
 		aufgabenstellungPanel.add(panel_5, gbc_panel_5);
 
-		JButton button = new JButton("<Voherige");
-		button.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panel_5.add(button);
-		button.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnVorher = new JButton("<Voherige");
+		btnVorher.setFont(new Font("Verdana", Font.PLAIN, 16));
+		panel_5.add(btnVorher);
+		btnVorher.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		txtAufgabentitel = new JTextField("Mathepruefung 1");
 		txtAufgabentitel.setBackground(new Color(255, 255, 255));
@@ -128,7 +133,7 @@ public class PruefungView {
 		txtAufgabentitel.setFont(new Font("Verdana", Font.BOLD, 16));
 		txtAufgabentitel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		JButton btnNchste = new JButton("N\u00E4chste>");
+		btnNchste = new JButton("N\u00E4chste>");
 		btnNchste.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel_5.add(btnNchste);
 
@@ -175,8 +180,8 @@ public class PruefungView {
 		antwortenTable = new JTable();
 		antwortenTable.setShowGrid(false);
 		antwortenTable.setSelectionBackground(SystemColor.inactiveCaptionBorder);
-		antwortenTable.setRowHeight(20);
-		antwortenTable.setFont(new Font("Tahoma", Font.BOLD, 11));
+		antwortenTable.setRowHeight(35);
+		antwortenTable.setFont(new Font("Verdana", Font.BOLD, 16));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
 		antwortenTable.setTableHeader(null);
 		antwortenScrollPane.setViewportView(antwortenTable);
@@ -305,7 +310,7 @@ public class PruefungView {
 		flowLayout.setHgap(36);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 
-		JButton btnAbgabe = new JButton("Abgabe");
+		btnAbgabe = new JButton("Abgabe");
 		btnAbgabe.setSize(new Dimension(50, 0));
 		btnAbgabe.setMaximumSize(new Dimension(50, 29));
 		btnAbgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -352,15 +357,42 @@ public class PruefungView {
 	}
 
 	public void btnAction() {
+		
+		
+		
+			btnNchste.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.naechste();
+				
+			}
+		});
+		
+			btnVorher.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controller.vorherige();
+				}
+			});
+		
+			btnAbgabe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+				}
+			});
+		
+		
+		
+		
 
 		tableAufgaben.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
 				if (evt.getClickCount() == 1) {
-					controller.fuelleAufgabe(nutzer.getPruefung());
+					controller.fuelleAufgabe();
 				}
 
 			}
+			
+		
 		});
 
 	}
@@ -373,6 +405,11 @@ public class PruefungView {
 					txtTimer.setText("Zeit abgelaufen");
 					controller.timerAbgelaufen();
 				} else {
+					
+					if (count <= 10){
+					txtTimer.setForeground(Color.RED);
+					}
+					
 					txtTimer.setText("" + count / 60);
 				}
 			}
