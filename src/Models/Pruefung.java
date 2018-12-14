@@ -98,6 +98,10 @@ public class Pruefung {
 		return punkte;
 	}
 
+	public void setPunkte(int punkte) {
+		this.punkte = punkte;
+	}
+
 	public String getLetzterTermin() {
 
 		ArrayList<Termin> termine = new ArrayList<Termin>(this.termine);

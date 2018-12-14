@@ -361,7 +361,6 @@ public class PruefungsDetailsController {
 		// Standard-Füllfarbe der Felder
 		view.getTextFieldPrfungstitel().setBackground(Color.WHITE);
 		view.getTextFieldDauer().setBackground(Color.WHITE);
-		view.getTextFieldPunkte().setBackground(Color.WHITE);
 
 		// Wenn die Felder gefüllt sind, Pruefung mit Daten versehen,
 		// andernfalls zum Füllen auffordern
@@ -371,9 +370,6 @@ public class PruefungsDetailsController {
 		} else if (dauer == 0) {
 			view.getTextFieldDauer().setBackground(Color.RED);
 			JOptionPane.showMessageDialog(view, "Bitte Dauer korrekt füllen!");
-		} else if (punkte == 0) {
-			view.getTextFieldPunkte().setBackground(Color.RED);
-			JOptionPane.showMessageDialog(view, "Bitte Punkte korrekt füllen!");
 		} else {
 			pruefung.setBezeichnung(bezeichnung);
 			pruefung.setDauer(dauer);
