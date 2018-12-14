@@ -55,9 +55,9 @@ public class PruefungView {
 	int count = 0;
 	int delay = 1000;
 
-	public PruefungView(Pruefung pruefung, Nutzer nutzer) {
+	public PruefungView(Nutzer nutzer) {
+		this.nutzer = nutzer;
 		this.pruefung = nutzer.getPruefung();
-		this.pruefung = pruefung;
 
 		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, nutzer);
