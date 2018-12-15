@@ -276,7 +276,6 @@ public class PruefungView {
 		txtTimer.setForeground(Color.WHITE);
 		txtTimer.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTimer.setFont(new Font("Verdana", Font.BOLD, 24));
-		txtTimer.setText("18:42");
 		txtTimer.setBorder(null);
 		txtTimer.setBackground(new Color(0, 155, 187));
 		txtTimer.setEditable(false);
@@ -375,7 +374,7 @@ public class PruefungView {
 		
 			btnAbgabe.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					controller.abgeben();
 				}
 			});
 		
@@ -406,19 +405,28 @@ public class PruefungView {
 					controller.timerAbgelaufen();
 				} else {
 					
-					if (count <= 10){
+					if (count/60 < 10){
 					txtTimer.setForeground(Color.RED);
 					}
 					
-					txtTimer.setText("" + count / 60);
+					if (count%60 < 10) {
+						txtTimer.setText("" +count/60+":0"+count%60);
+						count--;
+					}else {
+						txtTimer.setText("" +count/60+":"+count%60);
+						count--;
+					}
 				}
 			}
 		};
 		timer = new Timer(delay, action);
-		timer.setInitialDelay(0);
+		timer.setRepeats(true);
+		//timer.setInitialDelay(0);
 		timer.start();
 		count = countPassed;
 	}
+	
+	
 
 	public JTable getAntwortenTable() {
 		return antwortenTable;
