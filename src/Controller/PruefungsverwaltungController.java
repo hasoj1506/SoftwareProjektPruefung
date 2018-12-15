@@ -71,7 +71,7 @@ public class PruefungsverwaltungController {
 		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
 
-		view.getFrame().dispose();
+		view.getFrame().setVisible(false);
 
 	}
 
@@ -92,7 +92,7 @@ public class PruefungsverwaltungController {
 				// Frame-Titel wird geändert
 				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 
-				view.getFrame().dispose();
+				view.getFrame().setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}

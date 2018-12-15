@@ -496,12 +496,16 @@ public class PruefungsDetails extends JFrame {
 		btnSpeichernPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.speichernPruefung(pruefungsverwaltung);
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 
 		btnLschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loeschenPruefung(pruefungsverwaltung);
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 
@@ -599,7 +603,8 @@ public class PruefungsDetails extends JFrame {
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-				PruefungsverwaltungView viewNachSchlieﬂen = new PruefungsverwaltungView();
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 	}
