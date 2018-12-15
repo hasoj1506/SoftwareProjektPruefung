@@ -27,6 +27,17 @@ public class PruefungViewTableModel extends AbstractTableModel{
 	public Class getColumnClass(int col) {
 		return getValueAt(0, col).getClass();
 	}
+	
+	public boolean isCellEditable(int row, int col) {
+	     switch (col) {
+	         case 0:
+	        	 return false;
+	         case 1:
+	             return true;
+	         default:
+	             return false;
+	      }
+	}
 
 	public Object getValueAt(int row, int col) {
 		switch (col) {

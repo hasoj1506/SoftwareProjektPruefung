@@ -141,12 +141,14 @@ public class LoginAbfrage {
 		btnStudent.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				LoginStudent studentView = new LoginStudent();
+				frame.dispose();
 			}
 		});
 		
 		btnProfessor.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
+				frame.dispose();
 			}
 		});
 	}

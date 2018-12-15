@@ -375,9 +375,7 @@ public class PruefungsDetailsController {
 			pruefung.setDauer(dauer);
 			pruefung.setPunkte(punkte);
 			db.persistPruefung(pruefung);
-			view.dispose();
-			pruefungsverwaltung = new PruefungsverwaltungView();
-			pruefungsverwaltung.tabelleFuellen();
+			view.setVisible(false);
 		}
 	}
 	
@@ -397,9 +395,7 @@ public class PruefungsDetailsController {
 				// Löschen der Prüfung aus der Datenbank und neuladen der
 				// Tabelle
 				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-				view.dispose();
-				pruefungsverwaltung = new PruefungsverwaltungView();
-				pruefungsverwaltung.tabelleFuellen();
+				view.setVisible(false);
 			} else {
 				// nichts tun
 			}
