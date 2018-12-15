@@ -35,6 +35,20 @@ public class PruefungViewTableModel extends AbstractTableModel{
 			return null;
 		}
 	}
+	
+	public void setValueAt(Object value, int row, int col) {
+
+		Antwort antwort = antworten.get(row);
+
+		switch (col) {
+		case 0:
+			antwort.setAntworttext((String) value);
+			break;
+		case 1:
+			antwort.setAlsRichtigBeantwortet((Boolean) value);
+			break;
+		}
+	}
 
 	
 
