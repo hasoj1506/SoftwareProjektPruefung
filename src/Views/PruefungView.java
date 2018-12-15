@@ -46,15 +46,16 @@ public class PruefungView {
 	private JTable tableAufgaben;
 	private JTextField txtAufgabentitel;
 
+	JLabel lblPrfungstitel;
+
 	PruefungViewController controller;
 	private JTextField txtTimer;
 	private JTextField txtMatrNr;
 	private JTextField textField_2;
-	
+
 	JButton btnNchste;
 	JButton btnVorher;
 	JButton btnAbgabe;
-	
 
 	Timer timer;
 	int count = 0;
@@ -239,7 +240,7 @@ public class PruefungView {
 		panel_4.add(txtMatrNr, gbc_txtMatrNr);
 		txtMatrNr.setColumns(10);
 
-		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
+		lblPrfungstitel = new JLabel("Pr\u00FCfungstitel");
 		lblPrfungstitel.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
@@ -359,31 +360,25 @@ public class PruefungView {
 	}
 
 	public void btnAction() {
-		
-		
-		
-			btnNchste.addActionListener(new ActionListener() {
+
+		btnNchste.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.naechste();
-				
+
 			}
 		});
-		
-			btnVorher.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					controller.vorherige();
-				}
-			});
-		
-			btnAbgabe.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					controller.abgeben();
-				}
-			});
-		
-		
-		
-		
+
+		btnVorher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.vorherige();
+			}
+		});
+
+		btnAbgabe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.abgeben();
+			}
+		});
 
 		tableAufgaben.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -393,8 +388,7 @@ public class PruefungView {
 				}
 
 			}
-			
-		
+
 		});
 
 	}
@@ -407,16 +401,16 @@ public class PruefungView {
 					txtTimer.setText("Zeit abgelaufen");
 					controller.timerAbgelaufen();
 				} else {
-					
-					if (count/60 < 10){
-					txtTimer.setForeground(Color.RED);
+
+					if (count / 60 < 10) {
+						txtTimer.setForeground(Color.RED);
 					}
-					
-					if (count%60 < 10) {
-						txtTimer.setText("" +count/60+":0"+count%60);
+
+					if (count % 60 < 10) {
+						txtTimer.setText("" + count / 60 + ":0" + count % 60);
 						count--;
-					}else {
-						txtTimer.setText("" +count/60+":"+count%60);
+					} else {
+						txtTimer.setText("" + count / 60 + ":" + count % 60);
 						count--;
 					}
 				}
@@ -424,12 +418,10 @@ public class PruefungView {
 		};
 		timer = new Timer(delay, action);
 		timer.setRepeats(true);
-		//timer.setInitialDelay(0);
+		// timer.setInitialDelay(0);
 		timer.start();
 		count = countPassed;
 	}
-	
-	
 
 	public JTable getAntwortenTable() {
 		return antwortenTable;
@@ -453,6 +445,10 @@ public class PruefungView {
 
 	public JTextField getTxtMatrikelnummer() {
 		return txtMatrNr;
+	}
+
+	public JLabel getLblPrfungstitel() {
+		return lblPrfungstitel;
 	}
 
 	/*

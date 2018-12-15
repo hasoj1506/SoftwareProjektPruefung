@@ -26,6 +26,7 @@ public class yaneksViewTest {
 		try {
 
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
 		} catch (UnsupportedLookAndFeelException e) {
 
 		} catch (ClassNotFoundException e) {

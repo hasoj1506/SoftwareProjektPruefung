@@ -156,28 +156,30 @@ public class AntwortErstellenPopUp {
 
 					try {
 						punkte = Integer.parseInt(textField_1.getText());
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
-					if (punkte < 0) {
-						JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-					} else {
-
-						if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-							JOptionPane.showMessageDialog(frame,
-									"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+						
+						if (punkte < 0) {
+							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
 						} else {
 
-							Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
+							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
+								JOptionPane.showMessageDialog(frame,
+										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+							} else {
 
-							view.getController().getModel().addRow(antwort);
+								Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
 
-							view.getAfgdTable().updateUI();
+								view.getController().getModel().addRow(antwort);
 
-							view.getAfgdFrame().setEnabled(true);
-							view.punkteCheck();
-							frame.dispose();
+								view.getAfgdTable().updateUI();
+
+								view.getAfgdFrame().setEnabled(true);
+								view.punkteCheck();
+								frame.dispose();
+							}
 						}
+						
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
 					}
 				}
 			}
@@ -200,28 +202,30 @@ public class AntwortErstellenPopUp {
 
 					try {
 						punkte = Integer.parseInt(textField_1.getText());
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
-					if (punkte < 0) {
-						JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-					} else {
-
-						if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-							JOptionPane.showMessageDialog(frame,
-									"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+						
+						if (punkte < 0) {
+							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
 						} else {
 
-							antwort.setAntworttext(text);
-							antwort.setIstRichtig(richtig);
-							antwort.setPunkte(punkte);
+							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
+								JOptionPane.showMessageDialog(frame,
+										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+							} else {
 
-							view.getAfgdTable().updateUI();
+								antwort.setAntworttext(text);
+								antwort.setIstRichtig(richtig);
+								antwort.setPunkte(punkte);
 
-							view.getAfgdFrame().setEnabled(true);
-							view.punkteCheck();
-							frame.dispose();
+								view.getAfgdTable().updateUI();
+
+								view.getAfgdFrame().setEnabled(true);
+								view.punkteCheck();
+								frame.dispose();
+							}
 						}
+						
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
 					}
 				}
 			}

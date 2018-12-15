@@ -35,6 +35,7 @@ public class PruefungViewController {
 		this.view = view;
 		this.pruefung = pruefung;
 		this.nutzer = nutzer;
+		setPruefungstitel(pruefung);
 		setMatrNummer(nutzer);
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 		view.getAufgabenTable().setModel(model);
@@ -75,6 +76,11 @@ public class PruefungViewController {
 
 		view.getTxtMatrikelnummer().setText(nutzer.getNutzerId() + "");
 
+	}
+	
+	public void setPruefungstitel(Pruefung pruefung) {
+		
+		view.getLblPrfungstitel().setText(pruefung.getBezeichnung());
 	}
 
 	public void naechste() {
