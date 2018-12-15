@@ -14,12 +14,18 @@ public class PruefungViewAufgabenTableModel extends AbstractTableModel{
 		this.aufgaben = aufgaben;
 	}
 	
+	String[] columnNames = { "Aufgaben"};
+
+	public String getColumnName(int col) {
+		return columnNames[col];
+	}
+	
 	public int getRowCount() {
 		return aufgaben.size();
 	}
 
 	public int getColumnCount() {
-		return 1;
+		return columnNames.length;
 	}
 	
 	public Object getValueAt(int row, int col) {
