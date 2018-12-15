@@ -23,6 +23,10 @@ public class PruefungViewTableModel extends AbstractTableModel{
 	public int getColumnCount() {
 		return 2;
 	}
+	
+	public Class getColumnClass(int col) {
+		return getValueAt(0, col).getClass();
+	}
 
 	public Object getValueAt(int row, int col) {
 		switch (col) {
