@@ -53,6 +53,17 @@ public class PruefungViewTableModel extends AbstractTableModel{
 			break;
 		}
 	}
+	
+	public boolean isCellEditable(int row, int col) {
+		switch (col) {
+			case 0:
+				return false;
+			case 1:
+				return true;
+			default:
+				return false;
+		}
+	}
 
 	
 
