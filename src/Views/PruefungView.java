@@ -73,6 +73,7 @@ public class PruefungView {
 	public void erstellePruefungView() {
 
 		this.frame = new JFrame("Prüfung");
+		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		BorderLayout borderLayout = (BorderLayout) frame.getContentPane().getLayout();
 		frame.setPreferredSize(new Dimension(800, 500));
@@ -351,6 +352,8 @@ public class PruefungView {
 		}
 
 		frame.pack();
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setAlwaysOnTop(true);
 		frame.setVisible(true);
 
 	}

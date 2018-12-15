@@ -42,7 +42,7 @@ public class PruefungViewController {
 	}
 
 	public void abgeben() {
-		// kommt
+		view.getFrame().dispose();
 
 	}
 
