@@ -47,11 +47,12 @@ public class PruefungsverwaltungController {
 			view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
 			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
 
-			centerRenderer = new DefaultTableCellRenderer();
-			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-			for (int i = 0; i < view.getTablePruefungen().getColumnCount(); i++) {
-				view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-			}
+//			centerRenderer = new DefaultTableCellRenderer();
+//			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+//			for (int i = 0; i < view.getTablePruefungen().getColumnCount(); i++) {
+//				view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+//			}
+			
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
