@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -56,6 +57,11 @@ public class PruefungView {
 	JButton btnNchste;
 	JButton btnVorher;
 	JButton btnAbgabe;
+
+	boolean zeitUm = false;
+	public boolean isZeitUm() {
+		return zeitUm;
+	}
 
 	Timer timer;
 	int count = 0;
@@ -376,7 +382,10 @@ public class PruefungView {
 
 		btnAbgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.abgeben();
+				
+				
+						controller.abgeben(); 
+				
 			}
 		});
 
@@ -398,6 +407,7 @@ public class PruefungView {
 			public void actionPerformed(ActionEvent arg0) {
 				if (count == 0) {
 					timer.stop();
+					zeitUm = true;
 					txtTimer.setText("Zeit abgelaufen");
 					controller.timerAbgelaufen();
 				} else {

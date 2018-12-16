@@ -17,6 +17,7 @@ import TableModels.PruefungViewTableModel;
 import Views.PruefungView;
 
 public class PruefungViewController {
+
 	// alle Methoden, die durch Bedienung der PruefungView aufgerufen werden
 	// können
 
@@ -43,7 +44,18 @@ public class PruefungViewController {
 	}
 
 	public void abgeben() {
-		view.getFrame().dispose();
+
+		if (view.isZeitUm() == false) {
+
+			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Möchtest du wirklich abgeben?", "Abfrage",
+					JOptionPane.YES_NO_OPTION);
+
+			if (reply == JOptionPane.YES_OPTION) {
+
+				view.getFrame().dispose();
+
+			}
+		}
 
 	}
 
@@ -53,7 +65,7 @@ public class PruefungViewController {
 		 */
 		try {
 			if (view.getAufgabenTable().getSelectedRow() > -1) {
-				
+
 				aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 				selection = view.getAufgabenTable().getSelectedRow();
 				Aufgabe ausgewaehlteAufgabe = aufgaben.get(selection);
@@ -62,7 +74,7 @@ public class PruefungViewController {
 				view.getTxtAufgabentext().setText(ausgewaehlteAufgabe.getFrageStellung());
 				antwortenModel = new PruefungViewTableModel(new ArrayList<Antwort>(ausgewaehlteAufgabe.getAntworten()));
 				view.getAntwortenTable().setModel(antwortenModel);
-				
+
 			} else {
 				// nichts wird ausgefüllt
 			}
@@ -77,9 +89,9 @@ public class PruefungViewController {
 		view.getTxtMatrikelnummer().setText(nutzer.getNutzerId() + "");
 
 	}
-	
+
 	public void setPruefungstitel(Pruefung pruefung) {
-		
+
 		view.getLblPrfungstitel().setText(pruefung.getBezeichnung());
 	}
 
