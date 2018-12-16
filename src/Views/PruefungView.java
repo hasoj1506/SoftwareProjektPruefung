@@ -70,17 +70,18 @@ public class PruefungView {
 	public PruefungView(Nutzer nutzer) {
 		this.nutzer = nutzer;
 		this.pruefung = nutzer.getPruefung();
-
+	
 		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, nutzer);
 		btnAction();
 		timerAction(pruefung.getDauer() * 60);
+		
+		PruefungEinweisungPopUp pop = new PruefungEinweisungPopUp(nutzer, this);
 	}
 
 	public void erstellePruefungView() {
 
 		this.frame = new JFrame("Prüfung");
-		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		BorderLayout borderLayout = (BorderLayout) frame.getContentPane().getLayout();
 		frame.setPreferredSize(new Dimension(800, 500));
@@ -400,6 +401,16 @@ public class PruefungView {
 
 		});
 
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				
+				frame.dispose();
+				controller.abgeben();
+				
+			}
+		});
+		
 	}
 
 	public void timerAction(int countPassed) {

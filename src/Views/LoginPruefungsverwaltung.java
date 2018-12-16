@@ -192,6 +192,8 @@ public class LoginPruefungsverwaltung {
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
+		
+		
 	}
 	
 	public JTextField getTFBenutzername() {
@@ -212,6 +214,7 @@ public class LoginPruefungsverwaltung {
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.einloggen();
+				frame.dispose();
 			}
 		});
 	}
