@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -38,6 +39,7 @@ public class PruefungViewController {
 		this.nutzer = nutzer;
 		setPruefungstitel(pruefung);
 		setMatrNummer(nutzer);
+		aufgabeAuswaehlenAufforderung();
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 		view.getAufgabenTable().setModel(model);
 
@@ -71,6 +73,7 @@ public class PruefungViewController {
 				Aufgabe ausgewaehlteAufgabe = aufgaben.get(selection);
 
 				view.getTxtAufgabentitel().setText(ausgewaehlteAufgabe.getAufgabentitel());
+				view.getTxtAufgabentext().setForeground(Color.BLACK);
 				view.getTxtAufgabentext().setText(ausgewaehlteAufgabe.getFrageStellung());
 				antwortenModel = new PruefungViewTableModel(new ArrayList<Antwort>(ausgewaehlteAufgabe.getAntworten()));
 				view.getAntwortenTable().setModel(antwortenModel);
@@ -117,6 +120,11 @@ public class PruefungViewController {
 	public void timerAbgelaufen() {
 
 		abgeben();
+	}
+	
+	public void aufgabeAuswaehlenAufforderung() {
+		view.getTxtAufgabentext().setText("Bitte wähle links eine Aufgabe aus!");
+		view.getTxtAufgabentext().setForeground(Color.RED);
 	}
 
 }
