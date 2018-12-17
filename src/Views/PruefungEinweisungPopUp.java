@@ -326,6 +326,7 @@ public class PruefungEinweisungPopUp {
 				
 				frame.dispose();
 				view.getFrame().setEnabled(true);
+				view.getFrame().setAlwaysOnTop(true);
 
 			}
 		});

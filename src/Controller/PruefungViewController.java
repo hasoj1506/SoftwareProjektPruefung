@@ -37,6 +37,7 @@ public class PruefungViewController {
 		this.view = view;
 		this.pruefung = pruefung;
 		this.nutzer = nutzer;
+		this.aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 		setPruefungstitel(pruefung);
 		setMatrNummer(nutzer);
 		aufgabeAuswaehlenAufforderung();
@@ -46,14 +47,51 @@ public class PruefungViewController {
 	}
 
 	public void abgeben() {
-
+		Aufgabe aufgabe;
+		List<Antwort> antworten;
+		Antwort antwort;
+		int punkte;
+		int neuePunktzahl = 0;
+		
 		if (view.isZeitUm() == false) {
 
 			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Möchtest du wirklich abgeben?", "Abfrage",
 					JOptionPane.YES_NO_OPTION);
-
+			
+			//Jede Antwort mit der Lösung abgleichen und Punkte berechnen
 			if (reply == JOptionPane.YES_OPTION) {
+				for (int i = 0; i < aufgaben.size(); i++) {
+					aufgabe = aufgaben.get(i);
+					antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
 
+					for (int j = 0; j < antworten.size(); j++) {
+						antwort = antworten.get(j);
+
+						if (antwort.isIstRichtig() == antwort.isAlsRichtigBeantwortet()) {
+							punkte = antwort.getPunkte();
+							neuePunktzahl = neuePunktzahl + punkte;
+							nutzer.setErreichtePunktzahl(neuePunktzahl);
+						}
+					}
+
+				}
+
+				// Antworten zurücksetzen
+				for (int i = 0; i < aufgaben.size(); i++) {
+					aufgabe = aufgaben.get(i);
+					antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
+
+					for (int j = 0; j < antworten.size(); j++) {
+						antwort = antworten.get(j);
+
+						antwort.setAlsRichtigBeantwortet(false);
+					}
+
+				}
+
+				service.persistNutzer(nutzer);
+				JOptionPane.showMessageDialog(view.getFrame(),
+						"Erreichte Punktzahl: " + neuePunktzahl + " von " + pruefung.getPunkte());
 				view.getFrame().dispose();
 
 			}
@@ -121,7 +159,7 @@ public class PruefungViewController {
 
 		abgeben();
 	}
-	
+
 	public void aufgabeAuswaehlenAufforderung() {
 		view.getTxtAufgabentext().setText("Bitte wähle links eine Aufgabe aus!");
 		view.getTxtAufgabentext().setForeground(Color.RED);
