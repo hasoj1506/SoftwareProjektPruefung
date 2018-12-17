@@ -235,6 +235,11 @@ public class AntwortErstellenPopUp {
 
 	public void punkteCheckBoxTest() {
 
+		if(chckbxNewCheckBox.isSelected() == false) {
+			textField_1.setEnabled(false);
+			textField_1.setText("0");
+		}
+		
 		chckbxNewCheckBox.addActionListener((new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -252,10 +257,8 @@ public class AntwortErstellenPopUp {
 	}
 
 	private void attributCheck(Antwort antwort) {
+		
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());
-		if (antwort.isIstRichtig() == false) {
-			textField_1.setEnabled(false);
-		}
 		this.textField.setText(antwort.getAntworttext());
 		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
 	}
