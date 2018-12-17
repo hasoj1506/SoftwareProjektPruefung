@@ -301,6 +301,12 @@ public class PruefungsverwaltungView {
 			}
 		});
 		
+		textFieldSuche.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.suchePruefung();
+			}
+		});
+		
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.resetSuche();
