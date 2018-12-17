@@ -87,7 +87,7 @@ public class PruefungsverwaltungView {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panelSuche = new GridBagConstraints();
 		gbc_panelSuche.insets = new Insets(0, 0, 5, 5);
-		gbc_panelSuche.fill = GridBagConstraints.BOTH;
+		gbc_panelSuche.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panelSuche.gridx = 2;
 		gbc_panelSuche.gridy = 1;
 		PruefungenPanel.add(panelSuche, gbc_panelSuche);
@@ -96,10 +96,19 @@ public class PruefungsverwaltungView {
 		panelSuche.add(textFieldSuche);
 		textFieldSuche.setColumns(10);
 		
-		btnSuchen = new JButton("Suchen");
+		btnSuchen = new JButton("");
+		btnSuchen.setMaximumSize(new Dimension(20, 20));
+		btnSuchen.setPreferredSize(new Dimension(20, 20));
+		Image searchIcon = new ImageIcon(this.getClass().getResource("/searchIcon.png")).getImage();
+		btnSuchen.setIcon(new ImageIcon(searchIcon));
 		panelSuche.add(btnSuchen);
 		
-		btnReset = new JButton("Reset");
+		btnReset = new JButton("");
+		btnReset.setPreferredSize(new Dimension(20, 20));
+		btnReset.setMinimumSize(new Dimension(20, 20));
+		btnReset.setMaximumSize(new Dimension(20, 20));
+		Image resetIcon = new ImageIcon(this.getClass().getResource("/closeIcon.png")).getImage();
+		btnReset.setIcon(new ImageIcon(resetIcon));
 		btnReset.setVisible(false);
 		panelSuche.add(btnReset);
 
