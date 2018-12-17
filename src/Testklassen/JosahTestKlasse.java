@@ -1,24 +1,29 @@
 package Testklassen;
 
-import java.util.List;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-import javax.persistence.TypedQuery;
-
-import DatabaseService.DatabaseService;
-import Models.Pruefung;
+import Views.LoginAbfrage;
 
 public class JosahTestKlasse {
 
 	public static void main(String[] args) {
-		String suchText = "Te3rf3";
-		DatabaseService db = DatabaseService.getInstance();
-		TypedQuery q = db.getEntityManager().createQuery("SELECT p FROM Pruefung p WHERE p.bezeichnung LIKE '%"  + suchText + "%'",
-				Pruefung.class);
+		try {
+
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+		} catch (UnsupportedLookAndFeelException e) {
+
+		} catch (ClassNotFoundException e) {
+
+		} catch (InstantiationException e) {
+
+		} catch (IllegalAccessException e) {
+
+		};
+
 		
-		List<Pruefung> pruefungen = q.getResultList();
-		
-		System.out.println(pruefungen.size());
-		
+		LoginAbfrage login = new LoginAbfrage();
 		
 		
 		
