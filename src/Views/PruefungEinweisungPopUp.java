@@ -351,7 +351,7 @@ public class PruefungEinweisungPopUp {
 		txtPunkte.setText(String.valueOf(this.nutzer.getPruefung().getPunkte()));
 		//txtUhrzeit.setText(this.nutzer.getPruefung().);
 		//txtDatum.setText(this.nutzer.getPruefung().getLetzterTermin());
-		//txtDozent.setText
+		//txtDozent.setTextth
 		
 		
 	}
