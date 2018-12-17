@@ -187,7 +187,7 @@ public class LoginPruefungsverwaltung {
 		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
 		
 
-		frame.setLocationRelativeTo(null);
+		frame.setLocation(810, 200);
 		frame.setMinimumSize(new Dimension(500, 800));
 		frame.setResizable(false);
 		frame.setVisible(true);

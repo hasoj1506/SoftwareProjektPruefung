@@ -307,6 +307,7 @@ public class PruefungEinweisungPopUp {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(new Color(204, 204, 204));
 		FlowLayout flowLayout_1 = (FlowLayout) buttonPanel.getLayout();
+		flowLayout_1.setHgap(25);
 		flowLayout_1.setAlignment(FlowLayout.RIGHT);
 		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 

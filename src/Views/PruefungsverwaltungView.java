@@ -85,6 +85,7 @@ public class PruefungsverwaltungView {
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
 		
 		JPanel panelSuche = new JPanel();
+		panelSuche.setBackground(Color.WHITE);
 		FlowLayout flowLayout = (FlowLayout) panelSuche.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panelSuche = new GridBagConstraints();
@@ -145,7 +146,7 @@ public class PruefungsverwaltungView {
 		buttonPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.setMinimumSize(new Dimension(400, 300));
 		frmPrfungsverwaltung.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 70, 10));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 25, 10));
 
 		JPanel unterPanel = new JPanel();
 		unterPanel.setBackground(new Color(204, 204, 204));

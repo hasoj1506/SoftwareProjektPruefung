@@ -192,7 +192,7 @@ public class PruefungView {
 		antwortenTable.setSelectionBackground(SystemColor.inactiveCaptionBorder);
 		antwortenTable.setRowHeight(35);
 		antwortenTable.setFont(new Font("Verdana", Font.BOLD, 16));
-		antwortenTable.setBackground(SystemColor.inactiveCaption);
+		antwortenTable.setBackground(Color.LIGHT_GRAY);
 		antwortenTable.setTableHeader(null);
 		antwortenTable.setRowSelectionAllowed(false);
 		antwortenScrollPane.setViewportView(antwortenTable);
@@ -316,8 +316,8 @@ public class PruefungView {
 		buttonPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.setForeground(new Color(204, 204, 204));
 		FlowLayout flowLayout = (FlowLayout) buttonPanel.getLayout();
-		flowLayout.setVgap(7);
-		flowLayout.setHgap(36);
+		flowLayout.setVgap(10);
+		flowLayout.setHgap(25);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 
 		btnAbgabe = new JButton("Abgabe");
