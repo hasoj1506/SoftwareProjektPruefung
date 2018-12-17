@@ -327,6 +327,7 @@ public class PruefungEinweisungPopUp {
 				frame.dispose();
 				view.getFrame().setEnabled(true);
 				view.getFrame().setAlwaysOnTop(true);
+				view.timerAction(view.getPruefung().getDauer() * 60);
 
 			}
 		});

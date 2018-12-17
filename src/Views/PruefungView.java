@@ -74,7 +74,6 @@ public class PruefungView {
 		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, nutzer);
 		btnAction();
-		timerAction(pruefung.getDauer() * 60);
 		
 		PruefungEinweisungPopUp pop = new PruefungEinweisungPopUp(nutzer, this);
 	}
@@ -471,6 +470,10 @@ public class PruefungView {
 
 	public JLabel getLblPrfungstitel() {
 		return lblPrfungstitel;
+	}
+
+	public Pruefung getPruefung() {
+		return pruefung;
 	}
 
 	/*
