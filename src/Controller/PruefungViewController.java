@@ -47,58 +47,64 @@ public class PruefungViewController {
 		fuelleAufgabe();
 
 	}
-	
-	//Josah Weber
+
+	// Josah Weber
 	public void abgeben() {
 		Aufgabe aufgabe;
 		List<Antwort> antworten;
 		Antwort antwort;
 		int punkte;
 		int neuePunktzahl = 0;
+		int reply = 0;
 		
+		//Wenn Zeit noch nicht abgelaufen, Bestätigung fordern
 		if (view.isZeitUm() == false) {
 
-			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Möchtest du wirklich abgeben?", "Abfrage",
+			reply = JOptionPane.showConfirmDialog(view.getFrame(), "Möchtest du wirklich abgeben?", "Abfrage",
 					JOptionPane.YES_NO_OPTION);
+		}else if(view.isZeitUm() == true){
 			
-			//Jede Antwort mit der Lösung abgleichen und Punkte berechnen
-			if (reply == JOptionPane.YES_OPTION) {
-				for (int i = 0; i < aufgaben.size(); i++) {
-					aufgabe = aufgaben.get(i);
-					antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
+			//Wenn Zeit abgelaufen, keine Bestätigung mehr erwünscht
+			reply = JOptionPane.YES_OPTION;
+		}
 
-					for (int j = 0; j < antworten.size(); j++) {
-						antwort = antworten.get(j);
+		// Jede Antwort mit der Lösung abgleichen und Punkte berechnen
+		if (reply == JOptionPane.YES_OPTION) {
+			for (int i = 0; i < aufgaben.size(); i++) {
+				aufgabe = aufgaben.get(i);
+				antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
 
-						if (antwort.isIstRichtig() == antwort.isAlsRichtigBeantwortet()) {
-							punkte = antwort.getPunkte();
-							neuePunktzahl = neuePunktzahl + punkte;
-							nutzer.setErreichtePunktzahl(neuePunktzahl);
-						}
+				for (int j = 0; j < antworten.size(); j++) {
+					antwort = antworten.get(j);
+
+					if (antwort.isIstRichtig() == antwort.isAlsRichtigBeantwortet()) {
+						punkte = antwort.getPunkte();
+						neuePunktzahl = neuePunktzahl + punkte;
+						nutzer.setErreichtePunktzahl(neuePunktzahl);
 					}
-
 				}
-
-				// Antworten zurücksetzen
-				for (int i = 0; i < aufgaben.size(); i++) {
-					aufgabe = aufgaben.get(i);
-					antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
-
-					for (int j = 0; j < antworten.size(); j++) {
-						antwort = antworten.get(j);
-
-						antwort.setAlsRichtigBeantwortet(false);
-					}
-
-				}
-				
-				//Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-				service.persistNutzer(nutzer);
-				JOptionPane.showMessageDialog(view.getFrame(),
-						"Erreichte Punktzahl: " + neuePunktzahl + " von " + pruefung.getPunkte());
-				view.getFrame().dispose();
 
 			}
+
+			// Antworten zurücksetzen
+			for (int i = 0; i < aufgaben.size(); i++) {
+				aufgabe = aufgaben.get(i);
+				antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
+
+				for (int j = 0; j < antworten.size(); j++) {
+					antwort = antworten.get(j);
+
+					antwort.setAlsRichtigBeantwortet(false);
+				}
+
+			}
+
+			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
+			service.persistNutzer(nutzer);
+			JOptionPane.showMessageDialog(view.getFrame(),
+					"Erreichte Punktzahl: " + neuePunktzahl + " von " + pruefung.getPunkte());
+			view.getFrame().dispose();
+
 		}
 
 	}
@@ -142,10 +148,10 @@ public class PruefungViewController {
 
 	public void naechste() {
 		selection = view.getAufgabenTable().getSelectedRow();
-		if (selection == view.getAufgabenTable().getRowCount()-1) {
+		if (selection == view.getAufgabenTable().getRowCount() - 1) {
 			view.getAufgabenTable().setRowSelectionInterval(0, 0);
 			fuelleAufgabe();
-		}else{
+		} else {
 			view.getAufgabenTable().setRowSelectionInterval(selection++, selection++);
 			fuelleAufgabe();
 		}
@@ -155,9 +161,10 @@ public class PruefungViewController {
 	public void vorherige() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == 0) {
-			view.getAufgabenTable().setRowSelectionInterval(view.getAufgabenTable().getRowCount()-1, view.getAufgabenTable().getRowCount()-1);
+			view.getAufgabenTable().setRowSelectionInterval(view.getAufgabenTable().getRowCount() - 1,
+					view.getAufgabenTable().getRowCount() - 1);
 			fuelleAufgabe();
-		}else{
+		} else {
 			view.getAufgabenTable().setRowSelectionInterval(selection--, selection--);
 			fuelleAufgabe();
 		}
