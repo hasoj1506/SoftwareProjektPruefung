@@ -114,4 +114,8 @@ public class Pruefung {
 		}
 	}
 
+	public void setAufgaben(Set<Aufgabe> aufgaben) {
+		this.aufgaben = aufgaben;
+	}
+
 }

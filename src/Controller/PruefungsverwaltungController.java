@@ -101,6 +101,35 @@ public class PruefungsverwaltungController {
 			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht bearbeitet werden!");
 		}
 	}
+	
+	// duplizieren Button wird geklickt
+		public void duplizierePruefung() {
+			try {
+				// Wenn in der JTable eine Zeile ausgewählt ist
+				if (view.getTablePruefungen().getSelectedRow() > -1) {
+					// Identifizieren der zu duplizierenden Prüfung
+					pruefungen = db.readPruefungen();
+					int selection = view.getTablePruefungen().getSelectedRow();
+					Pruefung zuDuplizierendePrüfung = pruefungen.get(selection);
+					
+					//dem Duplikat die Werte übergeben
+					Pruefung duplikat = new Pruefung();
+					duplikat.setBezeichnung(zuDuplizierendePrüfung.getBezeichnung() + " Kopie");
+					duplikat.setDauer(zuDuplizierendePrüfung.getDauer());
+					duplikat.setPunkte(zuDuplizierendePrüfung.getPunkte());
+					duplikat.setAufgaben(zuDuplizierendePrüfung.getAufgaben());
+					
+					//Das Duplikat in die Datenbank schreiben und die Tabelle aktualisieren
+					db.persistPruefung(duplikat);
+					fuelleTabellePruefungsverwaltung();
+				} else {
+					JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
+				}
+			} catch (Exception e) {
+				// Was beim Fehler passiert
+				JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht dupliziert werden!");
+			}
+		}
 
 	// Löschen-Button wird geklickt
 	public void loeschePruefung() {

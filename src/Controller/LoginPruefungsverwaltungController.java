@@ -65,7 +65,7 @@ public class LoginPruefungsverwaltungController {
 
 			}
 		} catch (NullPointerException e) {
-			System.out.println("Nullpointerexception");
+//			System.out.println("Nullpointerexception");
 
 		}
 	}
