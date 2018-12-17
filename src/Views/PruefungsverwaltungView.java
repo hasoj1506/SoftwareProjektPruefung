@@ -114,7 +114,7 @@ public class PruefungsverwaltungView {
 		btnReset.setVisible(false);
 		panelSuche.add(btnReset);
 
-		JLabel pruefungenLabel = new JLabel("Pruefungen:");
+		JLabel pruefungenLabel = new JLabel("Pr\u00FCfungen:");
 		pruefungenLabel.setForeground(new Color(51, 51, 51));
 		pruefungenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_pruefungenLabel = new GridBagConstraints();
