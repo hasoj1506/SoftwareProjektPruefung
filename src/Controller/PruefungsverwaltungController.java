@@ -177,10 +177,6 @@ public class PruefungsverwaltungController {
 
 		String suchText = view.getTextFieldSuche().getText();
 
-		if (suchText.length() == 0) {
-			JOptionPane.showMessageDialog(view.getFrame(), "Bitte Suchbegriff eingeben!");
-
-		} else {
 			try {
 
 				pruefungen = db.readPruefungenSuche(suchText);
@@ -195,7 +191,6 @@ public class PruefungsverwaltungController {
 			} catch (Exception e) {
 
 			}
-		}
 
 	}
 

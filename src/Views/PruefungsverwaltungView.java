@@ -30,6 +30,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -310,10 +312,27 @@ public class PruefungsverwaltungView {
 			}
 		});
 		
-		textFieldSuche.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		textFieldSuche.getDocument().addDocumentListener(new DocumentListener() {
+			public void updateLog(DocumentEvent et) {
 				controller.suchePruefung();
 			}
+			
+			public void changedUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+			
+		
 		});
 		
 		btnReset.addActionListener(new ActionListener() {
