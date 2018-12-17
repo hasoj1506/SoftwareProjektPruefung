@@ -143,7 +143,8 @@ public class PruefungViewController {
 	public void naechste() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == view.getAufgabenTable().getRowCount()-1) {
-			//nichts tun
+			view.getAufgabenTable().setRowSelectionInterval(0, 0);
+			fuelleAufgabe();
 		}else{
 			view.getAufgabenTable().setRowSelectionInterval(selection++, selection++);
 			fuelleAufgabe();
@@ -154,7 +155,8 @@ public class PruefungViewController {
 	public void vorherige() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == 0) {
-			//nichts tun
+			view.getAufgabenTable().setRowSelectionInterval(view.getAufgabenTable().getRowCount()-1, view.getAufgabenTable().getRowCount()-1);
+			fuelleAufgabe();
 		}else{
 			view.getAufgabenTable().setRowSelectionInterval(selection--, selection--);
 			fuelleAufgabe();

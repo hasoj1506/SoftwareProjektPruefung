@@ -35,6 +35,7 @@ import Models.Pruefung;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.Box;
+import javax.swing.DropMode;
 
 public class PruefungView {
 	Pruefung pruefung;
@@ -193,6 +194,7 @@ public class PruefungView {
 		antwortenTable.setFont(new Font("Verdana", Font.BOLD, 16));
 		antwortenTable.setBackground(SystemColor.inactiveCaption);
 		antwortenTable.setTableHeader(null);
+		antwortenTable.setRowSelectionAllowed(false);
 		antwortenScrollPane.setViewportView(antwortenTable);
 		Image abgabeIcon = new ImageIcon(this.getClass().getResource("/abgabe.png")).getImage();
 
@@ -391,7 +393,15 @@ public class PruefungView {
 		});
 
 		tableAufgaben.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt) {
+			public void mousePressed(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 1) {
+					controller.fuelleAufgabe();
+				}
+
+			}
+			
+			public void mouseReleased(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
 				if (evt.getClickCount() == 1) {
 					controller.fuelleAufgabe();
