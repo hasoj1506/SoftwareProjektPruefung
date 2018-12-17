@@ -43,6 +43,8 @@ public class PruefungViewController {
 		aufgabeAuswaehlenAufforderung();
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 		view.getAufgabenTable().setModel(model);
+		view.getAufgabenTable().setRowSelectionInterval(0, 0);
+		fuelleAufgabe();
 
 	}
 
@@ -88,7 +90,8 @@ public class PruefungViewController {
 					}
 
 				}
-
+				
+				//Dem Nutzer die erreichten Punkte in die Datenbank schreiben
 				service.persistNutzer(nutzer);
 				JOptionPane.showMessageDialog(view.getFrame(),
 						"Erreichte Punktzahl: " + neuePunktzahl + " von " + pruefung.getPunkte());
@@ -137,20 +140,23 @@ public class PruefungViewController {
 	}
 
 	public void naechste() {
-		if (selection == model.getRowCount()) {
-			selection = 0;
-
-		} else {
-			selection++;
+		selection = view.getAufgabenTable().getSelectedRow();
+		if (selection == view.getAufgabenTable().getRowCount()-1) {
+			//nichts tun
+		}else{
+			view.getAufgabenTable().setRowSelectionInterval(selection++, selection++);
+			fuelleAufgabe();
 		}
 
 	}
 
 	public void vorherige() {
+		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == 0) {
-			selection = model.getRowCount();
-		} else {
-			selection--;
+			//nichts tun
+		}else{
+			view.getAufgabenTable().setRowSelectionInterval(selection--, selection--);
+			fuelleAufgabe();
 		}
 
 	}
