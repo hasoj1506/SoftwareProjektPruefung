@@ -58,6 +58,7 @@ public class LoginPruefungsverwaltungController {
 			if (nutzer.size() > 0) {
 
 				PruefungsverwaltungView pruefungView = new PruefungsverwaltungView();
+				view.getFrame().dispose();
 				
 			} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
@@ -88,6 +89,7 @@ public class LoginPruefungsverwaltungController {
 			if (nutzer.size() > 0) {
 
 				PruefungView pruefungViewS = new PruefungView(nutzer.get(0));
+				viewS.getLoginStudentFrame().dispose();
 				
 			} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");

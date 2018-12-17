@@ -1,16 +1,33 @@
 package Testklassen;
 
-import DatabaseService.DatabaseService;
-import Models.Nutzer;
-import Views.PruefungsverwaltungView;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import Views.LoginAbfrage;
 
 public class JosahTestKlasse {
 
 	public static void main(String[] args) {
+		try {
+
+//			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WikiTeX");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+		} catch (UnsupportedLookAndFeelException e) {
+
+		} catch (ClassNotFoundException e) {
+
+		} catch (InstantiationException e) {
+
+		} catch (IllegalAccessException e) {
+
+		};
+
 		
-		DatabaseService db = DatabaseService.getInstance();
-		Nutzer admin = new Nutzer("Admin", "", "Admin", "Admin", true);
-		db.persistNutzer(admin);
+		LoginAbfrage login = new LoginAbfrage();
+		
 		
 
 		

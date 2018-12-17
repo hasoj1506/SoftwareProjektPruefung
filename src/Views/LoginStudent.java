@@ -238,7 +238,7 @@ public class LoginStudent {
 		
 	}
 	
-	public JFrame getLoginPruefungsverwaltungFrame() {
+	public JFrame getLoginStudentFrame() {
 		return this.frame;
 	}
 	
@@ -247,7 +247,6 @@ public class LoginStudent {
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.einloggenStudent();
-				frame.dispose();
 			}
 		});
 	}

@@ -214,7 +214,6 @@ public class LoginPruefungsverwaltung {
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.einloggen();
-				frame.dispose();
 			}
 		});
 	}
@@ -231,6 +230,10 @@ public class LoginPruefungsverwaltung {
 				}
 			}
 		});
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 	
 	//
