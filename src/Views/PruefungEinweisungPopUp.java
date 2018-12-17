@@ -27,13 +27,13 @@ import java.awt.Dimension;
 public class PruefungEinweisungPopUp {
 	private JTextField txtDauer;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtPunkte;
+	private JTextField txtDatum;
+	private JTextField txtUhrzeit;
+	private JTextField txtRaum;
+	private JTextField txtTeilnehmer;
+	private JTextField txtMatrikelnr;
+	private JTextField txtDozent;
 	
 	private JFrame frame;
 
@@ -126,15 +126,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_7.gridy = 0;
 		panel.add(lblNewLabel_7, gbc_lblNewLabel_7);
 
-		textField = new JTextField();
-		textField.setBorder(null);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtTeilnehmer = new JTextField();
+		txtTeilnehmer.setBorder(null);
+		GridBagConstraints gbc_txtTeilnehmer = new GridBagConstraints();
+		gbc_txtTeilnehmer.insets = new Insets(0, 0, 5, 5);
+		gbc_txtTeilnehmer.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtTeilnehmer.gridx = 1;
+		gbc_txtTeilnehmer.gridy = 0;
+		panel.add(txtTeilnehmer, gbc_txtTeilnehmer);
+		txtTeilnehmer.setColumns(10);
 
 		JLabel lblNewLabel_8 = new JLabel("Matrikelnummer:");
 		lblNewLabel_8.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -145,15 +145,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_8.gridy = 0;
 		panel.add(lblNewLabel_8, gbc_lblNewLabel_8);
 
-		textField_6 = new JTextField();
-		textField_6.setBorder(null);
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_6.gridx = 3;
-		gbc_textField_6.gridy = 0;
-		panel.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		txtMatrikelnr = new JTextField();
+		txtMatrikelnr.setBorder(null);
+		GridBagConstraints gbc_txtMatrikelnr = new GridBagConstraints();
+		gbc_txtMatrikelnr.insets = new Insets(0, 0, 5, 5);
+		gbc_txtMatrikelnr.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMatrikelnr.gridx = 3;
+		gbc_txtMatrikelnr.gridy = 0;
+		panel.add(txtMatrikelnr, gbc_txtMatrikelnr);
+		txtMatrikelnr.setColumns(10);
 
 		JLabel lblNewLabel_9 = new JLabel("Dozent:");
 		lblNewLabel_9.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -164,15 +164,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_9.gridy = 0;
 		panel.add(lblNewLabel_9, gbc_lblNewLabel_9);
 
-		textField_7 = new JTextField();
-		textField_7.setBorder(null);
-		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-		gbc_textField_7.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_7.gridx = 5;
-		gbc_textField_7.gridy = 0;
-		panel.add(textField_7, gbc_textField_7);
-		textField_7.setColumns(10);
+		txtDozent = new JTextField();
+		txtDozent.setBorder(null);
+		GridBagConstraints gbc_txtDozent = new GridBagConstraints();
+		gbc_txtDozent.insets = new Insets(0, 0, 5, 0);
+		gbc_txtDozent.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtDozent.gridx = 5;
+		gbc_txtDozent.gridy = 0;
+		panel.add(txtDozent, gbc_txtDozent);
+		txtDozent.setColumns(10);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(102, 102, 102));
@@ -231,15 +231,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_3.gridy = 2;
 		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
-		textField_2 = new JTextField();
-		textField_2.setBorder(null);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 5;
-		gbc_textField_2.gridy = 2;
-		panel.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		txtPunkte = new JTextField();
+		txtPunkte.setBorder(null);
+		GridBagConstraints gbc_txtPunkte = new GridBagConstraints();
+		gbc_txtPunkte.insets = new Insets(0, 0, 5, 0);
+		gbc_txtPunkte.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtPunkte.gridx = 5;
+		gbc_txtPunkte.gridy = 2;
+		panel.add(txtPunkte, gbc_txtPunkte);
+		txtPunkte.setColumns(10);
 
 		JLabel lblNewLabel_4 = new JLabel("Datum:");
 		lblNewLabel_4.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -250,15 +250,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_4.gridy = 3;
 		panel.add(lblNewLabel_4, gbc_lblNewLabel_4);
 
-		textField_3 = new JTextField();
-		textField_3.setBorder(null);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 3;
-		panel.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		txtDatum = new JTextField();
+		txtDatum.setBorder(null);
+		GridBagConstraints gbc_txtDatum = new GridBagConstraints();
+		gbc_txtDatum.insets = new Insets(0, 0, 0, 5);
+		gbc_txtDatum.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtDatum.gridx = 1;
+		gbc_txtDatum.gridy = 3;
+		panel.add(txtDatum, gbc_txtDatum);
+		txtDatum.setColumns(10);
 
 		JLabel lblNewLabel_5 = new JLabel("Uhrzeit:");
 		lblNewLabel_5.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -269,15 +269,15 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_5.gridy = 3;
 		panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
-		textField_4 = new JTextField();
-		textField_4.setBorder(null);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 3;
-		gbc_textField_4.gridy = 3;
-		panel.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		txtUhrzeit = new JTextField();
+		txtUhrzeit.setBorder(null);
+		GridBagConstraints gbc_txtUhrzeit = new GridBagConstraints();
+		gbc_txtUhrzeit.insets = new Insets(0, 0, 0, 5);
+		gbc_txtUhrzeit.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtUhrzeit.gridx = 3;
+		gbc_txtUhrzeit.gridy = 3;
+		panel.add(txtUhrzeit, gbc_txtUhrzeit);
+		txtUhrzeit.setColumns(10);
 
 		JLabel lblNewLabel_6 = new JLabel("Raum:");
 		lblNewLabel_6.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -288,14 +288,14 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_6.gridy = 3;
 		panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
 
-		textField_5 = new JTextField();
-		textField_5.setBorder(null);
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_5.gridx = 5;
-		gbc_textField_5.gridy = 3;
-		panel.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		txtRaum = new JTextField();
+		txtRaum.setBorder(null);
+		GridBagConstraints gbc_txtRaum = new GridBagConstraints();
+		gbc_txtRaum.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtRaum.gridx = 5;
+		gbc_txtRaum.gridy = 3;
+		panel.add(txtRaum, gbc_txtRaum);
+		txtRaum.setColumns(10);
 
 		JLabel label = new JLabel("");
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -344,12 +344,13 @@ public class PruefungEinweisungPopUp {
 
 	public void fuelleFelder() {
 		
-		textField.setText(this.nutzer.getVorname() + " " + this.nutzer.getNachname());
-		textField_6.setText(String.valueOf(this.nutzer.getNutzerId()));
-		//textField_7.setText(this.nutzer.getPruefung().get);
+		txtTeilnehmer.setText(this.nutzer.getVorname() + " " + this.nutzer.getNachname());
+		txtMatrikelnr.setText(String.valueOf(this.nutzer.getNutzerId()));
 		textField_1.setText(String.valueOf(this.nutzer.getPruefung().getDauer()) + " Minuten");
 		txtDauer.setText(this.nutzer.getPruefung().getBezeichnung());
-		textField_2.setText(String.valueOf(this.nutzer.getPruefung().getPunkte()));
+		txtPunkte.setText(String.valueOf(this.nutzer.getPruefung().getPunkte()));
+		//txtUhrzeit.setText(this.nutzer.getPruefung().);
+		//txtDatum.setText(this.nutzer.getPruefung().getLetzterTermin());
 		
 		
 		
