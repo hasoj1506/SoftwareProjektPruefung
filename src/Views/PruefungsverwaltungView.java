@@ -28,6 +28,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.Frame;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -38,10 +40,15 @@ public class PruefungsverwaltungView {
 	private JButton btnBearbeitenPruefung;
 	private JButton btnLoeschenPruefung;
 	private JButton btnDuplizierenPruefung;
+	private JButton btnReset;
+	private JButton btnSuchen;
+	private JTextField textFieldSuche;
 
 	PruefungsverwaltungController controller;
 
 	Pruefung pruefung;
+
+
 	
 
 	/**
@@ -71,10 +78,30 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();
 		gbl_PruefungenPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
-		gbl_PruefungenPanel.rowHeights = new int[] { 44, 0, 30, 0 };
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 0.0, 1.0 };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
+		
+		JPanel panelSuche = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panelSuche.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panelSuche = new GridBagConstraints();
+		gbc_panelSuche.insets = new Insets(0, 0, 5, 5);
+		gbc_panelSuche.fill = GridBagConstraints.BOTH;
+		gbc_panelSuche.gridx = 2;
+		gbc_panelSuche.gridy = 1;
+		PruefungenPanel.add(panelSuche, gbc_panelSuche);
+		
+		textFieldSuche = new JTextField();
+		panelSuche.add(textFieldSuche);
+		textFieldSuche.setColumns(10);
+		
+		btnSuchen = new JButton("Suchen");
+		panelSuche.add(btnSuchen);
+		
+		btnReset = new JButton("Reset");
+		btnReset.setVisible(false);
+		panelSuche.add(btnReset);
 
 		JLabel pruefungenLabel = new JLabel("Pruefungen:");
 		pruefungenLabel.setForeground(new Color(51, 51, 51));
@@ -83,7 +110,7 @@ public class PruefungsverwaltungView {
 		gbc_pruefungenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_pruefungenLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_pruefungenLabel.gridx = 1;
-		gbc_pruefungenLabel.gridy = 1;
+		gbc_pruefungenLabel.gridy = 2;
 		PruefungenPanel.add(pruefungenLabel, gbc_pruefungenLabel);
 
 		JScrollPane tableScrollPane = new JScrollPane();
@@ -93,7 +120,7 @@ public class PruefungsverwaltungView {
 		gbc_tableScrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_tableScrollPane.fill = GridBagConstraints.BOTH;
 		gbc_tableScrollPane.gridx = 2;
-		gbc_tableScrollPane.gridy = 1;
+		gbc_tableScrollPane.gridy = 2;
 		PruefungenPanel.add(tableScrollPane, gbc_tableScrollPane);
 
 		tablePruefungen = new JTable();
@@ -267,6 +294,18 @@ public class PruefungsverwaltungView {
 				}
 			}
 		});
+		
+		btnSuchen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.suchePruefung();
+			}
+		});
+		
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.resetSuche();
+			}
+		});
 	}
 
 	public JTable getTablePruefungen() {
@@ -287,6 +326,14 @@ public class PruefungsverwaltungView {
 
 	public static void main(String[] ar) {
 		PruefungsverwaltungView view = new PruefungsverwaltungView();
+	}
+
+	public JTextField getTextFieldSuche() {
+		return textFieldSuche;
+	}
+
+	public JButton getBtnReset() {
+		return btnReset;
 	}
 
 }

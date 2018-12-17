@@ -2,11 +2,13 @@ package Controller;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import DatabaseService.DatabaseService;
+import Models.Antwort;
 import Models.Pruefung;
 import TableModels.PruefungsverwaltungTableModel;
 import Views.PruefungsDetails;
@@ -39,26 +41,30 @@ public class PruefungsverwaltungController {
 			model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
 
-			// Spaltenbreiten anpassen
-			view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(120);
-			view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(30);
-			view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(10);
-			view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
-			view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
-			view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
+			spaltenbreiteAnpassen();
 
-//			centerRenderer = new DefaultTableCellRenderer();
-//			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-//			for (int i = 0; i < view.getTablePruefungen().getColumnCount(); i++) {
-//				view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-//			}
-			
+			// centerRenderer = new DefaultTableCellRenderer();
+			// centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			// for (int i = 0; i < view.getTablePruefungen().getColumnCount();
+			// i++) {
+			// view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+			// }
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Datensätze konnten nicht geladen werden!");
 		}
 
+	}
+
+	private void spaltenbreiteAnpassen() {
+		// Spaltenbreiten anpassen
+		view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(120);
+		view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(30);
+		view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(10);
+		view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
+		view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
+		view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
 	}
 
 	// Neu-Button wird geklickt
@@ -101,35 +107,36 @@ public class PruefungsverwaltungController {
 			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht bearbeitet werden!");
 		}
 	}
-	
+
 	// duplizieren Button wird geklickt
-		public void duplizierePruefung() {
-			try {
-				// Wenn in der JTable eine Zeile ausgewählt ist
-				if (view.getTablePruefungen().getSelectedRow() > -1) {
-					// Identifizieren der zu duplizierenden Prüfung
-					pruefungen = db.readPruefungen();
-					int selection = view.getTablePruefungen().getSelectedRow();
-					Pruefung zuDuplizierendePrüfung = pruefungen.get(selection);
-					
-					//dem Duplikat die Werte übergeben
-					Pruefung duplikat = new Pruefung();
-					duplikat.setBezeichnung(zuDuplizierendePrüfung.getBezeichnung() + " Kopie");
-					duplikat.setDauer(zuDuplizierendePrüfung.getDauer());
-					duplikat.setPunkte(zuDuplizierendePrüfung.getPunkte());
-					duplikat.setAufgaben(zuDuplizierendePrüfung.getAufgaben());
-					
-					//Das Duplikat in die Datenbank schreiben und die Tabelle aktualisieren
-					db.persistPruefung(duplikat);
-					fuelleTabellePruefungsverwaltung();
-				} else {
-					JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
-				}
-			} catch (Exception e) {
-				// Was beim Fehler passiert
-				JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht dupliziert werden!");
+	public void duplizierePruefung() {
+		try {
+			// Wenn in der JTable eine Zeile ausgewählt ist
+			if (view.getTablePruefungen().getSelectedRow() > -1) {
+				// Identifizieren der zu duplizierenden Prüfung
+				pruefungen = db.readPruefungen();
+				int selection = view.getTablePruefungen().getSelectedRow();
+				Pruefung zuDuplizierendePrüfung = pruefungen.get(selection);
+
+				// dem Duplikat die Werte übergeben
+				Pruefung duplikat = new Pruefung();
+				duplikat.setBezeichnung(zuDuplizierendePrüfung.getBezeichnung() + " Kopie");
+				duplikat.setDauer(zuDuplizierendePrüfung.getDauer());
+				duplikat.setPunkte(zuDuplizierendePrüfung.getPunkte());
+				duplikat.setAufgaben(zuDuplizierendePrüfung.getAufgaben());
+
+				// Das Duplikat in die Datenbank schreiben und die Tabelle
+				// aktualisieren
+				db.persistPruefung(duplikat);
+				fuelleTabellePruefungsverwaltung();
+			} else {
+				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung kann nicht dupliziert werden!");
 		}
+	}
 
 	// Löschen-Button wird geklickt
 	public void loeschePruefung() {
@@ -163,6 +170,39 @@ public class PruefungsverwaltungController {
 			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung konnte nicht gelöscht werden!");
 		}
 
+	}
+
+	// Suchen-Button wird geklickt
+	public void suchePruefung() {
+
+		String suchText = view.getTextFieldSuche().getText();
+
+		if (suchText.length() == 0) {
+			JOptionPane.showMessageDialog(view.getFrame(), "Bitte Suchbegriff eingeben!");
+
+		} else {
+			try {
+
+				pruefungen = db.readPruefungenSuche(suchText);
+
+				model = new PruefungsverwaltungTableModel(pruefungen);
+				view.getTablePruefungen().setModel(model);
+
+				spaltenbreiteAnpassen();
+
+				view.getBtnReset().setVisible(true);
+
+			} catch (Exception e) {
+
+			}
+		}
+
+	}
+
+	public void resetSuche() {
+		view.getTextFieldSuche().setText("");
+		fuelleTabellePruefungsverwaltung();
+		view.getBtnReset().setVisible(false);
 	}
 
 }

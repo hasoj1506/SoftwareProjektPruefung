@@ -137,6 +137,26 @@ public class DatabaseService {
 
 	}
 	
+	public List<Pruefung> readPruefungenSuche(String suchText) {
+
+		List<Pruefung> pruefungen;
+		
+		try {
+
+			TypedQuery q = em.createQuery(
+					"SELECT p FROM Pruefung p WHERE lower(p.bezeichnung) LIKE lower('%" + suchText + "%')", Pruefung.class);
+
+			pruefungen = q.getResultList();
+
+			return pruefungen;
+
+		} catch (Exception e) {
+			// füllen, was beim Fehler passiert
+			return null;
+		}
+
+	}
+	
 	public List<Nutzer> readNutzer() {
 
 		List<Nutzer> nutzer;
