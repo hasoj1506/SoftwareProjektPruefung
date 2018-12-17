@@ -430,7 +430,9 @@ public class PruefungView {
 					timer.stop();
 					zeitUm = true;
 					txtTimer.setText("Zeit abgelaufen");
-					controller.timerAbgelaufen();
+					if(controller.isAbgegeben() == false) {
+						controller.timerAbgelaufen();
+					}
 				} else {
 
 					if (count / 60 < 10) {
@@ -484,6 +486,10 @@ public class PruefungView {
 
 	public Pruefung getPruefung() {
 		return pruefung;
+	}
+	
+	public Timer getTimer() {
+		return timer;
 	}
 
 	/*

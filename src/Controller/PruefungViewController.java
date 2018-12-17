@@ -30,6 +30,8 @@ public class PruefungViewController {
 	PruefungView view;
 	PruefungViewAufgabenTableModel model;
 	PruefungViewTableModel antwortenModel;
+	
+	boolean abgegeben = false;
 
 	private int selection;
 
@@ -70,6 +72,7 @@ public class PruefungViewController {
 
 		// Jede Antwort mit der Lösung abgleichen und Punkte berechnen
 		if (reply == JOptionPane.YES_OPTION) {
+			abgegeben = true;
 			for (int i = 0; i < aufgaben.size(); i++) {
 				aufgabe = aufgaben.get(i);
 				antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
@@ -180,5 +183,10 @@ public class PruefungViewController {
 		view.getTxtAufgabentext().setText("Bitte wähle links eine Aufgabe aus!");
 		view.getTxtAufgabentext().setForeground(Color.RED);
 	}
+	
+	public boolean isAbgegeben() {
+		return abgegeben;
+	}
+	
 
 }
