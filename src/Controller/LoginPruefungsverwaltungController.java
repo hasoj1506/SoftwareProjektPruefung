@@ -61,7 +61,7 @@ public class LoginPruefungsverwaltungController {
 				view.getFrame().dispose();
 				
 			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
 
 			}
 		} catch (NullPointerException e) {
@@ -92,7 +92,7 @@ public class LoginPruefungsverwaltungController {
 				viewS.getLoginStudentFrame().dispose();
 				
 			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
 
 			}
 		} catch (NullPointerException e) {
