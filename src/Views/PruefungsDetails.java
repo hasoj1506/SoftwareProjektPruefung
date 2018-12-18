@@ -68,6 +68,9 @@ public class PruefungsDetails extends JFrame {
 	private JLabel lblLegeDieEigenschaften;
 	private JLabel label_2;
 	private JCheckBox chckbxAufgabenVerwrfeln;
+	private JButton btnAbbrechen;
+	private JPanel panel_4;
+	private JButton btnExportieren;
 
 	/**
 	 * @wbp.parser.constructor
@@ -115,18 +118,25 @@ public class PruefungsDetails extends JFrame {
 		panel.setBackground(new Color(204, 204, 204));
 		panelButtons.add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 163, 151, 0 };
+		gbl_panel.columnWidths = new int[] { 0, 163, 151, 0 };
 		gbl_panel.rowHeights = new int[] { 29, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
+
+		btnAbbrechen = new JButton("Abbrechen");
+		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
+		gbc_btnAbbrechen.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAbbrechen.gridx = 0;
+		gbc_btnAbbrechen.gridy = 0;
+		panel.add(btnAbbrechen, gbc_btnAbbrechen);
 
 		btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
 		btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnSpeichernPruefung = new GridBagConstraints();
 		gbc_btnSpeichernPruefung.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnSpeichernPruefung.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSpeichernPruefung.gridx = 0;
+		gbc_btnSpeichernPruefung.gridx = 1;
 		gbc_btnSpeichernPruefung.gridy = 0;
 		panel.add(btnSpeichernPruefung, gbc_btnSpeichernPruefung);
 
@@ -134,7 +144,7 @@ public class PruefungsDetails extends JFrame {
 		btnLschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnLschenPruefung = new GridBagConstraints();
 		gbc_btnLschenPruefung.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnLschenPruefung.gridx = 1;
+		gbc_btnLschenPruefung.gridx = 2;
 		gbc_btnLschenPruefung.gridy = 0;
 		panel.add(btnLschenPruefung, gbc_btnLschenPruefung);
 
@@ -221,8 +231,6 @@ public class PruefungsDetails extends JFrame {
 
 		JPanel panelTeilnehmerButtons = new JPanel();
 		panelTeilnehmerButtons.setBackground(new Color(255, 255, 255));
-		FlowLayout fl_panelTeilnehmerButtons = (FlowLayout) panelTeilnehmerButtons.getLayout();
-		fl_panelTeilnehmerButtons.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panelTeilnehmerButtons = new GridBagConstraints();
 		gbc_panelTeilnehmerButtons.anchor = GridBagConstraints.NORTH;
 		gbc_panelTeilnehmerButtons.gridwidth = 2;
@@ -231,10 +239,27 @@ public class PruefungsDetails extends JFrame {
 		gbc_panelTeilnehmerButtons.gridx = 1;
 		gbc_panelTeilnehmerButtons.gridy = 4;
 		panelMain.add(panelTeilnehmerButtons, gbc_panelTeilnehmerButtons);
+		GridBagLayout gbl_panelTeilnehmerButtons = new GridBagLayout();
+		gbl_panelTeilnehmerButtons.columnWidths = new int[] { 259, 129, 65, 121, 99, 0 };
+		gbl_panelTeilnehmerButtons.rowHeights = new int[] { 29, 0 };
+		gbl_panelTeilnehmerButtons.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panelTeilnehmerButtons.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
+		panelTeilnehmerButtons.setLayout(gbl_panelTeilnehmerButtons);
+		
+		panel_4 = new JPanel();
+		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_4.fill = GridBagConstraints.BOTH;
+		gbc_panel_4.gridx = 0;
+		gbc_panel_4.gridy = 0;
+		panelTeilnehmerButtons.add(panel_4, gbc_panel_4);
+		
+		btnExportieren = new JButton("Exportieren");
+		panel_4.add(btnExportieren);
 
 		JButton btnImportieren = new JButton("Importieren");
+		panel_4.add(btnImportieren);
 		btnImportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panelTeilnehmerButtons.add(btnImportieren);
 		btnImportieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -242,15 +267,29 @@ public class PruefungsDetails extends JFrame {
 
 		btnNeuTeilnehmer = new JButton("Neu");
 		btnNeuTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panelTeilnehmerButtons.add(btnNeuTeilnehmer);
+		GridBagConstraints gbc_btnNeuTeilnehmer = new GridBagConstraints();
+		gbc_btnNeuTeilnehmer.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnNeuTeilnehmer.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNeuTeilnehmer.gridx = 2;
+		gbc_btnNeuTeilnehmer.gridy = 0;
+		panelTeilnehmerButtons.add(btnNeuTeilnehmer, gbc_btnNeuTeilnehmer);
 
 		btnBearbeitenTeilnehmer = new JButton("Bearbeiten");
 		btnBearbeitenTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panelTeilnehmerButtons.add(btnBearbeitenTeilnehmer);
+		GridBagConstraints gbc_btnBearbeitenTeilnehmer = new GridBagConstraints();
+		gbc_btnBearbeitenTeilnehmer.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnBearbeitenTeilnehmer.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBearbeitenTeilnehmer.gridx = 3;
+		gbc_btnBearbeitenTeilnehmer.gridy = 0;
+		panelTeilnehmerButtons.add(btnBearbeitenTeilnehmer, gbc_btnBearbeitenTeilnehmer);
 
 		btnLschenTeilnehmer = new JButton("L\u00F6schen");
 		btnLschenTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panelTeilnehmerButtons.add(btnLschenTeilnehmer);
+		GridBagConstraints gbc_btnLschenTeilnehmer = new GridBagConstraints();
+		gbc_btnLschenTeilnehmer.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnLschenTeilnehmer.gridx = 4;
+		gbc_btnLschenTeilnehmer.gridy = 0;
+		panelTeilnehmerButtons.add(btnLschenTeilnehmer, gbc_btnLschenTeilnehmer);
 
 		JLabel lblTermine = new JLabel("Termine:");
 		lblTermine.setForeground(new Color(51, 51, 51));
@@ -439,7 +478,7 @@ public class PruefungsDetails extends JFrame {
 
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		pack();
+		//pack();
 		setLocationRelativeTo(null);
 
 		// Fenster maximiert starten
