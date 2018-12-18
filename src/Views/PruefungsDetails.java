@@ -72,6 +72,8 @@ public class PruefungsDetails extends JFrame {
 	private JPanel panel_4;
 	private JButton btnExportieren;
 
+	private JButton btnImportieren;
+
 	/**
 	 * @wbp.parser.constructor
 	 */
@@ -257,13 +259,9 @@ public class PruefungsDetails extends JFrame {
 		btnExportieren = new JButton("Exportieren");
 		panel_4.add(btnExportieren);
 
-		JButton btnImportieren = new JButton("Importieren");
+		btnImportieren = new JButton("Importieren");
 		panel_4.add(btnImportieren);
 		btnImportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnImportieren.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 
 		btnNeuTeilnehmer = new JButton("Neu");
 		btnNeuTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -626,6 +624,12 @@ public class PruefungsDetails extends JFrame {
 		btnLschenTeilnehmer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loescheTeilnehmer();
+			}
+		});
+		
+		btnImportieren.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.importiereTeilnehmer();
 			}
 		});
 
