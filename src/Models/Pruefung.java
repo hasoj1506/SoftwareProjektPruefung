@@ -40,7 +40,7 @@ public class Pruefung {
 		nutzer = new HashSet<Nutzer>();
 	}
 
-	public Pruefung(String bezeichnung, int dauer, int punkte) {
+	public Pruefung(String bezeichnung, int dauer) {
 		super();
 		this.dauer = dauer;
 		this.bezeichnung = bezeichnung;
@@ -112,6 +112,10 @@ public class Pruefung {
 		} catch (Exception e) {
 			return "Keine Termine";
 		}
+	}
+
+	public void setAufgaben(Set<Aufgabe> aufgaben) {
+		this.aufgaben = aufgaben;
 	}
 
 }

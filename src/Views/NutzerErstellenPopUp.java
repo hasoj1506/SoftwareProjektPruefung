@@ -11,6 +11,7 @@ import Models.Termin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 //Josah Weber
 public class NutzerErstellenPopUp {
@@ -146,7 +147,11 @@ public class NutzerErstellenPopUp {
 				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				benutzername = vorname + nachname;
+				
+				//Benutzernamen generieren
+				Random zufall = new Random(); // neues Random Objekt, namens zufall
+				int zufallsZahl = zufall.nextInt(10000); //Ganzahlige Zufallszahl zwischen 0 und 10000
+				benutzername = vorname + nachname + String.valueOf(zufallsZahl);
 				passwort = benutzername;
 				
 				//Standard-Farbfüllung der Felder
@@ -187,7 +192,11 @@ public class NutzerErstellenPopUp {
 				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				benutzername = vorname + nachname;
+				
+				//Benutzernamen generieren
+				Random zufall = new Random(); // neues Random Objekt, namens zufall
+				int zufallsZahl = zufall.nextInt(10000); //Ganzahlige Zufallszahl zwischen 0 und 10000
+				benutzername = vorname + nachname + String.valueOf(zufallsZahl);
 				passwort = benutzername;
 				
 				//Standard-Farbfüllung der Felder

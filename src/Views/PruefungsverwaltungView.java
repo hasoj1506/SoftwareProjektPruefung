@@ -28,6 +28,10 @@ import javax.swing.ListSelectionModel;
 import java.awt.Frame;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -37,10 +41,17 @@ public class PruefungsverwaltungView {
 	private JButton btnNeuPruefung;
 	private JButton btnBearbeitenPruefung;
 	private JButton btnLoeschenPruefung;
+	private JButton btnDuplizierenPruefung;
+	private JButton btnReset;
+	private JButton btnSuchen;
+	private JTextField textFieldSuche;
 
 	PruefungsverwaltungController controller;
 
 	Pruefung pruefung;
+
+
+	
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -69,19 +80,49 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();
 		gbl_PruefungenPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
-		gbl_PruefungenPanel.rowHeights = new int[] { 44, 0, 30, 0 };
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 0.0, 1.0 };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
+		
+		JPanel panelSuche = new JPanel();
+		panelSuche.setBackground(Color.WHITE);
+		FlowLayout flowLayout = (FlowLayout) panelSuche.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panelSuche = new GridBagConstraints();
+		gbc_panelSuche.insets = new Insets(0, 0, 5, 5);
+		gbc_panelSuche.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelSuche.gridx = 2;
+		gbc_panelSuche.gridy = 1;
+		PruefungenPanel.add(panelSuche, gbc_panelSuche);
+		
+		textFieldSuche = new JTextField();
+		panelSuche.add(textFieldSuche);
+		textFieldSuche.setColumns(10);
+		
+		btnSuchen = new JButton("");
+		btnSuchen.setMaximumSize(new Dimension(20, 20));
+		btnSuchen.setPreferredSize(new Dimension(20, 20));
+		Image searchIcon = new ImageIcon(this.getClass().getResource("/searchIcon.png")).getImage();
+		btnSuchen.setIcon(new ImageIcon(searchIcon));
+		panelSuche.add(btnSuchen);
+		
+		btnReset = new JButton("");
+		btnReset.setPreferredSize(new Dimension(20, 20));
+		btnReset.setMinimumSize(new Dimension(20, 20));
+		btnReset.setMaximumSize(new Dimension(20, 20));
+		Image resetIcon = new ImageIcon(this.getClass().getResource("/closeIcon.png")).getImage();
+		btnReset.setIcon(new ImageIcon(resetIcon));
+		btnReset.setVisible(false);
+		panelSuche.add(btnReset);
 
-		JLabel pruefungenLabel = new JLabel("Pruefungen:");
+		JLabel pruefungenLabel = new JLabel("Pr\u00FCfungen:");
 		pruefungenLabel.setForeground(new Color(51, 51, 51));
 		pruefungenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_pruefungenLabel = new GridBagConstraints();
 		gbc_pruefungenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_pruefungenLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_pruefungenLabel.gridx = 1;
-		gbc_pruefungenLabel.gridy = 1;
+		gbc_pruefungenLabel.gridy = 2;
 		PruefungenPanel.add(pruefungenLabel, gbc_pruefungenLabel);
 
 		JScrollPane tableScrollPane = new JScrollPane();
@@ -91,7 +132,7 @@ public class PruefungsverwaltungView {
 		gbc_tableScrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_tableScrollPane.fill = GridBagConstraints.BOTH;
 		gbc_tableScrollPane.gridx = 2;
-		gbc_tableScrollPane.gridy = 1;
+		gbc_tableScrollPane.gridy = 2;
 		PruefungenPanel.add(tableScrollPane, gbc_tableScrollPane);
 
 		tablePruefungen = new JTable();
@@ -105,16 +146,15 @@ public class PruefungsverwaltungView {
 		buttonPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.setMinimumSize(new Dimension(400, 300));
 		frmPrfungsverwaltung.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 70, 10));
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 25, 10));
 
 		JPanel unterPanel = new JPanel();
 		unterPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.add(unterPanel);
 		GridBagLayout gbl_unterPanel = new GridBagLayout();
-		gbl_unterPanel.columnWidths = new int[] { 46, 33, 54, 0, 39, 57, 0 };
-		gbl_unterPanel.rowHeights = new int[] { 0, 0 };
-		gbl_unterPanel.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_unterPanel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_unterPanel.columnWidths = new int[] { 46, 33, 54, 0, 0, 39, 57, 0 };
+		gbl_unterPanel.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_unterPanel.rowWeights = new double[] { 0.0 };
 		unterPanel.setLayout(gbl_unterPanel);
 
 		btnNeuPruefung = new JButton("Neu");
@@ -123,7 +163,7 @@ public class PruefungsverwaltungView {
 		GridBagConstraints gbc_btnNeuPruefung = new GridBagConstraints();
 		gbc_btnNeuPruefung.gridwidth = 2;
 		gbc_btnNeuPruefung.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnNeuPruefung.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNeuPruefung.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNeuPruefung.gridx = 0;
 		gbc_btnNeuPruefung.gridy = 0;
 		unterPanel.add(btnNeuPruefung, gbc_btnNeuPruefung);
@@ -134,18 +174,28 @@ public class PruefungsverwaltungView {
 		GridBagConstraints gbc_btnBearbeitenPruefung = new GridBagConstraints();
 		gbc_btnBearbeitenPruefung.gridwidth = 2;
 		gbc_btnBearbeitenPruefung.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnBearbeitenPruefung.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBearbeitenPruefung.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBearbeitenPruefung.gridx = 2;
 		gbc_btnBearbeitenPruefung.gridy = 0;
 		unterPanel.add(btnBearbeitenPruefung, gbc_btnBearbeitenPruefung);
+		
+		btnDuplizierenPruefung = new JButton("Duplizieren");
+		btnDuplizierenPruefung.setForeground(new Color(51, 51, 51));
+		btnDuplizierenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnDuplizieren = new GridBagConstraints();
+		gbc_btnDuplizieren.insets = new Insets(0, 0, 5, 5);
+		gbc_btnDuplizieren.gridx = 4;
+		gbc_btnDuplizieren.gridy = 0;
+		unterPanel.add(btnDuplizierenPruefung, gbc_btnDuplizieren);
 
 		btnLoeschenPruefung = new JButton("L\u00F6schen");
 		btnLoeschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		btnLoeschenPruefung.setForeground(new Color(51, 51, 51));
 		GridBagConstraints gbc_btnLoeschenPruefung = new GridBagConstraints();
+		gbc_btnLoeschenPruefung.insets = new Insets(0, 0, 5, 0);
 		gbc_btnLoeschenPruefung.gridwidth = 2;
 		gbc_btnLoeschenPruefung.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnLoeschenPruefung.gridx = 4;
+		gbc_btnLoeschenPruefung.gridx = 5;
 		gbc_btnLoeschenPruefung.gridy = 0;
 		unterPanel.add(btnLoeschenPruefung, gbc_btnLoeschenPruefung);
 		
@@ -235,6 +285,12 @@ public class PruefungsverwaltungView {
 				controller.bearbeitePruefung();
 			}
 		});
+		
+		btnDuplizierenPruefung.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.duplizierePruefung();
+			}
+		});
 
 		btnLoeschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -248,6 +304,41 @@ public class PruefungsverwaltungView {
 				if (evt.getClickCount() == 2) {
 					controller.bearbeitePruefung();
 				}
+			}
+		});
+		
+		btnSuchen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.suchePruefung();
+			}
+		});
+		
+		textFieldSuche.getDocument().addDocumentListener(new DocumentListener() {
+			public void updateLog(DocumentEvent et) {
+				controller.suchePruefung();
+			}
+			
+			public void changedUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				updateLog(e);
+				
+			}
+			
+		
+		});
+		
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.resetSuche();
 			}
 		});
 	}
@@ -270,6 +361,14 @@ public class PruefungsverwaltungView {
 
 	public static void main(String[] ar) {
 		PruefungsverwaltungView view = new PruefungsverwaltungView();
+	}
+
+	public JTextField getTextFieldSuche() {
+		return textFieldSuche;
+	}
+
+	public JButton getBtnReset() {
+		return btnReset;
 	}
 
 }

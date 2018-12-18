@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Color;
 
 public class LoginAbfrage {
 
@@ -63,10 +64,12 @@ public class LoginAbfrage {
 		frame.setIconImage(icon1);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		panel.add(panel_1, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] {0, 0, 30, 0, 0, 0, 30, 0};
@@ -76,6 +79,7 @@ public class LoginAbfrage {
 		panel_1.setLayout(gbl_panel_1);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		panel_3.setPreferredSize(new Dimension(25, 10));
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.gridwidth = 2;
@@ -86,7 +90,7 @@ public class LoginAbfrage {
 		panel_1.add(panel_3, gbc_panel_3);
 		
 		btnStudent = new JButton("Student");
-		btnStudent.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnStudent.setFont(new Font("Verdana", Font.PLAIN, 20));
 		btnStudent.setPreferredSize(new Dimension(150, 40));
 		btnStudent.setMinimumSize(new Dimension(99, 29));
 		btnStudent.setMaximumSize(new Dimension(99, 29));
@@ -97,7 +101,7 @@ public class LoginAbfrage {
 		panel_1.add(btnStudent, gbc_btnStudent);
 		
 		btnProfessor = new JButton("Professor");
-		btnProfessor.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnProfessor.setFont(new Font("Verdana", Font.PLAIN, 20));
 		btnProfessor.setPreferredSize(new Dimension(150, 40));
 		GridBagConstraints gbc_btnProfessor = new GridBagConstraints();
 		gbc_btnProfessor.insets = new Insets(0, 0, 0, 5);
@@ -106,6 +110,7 @@ public class LoginAbfrage {
 		panel_1.add(btnProfessor, gbc_btnProfessor);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.gridwidth = 2;
 		gbc_panel_4.fill = GridBagConstraints.BOTH;
@@ -114,6 +119,7 @@ public class LoginAbfrage {
 		panel_1.add(panel_4, gbc_panel_4);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		panel.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0};
@@ -123,7 +129,8 @@ public class LoginAbfrage {
 		panel_2.setLayout(gbl_panel_2);
 		
 		JLabel lblIchBin = new JLabel("Ich bin:");
-		lblIchBin.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblIchBin.setForeground(new Color(0,155,187));
+		lblIchBin.setFont(new Font("Gill Sans MT", Font.BOLD, 50));
 		GridBagConstraints gbc_lblIchBin = new GridBagConstraints();
 		gbc_lblIchBin.fill = GridBagConstraints.VERTICAL;
 		gbc_lblIchBin.gridx = 0;
@@ -141,12 +148,14 @@ public class LoginAbfrage {
 		btnStudent.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				LoginStudent studentView = new LoginStudent();
+				frame.dispose();
 			}
 		});
 		
 		btnProfessor.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
+				frame.dispose();
 			}
 		});
 	}

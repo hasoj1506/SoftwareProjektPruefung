@@ -106,8 +106,8 @@ public class PruefungsDetails extends JFrame {
 		JPanel panelButtons = new JPanel();
 		panelButtons.setBackground(new Color(204, 204, 204));
 		FlowLayout flowLayout = (FlowLayout) panelButtons.getLayout();
-		flowLayout.setVgap(8);
-		flowLayout.setHgap(64);
+		flowLayout.setVgap(10);
+		flowLayout.setHgap(25);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
@@ -142,7 +142,7 @@ public class PruefungsDetails extends JFrame {
 		panelMain.setBackground(new Color(255, 255, 255));
 		getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
-		gbl_panelMain.columnWidths = new int[] { 55, 100, 300, 55, 0 };
+		gbl_panelMain.columnWidths = new int[] { 65, 100, 300, 65, 0 };
 		gbl_panelMain.rowHeights = new int[] { 22, 0, 50, 0, 50, 0, 50, 0 };
 		gbl_panelMain.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panelMain.rowWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
@@ -365,9 +365,9 @@ public class PruefungsDetails extends JFrame {
 		gbc_panel_1.gridy = 2;
 		panel_2.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 55, 85, 104, 30, 0, 80, 30, 0, 55, 0 };
+		gbl_panel_1.columnWidths = new int[] { 65, 85, 104, 30, 0, 80, 30, 0, 0, 65, 0 };
 		gbl_panel_1.rowHeights = new int[] { 44, 0, 35, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
@@ -382,7 +382,7 @@ public class PruefungsDetails extends JFrame {
 
 		textFieldPrfungstitel = new JTextField();
 		GridBagConstraints gbc_textFieldPrfungstitel = new GridBagConstraints();
-		gbc_textFieldPrfungstitel.gridwidth = 6;
+		gbc_textFieldPrfungstitel.gridwidth = 7;
 		gbc_textFieldPrfungstitel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPrfungstitel.gridx = 2;
@@ -496,12 +496,16 @@ public class PruefungsDetails extends JFrame {
 		btnSpeichernPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.speichernPruefung(pruefungsverwaltung);
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 
 		btnLschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loeschenPruefung(pruefungsverwaltung);
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 
@@ -599,7 +603,8 @@ public class PruefungsDetails extends JFrame {
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-				PruefungsverwaltungView viewNachSchlieﬂen = new PruefungsverwaltungView();
+				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 	}

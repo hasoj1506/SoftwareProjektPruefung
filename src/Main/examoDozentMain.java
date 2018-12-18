@@ -1,13 +1,16 @@
-package Testklassen;
+package Main;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import Views.LoginAbfrage;
+import Models.*;
+import Views.LoginPruefungsverwaltung;
 
-public class JosahTestKlasse {
+
+public class examoDozentMain {
 
 	public static void main(String[] args) {
+	
 		try {
 
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -22,12 +25,7 @@ public class JosahTestKlasse {
 
 		};
 
-		
-		LoginAbfrage login = new LoginAbfrage();
-		
-		
-		
-
+		LoginPruefungsverwaltung login = new LoginPruefungsverwaltung();
 		
 	}
 

@@ -156,28 +156,30 @@ public class AntwortErstellenPopUp {
 
 					try {
 						punkte = Integer.parseInt(textField_1.getText());
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
-					if (punkte < 0) {
-						JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-					} else {
-
-						if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-							JOptionPane.showMessageDialog(frame,
-									"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+						
+						if (punkte < 0) {
+							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
 						} else {
 
-							Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
+							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
+								JOptionPane.showMessageDialog(frame,
+										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+							} else {
 
-							view.getController().getModel().addRow(antwort);
+								Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
 
-							view.getAfgdTable().updateUI();
+								view.getController().getModel().addRow(antwort);
 
-							view.getAfgdFrame().setEnabled(true);
-							view.punkteCheck();
-							frame.dispose();
+								view.getAfgdTable().updateUI();
+
+								view.getAfgdFrame().setEnabled(true);
+								view.punkteCheck();
+								frame.dispose();
+							}
 						}
+						
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
 					}
 				}
 			}
@@ -200,28 +202,30 @@ public class AntwortErstellenPopUp {
 
 					try {
 						punkte = Integer.parseInt(textField_1.getText());
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
-					if (punkte < 0) {
-						JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-					} else {
-
-						if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-							JOptionPane.showMessageDialog(frame,
-									"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+						
+						if (punkte < 0) {
+							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
 						} else {
 
-							antwort.setAntworttext(text);
-							antwort.setIstRichtig(richtig);
-							antwort.setPunkte(punkte);
+							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
+								JOptionPane.showMessageDialog(frame,
+										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
+							} else {
 
-							view.getAfgdTable().updateUI();
+								antwort.setAntworttext(text);
+								antwort.setIstRichtig(richtig);
+								antwort.setPunkte(punkte);
 
-							view.getAfgdFrame().setEnabled(true);
-							view.punkteCheck();
-							frame.dispose();
+								view.getAfgdTable().updateUI();
+
+								view.getAfgdFrame().setEnabled(true);
+								view.punkteCheck();
+								frame.dispose();
+							}
 						}
+						
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
 					}
 				}
 			}
@@ -231,6 +235,11 @@ public class AntwortErstellenPopUp {
 
 	public void punkteCheckBoxTest() {
 
+		if(chckbxNewCheckBox.isSelected() == false) {
+			textField_1.setEnabled(false);
+			textField_1.setText("0");
+		}
+		
 		chckbxNewCheckBox.addActionListener((new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -248,10 +257,8 @@ public class AntwortErstellenPopUp {
 	}
 
 	private void attributCheck(Antwort antwort) {
+		
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());
-		if (antwort.isIstRichtig() == false) {
-			textField_1.setEnabled(false);
-		}
 		this.textField.setText(antwort.getAntworttext());
 		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
 	}

@@ -361,7 +361,6 @@ public class PruefungsDetailsController {
 		// Standard-Füllfarbe der Felder
 		view.getTextFieldPrfungstitel().setBackground(Color.WHITE);
 		view.getTextFieldDauer().setBackground(Color.WHITE);
-		view.getTextFieldPunkte().setBackground(Color.WHITE);
 
 		// Wenn die Felder gefüllt sind, Pruefung mit Daten versehen,
 		// andernfalls zum Füllen auffordern
@@ -371,17 +370,12 @@ public class PruefungsDetailsController {
 		} else if (dauer == 0) {
 			view.getTextFieldDauer().setBackground(Color.RED);
 			JOptionPane.showMessageDialog(view, "Bitte Dauer korrekt füllen!");
-		} else if (punkte == 0) {
-			view.getTextFieldPunkte().setBackground(Color.RED);
-			JOptionPane.showMessageDialog(view, "Bitte Punkte korrekt füllen!");
 		} else {
 			pruefung.setBezeichnung(bezeichnung);
 			pruefung.setDauer(dauer);
 			pruefung.setPunkte(punkte);
 			db.persistPruefung(pruefung);
-			view.dispose();
-			pruefungsverwaltung = new PruefungsverwaltungView();
-			pruefungsverwaltung.tabelleFuellen();
+			view.setVisible(false);
 		}
 	}
 	
@@ -401,9 +395,7 @@ public class PruefungsDetailsController {
 				// Löschen der Prüfung aus der Datenbank und neuladen der
 				// Tabelle
 				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-				view.dispose();
-				pruefungsverwaltung = new PruefungsverwaltungView();
-				pruefungsverwaltung.tabelleFuellen();
+				view.setVisible(false);
 			} else {
 				// nichts tun
 			}

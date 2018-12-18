@@ -16,6 +16,8 @@ public class Nutzer {
 	private String passwort;
 
 	private boolean istDozent;
+	
+	private int erreichtePunktzahl;
 
 	@ManyToOne
 	@JoinColumn(nullable = true)
@@ -37,6 +39,7 @@ public class Nutzer {
 		this.passwort = passwort;
 		this.istDozent = istDozent;
 		this.pruefung = pruefung;
+		this.erreichtePunktzahl = 0;
 
 	}
 
@@ -90,6 +93,14 @@ public class Nutzer {
 
 	public void setPruefung(Pruefung pruefung) {
 		this.pruefung = pruefung;
+	}
+
+	public int getErreichtePunktzahl() {
+		return erreichtePunktzahl;
+	}
+
+	public void setErreichtePunktzahl(int erreichtePunktzahl) {
+		this.erreichtePunktzahl = erreichtePunktzahl;
 	}
 
 }

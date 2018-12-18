@@ -53,18 +53,19 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggen() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), false);
+			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 
 			if (nutzer.size() > 0) {
 
 				PruefungsverwaltungView pruefungView = new PruefungsverwaltungView();
+				view.getFrame().dispose();
 				
 			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
 
 			}
 		} catch (NullPointerException e) {
-			System.out.println("Nullpointerexception");
+//			System.out.println("Nullpointerexception");
 
 		}
 	}
@@ -81,16 +82,17 @@ public class LoginPruefungsverwaltungController {
 		return String.valueOf(passwort);
 	}
 
-	public void EinloggenStudent() {
+	public void einloggenStudent() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), true);
+			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), false);
 
 			if (nutzer.size() >= 0) {
 
-				PruefungView pruefungViewS = new PruefungView(pruefung, nutzers);
+				PruefungView pruefungViewS = new PruefungView(nutzer.get(0));
+				viewS.getLoginStudentFrame().dispose();
 				
 			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Fehler!");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
 
 			}
 		} catch (NullPointerException e) {

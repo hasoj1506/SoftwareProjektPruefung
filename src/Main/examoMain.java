@@ -1,11 +1,11 @@
-package Testklassen;
+package Main;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import Views.LoginAbfrage;
 
-public class JosahTestKlasse {
+public class examoMain {
 
 	public static void main(String[] args) {
 		try {
@@ -25,9 +25,6 @@ public class JosahTestKlasse {
 		
 		LoginAbfrage login = new LoginAbfrage();
 		
-		
-		
-
 		
 	}
 

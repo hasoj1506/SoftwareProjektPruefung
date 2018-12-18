@@ -120,9 +120,9 @@ public class LoginStudent {
 		frame.getContentPane().add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[] {40, 20, 43, 20};
+		gbl_panel.rowHeights = new int[] {40, 20, 43, 0, 20};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblTestat = new JLabel("examo");
@@ -148,6 +148,7 @@ public class LoginStudent {
 		lblTestat_1.setFont(new Font("Verdana", Font.BOLD, 22));
 		lblTestat_1.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblTestat_1 = new GridBagConstraints();
+		gbc_lblTestat_1.insets = new Insets(0, 0, 5, 0);
 		gbc_lblTestat_1.gridx = 0;
 		gbc_lblTestat_1.gridy = 2;
 		panel.add(lblTestat_1, gbc_lblTestat_1);
@@ -237,7 +238,7 @@ public class LoginStudent {
 		
 	}
 	
-	public JFrame getLoginPruefungsverwaltungFrame() {
+	public JFrame getLoginStudentFrame() {
 		return this.frame;
 	}
 	
@@ -245,7 +246,7 @@ public class LoginStudent {
 		
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				controller.EinloggenStudent();;
+				controller.einloggenStudent();
 			}
 		});
 	}

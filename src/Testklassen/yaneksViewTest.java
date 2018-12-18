@@ -14,6 +14,7 @@ import Models.Pruefung;
 import Models.Termin;
 import TableModels.AufgabendetailsTableModel;
 import Views.AufgabendetailsView;
+import Views.PruefungView;
 import Views.PruefungsverwaltungView;
 
 public class yaneksViewTest {
@@ -25,6 +26,7 @@ public class yaneksViewTest {
 		try {
 
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
 		} catch (UnsupportedLookAndFeelException e) {
 
 		} catch (ClassNotFoundException e) {
@@ -35,8 +37,13 @@ public class yaneksViewTest {
 
 		}
 		;
+		
+		Pruefung pruefung = new Pruefung("test", 5);
+		
+		Nutzer nutzer = new Nutzer("test","tes","t","tt", true);
+		nutzer.setPruefung(pruefung);
 
-		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		PruefungView view = new PruefungView(nutzer);
 
 	}
 
