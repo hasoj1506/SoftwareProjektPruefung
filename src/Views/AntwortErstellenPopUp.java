@@ -30,7 +30,6 @@ public class AntwortErstellenPopUp {
 		onCreate();
 		// view.getAfgdFrame().setEnabled(false);
 		btnAction(view);
-		punkteCheckBoxTest();
 		addActionListeners();
 
 	}
@@ -39,8 +38,6 @@ public class AntwortErstellenPopUp {
 		onCreate();
 		btnAction(view, antwort);
 		attributCheck(antwort);
-		punkteCheckBoxTest();
-
 	}
 
 	public void onCreate() {
@@ -139,33 +136,15 @@ public class AntwortErstellenPopUp {
 					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
 				} else {
 
-					try {
-						punkte = Integer.parseInt(textField_1.getText());
-						
-						if (punkte < 0) {
-							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-						} else {
+					Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
 
-							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-								JOptionPane.showMessageDialog(frame,
-										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
-							} else {
+					view.getController().getModel().addRow(antwort);
 
-								Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
+					view.getAfgdTable().updateUI();
 
-								view.getController().getModel().addRow(antwort);
-
-								view.getAfgdTable().updateUI();
-
-								view.getAfgdFrame().setEnabled(true);
-								view.punkteCheck();
-								frame.dispose();
-							}
-						}
-						
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
+					view.getAfgdFrame().setEnabled(true);
+					view.punkteCheck();
+					frame.dispose();
 				}
 			}
 		});
@@ -186,62 +165,21 @@ public class AntwortErstellenPopUp {
 					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
 				} else {
 
-					try {
-						punkte = Integer.parseInt(textField_1.getText());
-												
-						if (punkte < 0) {
-							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
-						} else {
+					antwort.setAntworttext(text);
+					antwort.setIstRichtig(richtig);
 
-							if (punkte != 0 && chckbxNewCheckBox.isSelected() == false) {
-								JOptionPane.showMessageDialog(frame,
-										"Wenn die Antwort als 'nicht richtig' makiert wurde, muss die Punktzahl 0 sein!");
-							} else {
+					view.getAfgdTable().updateUI();
 
-								antwort.setAntworttext(text);
-								antwort.setIstRichtig(richtig);
-
-								view.getAfgdTable().updateUI();
-
-								view.getAfgdFrame().setEnabled(true);
-								view.punkteCheck();
-								frame.dispose();
+					view.getAfgdFrame().setEnabled(true);
+					view.punkteCheck();
+					frame.dispose();
 								
-							}
-						}
-						
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(frame, "Die angegebene Punktzahl ist nicht im richtigen Format!");
-					}
 				}
 			}
 		});
 		
 		
 
-	}
-
-	public void punkteCheckBoxTest() {
-
-		if(chckbxNewCheckBox.isSelected() == false) {
-			textField_1.setEnabled(false);
-			textField_1.setText("0");
-		}
-		
-		chckbxNewCheckBox.addActionListener((new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-
-				if (chckbxNewCheckBox.isSelected()) {
-					textField_1.setEnabled(true);
-				}
-
-				if (chckbxNewCheckBox.isSelected() == false) {
-					textField_1.setEnabled(false);
-					textField_1.setText("0");
-				}
-			}
-		}));
 	}
 
 	//ActionListener zum schließen des Frames
