@@ -128,22 +128,14 @@ public class PruefungsDetails extends JFrame {
 		gbl_panel.columnWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-
-		btnAbbrechen = new JButton("Abbrechen");
-		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
-		gbc_btnAbbrechen.insets = new Insets(0, 0, 0, 5);
-		gbc_btnAbbrechen.gridx = 0;
-		gbc_btnAbbrechen.gridy = 0;
-		panel.add(btnAbbrechen, gbc_btnAbbrechen);
-
-		btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
-		btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_btnSpeichernPruefung = new GridBagConstraints();
-		gbc_btnSpeichernPruefung.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnSpeichernPruefung.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSpeichernPruefung.gridx = 1;
-		gbc_btnSpeichernPruefung.gridy = 0;
-		panel.add(btnSpeichernPruefung, gbc_btnSpeichernPruefung);
+		
+				btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
+				GridBagConstraints gbc_btnSpeichernPruefung = new GridBagConstraints();
+				gbc_btnSpeichernPruefung.insets = new Insets(0, 0, 0, 5);
+				gbc_btnSpeichernPruefung.gridx = 1;
+				gbc_btnSpeichernPruefung.gridy = 0;
+				panel.add(btnSpeichernPruefung, gbc_btnSpeichernPruefung);
+				btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
 		btnLschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -152,6 +144,10 @@ public class PruefungsDetails extends JFrame {
 		gbc_btnLschenPruefung.gridx = 2;
 		gbc_btnLschenPruefung.gridy = 0;
 		panel.add(btnLschenPruefung, gbc_btnLschenPruefung);
+		
+				btnAbbrechen = new JButton("Abbrechen");
+				btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
+				panelButtons.add(btnAbbrechen);
 
 		JPanel panelMain = new JPanel();
 		panelMain.setBackground(new Color(255, 255, 255));
@@ -486,7 +482,7 @@ public class PruefungsDetails extends JFrame {
 		setLocationRelativeTo(null);
 
 		// Fenster maximiert starten
-		setExtendedState(Frame.MAXIMIZED_BOTH);
+		//setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	public void punkteCheck() {

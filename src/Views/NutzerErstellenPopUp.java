@@ -81,15 +81,16 @@ public class NutzerErstellenPopUp {
 		frmNutzer.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
+				btnOk = new JButton("Speichern");
+				btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
+				btnOk.setMinimumSize(new Dimension(100, 35));
+				btnOk.setMaximumSize(new Dimension(100, 35));
+				btnOk.setSize(new Dimension(100, 35));
+				panel.add(btnOk);
+		
 		btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel.add(btnAbbrechen);
-
-		btnOk = new JButton("Speichern");
-		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnOk.setMinimumSize(new Dimension(100, 35));
-		btnOk.setMaximumSize(new Dimension(100, 35));
-		btnOk.setSize(new Dimension(100, 35));
-		panel.add(btnOk);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));

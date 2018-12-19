@@ -171,29 +171,30 @@ public class AufgabendetailsView {
 		gbl_buttonPanel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		buttonPanel.setLayout(gbl_buttonPanel);
 		
+				afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
+				afgdButtonSpeichernAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+				GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
+				gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
+				gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
+				gbc_afgdButtonSpeichernAufgabe.gridx = 0;
+				gbc_afgdButtonSpeichernAufgabe.gridy = 0;
+				buttonPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
+		
+				afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
+				afgdButtonLoescheAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+				GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
+				gbc_afgdButtonLoescheAufgabe.insets = new Insets(0, 0, 0, 5);
+				gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
+				gbc_afgdButtonLoescheAufgabe.gridx = 1;
+				gbc_afgdButtonLoescheAufgabe.gridy = 0;
+				buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
+		
 		btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
-		gbc_btnAbbrechen.insets = new Insets(0, 0, 0, 5);
-		gbc_btnAbbrechen.gridx = 0;
+		gbc_btnAbbrechen.gridx = 2;
 		gbc_btnAbbrechen.gridy = 0;
 		buttonPanel.add(btnAbbrechen, gbc_btnAbbrechen);
-
-		afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
-		afgdButtonSpeichernAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
-		gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
-		gbc_afgdButtonSpeichernAufgabe.gridx = 1;
-		gbc_afgdButtonSpeichernAufgabe.gridy = 0;
-		buttonPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
-
-		afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
-		afgdButtonLoescheAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
-		gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonLoescheAufgabe.gridx = 2;
-		gbc_afgdButtonLoescheAufgabe.gridy = 0;
-		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
 		
 		northPanel = new JPanel();
 		northPanel.setBackground(new Color(204, 204, 204));
@@ -316,7 +317,7 @@ public class AufgabendetailsView {
 											// Bildschirms erzeugt
 
 		// Fenster maximiert starten
-		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		//
 	}
 
