@@ -3,6 +3,8 @@ package Models;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="NutzerArt", discriminatorType=DiscriminatorType.STRING)
 public class Nutzer {
 
 	@Id
