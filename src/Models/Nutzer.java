@@ -9,15 +9,10 @@ public class Nutzer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int nutzerId; // Dozentennummer oder Matrikelnummer
 
+	
 	private String vorname;
 	private String nachname;
 
-	private String benutzername;
-	private String passwort;
-
-	private boolean istDozent;
-	
-	private int erreichtePunktzahl;
 
 	@ManyToOne
 	@JoinColumn(nullable = true)
@@ -29,18 +24,12 @@ public class Nutzer {
 
 	}
 
-	public Nutzer(String vorname, String nachname, String benutzername, String passwort, boolean istDozent) {
+	public Nutzer(String vorname, String nachname) {
 
 		super();
 
 		this.vorname = vorname;
 		this.nachname = nachname;
-		this.benutzername = benutzername;
-		this.passwort = passwort;
-		this.istDozent = istDozent;
-		this.pruefung = pruefung;
-		this.erreichtePunktzahl = 0;
-
 	}
 
 	public String getVorname() {
@@ -59,30 +48,6 @@ public class Nutzer {
 		this.nachname = nachname;
 	}
 
-	public String getBenutzername() {
-		return benutzername;
-	}
-
-	public void setBenutzername(String benutzername) {
-		this.benutzername = benutzername;
-	}
-
-	public String getPasswort() {
-		return passwort;
-	}
-
-	public void setPasswort(String passwort) {
-		this.passwort = passwort;
-	}
-
-	public boolean isIstDozent() {
-		return istDozent;
-	}
-
-	public void setIstDozent(boolean istDozent) {
-		this.istDozent = istDozent;
-	}
-
 	public int getNutzerId() {
 		return nutzerId;
 	}
@@ -95,12 +60,6 @@ public class Nutzer {
 		this.pruefung = pruefung;
 	}
 
-	public int getErreichtePunktzahl() {
-		return erreichtePunktzahl;
-	}
 
-	public void setErreichtePunktzahl(int erreichtePunktzahl) {
-		this.erreichtePunktzahl = erreichtePunktzahl;
-	}
 
 }
