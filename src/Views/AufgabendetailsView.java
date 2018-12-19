@@ -342,7 +342,7 @@ public class AufgabendetailsView {
 
 		// Fenster maximiert starten
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-
+		//
 	}
 
 	public void btnAction() {
