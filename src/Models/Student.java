@@ -19,4 +19,12 @@ public class Student extends Nutzer{
 		this.matrikelNr = matrikelNr;
 	}
 
+	public int getErreichtePunktzahl() {
+		return erreichtePunktzahl;
+	}
+
+	public void setErreichtePunktzahl(int erreichtePunktzahl) {
+		this.erreichtePunktzahl = erreichtePunktzahl;
+	}
+
 }
