@@ -37,7 +37,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import java.awt.Panel;
 
-//Josah Weber 
+//Josah Weber  
 public class PruefungsDetails extends JFrame {
 
 	private PruefungsverwaltungView pruefungsverwaltung;

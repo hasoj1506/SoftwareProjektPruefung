@@ -395,7 +395,7 @@ public class AufgabendetailsView {
 
 			afgdTitelTextField.setText(this.aufgabe.getAufgabentitel());
 			afgdFrageTextField.setText(this.aufgabe.getFrageStellung());
-			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
+			//afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
 			controller.getModel().setAntworten(new ArrayList<Antwort>(aufgabe.getAntworten()));
 		}
 	}
@@ -403,7 +403,7 @@ public class AufgabendetailsView {
 	public void punkteCheck() {
 		
 		
-		afgdPunkteTextField.setText(String.valueOf(controller.getModel().berechnePunktzahl()));
+		//afgdPunkteTextField.setText(String.valueOf(controller.getModel().berechnePunktzahl()));
 	}
 
 	public void fehlerMeldung(String text) {
@@ -422,9 +422,9 @@ public class AufgabendetailsView {
 		return afgdFrageTextField;
 	}
 
-	public JTextField getAfgdPunkteTextField() {
+	/*public JTextField getAfgdPunkteTextField() {
 		return afgdPunkteTextField;
-	}
+	} */
 
 	public JTable getAfgdTable() {
 		return afgdTable;
