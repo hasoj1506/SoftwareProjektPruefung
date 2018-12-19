@@ -17,6 +17,7 @@
 			<property name="eclipselink.jdbc.batch-writing" value="Oracle-JDBC"/>
 			<property name="eclipselink.jdbc.cache-statements" value="true"/>
 			<property name="eclipselink.jdbc.native-sql" value="true"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>
 	</persistence-unit>
 </persistence>

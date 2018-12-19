@@ -15,31 +15,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import Controller.PruefungViewController;
 import Models.Nutzer;
 import Models.Pruefung;
-import javax.swing.SwingConstants;
-import javax.swing.Timer;
-import javax.swing.Box;
-import javax.swing.DropMode;
+import Models.Student;
 
 public class PruefungView {
 	Pruefung pruefung;
-	Nutzer nutzer;
+	Student student;
 
 	private JFrame frame;
 	private int timerZeit;
@@ -68,15 +64,15 @@ public class PruefungView {
 	int count = 0;
 	int delay = 1000;
 
-	public PruefungView(Nutzer nutzer) {
-		this.nutzer = nutzer;
-		this.pruefung = nutzer.getPruefung();
+	public PruefungView(Student student) {
+		this.student = student;
+		this.pruefung = student.getPruefung();
 	
 		erstellePruefungView();
-		this.controller = new PruefungViewController(this, pruefung, nutzer);
+		this.controller = new PruefungViewController(this, pruefung, student);
 		btnAction();
 		
-		PruefungEinweisungPopUp pop = new PruefungEinweisungPopUp(nutzer, this);
+		PruefungEinweisungPopUp pop = new PruefungEinweisungPopUp(student, this);
 	}
 
 	public void erstellePruefungView() {
