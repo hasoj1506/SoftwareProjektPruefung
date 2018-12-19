@@ -13,6 +13,7 @@ import Models.Antwort;
 import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
+import Models.Student;
 import TableModels.PruefungViewAufgabenTableModel;
 import TableModels.PruefungViewTableModel;
 import Views.PruefungView;
@@ -23,7 +24,7 @@ public class PruefungViewController {
 	// können
 
 	Pruefung pruefung;
-	Nutzer nutzer;
+	Student student;
 	List<Aufgabe> aufgaben;
 	DatabaseService service = DatabaseService.getInstance();
 
@@ -35,13 +36,13 @@ public class PruefungViewController {
 
 	private int selection;
 
-	public PruefungViewController(PruefungView view, Pruefung pruefung, Nutzer nutzer) {
+	public PruefungViewController(PruefungView view, Pruefung pruefung, Student student) {
 		this.view = view;
 		this.pruefung = pruefung;
-		this.nutzer = nutzer;
+		this.student = student;
 		this.aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
 		setPruefungstitel(pruefung);
-		setMatrNummer(nutzer);
+		setMatrNummer(student);
 		aufgabeAuswaehlenAufforderung();
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 		view.getAufgabenTable().setModel(model);
@@ -83,7 +84,7 @@ public class PruefungViewController {
 					if (antwort.isIstRichtig() == antwort.isAlsRichtigBeantwortet()) {
 						punkte = antwort.getPunkte();
 						neuePunktzahl = neuePunktzahl + punkte;
-						nutzer.setErreichtePunktzahl(neuePunktzahl);
+						student.setErreichtePunktzahl(neuePunktzahl);
 					}
 				}
 
@@ -103,7 +104,7 @@ public class PruefungViewController {
 			}
 
 			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-			service.persistNutzer(nutzer);
+			service.persistNutzer(student);
 			JOptionPane.showMessageDialog(view.getFrame(),
 					"Erreichte Punktzahl: " + neuePunktzahl + " von " + pruefung.getPunkte());
 			view.getFrame().dispose();
@@ -138,9 +139,9 @@ public class PruefungViewController {
 		}
 	}
 
-	public void setMatrNummer(Nutzer nutzer) {
+	public void setMatrNummer(Student student) {
 
-		view.getTxtMatrikelnummer().setText(nutzer.getNutzerId() + "");
+		view.getTxtMatrikelnummer().setText(student.getMatrikelNr() + "");
 
 	}
 

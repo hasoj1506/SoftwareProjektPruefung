@@ -25,7 +25,7 @@ public class Pruefung {
 	private int punkte;
 
 	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
-	Set<Nutzer> nutzer;
+	Set<Student> studenten;
 
 	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Aufgabe> aufgaben;
@@ -37,7 +37,7 @@ public class Pruefung {
 		super();
 		termine = new HashSet<Termin>();
 		aufgaben = new HashSet<Aufgabe>();
-		nutzer = new HashSet<Nutzer>();
+		studenten = new HashSet<Student>();
 	}
 
 	public Pruefung(String bezeichnung, int dauer) {
@@ -47,7 +47,7 @@ public class Pruefung {
 		this.punkte = punkte;
 		termine = new HashSet<Termin>();
 		aufgaben = new HashSet<Aufgabe>();
-		nutzer = new HashSet<Nutzer>();
+		studenten = new HashSet<Student>();
 	}
 
 	public String getBezeichnung() {
@@ -70,12 +70,12 @@ public class Pruefung {
 		return pruefungId;
 	}
 
-	public Set<Nutzer> getNutzer() {
-		return nutzer;
+	public Set<Student> getStudenten() {
+		return studenten;
 	}
 
-	public void addNutzer(Nutzer nutzer) {
-		this.nutzer.add(nutzer);
+	public void addStudent(Student student) {
+		this.studenten.add(student);
 	}
 
 	public Set<Termin> getTermine() {

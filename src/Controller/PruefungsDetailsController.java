@@ -17,6 +17,7 @@ import DatabaseService.DatabaseService;
 import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
+import Models.Student;
 import Models.Termin;
 import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTeilnehmerTableModel;
@@ -34,9 +35,9 @@ public class PruefungsDetailsController {
 
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
-	private List<Nutzer> nutzer;
+	private List<Student> student;
 	private List<Termin> termine;
-	private List<Nutzer> teilnehmer;
+	private List<Student> teilnehmer;
 	private Pruefung pruefung;
 	private PruefungsDetailsAufgabenTableModel tableModelAufgaben;
 
@@ -84,11 +85,11 @@ public class PruefungsDetailsController {
 
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
-			nutzer = new ArrayList<Nutzer>(pruefung.getNutzer());
+			student = new ArrayList<Student>(pruefung.getStudenten());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					nutzer);
+					student);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
@@ -288,9 +289,9 @@ public class PruefungsDetailsController {
 			if (view.getTableTeilnehmer().getSelectedRow() > -1) {
 
 				// Identifizieren des zu bearbeitenden Teilnehmers
-				teilnehmer = new ArrayList(pruefung.getNutzer());
+				teilnehmer = new ArrayList(pruefung.getStudenten());
 				int selection = view.getTableTeilnehmer().getSelectedRow();
-				Nutzer zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
+				Student zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
 
 				// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
 				// übergeben
@@ -319,13 +320,13 @@ public class PruefungsDetailsController {
 				if (reply == JOptionPane.YES_OPTION) {
 
 					// Identifizieren des zu löschenden Teilnehmers
-					teilnehmer = new ArrayList<Nutzer>(pruefung.getNutzer());
+					teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 					int selection = view.getTableTeilnehmer().getSelectedRow();
 					Nutzer zuLoeschenderTeilnehmer = teilnehmer.get(selection);
 
 					// Löschen des Teilnehmers aus der Liste und neuladen der
 					// Tabelle
-					pruefung.getNutzer().remove(zuLoeschenderTeilnehmer);
+					pruefung.getStudenten().remove(zuLoeschenderTeilnehmer);
 					db.loescheNutzer(zuLoeschenderTeilnehmer);
 					fuelleTeilnehmerTable(pruefung);
 				} else {
@@ -365,20 +366,17 @@ public class PruefungsDetailsController {
 
 					String nachname = dataArray[0];
 					String vorname = dataArray[1];
+					String matrikelnummer = dataArray[2];
+					int matrikelNr = 0;
+					try {
+						matrikelNr = Integer.parseInt(matrikelnummer);
+					} catch (Exception e) {
+						// noch füllen
+					}
 
-					// Benutzernamen generieren
-					Random zufall = new Random(); // neues Random Objekt, namens
-													// zufall
-					int zufallsZahl = zufall.nextInt(10000); // Ganzahlige
-																// Zufallszahl
-																// zwischen 0
-																// und 10000
-					String benutzername = vorname + nachname + String.valueOf(zufallsZahl);
-					String passwort = benutzername;
-
-					Nutzer teilnehmer = new Nutzer(vorname, nachname, benutzername, passwort, false);
+					Student teilnehmer = new Student(vorname, nachname, matrikelNr);
 					teilnehmer.setPruefung(pruefung);
-					pruefung.addNutzer(teilnehmer);
+					pruefung.addStudent(teilnehmer);
 
 					dataRow = CSVFile.readLine();
 					importierteTeilnehmer++;
