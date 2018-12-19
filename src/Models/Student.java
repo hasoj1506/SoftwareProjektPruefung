@@ -40,6 +40,7 @@ public class Student extends Nutzer{
 
 	public int getErreichtePunktzahl() {
 		return erreichtePunktzahl;
+		
 	}
 
 	public void setErreichtePunktzahl(int erreichtePunktzahl) {
