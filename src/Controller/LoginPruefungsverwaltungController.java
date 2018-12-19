@@ -19,27 +19,25 @@ public class LoginPruefungsverwaltungController {
 
 	private LoginPruefungsverwaltung view;
 	private LoginStudent viewS;
-	
+
 	Pruefung pruefung;
 	Nutzer nutzers;
-	
+
 	private List<String> benutzernameListe;
 	private List<String> passwoerterListe;
 
 	// Zugriff auf die Datenbank
-	DatabaseService db = DatabaseService.getInstance();
+	DatabaseService db;
 
 	// Konstruktor Professor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
 		this.view = view;
 	}
-	
-	//Konstruktor Student
+
+	// Konstruktor Student
 	public LoginPruefungsverwaltungController(LoginStudent viewS) {
 		this.viewS = viewS;
 	}
-	
-
 
 	// Get Benutzer und passwort von textfeld in view von Professor
 	public String getBenutzername() {
@@ -51,27 +49,19 @@ public class LoginPruefungsverwaltungController {
 		return String.valueOf(passwort);
 	}
 
-	public void einloggen() {
+	public void einloggenDozent() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzername(), getPasswort(), true);
 
-			if (nutzer.size() > 0) {
+			this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
+			
+			PruefungsverwaltungView view = new PruefungsverwaltungView();
 
-				PruefungsverwaltungView pruefungView = new PruefungsverwaltungView();
-				view.getFrame().dispose();
-				
-			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
-
-			}
 		} catch (NullPointerException e) {
 //			System.out.println("Nullpointerexception");
 
 		}
 	}
-	
-	
-	
+
 	// Get Benutzer und passwort von textfeld in view von Student
 	public String getBenutzernameS() {
 		return viewS.getTFBenutzername().getText();
@@ -81,18 +71,23 @@ public class LoginPruefungsverwaltungController {
 		char[] passwort = viewS.getTFPasswort().getPassword();
 		return String.valueOf(passwort);
 	}
+	
+	public int getMatrikelNr() {
+		return Integer.parseInt(viewS.getTFMatrikelNr().getText());
+	}
 
 	public void einloggenStudent() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getBenutzernameS(), getPasswortS(), false);
+			List<Nutzer> nutzer = db.readLogin(getMatrikelNr());
 
 			if (nutzer.size() >= 0) {
 
 				PruefungView pruefungViewS = new PruefungView(nutzer.get(0));
 				viewS.getLoginStudentFrame().dispose();
-				
+
 			} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Benutzername oder Passwort nicht gefunden!");
+				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(),
+						"Benutzername oder Passwort nicht gefunden!");
 
 			}
 		} catch (NullPointerException e) {
@@ -100,9 +95,5 @@ public class LoginPruefungsverwaltungController {
 
 		}
 	}
-	
-	
-	
-
 
 }

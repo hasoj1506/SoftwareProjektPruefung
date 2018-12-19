@@ -1,9 +1,13 @@
 package DatabaseService;
 
+
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import Models.*;
 
 import javax.persistence.*;
+
 
 public class DatabaseService {
 
@@ -11,14 +15,21 @@ public class DatabaseService {
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
 
-	private DatabaseService() {
-		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung");
+	private DatabaseService(Map map) {
+		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung", map);
 		em = emf.createEntityManager();
 	}
 
-	public static DatabaseService getInstance() {
+	public static DatabaseService getInstance(String benutzername, String passwort) {
+	
 		if (instance == null) {
-			instance = new DatabaseService();
+			
+			Map map = new HashMap();
+			
+			map.put("javax.persistence.jbdc.password", passwort);
+			map.put("javax.persistence.jbdc.username", benutzername);
+			
+			instance = new DatabaseService(map);
 		}
 
 		return instance;
@@ -176,19 +187,11 @@ public class DatabaseService {
 
 	}
 
-	public List<Nutzer> readLogin(String username, String passwort, boolean isDozent) {
-
-		int wahr;
-
-		if (isDozent == true) {
-			wahr = 1;
-		} else {
-			wahr = 0;
-		}
+	public List<Nutzer> readLogin(int matrikelNr) {
 
 		try {
 			List<Nutzer> nutzer;
-			TypedQuery q = em.createQuery("SELECT p FROM Nutzer p WHERE p.benutzername = '" + username + "' and p.passwort = '" + passwort + "' and p.istDozent = " + wahr, Nutzer.class);
+			TypedQuery q = em.createQuery("SELECT p FROM Student p WHERE p.matrikelNr = " + matrikelNr, Nutzer.class);
 			nutzer = q.getResultList();
 			return nutzer;
 
