@@ -196,7 +196,7 @@ public class NutzerErstellenPopUp {
 					textFieldNachname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else {
-					Student student = new Student(vorname, nachname, 0, 0);
+					Student student = new Student(vorname, nachname, 0);
 					student.setPruefung(pruefung);
 					pruefung.addStudent(student);
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
