@@ -33,6 +33,7 @@ public class AntwortErstellenPopUp {
 		// view.getAfgdFrame().setEnabled(false);
 		btnAction(view);
 		punkteCheckBoxTest();
+		addActionListeners();
 
 	}
 
@@ -194,6 +195,7 @@ public class AntwortErstellenPopUp {
 	public void btnAction(final AufgabendetailsView view, final Antwort antwort) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+				
 
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -206,7 +208,7 @@ public class AntwortErstellenPopUp {
 
 					try {
 						punkte = Integer.parseInt(textField_1.getText());
-						
+												
 						if (punkte < 0) {
 							JOptionPane.showMessageDialog(frame, "Die Punktzahl darf nicht kleiner als 0 sein!");
 						} else {
@@ -225,6 +227,7 @@ public class AntwortErstellenPopUp {
 								view.getAfgdFrame().setEnabled(true);
 								view.punkteCheck();
 								frame.dispose();
+								
 							}
 						}
 						
@@ -234,6 +237,8 @@ public class AntwortErstellenPopUp {
 				}
 			}
 		});
+		
+		
 
 	}
 
@@ -260,6 +265,16 @@ public class AntwortErstellenPopUp {
 		}));
 	}
 
+	//ActionListener zum schließen des Frames
+	public void addActionListeners() {
+		
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+	}
+	
 	private void attributCheck(Antwort antwort) {
 		
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());

@@ -28,6 +28,7 @@ public class NutzerErstellenPopUp {
 	private JLabel lblNachname;
 	private JTextField textFieldNachname;
 	private Pruefung pruefung;
+	private JButton btnAbbrechen;
 
 	/**
 	 * @wbp.parser.constructor
@@ -38,6 +39,7 @@ public class NutzerErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
+		addActionListeners();
 
 	}
 
@@ -69,6 +71,9 @@ public class NutzerErstellenPopUp {
 		panel.setBackground(new Color(204, 204, 204));
 		frmNutzer.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		
+		btnAbbrechen = new JButton("Abbrechen");
+		panel.add(btnAbbrechen);
 
 		btnOk = new JButton("Speichern");
 		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -135,6 +140,21 @@ public class NutzerErstellenPopUp {
 		return frmNutzer;
 	}
 
+	
+	//ActionListener zum schließen des Frames
+	public void addActionListeners() {
+	
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmNutzer.dispose();
+			}
+		});
+		
+	
+	}
+	
+
+	
 	// ActionListener für den Fall, dass ein Nutzer bearbeitet wird
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Nutzer nutzer) {
 

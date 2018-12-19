@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -60,6 +61,7 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnBearbeitenTeilnehmer;
 	private JButton btnLschenTeilnehmer;
 	private JButton btnLschenPruefung;
+	
 
 	PruefungsDetailsController controller;
 	private JPanel panel_2;
@@ -122,8 +124,8 @@ public class PruefungsDetails extends JFrame {
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 163, 151, 0 };
 		gbl_panel.rowHeights = new int[] { 29, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel.columnWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
 		btnAbbrechen = new JButton("Abbrechen");
@@ -620,6 +622,15 @@ public class PruefungsDetails extends JFrame {
 				}
 			}
 		});
+		
+		//ActionListener zum schlieﬂen des Frames
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				pruefungsverwaltung.getFrame().setVisible(true);
+			}
+		});
+		
 
 		btnLschenTeilnehmer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

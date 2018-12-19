@@ -28,6 +28,7 @@ public class TerminErstellenPopUp {
 	private JTextField textFieldRaum;
 
 	private Pruefung pruefung;
+	private JButton btnAbbrechen;
 
 	/**
 	 * @wbp.parser.constructor
@@ -39,6 +40,7 @@ public class TerminErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
+		addActionListeners();
 	}
 
 	// Konstruktor zum bearbeiten eines Termins
@@ -67,6 +69,9 @@ public class TerminErstellenPopUp {
 		panel.setBackground(new Color(204, 204, 204));
 		frmTermin.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		
+		btnAbbrechen = new JButton("Abbrechen");
+		panel.add(btnAbbrechen);
 
 		btnOk = new JButton("Speichern");
 		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -201,6 +206,18 @@ public class TerminErstellenPopUp {
 		});
 
 	}
+	
+	//ActionListener zum schlieﬂen des Pop Ups
+	public void addActionListeners() {
+		
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmTermin.dispose();
+			}
+		});
+	}
+	
+	
 
 	// ActionListener beim Erstellen eines Termins
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {

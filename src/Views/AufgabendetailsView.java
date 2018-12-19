@@ -190,7 +190,7 @@ public class AufgabendetailsView {
 		gbc_afgdButtonLoescheAufgabe.gridx = 2;
 		gbc_afgdButtonLoescheAufgabe.gridy = 0;
 		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
-		// t
+		
 		northPanel = new JPanel();
 		northPanel.setBackground(new Color(204, 204, 204));
 		frame.getContentPane().add(northPanel, BorderLayout.NORTH);
@@ -350,6 +350,14 @@ public class AufgabendetailsView {
 		afgdButtonNeuAntwort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.antwortErstellen();
+			}
+		});
+		
+		//ActionListener zum schlieﬂen des Frames
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				pruefungsDetailsView.setVisible(true);
 			}
 		});
 
