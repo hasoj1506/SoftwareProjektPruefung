@@ -38,4 +38,12 @@ public class Student extends Nutzer{
 		this.eingeloggt = eingeloggt;
 	}
 
+	public int getErreichtePunktzahl() {
+		return erreichtePunktzahl;
+	}
+
+	public void setErreichtePunktzahl(int erreichtePunktzahl) {
+		this.erreichtePunktzahl = erreichtePunktzahl;
+	}
+
 }
