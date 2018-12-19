@@ -82,7 +82,7 @@ public class PruefungsDetails extends JFrame {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	// Konstruktor für leere Maske
+	/// Konstruktor für leere Maske
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
 
 		this.pruefung = pruefung;
