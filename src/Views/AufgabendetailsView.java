@@ -24,7 +24,6 @@ public class AufgabendetailsView {
 
 	private JTextField afgdTitelTextField;
 	private JTextField afgdFrageTextField;
-	private JTextField afgdPunkteTextField;
 
 	private JTable afgdTable;
 
@@ -136,6 +135,11 @@ public class AufgabendetailsView {
 		gbc_panel_2.gridx = 2;
 		gbc_panel_2.gridy = 1;
 		middleArbeitsPanel.add(panel_2, gbc_panel_2);
+		
+		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
+		panel_2.add(chckbxAntwortenVerwrfenl);
+		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
+		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
 
 		afgdButtonNeuAntwort = new JButton("Neu");
 		panel_2.add(afgdButtonNeuAntwort);
@@ -256,9 +260,9 @@ public class AufgabendetailsView {
 		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
 		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 169, 215, 0, 65, 0 };
-		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0 };
 		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		eingabePanel.setLayout(gbl_eingabePanel);
 
 		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
@@ -304,35 +308,6 @@ public class AufgabendetailsView {
 		gbc_afgdFrageTextField.gridy = 2;
 		eingabePanel.add(afgdFrageTextField, gbc_afgdFrageTextField);
 		afgdFrageTextField.setColumns(10);
-
-		JLabel afgdPunkteLabel = new JLabel("Punktzahl:");
-		afgdPunkteLabel.setForeground(new Color(51, 51, 51));
-		afgdPunkteLabel.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_afgdPunkteLabel = new GridBagConstraints();
-		gbc_afgdPunkteLabel.anchor = GridBagConstraints.EAST;
-		gbc_afgdPunkteLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdPunkteLabel.gridx = 1;
-		gbc_afgdPunkteLabel.gridy = 5;
-		eingabePanel.add(afgdPunkteLabel, gbc_afgdPunkteLabel);
-
-		afgdPunkteTextField = new JTextField();
-		afgdPunkteTextField.setEditable(false);
-		GridBagConstraints gbc_afgdPunkteTextField = new GridBagConstraints();
-		gbc_afgdPunkteTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_afgdPunkteTextField.anchor = GridBagConstraints.WEST;
-		gbc_afgdPunkteTextField.gridx = 2;
-		gbc_afgdPunkteTextField.gridy = 5;
-		eingabePanel.add(afgdPunkteTextField, gbc_afgdPunkteTextField);
-		afgdPunkteTextField.setColumns(10);
-		
-		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
-		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
-		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_chckbxAntwortenVerwrfenl = new GridBagConstraints();
-		gbc_chckbxAntwortenVerwrfenl.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxAntwortenVerwrfenl.gridx = 3;
-		gbc_chckbxAntwortenVerwrfenl.gridy = 5;
-		eingabePanel.add(chckbxAntwortenVerwrfenl, gbc_chckbxAntwortenVerwrfenl);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
