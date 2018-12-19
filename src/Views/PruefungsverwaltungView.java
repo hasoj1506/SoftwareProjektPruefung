@@ -264,7 +264,7 @@ public class PruefungsverwaltungView {
 															// erzeugt
 		
 		//Fenster maximiert starten
-		frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
+		//frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
 
