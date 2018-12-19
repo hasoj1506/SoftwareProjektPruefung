@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
 import Models.Pruefung;
+import Models.Student;
 import Views.LoginPruefungsverwaltung;
 import Views.LoginStudent;
 import Views.PruefungView;
@@ -78,11 +79,11 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggenStudent() {
 		try {
-			List<Nutzer> nutzer = db.readLogin(getMatrikelNr());
+			List<Student> student = db.readLogin(getMatrikelNr());
 
-			if (nutzer.size() >= 0) {
+			if (student.size() >= 0) {
 
-				PruefungView pruefungViewS = new PruefungView(nutzer.get(0));
+				PruefungView pruefungViewS = new PruefungView(student.get(0));
 				viewS.getLoginStudentFrame().dispose();
 
 			} else {

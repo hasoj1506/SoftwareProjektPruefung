@@ -24,6 +24,7 @@ public class AufgabendetailsView {
 
 	private JTextField afgdTitelTextField;
 	private JTextField afgdFrageTextField;
+	private JTextField afgdPunkteTextField;
 
 	private JTable afgdTable;
 
@@ -46,18 +47,10 @@ public class AufgabendetailsView {
 	private JPanel panel_2;
 	private JCheckBox chckbxAntwortenVerwrfenl;
 	private JButton btnAbbrechen;
+	private JLabel lblPunktzahl;
 
 	/**
 	 * @wbp.parser.entryPoint
-	 */
-	/*
-	 * public AufgabendetailsView(Pruefung pruefung) { // Konstruktor falls Aufgabe
-	 * neu erzeugt wird.
-	 * 
-	 * this.pruefung = pruefung; onCreate(); this.controller = new
-	 * AufgabenDetailsController(this, pruefung); titleCheck(); btnAction();
-	 * 
-	 * }
 	 */
 
 	public AufgabendetailsView(Aufgabe aufgabe, PruefungsDetails pruefungsDetailsView) { // Konstruktor
@@ -135,11 +128,6 @@ public class AufgabendetailsView {
 		gbc_panel_2.gridx = 2;
 		gbc_panel_2.gridy = 1;
 		middleArbeitsPanel.add(panel_2, gbc_panel_2);
-		
-		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
-		panel_2.add(chckbxAntwortenVerwrfenl);
-		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
-		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
 
 		afgdButtonNeuAntwort = new JButton("Neu");
 		panel_2.add(afgdButtonNeuAntwort);
@@ -170,32 +158,32 @@ public class AufgabendetailsView {
 		gbl_buttonPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_buttonPanel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		buttonPanel.setLayout(gbl_buttonPanel);
-		
-				afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
-				afgdButtonSpeichernAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
-				GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
-				gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
-				gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
-				gbc_afgdButtonSpeichernAufgabe.gridx = 0;
-				gbc_afgdButtonSpeichernAufgabe.gridy = 0;
-				buttonPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
-		
-				afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
-				afgdButtonLoescheAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
-				GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
-				gbc_afgdButtonLoescheAufgabe.insets = new Insets(0, 0, 0, 5);
-				gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
-				gbc_afgdButtonLoescheAufgabe.gridx = 1;
-				gbc_afgdButtonLoescheAufgabe.gridy = 0;
-				buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
-		
+
+		afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
+		afgdButtonSpeichernAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
+		gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdButtonSpeichernAufgabe.gridx = 0;
+		gbc_afgdButtonSpeichernAufgabe.gridy = 0;
+		buttonPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
+
+		afgdButtonLoescheAufgabe = new JButton("Aufgabe L\u00F6schen");
+		afgdButtonLoescheAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
+		gbc_afgdButtonLoescheAufgabe.insets = new Insets(0, 0, 0, 5);
+		gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
+		gbc_afgdButtonLoescheAufgabe.gridx = 1;
+		gbc_afgdButtonLoescheAufgabe.gridy = 0;
+		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
+
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
 		gbc_btnAbbrechen.gridx = 2;
 		gbc_btnAbbrechen.gridy = 0;
 		buttonPanel.add(btnAbbrechen, gbc_btnAbbrechen);
-		
+
 		northPanel = new JPanel();
 		northPanel.setBackground(new Color(204, 204, 204));
 		frame.getContentPane().add(northPanel, BorderLayout.NORTH);
@@ -261,9 +249,9 @@ public class AufgabendetailsView {
 		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
 		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 169, 215, 0, 65, 0 };
-		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0, 0 };
+		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0 };
 		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		eingabePanel.setLayout(gbl_eingabePanel);
 
 		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
@@ -302,13 +290,39 @@ public class AufgabendetailsView {
 		GridBagConstraints gbc_afgdFrageTextField = new GridBagConstraints();
 		gbc_afgdFrageTextField.gridwidth = 3;
 		gbc_afgdFrageTextField.anchor = GridBagConstraints.NORTH;
-		gbc_afgdFrageTextField.gridheight = 3;
 		gbc_afgdFrageTextField.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdFrageTextField.fill = GridBagConstraints.BOTH;
 		gbc_afgdFrageTextField.gridx = 2;
 		gbc_afgdFrageTextField.gridy = 2;
 		eingabePanel.add(afgdFrageTextField, gbc_afgdFrageTextField);
 		afgdFrageTextField.setColumns(10);
+
+		lblPunktzahl = new JLabel("Punktzahl:");
+		lblPunktzahl.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_lblPunktzahl = new GridBagConstraints();
+		gbc_lblPunktzahl.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPunktzahl.anchor = GridBagConstraints.EAST;
+		gbc_lblPunktzahl.gridx = 1;
+		gbc_lblPunktzahl.gridy = 3;
+		eingabePanel.add(lblPunktzahl, gbc_lblPunktzahl);
+
+		afgdPunkteTextField = new JTextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 3;
+		eingabePanel.add(afgdPunkteTextField, gbc_textField);
+		afgdPunkteTextField.setColumns(10);
+
+		chckbxAntwortenVerwrfenl = new JCheckBox("Antworten verw\u00FCrfen");
+		GridBagConstraints gbc_chckbxAntwortenVerwrfenl = new GridBagConstraints();
+		gbc_chckbxAntwortenVerwrfenl.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxAntwortenVerwrfenl.gridx = 3;
+		gbc_chckbxAntwortenVerwrfenl.gridy = 3;
+		eingabePanel.add(chckbxAntwortenVerwrfenl, gbc_chckbxAntwortenVerwrfenl);
+		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
+		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -317,7 +331,7 @@ public class AufgabendetailsView {
 											// Bildschirms erzeugt
 
 		// Fenster maximiert starten
-		//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		// frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		//
 	}
 
@@ -328,8 +342,8 @@ public class AufgabendetailsView {
 				controller.antwortErstellen();
 			}
 		});
-		
-		//ActionListener zum schlieﬂen des Frames
+
+		// ActionListener zum schlieﬂen des Frames
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -370,15 +384,13 @@ public class AufgabendetailsView {
 				}
 			}
 		});
-		
+
 		chckbxAntwortenVerwrfenl.addActionListener((new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
-				controller.getModel().verwuerfeln();
+
 				afgdTable.updateUI();
 
-				
 			}
 		}));
 
@@ -404,15 +416,9 @@ public class AufgabendetailsView {
 
 			afgdTitelTextField.setText(this.aufgabe.getAufgabentitel());
 			afgdFrageTextField.setText(this.aufgabe.getFrageStellung());
-			//afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
+			afgdPunkteTextField.setText(String.valueOf(this.aufgabe.getPunktzahl()));
 			controller.getModel().setAntworten(new ArrayList<Antwort>(aufgabe.getAntworten()));
 		}
-	}
-	
-	public void punkteCheck() {
-		
-		
-		//afgdPunkteTextField.setText(String.valueOf(controller.getModel().berechnePunktzahl()));
 	}
 
 	public void fehlerMeldung(String text) {
@@ -431,9 +437,9 @@ public class AufgabendetailsView {
 		return afgdFrageTextField;
 	}
 
-	/*public JTextField getAfgdPunkteTextField() {
+	public JTextField getAfgdPunkteTextField() {
 		return afgdPunkteTextField;
-	} */
+	}
 
 	public JTable getAfgdTable() {
 		return afgdTable;

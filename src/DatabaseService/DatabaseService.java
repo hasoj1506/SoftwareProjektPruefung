@@ -203,13 +203,13 @@ public class DatabaseService {
 
 	}
 
-	public List<Nutzer> readLogin(int matrikelNr) {
+	public List<Student> readLogin(int matrikelNr) {
 
 		try {
-			List<Nutzer> nutzer;
+			List<Student> student;
 			TypedQuery q = em.createQuery("SELECT p FROM Student p WHERE p.matrikelNr = " + matrikelNr, Nutzer.class);
-			nutzer = q.getResultList();
-			return nutzer;
+			student = q.getResultList();
+			return student;
 
 		} catch (Exception e) {
 			return null;

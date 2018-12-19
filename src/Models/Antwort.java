@@ -22,7 +22,7 @@ public class Antwort {
 		super();
 	}
 
-	public Antwort(String antworttext, boolean istRichtig, int punkte, Aufgabe aufgabe) {
+	public Antwort(String antworttext, boolean istRichtig, Aufgabe aufgabe) {
 		super();
 
 		this.istRichtig = istRichtig;

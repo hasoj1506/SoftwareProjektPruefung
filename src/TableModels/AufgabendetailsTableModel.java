@@ -108,28 +108,5 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 
 	}
 
-//	public double berechnePunktzahl() {
-//
-//		double punkte = 0;
-//
-//		try {
-//
-//			for (int zaehler = 0; zaehler < antworten.size(); zaehler++) {
-//
-//				punkte = punkte + antworten.get(zaehler).getPunkte();
-//			}
-//		} catch (NullPointerException e) {
-//			return 0;
-//		}
-//
-//		return punkte;
-//
-//	}
-	
-	public void verwuerfeln() {
-		
-		Collections.shuffle(antworten);
-		
-	}
 
 }
