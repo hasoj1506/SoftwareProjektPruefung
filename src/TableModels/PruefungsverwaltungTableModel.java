@@ -48,7 +48,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		case 4:
 			return pruefungen.get(row).getLetzterTermin();
 		case 5:
-			return pruefungen.get(row).getNutzer().size();
+			return pruefungen.get(row).getStudenten().size();
 		default:
 			return null;
 		}
