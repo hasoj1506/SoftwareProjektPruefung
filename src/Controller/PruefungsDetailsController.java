@@ -1,11 +1,14 @@
 package Controller;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -338,6 +341,60 @@ public class PruefungsDetailsController {
 
 	}
 
+	// Teilnehmer-importieren Button wird geklickt
+	public void importiereTeilnehmer() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int auswahl = fc.showOpenDialog(null);
+
+			if (auswahl == JFileChooser.APPROVE_OPTION) {
+
+				int importierteTeilnehmer = 0;
+
+				String dateiPfad = fc.getSelectedFile().getAbsolutePath();
+
+				BufferedReader CSVFile = new BufferedReader(new FileReader(dateiPfad));
+				String dataRow = CSVFile.readLine();
+
+				// Um die Kopfzeile zu überspringen, direkt in die zweite Zeile
+				// der csv
+				dataRow = CSVFile.readLine();
+
+				while (dataRow != null && !dataRow.isEmpty()) {
+					String[] dataArray = dataRow.split(";");
+
+					String nachname = dataArray[0];
+					String vorname = dataArray[1];
+
+					// Benutzernamen generieren
+					Random zufall = new Random(); // neues Random Objekt, namens
+													// zufall
+					int zufallsZahl = zufall.nextInt(10000); // Ganzahlige
+																// Zufallszahl
+																// zwischen 0
+																// und 10000
+					String benutzername = vorname + nachname + String.valueOf(zufallsZahl);
+					String passwort = benutzername;
+
+					Nutzer teilnehmer = new Nutzer(vorname, nachname, benutzername, passwort, false);
+					teilnehmer.setPruefung(pruefung);
+					pruefung.addNutzer(teilnehmer);
+
+					dataRow = CSVFile.readLine();
+					importierteTeilnehmer++;
+				}
+				CSVFile.close();
+				JOptionPane.showMessageDialog(view, "Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
+				view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
+			} else {
+				// nichts tun
+			}
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Teilnehmer konnten nicht importiert werden!");
+		}
+	}
+
 	// Prüfung-speichern-Button wird geklickt
 	public void speichernPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 
@@ -378,8 +435,8 @@ public class PruefungsDetailsController {
 			view.setVisible(false);
 		}
 	}
-	
-	//Prüfung-löschen-Button wird geklickt 
+
+	// Prüfung-löschen-Button wird geklickt
 	public void loeschenPruefung(PruefungsverwaltungView pruefungsverwaltung) {
 		try {
 
@@ -408,6 +465,5 @@ public class PruefungsDetailsController {
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
 		return tableModelAufgaben;
 	}
-
 
 }
