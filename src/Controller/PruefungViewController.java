@@ -56,8 +56,8 @@ public class PruefungViewController {
 		Aufgabe aufgabe;
 		List<Antwort> antworten;
 		Antwort antwort;
-		int punkte;
-		int neuePunktzahl = 0;
+		double punkte;
+		double neuePunktzahl = 0;
 		int reply = 0;
 		
 		//Wenn Zeit noch nicht abgelaufen, Bestätigung fordern
@@ -77,16 +77,21 @@ public class PruefungViewController {
 			for (int i = 0; i < aufgaben.size(); i++) {
 				aufgabe = aufgaben.get(i);
 				antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
+				
+				punkte = antwort.getAufgabe().getPunktzahl();
+				double aufgabenPunkte = punkte;
 
 				for (int j = 0; j < antworten.size(); j++) {
 					antwort = antworten.get(j);
 
-					if (antwort.isIstRichtig() == antwort.isAlsRichtigBeantwortet()) {
-						punkte = antwort.getPunkte();
-						neuePunktzahl = neuePunktzahl + punkte;
-						student.setErreichtePunktzahl(neuePunktzahl);
+					if (antwort.isIstRichtig() != antwort.isAlsRichtigBeantwortet()) {
+						if(aufgabenPunkte > 0) {
+							aufgabenPunkte = punkte - (0.5*punkte);
+							neuePunktzahl = neuePunktzahl + aufgabenPunkte;
+						}
 					}
 				}
+				student.setErreichtePunktzahl(neuePunktzahl);
 
 			}
 

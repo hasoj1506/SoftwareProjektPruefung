@@ -14,7 +14,7 @@ public class Aufgabe {
 
 	private String aufgabentitel;
 	private String frageStellung;
-	private int punktzahl;
+	private double punktzahl;
 
 	@ManyToOne
 	@JoinColumn(nullable=false)
@@ -58,7 +58,7 @@ public class Aufgabe {
 		this.frageStellung = frageStellung;
 	}
 
-	public int getPunktzahl() {
+	public double getPunktzahl() {
 		return punktzahl;
 	}
 

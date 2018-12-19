@@ -12,7 +12,6 @@ public class Antwort {
 	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
 	private String antworttext;
-	private int punkte;
 
 	@ManyToOne
 	@JoinColumn(nullable=false)
@@ -28,7 +27,6 @@ public class Antwort {
 
 		this.istRichtig = istRichtig;
 		this.antworttext = antworttext;
-		this.punkte = punkte;
 		this.aufgabe = aufgabe;
 	}
 
@@ -66,14 +64,6 @@ public class Antwort {
 	
 	public int getAntwortId(){
 		return antwortId; 
-	}
-
-	public int getPunkte() {
-		return punkte;
-	}
-
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
 	}
 
 }
