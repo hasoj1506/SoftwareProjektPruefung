@@ -3,15 +3,12 @@ package Controller;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JOptionPane;
 
 import DatabaseService.DatabaseService;
 import Models.Antwort;
 import Models.Aufgabe;
-import Models.Nutzer;
 import Models.Pruefung;
 import Models.Student;
 import TableModels.PruefungViewAufgabenTableModel;
@@ -77,8 +74,7 @@ public class PruefungViewController {
 			for (int i = 0; i < aufgaben.size(); i++) {
 				aufgabe = aufgaben.get(i);
 				antworten = new ArrayList<Antwort>(aufgabe.getAntworten());
-				
-				punkte = antwort.getAufgabe().getPunktzahl();
+				punkte = aufgabe.getPunktzahl();
 				double aufgabenPunkte = punkte;
 
 				for (int j = 0; j < antworten.size(); j++) {
@@ -86,7 +82,7 @@ public class PruefungViewController {
 
 					if (antwort.isIstRichtig() != antwort.isAlsRichtigBeantwortet()) {
 						if(aufgabenPunkte > 0) {
-							aufgabenPunkte = punkte - (0.5*punkte);
+							aufgabenPunkte = aufgabenPunkte - (0.5*punkte);
 							neuePunktzahl = neuePunktzahl + aufgabenPunkte;
 						}
 					}
