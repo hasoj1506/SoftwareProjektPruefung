@@ -47,9 +47,9 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel {
 		}
 	}
 
-	public int berechnePunktzahl() {
+	public double berechnePunktzahl() {
 
-		int punkte = 0;
+		double punkte = 0;
 
 		try {
 			for (int zaehler = 0; zaehler < aufgaben.size(); zaehler++) {
