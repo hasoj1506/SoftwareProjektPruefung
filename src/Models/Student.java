@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 public class Student extends Nutzer{
 	
 	private int matrikelNr;
-	private int erreichtePunktzahl;
+	private double erreichtePunktzahl;
 	
 	public Student() {
 		
@@ -28,11 +28,11 @@ public class Student extends Nutzer{
 		this.matrikelNr = matrikelNr;
 	}
 
-	public int getErreichtePunktzahl() {
+	public double getErreichtePunktzahl() {
 		return erreichtePunktzahl;
 	}
 
-	public void setErreichtePunktzahl(int erreichtePunktzahl) {
+	public void setErreichtePunktzahl(double erreichtePunktzahl) {
 		this.erreichtePunktzahl = erreichtePunktzahl;
 	}
 
