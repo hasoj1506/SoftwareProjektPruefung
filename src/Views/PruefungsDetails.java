@@ -35,8 +35,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import java.awt.Panel;
 
-//Josah Weber 
+//Josah Weber  
 public class PruefungsDetails extends JFrame {
 
 	private PruefungsverwaltungView pruefungsverwaltung;
@@ -249,6 +250,9 @@ public class PruefungsDetails extends JFrame {
 		panelTeilnehmerButtons.setLayout(gbl_panelTeilnehmerButtons);
 		
 		panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
+		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_4.fill = GridBagConstraints.BOTH;

@@ -118,6 +118,13 @@ public class LoginPruefungsverwaltung {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
+		JLabel lblBitteGebenSie = new JLabel("Bitte geben sie den Datenbank Zugang an");
+		GridBagConstraints gbc_lblBitteGebenSie = new GridBagConstraints();
+		gbc_lblBitteGebenSie.insets = new Insets(0, 0, 5, 5);
+		gbc_lblBitteGebenSie.gridx = 2;
+		gbc_lblBitteGebenSie.gridy = 0;
+		panel_1.add(lblBitteGebenSie, gbc_lblBitteGebenSie);
+		
 		JLabel lblBenutzername = new JLabel("Benutzername:");
 		lblBenutzername.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblBenutzername = new GridBagConstraints();
