@@ -8,7 +8,7 @@ import Models.Antwort;
 public class AufgabendetailsTableModel extends AbstractTableModel {
 
 	private List<Antwort> antworten;
-	String[] columnNames = { "Antworttext", "Richtig", "Punkte" };
+	String[] columnNames = { "Antworttext", "Richtig"};
 
 	public AufgabendetailsTableModel(List<Antwort> antworten) {
 		this.antworten = antworten;
@@ -44,8 +44,6 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 			return antwort.getAntworttext();
 		case 1:
 			return antwort.isIstRichtig();
-		case 2:
-			return antwort.getPunkte();
 
 		default:
 			return null;
@@ -63,9 +61,6 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 			break;
 		case 1:
 			antwort.setIstRichtig((Boolean) value);
-			break;
-		case 2:
-			antwort.setPunkte((Integer) value);
 			break;
 		}
 	}
@@ -113,23 +108,23 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 
 	}
 
-	public int berechnePunktzahl() {
-
-		int punkte = 0;
-
-		try {
-
-			for (int zaehler = 0; zaehler < antworten.size(); zaehler++) {
-
-				punkte = punkte + antworten.get(zaehler).getPunkte();
-			}
-		} catch (NullPointerException e) {
-			return 0;
-		}
-
-		return punkte;
-
-	}
+//	public double berechnePunktzahl() {
+//
+//		double punkte = 0;
+//
+//		try {
+//
+//			for (int zaehler = 0; zaehler < antworten.size(); zaehler++) {
+//
+//				punkte = punkte + antworten.get(zaehler).getPunkte();
+//			}
+//		} catch (NullPointerException e) {
+//			return 0;
+//		}
+//
+//		return punkte;
+//
+//	}
 	
 	public void verwuerfeln() {
 		
