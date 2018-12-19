@@ -21,8 +21,6 @@ public class AntwortErstellenPopUp {
 	boolean richtig;
 	String text;
 	int punkte;
-	private JLabel lblPunktzah;
-	private JTextField textField_1;
 	private JButton btnAbbrechen;
 
 	/**
@@ -78,9 +76,9 @@ public class AntwortErstellenPopUp {
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
-		gbl_panel_1.rowHeights = new int[] { 51, 11, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 51, 11, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		lblNewLabel = new JLabel("Antwort:");
@@ -103,25 +101,6 @@ public class AntwortErstellenPopUp {
 		panel_1.add(textField, gbc_textField);
 		textField.setColumns(10);
 
-		lblPunktzah = new JLabel("Punktzahl:");
-		lblPunktzah.setForeground(new Color(0, 0, 0));
-		lblPunktzah.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblPunktzah = new GridBagConstraints();
-		gbc_lblPunktzah.anchor = GridBagConstraints.EAST;
-		gbc_lblPunktzah.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPunktzah.gridx = 1;
-		gbc_lblPunktzah.gridy = 2;
-		panel_1.add(lblPunktzah, gbc_lblPunktzah);
-
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.anchor = GridBagConstraints.WEST;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 2;
-		panel_1.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
-
 		lblNewLabel_2 = new JLabel("Richtig:");
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 16));
@@ -130,7 +109,7 @@ public class AntwortErstellenPopUp {
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 3;
+		gbc_lblNewLabel_2.gridy = 2;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		chckbxNewCheckBox = new JCheckBox("");
@@ -138,7 +117,7 @@ public class AntwortErstellenPopUp {
 		gbc_chckbxNewCheckBox.anchor = GridBagConstraints.WEST;
 		gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxNewCheckBox.gridx = 2;
-		gbc_chckbxNewCheckBox.gridy = 3;
+		gbc_chckbxNewCheckBox.gridy = 2;
 		panel_1.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
 
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -221,7 +200,6 @@ public class AntwortErstellenPopUp {
 
 								antwort.setAntworttext(text);
 								antwort.setIstRichtig(richtig);
-								antwort.setPunkte(punkte);
 
 								view.getAfgdTable().updateUI();
 
@@ -280,7 +258,6 @@ public class AntwortErstellenPopUp {
 		
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());
 		this.textField.setText(antwort.getAntworttext());
-		this.textField_1.setText(String.valueOf(antwort.getPunkte()));
 	}
 
 	public String getText() {
