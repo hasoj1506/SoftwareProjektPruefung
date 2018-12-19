@@ -8,18 +8,16 @@ import javax.persistence.Entity;
 public class Student extends Nutzer{
 	
 	private int matrikelNr;
-	private int erreichtePunktzahl;
-	private boolean eingeloggt;
+	private int erreichtePunktzahl = 0;
+	private boolean eingeloggt = false;
 	
 	public Student() {
 		
 	}
 	
-	public Student(String vorname, String nachname, int matrikelNr, int erreichtePunktzahl, boolean eingeloggt) {
+	public Student(String vorname, String nachname, int matrikelNr) {
 		super(vorname, nachname);
 		this.matrikelNr = matrikelNr;
-		this.erreichtePunktzahl = erreichtePunktzahl;
-		this.eingeloggt = eingeloggt;
 	}
 
 	public int getMatrikelNr() {
