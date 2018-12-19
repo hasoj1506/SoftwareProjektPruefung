@@ -1,6 +1,5 @@
 package DatabaseService;
 
-
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -8,27 +7,43 @@ import Models.*;
 
 import javax.persistence.*;
 
-
 public class DatabaseService {
 
 	private EntityManager em;
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
 
+	private DatabaseService() {
+
+		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung");
+		em = emf.createEntityManager();
+
+	}
+
 	private DatabaseService(Map map) {
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung", map);
 		em = emf.createEntityManager();
 	}
 
-	public static DatabaseService getInstance(String benutzername, String passwort) {
-	
+	public static DatabaseService getInstance() {
+
 		if (instance == null) {
-			
+
+			instance = new DatabaseService();
+		}
+
+		return instance;
+	}
+
+	public static DatabaseService getInstance(String benutzername, String passwort) {
+
+		if (instance == null) {
+
 			Map map = new HashMap();
-			
+
 			map.put("javax.persistence.jbdc.password", passwort);
 			map.put("javax.persistence.jbdc.username", benutzername);
-			
+
 			instance = new DatabaseService(map);
 		}
 
@@ -62,7 +77,7 @@ public class DatabaseService {
 		em.persist(antwort);
 		em.getTransaction().commit();
 	}
-	
+
 	public void persistTermin(Termin termin) {
 		em.getTransaction().begin();
 		em.persist(termin);
@@ -72,10 +87,10 @@ public class DatabaseService {
 	public List<Antwort> readAntworten(Aufgabe aufgabe) {
 
 		List<Antwort> antworten;
-		
+
 		try {
 
-			TypedQuery q = em.createQuery("SELECT p FROM Antwort p WHERE p.aufgabeId = "  + aufgabe.getAufgabeId(),
+			TypedQuery q = em.createQuery("SELECT p FROM Antwort p WHERE p.aufgabeId = " + aufgabe.getAufgabeId(),
 					Antwort.class);
 
 			antworten = q.getResultList();
@@ -132,12 +147,12 @@ public class DatabaseService {
 	public List<Pruefung> readPruefungen() {
 
 		List<Pruefung> pruefungen;
-		
+
 		try {
 
 			Query q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
 
-			pruefungen = (List<Pruefung>)q.getResultList();
+			pruefungen = (List<Pruefung>) q.getResultList();
 
 			return pruefungen;
 
@@ -147,15 +162,16 @@ public class DatabaseService {
 		}
 
 	}
-	
+
 	public List<Pruefung> readPruefungenSuche(String suchText) {
 
 		List<Pruefung> pruefungen;
-		
+
 		try {
 
 			TypedQuery q = em.createQuery(
-					"SELECT p FROM Pruefung p WHERE lower(p.bezeichnung) LIKE lower('%" + suchText + "%')", Pruefung.class);
+					"SELECT p FROM Pruefung p WHERE lower(p.bezeichnung) LIKE lower('%" + suchText + "%')",
+					Pruefung.class);
 
 			pruefungen = q.getResultList();
 
@@ -167,16 +183,16 @@ public class DatabaseService {
 		}
 
 	}
-	
+
 	public List<Nutzer> readNutzer() {
 
 		List<Nutzer> nutzer;
-		
+
 		try {
 
 			Query q = em.createQuery("SELECT p FROM Nutzer p", Nutzer.class);
 
-			nutzer = (List<Nutzer>)q.getResultList();
+			nutzer = (List<Nutzer>) q.getResultList();
 
 			return nutzer;
 
