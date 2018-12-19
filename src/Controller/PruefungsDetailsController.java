@@ -291,7 +291,7 @@ public class PruefungsDetailsController {
 				// Identifizieren des zu bearbeitenden Teilnehmers
 				teilnehmer = new ArrayList(pruefung.getStudenten());
 				int selection = view.getTableTeilnehmer().getSelectedRow();
-				Nutzer zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
+				Student zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
 
 				// Termindetails-Maske öffnen und zu bearbeitende Aufgabe
 				// übergeben
@@ -374,7 +374,7 @@ public class PruefungsDetailsController {
 						// noch füllen
 					}
 
-					Student teilnehmer = new Student(vorname, nachname, matrikelNr, 0);
+					Student teilnehmer = new Student(vorname, nachname, matrikelNr);
 					teilnehmer.setPruefung(pruefung);
 					pruefung.addStudent(teilnehmer);
 

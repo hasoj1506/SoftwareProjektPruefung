@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import Models.Antwort;
 import Models.Nutzer;
 import Models.Pruefung;
+import Models.Student;
 import Models.Termin;
 
 import java.awt.*;
@@ -18,8 +19,6 @@ public class NutzerErstellenPopUp {
 
 	String vorname;
 	String nachname;
-	String benutzername;
-	String passwort;
 
 	JFrame frmNutzer;
 	JButton btnOk;
@@ -42,13 +41,13 @@ public class NutzerErstellenPopUp {
 	}
 
 	// Konstruktor zum bearbeiten eines Nutzers
-	public NutzerErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Nutzer nutzer) {
+	public NutzerErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Student student) {
 		this.pruefung = pruefung;
 		onCreate();
-		btnActionBearbeiten(view, pruefung, nutzer);
+		btnActionBearbeiten(view, pruefung, student);
 
-		this.textFieldVorname.setText(nutzer.getVorname());
-		this.textFieldNachname.setText(nutzer.getNachname());
+		this.textFieldVorname.setText(student.getVorname());
+		this.textFieldNachname.setText(student.getNachname());
 
 	}
 
@@ -136,7 +135,7 @@ public class NutzerErstellenPopUp {
 	}
 
 	// ActionListener für den Fall, dass ein Nutzer bearbeitet wird
-	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Nutzer nutzer) {
+	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Student student) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
 														// wenn "Ok" gedrückt
@@ -147,12 +146,6 @@ public class NutzerErstellenPopUp {
 				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				
-				//Benutzernamen generieren
-				Random zufall = new Random(); // neues Random Objekt, namens zufall
-				int zufallsZahl = zufall.nextInt(10000); //Ganzahlige Zufallszahl zwischen 0 und 10000
-				benutzername = vorname + nachname + String.valueOf(zufallsZahl);
-				passwort = benutzername;
 				
 				//Standard-Farbfüllung der Felder
 				textFieldVorname.setBackground(Color.WHITE);
@@ -166,10 +159,8 @@ public class NutzerErstellenPopUp {
 					textFieldNachname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else {
-					nutzer.setVorname(vorname);
-					nutzer.setNachname(nachname);
-					nutzer.setBenutzername(benutzername);
-					nutzer.setPasswort(passwort);
+					student.setVorname(vorname);
+					student.setNachname(nachname);
 
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
@@ -189,15 +180,9 @@ public class NutzerErstellenPopUp {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				// Werte aus den Feldern holen
+				// Werte aus den Feldern holen 
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				
-				//Benutzernamen generieren
-				Random zufall = new Random(); // neues Random Objekt, namens zufall
-				int zufallsZahl = zufall.nextInt(10000); //Ganzahlige Zufallszahl zwischen 0 und 10000
-				benutzername = vorname + nachname + String.valueOf(zufallsZahl);
-				passwort = benutzername;
 				
 				//Standard-Farbfüllung der Felder
 				textFieldVorname.setBackground(Color.WHITE);
@@ -211,9 +196,9 @@ public class NutzerErstellenPopUp {
 					textFieldNachname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else {
-					Nutzer nutzer = new Nutzer(vorname, nachname, benutzername, passwort, false);
-					nutzer.setPruefung(pruefung);
-					pruefung.addNutzer(nutzer);
+					Student student = new Student(vorname, nachname, 0);
+					student.setPruefung(pruefung);
+					pruefung.addStudent(student);
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
 					frmNutzer.dispose();

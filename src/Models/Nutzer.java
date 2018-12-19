@@ -11,15 +11,6 @@ public class Nutzer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int nutzerId; // Dozentennummer oder Matrikelnummer
 
-	private boolean eingeloggt;
-	
-	public boolean isEingeloggt() {
-		return eingeloggt;
-	}
-
-	public void setEingeloggt(boolean eingeloggt) {
-		this.eingeloggt = eingeloggt;
-	}
 
 	private String vorname;
 	private String nachname;
