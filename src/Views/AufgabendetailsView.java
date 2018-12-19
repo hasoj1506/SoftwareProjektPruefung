@@ -46,6 +46,7 @@ public class AufgabendetailsView {
 	private JLabel lblNewLabel_2;
 	private JPanel panel_2;
 	private JCheckBox chckbxAntwortenVerwrfenl;
+	private JButton btnAbbrechen;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -160,18 +161,25 @@ public class AufgabendetailsView {
 		buttonPanel.setBorder(null);
 		southPanel.add(buttonPanel);
 		GridBagLayout gbl_buttonPanel = new GridBagLayout();
-		gbl_buttonPanel.columnWidths = new int[] { 46, 0, 0 };
+		gbl_buttonPanel.columnWidths = new int[] { 0, 46, 0, 0 };
 		gbl_buttonPanel.rowHeights = new int[] { 0, 0 };
-		gbl_buttonPanel.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_buttonPanel.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_buttonPanel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		buttonPanel.setLayout(gbl_buttonPanel);
+		
+		btnAbbrechen = new JButton("Abbrechen");
+		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
+		gbc_btnAbbrechen.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAbbrechen.gridx = 0;
+		gbc_btnAbbrechen.gridy = 0;
+		buttonPanel.add(btnAbbrechen, gbc_btnAbbrechen);
 
 		afgdButtonSpeichernAufgabe = new JButton("Aufgabe Speichern");
 		afgdButtonSpeichernAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_afgdButtonSpeichernAufgabe = new GridBagConstraints();
 		gbc_afgdButtonSpeichernAufgabe.fill = GridBagConstraints.HORIZONTAL;
 		gbc_afgdButtonSpeichernAufgabe.insets = new Insets(0, 0, 0, 5);
-		gbc_afgdButtonSpeichernAufgabe.gridx = 0;
+		gbc_afgdButtonSpeichernAufgabe.gridx = 1;
 		gbc_afgdButtonSpeichernAufgabe.gridy = 0;
 		buttonPanel.add(afgdButtonSpeichernAufgabe, gbc_afgdButtonSpeichernAufgabe);
 
@@ -179,7 +187,7 @@ public class AufgabendetailsView {
 		afgdButtonLoescheAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_afgdButtonLoescheAufgabe = new GridBagConstraints();
 		gbc_afgdButtonLoescheAufgabe.fill = GridBagConstraints.HORIZONTAL;
-		gbc_afgdButtonLoescheAufgabe.gridx = 1;
+		gbc_afgdButtonLoescheAufgabe.gridx = 2;
 		gbc_afgdButtonLoescheAufgabe.gridy = 0;
 		buttonPanel.add(afgdButtonLoescheAufgabe, gbc_afgdButtonLoescheAufgabe);
 		// t

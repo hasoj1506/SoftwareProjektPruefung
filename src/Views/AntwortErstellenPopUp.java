@@ -23,6 +23,7 @@ public class AntwortErstellenPopUp {
 	int punkte;
 	private JLabel lblPunktzah;
 	private JTextField textField_1;
+	private JButton btnAbbrechen;
 
 	/**
 	 * @wbp.parser.constructor
@@ -59,6 +60,9 @@ public class AntwortErstellenPopUp {
 		panel.setBackground(new Color(204, 204, 204));
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		
+		btnAbbrechen = new JButton("Abbrechen");
+		panel.add(btnAbbrechen);
 
 		btnOk = new JButton("Speichern");
 		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
