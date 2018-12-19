@@ -16,6 +16,8 @@ public class Dozent extends Nutzer {
 
 	public void setDozentenNr(int dozentenNr) {
 		this.dozentenNr = dozentenNr;
+		
+		
 	}
 	
 	
