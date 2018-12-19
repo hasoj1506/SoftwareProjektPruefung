@@ -1,9 +1,18 @@
 package Models;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Student")
 public class Student extends Nutzer{
 	
 	private int matrikelNr;
 	private int erreichtePunktzahl;
+	
+	public Student() {
+		
+	}
 	
 	public Student(String vorname, String nachname, int matrikelNr, int erreichtePunktzahl) {
 		super(vorname, nachname);
