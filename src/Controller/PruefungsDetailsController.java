@@ -17,6 +17,7 @@ import DatabaseService.DatabaseService;
 import Models.Aufgabe;
 import Models.Nutzer;
 import Models.Pruefung;
+import Models.Student;
 import Models.Termin;
 import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTeilnehmerTableModel;
@@ -34,7 +35,7 @@ public class PruefungsDetailsController {
 
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
-	private List<Nutzer> nutzer;
+	private List<Student> student;
 	private List<Termin> termine;
 	private List<Nutzer> teilnehmer;
 	private Pruefung pruefung;
@@ -84,11 +85,11 @@ public class PruefungsDetailsController {
 
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
-			nutzer = new ArrayList<Nutzer>(pruefung.getNutzer());
+			student = new ArrayList<Student>(pruefung.getNutzer());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					nutzer);
+					student);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
