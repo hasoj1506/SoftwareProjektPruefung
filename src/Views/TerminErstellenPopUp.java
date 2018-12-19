@@ -43,7 +43,7 @@ public class TerminErstellenPopUp {
 		addActionListeners();
 	}
 
-	// Konstruktor zum bearbeiten eines Termins
+	// Konstruktor zum bearbeiten eines Termin
 	public TerminErstellenPopUp(final PruefungsDetails view, Pruefung pruefung, Termin termin) {
 
 		this.pruefung = pruefung;
