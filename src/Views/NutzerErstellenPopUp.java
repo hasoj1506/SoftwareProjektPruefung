@@ -180,7 +180,7 @@ public class NutzerErstellenPopUp {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				// Werte aus den Feldern holen
+				// Werte aus den Feldern holen 
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
 				
