@@ -77,6 +77,7 @@ public class PruefungsDetails extends JFrame {
 
 	private JButton btnImportieren;
 	private JPanel panel;
+	private JButton btnFreigeben;
 
 	/**
 	 * @wbp.parser.constructor
@@ -126,6 +127,10 @@ public class PruefungsDetails extends JFrame {
 		panel.setBorder(null);
 		panelButtons.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		btnFreigeben = new JButton("Freigeben");
+		btnFreigeben.setFont(new Font("Verdana", Font.PLAIN, 16));
+		panel.add(btnFreigeben);
 
 		btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
 		panel.add(btnSpeichernPruefung);
@@ -639,6 +644,12 @@ public class PruefungsDetails extends JFrame {
 				controller.exportiereTeilnehmer();
 			}
 		});
+		
+		btnFreigeben.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.pruefungFreigeben();
+			}
+		});
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
@@ -655,6 +666,10 @@ public class PruefungsDetails extends JFrame {
 
 	public void setChckbxAufgabenVerwrfeln(JCheckBox chckbxAufgabenVerwrfeln) {
 		this.chckbxAufgabenVerwrfeln = chckbxAufgabenVerwrfeln;
+	}
+	
+	public JButton getBtnFreigeben() {
+		return btnFreigeben;
 	}
 
 }
