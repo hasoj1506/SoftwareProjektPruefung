@@ -385,15 +385,14 @@ public class AufgabendetailsView {
 			}
 		});
 
-		chckbxAntwortenVerwrfenl.addActionListener((new ActionListener() {
+	}
 
-			public void actionPerformed(ActionEvent arg0) {
+	public JCheckBox getChckbxAntwortenVerwrfenl() {
+		return chckbxAntwortenVerwrfenl;
+	}
 
-				afgdTable.updateUI();
-
-			}
-		}));
-
+	public void setChckbxAntwortenVerwrfenl(JCheckBox chckbxAntwortenVerwrfenl) {
+		this.chckbxAntwortenVerwrfenl = chckbxAntwortenVerwrfenl;
 	}
 
 	public void titleCheck() { // Prüft ob Aufgabe neu erzeugt wird oder

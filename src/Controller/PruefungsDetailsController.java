@@ -450,8 +450,8 @@ public class PruefungsDetailsController {
 					excelWriter.write("\n");
 				}
 				excelWriter.close();
-				
-				//Erfolgsmeldung
+
+				// Erfolgsmeldung
 				JOptionPane.showMessageDialog(view, "Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n"
 						+ dateipfad + "\\" + dateiname + ".xls");
 			}
@@ -497,6 +497,7 @@ public class PruefungsDetailsController {
 			pruefung.setBezeichnung(bezeichnung);
 			pruefung.setDauer(dauer);
 			pruefung.setPunkte(punkte);
+			pruefung.setVerwuerfelt(view.getChckbxAufgabenVerwrfeln().isSelected());
 			db.persistPruefung(pruefung);
 			view.setVisible(false);
 		}

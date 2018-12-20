@@ -8,7 +8,6 @@ public class Termin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int terminId;
-	
 	private String datum;
 	private String uhrzeit;	//ggf. mit GregorianCalender anderer Parameter
 	private String raum;

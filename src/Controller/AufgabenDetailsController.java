@@ -47,13 +47,6 @@ public class AufgabenDetailsController {
 
 	public void aufgabeSpeichern() {
 
-		if (this.aufgabe == null) { // Prüft ob neue Aufgabe oder bestehene Aufgabe bearbeitet wird und erzeugt ggf.
-									// eine neue Aufgabe
-
-			aufgabe = new Aufgabe();
-			aufgabe.setPruefung(this.pruefung);
-		}
-
 		double punkte = 0;
 		String titel = view.getAfgdTitelTextField().getText();
 		String frage = view.getAfgdFrageTextField().getText();
@@ -64,15 +57,11 @@ public class AufgabenDetailsController {
 
 		} else {
 
-			aufgabe.setAufgabentitel(titel);
-
 			if (frage == ("") || frage.length() == 0) {
 
 				view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
 
 			} else {
-
-				aufgabe.setFrageStellung(frage);
 
 				try {
 
@@ -84,14 +73,22 @@ public class AufgabenDetailsController {
 
 				}
 
-				aufgabe.setPunktzahl(punkte);
-
 				if (model.getRowCount() < 2) {
 					view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
 				} else {
 
 					if (model.getMindestensEineRichtig() == true) {
+
+						if (this.aufgabe == null) {
+
+							aufgabe = new Aufgabe();
+							aufgabe.setPruefung(this.pruefung);
+						}
+						aufgabe.setFrageStellung(frage);
+						aufgabe.setPunktzahl(punkte);
+						aufgabe.setAufgabentitel(titel);
 						aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
+						aufgabe.setVerwuerfelt(view.getChckbxAntwortenVerwrfenl().isSelected());
 						view.setAufgabe(aufgabe);
 						pruefung.addAufgabe(aufgabe);
 						view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);

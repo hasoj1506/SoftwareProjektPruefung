@@ -10,8 +10,6 @@ public class Nutzer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int nutzerId; // Dozentennummer oder Matrikelnummer
-
-
 	private String vorname;
 	private String nachname;
 

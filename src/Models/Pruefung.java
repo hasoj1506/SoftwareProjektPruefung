@@ -18,11 +18,11 @@ public class Pruefung {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int pruefungId;
-
 	private String bezeichnung;
-	private int dauer; // wenn pro Punkt, 1 Minute Zeit, dann dauer =
-						// gesamtpunktzahl
+	private int dauer;
 	private double punkte;
+	private boolean freigegeben;
+	private boolean verwuerfelt;
 
 	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Student> studenten;
@@ -116,6 +116,22 @@ public class Pruefung {
 
 	public void setAufgaben(Set<Aufgabe> aufgaben) {
 		this.aufgaben = aufgaben;
+	}
+
+	public boolean isFreigegeben() {
+		return freigegeben;
+	}
+
+	public void setFreigegeben(boolean freigegeben) {
+		this.freigegeben = freigegeben;
+	}
+
+	public boolean isVerwuerfelt() {
+		return verwuerfelt;
+	}
+
+	public void setVerwuerfelt(boolean verwuerfelt) {
+		this.verwuerfelt = verwuerfelt;
 	}
 
 }

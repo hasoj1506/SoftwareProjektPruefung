@@ -7,22 +7,21 @@ import javax.persistence.*;
 
 @Entity
 public class Aufgabe {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int aufgabeId;
-
 	private String aufgabentitel;
 	private String frageStellung;
 	private double punktzahl;
+	private boolean verwuerfelt;
 
 	@ManyToOne
-	@JoinColumn(nullable=false)
+	@JoinColumn(nullable = false)
 	private Pruefung pruefung; // Zu jeder Aufgabe genau eine Prüfung
-	
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy="aufgabe")
+
+	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "aufgabe")
 	Set<Antwort> antworten;
-	
 
 	public Aufgabe() {
 
@@ -81,12 +80,20 @@ public class Aufgabe {
 	public void setAntworten(Set<Antwort> antworten) {
 		this.antworten = antworten;
 	}
-	
+
 	public void addAntwort(Antwort antwort) {
 		this.antworten.add(antwort);
 	}
-	
-	public int getAufgabeId(){
-		return aufgabeId; 
+
+	public int getAufgabeId() {
+		return aufgabeId;
+	}
+
+	public boolean isVerwuerfelt() {
+		return verwuerfelt;
+	}
+
+	public void setVerwuerfelt(boolean verwuerfelt) {
+		this.verwuerfelt = verwuerfelt;
 	}
 }

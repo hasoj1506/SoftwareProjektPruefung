@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 public class Student extends Nutzer{
 	
 	private int matrikelNr;
-	
 	private double erreichtePunktzahl;
 	private boolean eingeloggt = false;
 	

@@ -63,7 +63,6 @@ public class PruefungsDetails extends JFrame {
 	private JButton btnBearbeitenTeilnehmer;
 	private JButton btnLschenTeilnehmer;
 	private JButton btnLschenPruefung;
-	
 
 	PruefungsDetailsController controller;
 	private JPanel panel_2;
@@ -121,24 +120,24 @@ public class PruefungsDetails extends JFrame {
 		flowLayout.setHgap(25);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
-				
-				panel = new JPanel();
-				panel.setBackground(new Color(204,204,204,204));
-				panel.setBorder(null);
-				panelButtons.add(panel);
-				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-				btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
-				panel.add(btnSpeichernPruefung);
-				btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-				
-						btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
-						panel.add(btnLschenPruefung);
-						btnLschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-		
-				btnAbbrechen = new JButton("Abbrechen");
-				panel.add(btnAbbrechen);
-				btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
+
+		panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 204, 204));
+		panel.setBorder(null);
+		panelButtons.add(panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
+		panel.add(btnSpeichernPruefung);
+		btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+
+		btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
+		panel.add(btnLschenPruefung);
+		btnLschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+
+		btnAbbrechen = new JButton("Abbrechen");
+		panel.add(btnAbbrechen);
+		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		JPanel panelMain = new JPanel();
 		panelMain.setBackground(new Color(255, 255, 255));
@@ -237,7 +236,7 @@ public class PruefungsDetails extends JFrame {
 		gbl_panelTeilnehmerButtons.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panelTeilnehmerButtons.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panelTeilnehmerButtons.setLayout(gbl_panelTeilnehmerButtons);
-		
+
 		panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
@@ -248,7 +247,7 @@ public class PruefungsDetails extends JFrame {
 		gbc_panel_4.gridx = 0;
 		gbc_panel_4.gridy = 0;
 		panelTeilnehmerButtons.add(panel_4, gbc_panel_4);
-		
+
 		btnExportieren = new JButton("Exportieren");
 		btnExportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel_4.add(btnExportieren);
@@ -470,11 +469,11 @@ public class PruefungsDetails extends JFrame {
 
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		//pack();
+		// pack();
 		setLocationRelativeTo(null);
 
 		// Fenster maximiert starten
-		//setExtendedState(Frame.MAXIMIZED_BOTH);
+		// setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	public void punkteCheck() {
@@ -614,43 +613,32 @@ public class PruefungsDetails extends JFrame {
 				}
 			}
 		});
-		
-		//ActionListener zum schlieﬂen des Frames
+
+		// ActionListener zum schlieﬂen des Frames
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				pruefungsverwaltung.getFrame().setVisible(true);
 			}
 		});
-		
 
 		btnLschenTeilnehmer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loescheTeilnehmer();
 			}
 		});
-		
+
 		btnImportieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.importiereTeilnehmer();
 			}
 		});
-		
+
 		btnExportieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.exportiereTeilnehmer();
 			}
 		});
-
-		chckbxAufgabenVerwrfeln.addActionListener((new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-
-				controller.getTableModelAufgaben().verwuerfeln();
-				tableAufgaben.updateUI();
-
-			}
-		}));
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
@@ -659,6 +647,14 @@ public class PruefungsDetails extends JFrame {
 				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
+	}
+
+	public JCheckBox getChckbxAufgabenVerwrfeln() {
+		return chckbxAufgabenVerwrfeln;
+	}
+
+	public void setChckbxAufgabenVerwrfeln(JCheckBox chckbxAufgabenVerwrfeln) {
+		this.chckbxAufgabenVerwrfeln = chckbxAufgabenVerwrfeln;
 	}
 
 }

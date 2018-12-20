@@ -8,7 +8,6 @@ public class Antwort {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int antwortId;
-	
 	private boolean alsRichtigBeantwortet;
 	private boolean istRichtig;
 	private String antworttext;
