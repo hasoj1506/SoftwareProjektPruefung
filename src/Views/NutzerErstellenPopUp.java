@@ -266,7 +266,7 @@ public class NutzerErstellenPopUp {
 					textFieldMatrikelNr.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
-					Student student = new Student(vorname, nachname, 0);
+					Student student = new Student(vorname, nachname, matrikelnummer);
 					student.setPruefung(pruefung);
 					pruefung.addStudent(student);
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
