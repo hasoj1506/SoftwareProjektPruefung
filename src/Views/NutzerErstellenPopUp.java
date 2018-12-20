@@ -29,6 +29,7 @@ public class NutzerErstellenPopUp {
 
 	String vorname;
 	String nachname;
+	int matrikelnummer;
 
 	JFrame frmNutzer;
 	JButton btnOk;
@@ -38,6 +39,8 @@ public class NutzerErstellenPopUp {
 	private JTextField textFieldNachname;
 	private Pruefung pruefung;
 	private JButton btnAbbrechen;
+	private JLabel lblMatrikelnummer;
+	private JTextField textFieldMatrikelNr;
 
 	/**
 	 * @wbp.parser.constructor
@@ -72,7 +75,7 @@ public class NutzerErstellenPopUp {
 		frmNutzer.setMinimumSize(new Dimension(500, 250));
 		frmNutzer.setMaximumSize(new Dimension(500, 250));
 		frmNutzer.setFocusable(false);
-		
+
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frmNutzer.setIconImage(icon1);
 
@@ -80,14 +83,14 @@ public class NutzerErstellenPopUp {
 		panel.setBackground(new Color(204, 204, 204));
 		frmNutzer.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
-				btnOk = new JButton("Speichern");
-				btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
-				btnOk.setMinimumSize(new Dimension(100, 35));
-				btnOk.setMaximumSize(new Dimension(100, 35));
-				btnOk.setSize(new Dimension(100, 35));
-				panel.add(btnOk);
-		
+
+		btnOk = new JButton("Speichern");
+		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnOk.setMinimumSize(new Dimension(100, 35));
+		btnOk.setMaximumSize(new Dimension(100, 35));
+		btnOk.setSize(new Dimension(100, 35));
+		panel.add(btnOk);
+
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel.add(btnAbbrechen);
@@ -97,9 +100,9 @@ public class NutzerErstellenPopUp {
 		frmNutzer.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 57, -25, 180, 61, 0 };
-		gbl_panel_1.rowHeights = new int[] { 45, 11, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 45, 11, 0, 0, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		lblVorname = new JLabel("Vorname:");
@@ -139,6 +142,25 @@ public class NutzerErstellenPopUp {
 		panel_1.add(textFieldNachname, gbc_textFieldNachname);
 		textFieldNachname.setColumns(10);
 
+		lblMatrikelnummer = new JLabel("Matrikelnr.:");
+		lblMatrikelnummer.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 16));
+		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
+		gbc_lblMatrikelnummer.anchor = GridBagConstraints.EAST;
+		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMatrikelnummer.gridx = 1;
+		gbc_lblMatrikelnummer.gridy = 3;
+		panel_1.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
+
+		textFieldMatrikelNr = new JTextField();
+		textFieldMatrikelNr.setColumns(10);
+		GridBagConstraints gbc_textFieldMatrikelNr = new GridBagConstraints();
+		gbc_textFieldMatrikelNr.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldMatrikelNr.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldMatrikelNr.gridx = 2;
+		gbc_textFieldMatrikelNr.gridy = 3;
+		panel_1.add(textFieldMatrikelNr, gbc_textFieldMatrikelNr);
+
 		frmNutzer.setDefaultCloseOperation(frmNutzer.DISPOSE_ON_CLOSE);
 		frmNutzer.setVisible(true);
 		frmNutzer.pack();
@@ -150,21 +172,17 @@ public class NutzerErstellenPopUp {
 		return frmNutzer;
 	}
 
-	
-	//ActionListener zum schließen des Frames
+	// ActionListener zum schließen des Frames
 	public void addActionListeners() {
-	
+
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmNutzer.dispose();
 			}
 		});
-		
-	
-	}
-	
 
-	
+	}
+
 	// ActionListener für den Fall, dass ein Nutzer bearbeitet wird
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Student student) {
 
@@ -177,21 +195,32 @@ public class NutzerErstellenPopUp {
 				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				
-				//Standard-Farbfüllung der Felder
+
+				try {
+					matrikelnummer = Integer.parseInt(textFieldMatrikelNr.getText());
+				} catch (Exception e) {
+					matrikelnummer = 0;
+				}
+
+				// Standard-Farbfüllung der Felder
 				textFieldVorname.setBackground(Color.WHITE);
 				textFieldNachname.setBackground(Color.WHITE);
-				
-				//Nutzer die Daten zuweisen, sofern korrekt eingegeben
+				textFieldMatrikelNr.setBackground(Color.WHITE);
+
+				// Nutzer die Daten zuweisen, sofern korrekt eingegeben
 				if (vorname.length() <= 0) {
 					textFieldVorname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
 				} else if (nachname.length() <= 0) {
 					textFieldNachname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
+				} else if (matrikelnummer == 0) {
+					textFieldMatrikelNr.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
 					student.setVorname(vorname);
 					student.setNachname(nachname);
+					student.setMatrikelNr(matrikelnummer);
 
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
@@ -210,22 +239,32 @@ public class NutzerErstellenPopUp {
 														// wurde
 
 			public void actionPerformed(ActionEvent arg0) {
-				
-				// Werte aus den Feldern holen 
+
+				// Werte aus den Feldern holen
 				vorname = textFieldVorname.getText();
 				nachname = textFieldNachname.getText();
-				
-				//Standard-Farbfüllung der Felder
+
+				try {
+					matrikelnummer = Integer.parseInt(textFieldMatrikelNr.getText());
+				} catch (Exception e) {
+					matrikelnummer = 0;
+				}
+
+				// Standard-Farbfüllung der Felder
 				textFieldVorname.setBackground(Color.WHITE);
 				textFieldNachname.setBackground(Color.WHITE);
-				
-				//Nutzer die Daten zuweisen, sofern korrekt eingegeben
+				textFieldMatrikelNr.setBackground(Color.WHITE);
+
+				// Nutzer die Daten zuweisen, sofern korrekt eingegeben
 				if (vorname.length() <= 0) {
 					textFieldVorname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
 				} else if (nachname.length() <= 0) {
 					textFieldNachname.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
+				} else if (matrikelnummer == 0) {
+					textFieldMatrikelNr.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
 					Student student = new Student(vorname, nachname, 0);
 					student.setPruefung(pruefung);
