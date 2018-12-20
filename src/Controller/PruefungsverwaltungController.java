@@ -1,15 +1,14 @@
 package Controller;
 
+import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import DatabaseService.DatabaseService;
-import Models.Antwort;
 import Models.Pruefung;
+import TableComparatoren.PruefungComparator;
 import TableModels.PruefungsverwaltungTableModel;
 import Views.PruefungsDetails;
 import Views.PruefungsverwaltungView;
@@ -37,6 +36,7 @@ public class PruefungsverwaltungController {
 		try {
 			// Liste mit allen Prüfungen der Datenbank erstellen
 			pruefungen = db.readPruefungen();
+			Collections.sort(pruefungen, new PruefungComparator());
 
 			model = new PruefungsverwaltungTableModel(pruefungen);
 			view.getTablePruefungen().setModel(model);
@@ -87,7 +87,6 @@ public class PruefungsverwaltungController {
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTablePruefungen().getSelectedRow() > -1) {
 				// Identifizieren der zu bearbeitenden Prüfung
-				pruefungen = db.readPruefungen();
 				int selection = view.getTablePruefungen().getSelectedRow();
 				Pruefung zuBearbeitendePrüfung = pruefungen.get(selection);
 
@@ -114,7 +113,6 @@ public class PruefungsverwaltungController {
 			// Wenn in der JTable eine Zeile ausgewählt ist
 			if (view.getTablePruefungen().getSelectedRow() > -1) {
 				// Identifizieren der zu duplizierenden Prüfung
-				pruefungen = db.readPruefungen();
 				int selection = view.getTablePruefungen().getSelectedRow();
 				Pruefung zuDuplizierendePrüfung = pruefungen.get(selection);
 
@@ -151,7 +149,6 @@ public class PruefungsverwaltungController {
 				if (reply == JOptionPane.YES_OPTION) {
 
 					// Identifizieren der zu löschenden Prüfung
-					pruefungen = db.readPruefungen();
 					int selection = view.getTablePruefungen().getSelectedRow();
 					Pruefung zuLoeschendePruefung = pruefungen.get(selection);
 
@@ -177,20 +174,21 @@ public class PruefungsverwaltungController {
 
 		String suchText = view.getTextFieldSuche().getText();
 
-			try {
+		try {
 
-				pruefungen = db.readPruefungenSuche(suchText);
+			pruefungen = db.readPruefungenSuche(suchText);
+			Collections.sort(pruefungen, new PruefungComparator());
 
-				model = new PruefungsverwaltungTableModel(pruefungen);
-				view.getTablePruefungen().setModel(model);
+			model = new PruefungsverwaltungTableModel(pruefungen);
+			view.getTablePruefungen().setModel(model);
 
-				spaltenbreiteAnpassen();
+			spaltenbreiteAnpassen();
 
-				view.getBtnReset().setVisible(true);
+			view.getBtnReset().setVisible(true);
 
-			} catch (Exception e) {
+		} catch (Exception e) {
 
-			}
+		}
 
 	}
 

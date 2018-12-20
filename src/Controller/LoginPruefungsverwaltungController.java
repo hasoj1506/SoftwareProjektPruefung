@@ -82,10 +82,12 @@ public class LoginPruefungsverwaltungController {
 			List<Student> student = db.readLogin(getMatrikelNr());
 
 			if (student.size() >= 0) {
-
-				PruefungView pruefungViewS = new PruefungView(student.get(0));
-				viewS.getLoginStudentFrame().dispose();
-
+				//if(student.get(0).getPruefung().isFreigegeben() == true) {
+					PruefungView pruefungViewS = new PruefungView(student.get(0));
+					viewS.getLoginStudentFrame().dispose();
+				//} else {
+					//JOptionPane.showMessageDialog(view.getLoginPruefugsverwaltungFrame(), "Prüfung noch nicht freigegeben!");
+				//}
 			} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(),
 						"Benutzername oder Passwort nicht gefunden!");

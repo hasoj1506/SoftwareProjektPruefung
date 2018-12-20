@@ -60,6 +60,7 @@ public class NutzerErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, student);
+		addActionListeners();
 
 		this.textFieldVorname.setText(student.getVorname());
 		this.textFieldNachname.setText(student.getNachname());

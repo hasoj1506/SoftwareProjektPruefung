@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -27,6 +28,9 @@ import Models.Nutzer;
 import Models.Pruefung;
 import Models.Student;
 import Models.Termin;
+import TableComparatoren.AufgabenComparator;
+import TableComparatoren.TeilnehmerComparator;
+import TableComparatoren.TerminComparator;
 import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
@@ -43,7 +47,6 @@ public class PruefungsDetailsController {
 
 	private PruefungsDetails view;
 	private List<Aufgabe> aufgaben;
-	private List<Student> student;
 	private List<Termin> termine;
 	private List<Student> teilnehmer;
 	private Pruefung pruefung;
@@ -93,11 +96,12 @@ public class PruefungsDetailsController {
 
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
-			student = new ArrayList<Student>(pruefung.getStudenten());
+			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
+			Collections.sort(teilnehmer, new TeilnehmerComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					student);
+					teilnehmer);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
@@ -114,6 +118,7 @@ public class PruefungsDetailsController {
 		try {
 			// Liste mit Terminen der Prüfung erstellen
 			termine = new ArrayList<Termin>(pruefung.getTermine());
+			Collections.sort(termine, new TerminComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 			PruefungsDetailsTermineTableModel tableModelTermine = new PruefungsDetailsTermineTableModel(termine);
@@ -133,6 +138,7 @@ public class PruefungsDetailsController {
 		try {
 			// Liste mit Aufgaben der Prüfung erstellen
 			aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
+			Collections.sort(aufgaben, new AufgabenComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
 
@@ -162,6 +168,7 @@ public class PruefungsDetailsController {
 
 				// Identifizieren der zu bearbeitenden Aufgabe
 				aufgaben = new ArrayList(pruefung.getAufgaben());
+				Collections.sort(aufgaben, new AufgabenComparator());
 				int selection = view.getTableAufgaben().getSelectedRow();
 				Aufgabe zuBearbeitendeAufgabe = aufgaben.get(selection);
 
@@ -191,6 +198,7 @@ public class PruefungsDetailsController {
 
 					// Identifizieren der zu löschenden Aufgabe
 					aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
+					Collections.sort(aufgaben, new AufgabenComparator());
 					int selection = view.getTableAufgaben().getSelectedRow();
 					Aufgabe zuLoeschendeAufgabe = aufgaben.get(selection);
 
@@ -229,6 +237,7 @@ public class PruefungsDetailsController {
 
 				// Identifizieren des zu bearbeitenden Termins
 				termine = new ArrayList(pruefung.getTermine());
+				Collections.sort(termine, new TerminComparator());
 				int selection = view.getTableTermine().getSelectedRow();
 				Termin zuBearbeitenderTermin = termine.get(selection);
 
@@ -260,6 +269,7 @@ public class PruefungsDetailsController {
 
 					// Identifizieren des zu löschenden Termins
 					termine = new ArrayList<Termin>(pruefung.getTermine());
+					Collections.sort(termine, new TerminComparator());
 					int selection = view.getTableTermine().getSelectedRow();
 					Termin zuLoeschenderTermin = termine.get(selection);
 
@@ -298,6 +308,7 @@ public class PruefungsDetailsController {
 
 				// Identifizieren des zu bearbeitenden Teilnehmers
 				teilnehmer = new ArrayList(pruefung.getStudenten());
+				Collections.sort(teilnehmer, new TeilnehmerComparator());
 				int selection = view.getTableTeilnehmer().getSelectedRow();
 				Student zuBearbeitenderTeilnehmer = teilnehmer.get(selection);
 
@@ -329,6 +340,7 @@ public class PruefungsDetailsController {
 
 					// Identifizieren des zu löschenden Teilnehmers
 					teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
+					Collections.sort(teilnehmer, new TeilnehmerComparator());
 					int selection = view.getTableTeilnehmer().getSelectedRow();
 					Nutzer zuLoeschenderTeilnehmer = teilnehmer.get(selection);
 
@@ -392,7 +404,7 @@ public class PruefungsDetailsController {
 				}
 				CSVFile.close();
 				JOptionPane.showMessageDialog(view, "Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
-				view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
+				fuelleTeilnehmerTable(pruefung);
 			} else {
 				// nichts tun
 			}
