@@ -18,7 +18,7 @@ import Views.AufgabendetailsView;
 
 public class AufgabenDetailsController {
 
-	Aufgabe aufgabe;
+	Aufgabe aufgabe;//t
 	AufgabendetailsView view;
 	Pruefung pruefung;
 	DatabaseService service = DatabaseService.getInstance();
@@ -57,7 +57,7 @@ public class AufgabenDetailsController {
 
 		} else {
 
-			if (frage == ("") || frage.length() == 0) {
+			if (frage == ("") || frage.length() == 0) { 
 
 				view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
 

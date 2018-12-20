@@ -8,7 +8,7 @@ import Models.Aufgabe;
 
 public class PruefungViewAufgabenTableModel extends AbstractTableModel{
 	
-	private List<Aufgabe> aufgaben;
+	private List<Aufgabe> aufgaben;  
 
 	public PruefungViewAufgabenTableModel(List<Aufgabe> aufgaben) {
 		this.aufgaben = aufgaben;
