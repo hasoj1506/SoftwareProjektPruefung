@@ -42,6 +42,11 @@ public class PruefungViewController {
 		setMatrNummer(student);
 		aufgabeAuswaehlenAufforderung();
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
+		
+		if(pruefung.isVerwuerfelt()) {
+			model.verwuerfeln();
+		}
+		
 		view.getAufgabenTable().setModel(model);
 		view.getAufgabenTable().setRowSelectionInterval(0, 0);
 		fuelleAufgabe();
@@ -108,6 +113,10 @@ public class PruefungViewController {
 				view.getTxtAufgabentext().setForeground(Color.BLACK);
 				view.getTxtAufgabentext().setText(ausgewaehlteAufgabe.getFrageStellung());
 				antwortenModel = new PruefungViewTableModel(new ArrayList<Antwort>(ausgewaehlteAufgabe.getAntworten()));
+				
+				if(ausgewaehlteAufgabe.isVerwuerfelt()) {
+					antwortenModel.verwuerfeln();
+				}
 				view.getAntwortenTable().setModel(antwortenModel);
 
 			} else {
@@ -180,11 +189,9 @@ public class PruefungViewController {
 					
 					punkteProAufgabe = punkteProAufgabe - (0.5 * aufgabe.getPunktzahl());
 					
-					
 				}
 				
 				gesamtePunktzahl = gesamtePunktzahl + punkteProAufgabe;
-				
 				
 			}
 			

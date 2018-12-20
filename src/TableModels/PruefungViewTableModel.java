@@ -1,6 +1,6 @@
 package TableModels;
 
-import java.util.List;
+import java.util.*;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -63,6 +63,12 @@ public class PruefungViewTableModel extends AbstractTableModel{
 			antwort.setAlsRichtigBeantwortet((Boolean) value);
 			break;
 		}
+	}
+	
+	public void verwuerfeln() {
+		
+		Collections.shuffle(this.antworten);
+		
 	}
 
 	
