@@ -635,6 +635,12 @@ public class PruefungsDetails extends JFrame {
 				controller.importiereTeilnehmer();
 			}
 		});
+		
+		btnExportieren.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.exportiereTeilnehmer();
+			}
+		});
 
 		chckbxAufgabenVerwrfeln.addActionListener((new ActionListener() {
 

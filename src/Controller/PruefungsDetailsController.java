@@ -3,8 +3,15 @@ package Controller;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -12,6 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableModel;
 
 import DatabaseService.DatabaseService;
 import Models.Aufgabe;
@@ -346,6 +354,7 @@ public class PruefungsDetailsController {
 	public void importiereTeilnehmer() {
 		try {
 			JFileChooser fc = new JFileChooser();
+			fc.setDialogTitle("Welche Datei soll importiert werden?");
 			int auswahl = fc.showOpenDialog(null);
 
 			if (auswahl == JFileChooser.APPROVE_OPTION) {
@@ -390,6 +399,65 @@ public class PruefungsDetailsController {
 		} catch (Exception e) {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Teilnehmer konnten nicht importiert werden!");
+		}
+	}
+
+	// Teilnehmer-exportieren Button wird geklickt
+	public void exportiereTeilnehmer() {
+		try {
+
+			// Pfad auswählen, wo Datei gespeichert werden soll
+			JFileChooser fc = new JFileChooser();
+			fc.setApproveButtonText("Hier speichern");
+			fc.setDialogTitle("Wo soll die Datei gespeichert werden?");
+			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			int auswahl = fc.showOpenDialog(null);
+
+			// Wenn "hier speichern" geklickt wurde
+			if (auswahl == JFileChooser.APPROVE_OPTION) {
+
+				// Dateipfad holen
+				String dateipfad = fc.getSelectedFile().getAbsolutePath();
+
+				// Dateiname soll Auswertung plus Pruefungstitel und Zeit (um
+				// überschreiben zu vermeiden)
+				// beinhalten
+				Date heute = new Date();
+				int stunde = heute.getHours();
+				int minute = heute.getMinutes();
+				int sekunden = heute.getSeconds();
+				String dateiname = "Auswertung-" + pruefung.getBezeichnung() + "-" + stunde + "-" + minute + "-"
+						+ sekunden;
+
+				// Excel-File am gewählten Pfad erstellen
+				File excelFile = new File(dateipfad + "\\" + dateiname + ".xls");
+				OutputStream excelStream = new FileOutputStream(excelFile);
+
+				// Excel-Datei mit Daten der JTable füllen
+				TableModel model = view.getTableTeilnehmer().getModel();
+				FileWriter excelWriter = new FileWriter(excelFile);
+
+				for (int i = 0; i < model.getColumnCount(); i++) {
+					excelWriter.write(model.getColumnName(i) + "\t");
+				}
+
+				excelWriter.write("\n");
+
+				for (int i = 0; i < model.getRowCount(); i++) {
+					for (int j = 0; j < model.getColumnCount(); j++) {
+						excelWriter.write(model.getValueAt(i, j).toString() + "\t");
+					}
+					excelWriter.write("\n");
+				}
+				excelWriter.close();
+				
+				//Erfolgsmeldung
+				JOptionPane.showMessageDialog(view, "Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n"
+						+ dateipfad + "\\" + dateiname + ".xls");
+			}
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(view, "Teilnehmerliste konnte nicht exportiert werden!" + e);
 		}
 	}
 

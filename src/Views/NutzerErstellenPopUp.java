@@ -63,6 +63,7 @@ public class NutzerErstellenPopUp {
 
 		this.textFieldVorname.setText(student.getVorname());
 		this.textFieldNachname.setText(student.getNachname());
+		this.textFieldMatrikelNr.setText(String.valueOf(student.getMatrikelNr()));
 
 	}
 
