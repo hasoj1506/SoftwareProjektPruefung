@@ -21,7 +21,7 @@ public class Pruefung {
 	private String bezeichnung;
 	private int dauer;
 	private double punkte;
-	private boolean freigegeben;
+	private boolean freigegeben = false;
 	private boolean verwuerfelt;
 
 	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
