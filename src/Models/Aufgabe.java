@@ -62,8 +62,8 @@ public class Aufgabe {
 		return punktzahl;
 	}
 
-	public void setPunktzahl(int punktzahl) {
-		this.punktzahl = punktzahl;
+	public void setPunktzahl(double punkte) {
+		this.punktzahl = punkte;
 	}
 
 	public Pruefung getPruefung() {

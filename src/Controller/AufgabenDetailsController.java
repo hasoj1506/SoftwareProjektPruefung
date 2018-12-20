@@ -54,7 +54,7 @@ public class AufgabenDetailsController {
 			aufgabe.setPruefung(this.pruefung);
 		}
 
-		int punkte = 0;
+		double punkte = 0;
 		String titel = view.getAfgdTitelTextField().getText();
 		String frage = view.getAfgdFrageTextField().getText();
 
@@ -76,7 +76,7 @@ public class AufgabenDetailsController {
 
 				try {
 
-					punkte = Integer.parseInt(view.getAfgdPunkteTextField().getText());
+					punkte = Double.parseDouble(view.getAfgdPunkteTextField().getText());
 
 				} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
 

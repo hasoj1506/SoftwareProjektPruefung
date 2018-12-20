@@ -406,11 +406,11 @@ public class PruefungsDetailsController {
 			dauer = 0;
 		}
 
-		int punkte;
+		double punkte;
 		try {
-			punkte = Integer.parseInt(view.getTextFieldPunkte().getText());
+			punkte = Double.parseDouble(view.getTextFieldPunkte().getText());
 		} catch (Exception e) {
-			punkte = 0;
+			punkte = 0.0;
 		}
 
 		// Standard-Füllfarbe der Felder

@@ -136,14 +136,14 @@ public class AntwortErstellenPopUp {
 					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
 				} else {
 
-					Antwort antwort = new Antwort(text, richtig, punkte, view.getController().getAufgabe());
+					Antwort antwort = new Antwort(text, richtig, view.getController().getAufgabe());
 
 					view.getController().getModel().addRow(antwort);
 
 					view.getAfgdTable().updateUI();
 
 					view.getAfgdFrame().setEnabled(true);
-					view.punkteCheck();
+//					view.punkteCheck();
 					frame.dispose();
 				}
 			}
@@ -171,7 +171,7 @@ public class AntwortErstellenPopUp {
 					view.getAfgdTable().updateUI();
 
 					view.getAfgdFrame().setEnabled(true);
-					view.punkteCheck();
+//					view.punkteCheck();
 					frame.dispose();
 								
 				}
