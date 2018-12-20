@@ -49,6 +49,7 @@ public class TerminErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, termin);
+		addActionListeners();
 		fuelleTerminPopUp(termin);
 	}
 
