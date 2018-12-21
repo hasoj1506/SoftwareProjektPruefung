@@ -58,9 +58,9 @@ public class PruefungEinweisungPopUp {
 	public void onCreate() {
 		frame = new JFrame("Einweisung");
 		frame.setUndecorated(true);
-		frame.setSize(new Dimension(750, 540));
-		frame.setMaximumSize(new Dimension(750, 540));
-		frame.setResizable(false);
+		//frame.setSize(new Dimension(750, 540));
+	//	frame.setMaximumSize(new Dimension(750, 540));
+		//frame.setResizable(false);
 		frame.setMinimumSize(new Dimension(750, 540));
 
 		JPanel headPanel = new JPanel();
