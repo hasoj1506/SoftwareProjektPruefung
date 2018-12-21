@@ -72,7 +72,7 @@ public class AuswertungTableModel extends AbstractTableModel{
 			antworten.remove(antwort);
 
 		}
-
+//
 		public void removeRow(int index) {
 			antworten.remove(index);
 
