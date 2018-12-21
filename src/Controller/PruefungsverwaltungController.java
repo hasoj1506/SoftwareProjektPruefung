@@ -197,5 +197,40 @@ public class PruefungsverwaltungController {
 		fuelleTabellePruefungsverwaltung();
 		view.getBtnReset().setVisible(false);
 	}
+	
+	
+	public void pruefungFreigeben() {
+		if(view.getTablePruefungen().getSelectedRow() > -1) {
+			
+			int selection = view.getTablePruefungen().getSelectedRow();
+			Pruefung pruefungZumFreigeben = pruefungen.get(selection);
+			
+			if(pruefungZumFreigeben.isFreigegeben() == false) {
+				pruefungZumFreigeben.setFreigegeben(true);
+				view.getBtnFreigeben().setText("Sperren");
+			}else {
+				pruefungZumFreigeben.setFreigegeben(false);
+				view.getBtnFreigeben().setText("Freigeben");
+			}
+			
+			fuelleTabellePruefungsverwaltung();
+			
+		}else {
+			JOptionPane.showMessageDialog(view.getFrame(), "Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
+		}
+		
+	}
+	
+	public void aendereBtnFreigeben() {
+		
+		int selection = view.getTablePruefungen().getSelectedRow();
+		Pruefung pruefungZumFreigeben = pruefungen.get(selection);
+		
+		if(pruefungZumFreigeben.isFreigegeben() == true) {
+			view.getBtnFreigeben().setText("Sperren");
+		} else {
+			view.getBtnFreigeben().setText("Freigeben");
+		}
+	}
 
 }

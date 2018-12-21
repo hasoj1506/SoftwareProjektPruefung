@@ -44,6 +44,7 @@ public class PruefungsverwaltungView {
 	private JButton btnDuplizierenPruefung;
 	private JButton btnReset;
 	private JButton btnSuchen;
+	private JButton btnFreigeben;
 	private JTextField textFieldSuche;
 
 	PruefungsverwaltungController controller;
@@ -152,8 +153,8 @@ public class PruefungsverwaltungView {
 		unterPanel.setBackground(new Color(204, 204, 204));
 		buttonPanel.add(unterPanel);
 		GridBagLayout gbl_unterPanel = new GridBagLayout();
-		gbl_unterPanel.columnWidths = new int[] { 100, 77, 63, 57, 0 };
-		gbl_unterPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_unterPanel.columnWidths = new int[] { 100, 77, 63, 0, 57, 0 };
+		gbl_unterPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_unterPanel.rowWeights = new double[] { 0.0 };
 		unterPanel.setLayout(gbl_unterPanel);
 						
@@ -186,13 +187,21 @@ public class PruefungsverwaltungView {
 				gbc_btnDuplizieren.gridx = 2;
 				gbc_btnDuplizieren.gridy = 0;
 				unterPanel.add(btnDuplizierenPruefung, gbc_btnDuplizieren);
+				
+				btnFreigeben = new JButton("Freigeben");
+				btnFreigeben.setFont(new Font("Verdana", Font.PLAIN, 16));
+				GridBagConstraints gbc_btnFreigeben = new GridBagConstraints();
+				gbc_btnFreigeben.insets = new Insets(0, 0, 0, 5);
+				gbc_btnFreigeben.gridx = 3;
+				gbc_btnFreigeben.gridy = 0;
+				unterPanel.add(btnFreigeben, gbc_btnFreigeben);
 		
 				btnLoeschenPruefung = new JButton("L\u00F6schen");
 				btnLoeschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 				btnLoeschenPruefung.setForeground(new Color(51, 51, 51));
 				GridBagConstraints gbc_btnLoeschenPruefung = new GridBagConstraints();
 				gbc_btnLoeschenPruefung.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnLoeschenPruefung.gridx = 3;
+				gbc_btnLoeschenPruefung.gridx = 4;
 				gbc_btnLoeschenPruefung.gridy = 0;
 				unterPanel.add(btnLoeschenPruefung, gbc_btnLoeschenPruefung);
 		
@@ -338,6 +347,21 @@ public class PruefungsverwaltungView {
 				controller.resetSuche();
 			}
 		});
+		
+		btnFreigeben.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.pruefungFreigeben();
+			}
+		});
+		
+		tablePruefungen.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				JTable table = (JTable) evt.getSource();
+				if (evt.getClickCount() == 1) {
+					controller.aendereBtnFreigeben();
+				}
+			}
+		});
 	}
 
 	public JTable getTablePruefungen() {
@@ -366,6 +390,10 @@ public class PruefungsverwaltungView {
 
 	public JButton getBtnReset() {
 		return btnReset;
+	}
+	
+	public JButton getBtnFreigeben() {
+		return btnFreigeben;
 	}
 
 }

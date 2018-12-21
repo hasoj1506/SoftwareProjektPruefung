@@ -88,11 +88,6 @@ public class PruefungsDetailsController {
 		fuelleTermineTable(pruefung);
 		fuelleTeilnehmerTable(pruefung);
 		
-		if(pruefung.isFreigegeben() == true) {
-			view.getBtnFreigeben().setText("Sperren");
-		} else {
-			view.getBtnFreigeben().setText("Freigeben");
-		}
 	}
 
 	public void fuelleTeilnehmerTable(Pruefung pruefung) {
@@ -545,17 +540,6 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
-	}
-	
-	public void pruefungFreigeben() {
-		if(pruefung.isFreigegeben() == false) {
-			pruefung.setFreigegeben(true);
-			view.getBtnFreigeben().setText("Sperren");
-		}else {
-			pruefung.setFreigegeben(false);
-			view.getBtnFreigeben().setText("Freigeben");
-		}
-		
 	}
 
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
