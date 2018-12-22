@@ -81,19 +81,13 @@ public class LoginPruefungsverwaltungController {
 	public void einloggenStudent() {
 		try {
 			List<Student> student = db.readLogin(getMatrikelNr());
-			System.out.println(student.toString());
-			System.out.println("hfa");
-			if (student.size() >= 0) {
-				PruefungView pruefungViewS = new PruefungView(student.get(0));
-				System.out.println("Bjk");
-				viewS.getLoginStudentFrame().dispose();
-//				if(student.get(0).getPruefung().isFreigegeben() == true) {
-//					PruefungView pruefungViewS = new PruefungView(student.get(0));
-//					System.out.println("Bjk");
-//					viewS.getLoginStudentFrame().dispose();
-//				} else {
-//					JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Prüfung noch nicht freigegeben!");
-//				}
+			if (student.size() > 0) {
+				if(student.get(0).getPruefung().isFreigegeben() == true) {
+					PruefungView pruefungViewS = new PruefungView(student.get(0));
+					viewS.getLoginStudentFrame().dispose();
+				} else {
+					JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Prüfung noch nicht freigegeben!");
+				}
 		} else {
 				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(),
 						"Benutzername oder Passwort nicht gefunden!");
