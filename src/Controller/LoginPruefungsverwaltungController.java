@@ -81,8 +81,10 @@ public class LoginPruefungsverwaltungController {
 	public void einloggenStudent() {
 		try {
 			List<Student> student = db.readLogin(getMatrikelNr());
-			if (student.size() > 0) {
+			//this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
+			if (student.size() >= 0) {
 				if(student.get(0).getPruefung().isFreigegeben() == true) {
+					this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
 					PruefungView pruefungViewS = new PruefungView(student.get(0));
 					viewS.getLoginStudentFrame().dispose();
 				} else {
