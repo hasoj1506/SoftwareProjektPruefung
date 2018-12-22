@@ -15,6 +15,7 @@ public class Aufgabe {
 	private String frageStellung;
 	private double punktzahl;
 	private boolean verwuerfelt;
+	private double erreichtePunktzahl;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -95,5 +96,13 @@ public class Aufgabe {
 
 	public void setVerwuerfelt(boolean verwuerfelt) {
 		this.verwuerfelt = verwuerfelt;
+	}
+
+	public double getErreichtePunktzahl() {
+		return erreichtePunktzahl;
+	}
+
+	public void setErreichtePunktzahl(double erreichtePunktzahl) {
+		this.erreichtePunktzahl = erreichtePunktzahl;
 	}
 }

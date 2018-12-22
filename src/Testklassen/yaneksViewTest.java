@@ -11,6 +11,7 @@ import Models.Aufgabe;
 import Models.Nutzer;
 import DatabaseService.DatabaseService;
 import Models.Pruefung;
+import Models.Student;
 import Models.Termin;
 import TableModels.AufgabendetailsTableModel;
 import Views.AufgabendetailsView;
@@ -38,12 +39,23 @@ public class yaneksViewTest {
 		}
 		;
 		
-		Pruefung pruefung = new Pruefung("test", 5);
 		
-		Nutzer nutzer = new Nutzer("test","tes","t","tt", true);
-		nutzer.setPruefung(pruefung);
+		Pruefung pruefung = new Pruefung("test", 5);
+		pruefung.setPunkte(5);
+		
+		
+		Aufgabe aufgabe = new Aufgabe("Mathe", 5, "Wieviel ist 1 + 1?",pruefung);
+		pruefung.addAufgabe(aufgabe);
+		Antwort antwort = new Antwort("1", false, aufgabe);
+		Antwort antwort1 = new Antwort("2", true, aufgabe);
+		aufgabe.addAntwort(antwort);
+		aufgabe.addAntwort(antwort1);
+		
+		
+		Student student = new Student("t","t", 12);
+		student.setPruefung(pruefung);
 
-		PruefungView view = new PruefungView(nutzer);
+		PruefungView view = new PruefungView(student);
 
 	}
 

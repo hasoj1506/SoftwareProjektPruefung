@@ -13,6 +13,7 @@ import Models.Pruefung;
 import Models.Student;
 import TableModels.PruefungViewAufgabenTableModel;
 import TableModels.PruefungViewTableModel;
+import Views.AuswertungView;
 import Views.PruefungView;
 
 public class PruefungViewController {
@@ -28,7 +29,7 @@ public class PruefungViewController {
 	PruefungView view;
 	PruefungViewAufgabenTableModel model;
 	PruefungViewTableModel antwortenModel;
-	
+
 	boolean abgegeben = false;
 
 	private int selection;
@@ -42,11 +43,11 @@ public class PruefungViewController {
 		setMatrNummer(student);
 		aufgabeAuswaehlenAufforderung();
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
-		
-		if(pruefung.isVerwuerfelt()) {
+
+		if (pruefung.isVerwuerfelt()) {
 			model.verwuerfeln();
 		}
-		
+
 		view.getAufgabenTable().setModel(model);
 		view.getAufgabenTable().setRowSelectionInterval(0, 0);
 		fuelleAufgabe();
@@ -55,18 +56,18 @@ public class PruefungViewController {
 
 	// Josah Weber
 	public void abgeben() {
-		
+
 		int reply = 0;
 		double ergebnis = 0;
 
-		//Wenn Zeit noch nicht abgelaufen, Bestätigung fordern
+		// Wenn Zeit noch nicht abgelaufen, Bestätigung fordern
 		if (view.isZeitUm() == false) {
 
 			reply = JOptionPane.showConfirmDialog(view.getFrame(), "Möchtest du wirklich abgeben?", "Abfrage",
 					JOptionPane.YES_NO_OPTION);
-		}else if(view.isZeitUm() == true){
-			
-			//Wenn Zeit abgelaufen, keine Bestätigung mehr erwünscht
+		} else if (view.isZeitUm() == true) {
+
+			// Wenn Zeit abgelaufen, keine Bestätigung mehr erwünscht
 			reply = JOptionPane.YES_OPTION;
 		}
 
@@ -76,27 +77,24 @@ public class PruefungViewController {
 			ergebnis = berechneErgebnis();
 			student.setErreichtePunktzahl(ergebnis);
 
-			}
-
-			// Antworten zurücksetzen
-
-			for(Aufgabe aufgabe : aufgaben) {
-				
-				for(Antwort antwort : aufgabe.getAntworten()) {
-					antwort.setAlsRichtigBeantwortet(false);
-					
-				}
-			}
-		
-			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-			service.persistNutzer(student);
-			JOptionPane.showMessageDialog(view.getFrame(),
-					"Erreichte Punktzahl: " + ergebnis + " von " + pruefung.getPunkte());
-			view.getFrame().dispose();
-
 		}
 
+		// Antworten zurücksetzen
 
+		for (Aufgabe aufgabe : aufgaben) {
+
+			for (Antwort antwort : aufgabe.getAntworten()) {
+				antwort.setAlsRichtigBeantwortet(false);
+
+			}
+		}
+
+		// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
+		// service.persistNutzer(student);
+		view.getFrame().dispose();
+		AuswertungView auswertungsView = new AuswertungView(student);
+
+	}
 
 	public void fuelleAufgabe() {
 		/*
@@ -113,8 +111,8 @@ public class PruefungViewController {
 				view.getTxtAufgabentext().setForeground(Color.BLACK);
 				view.getTxtAufgabentext().setText(ausgewaehlteAufgabe.getFrageStellung());
 				antwortenModel = new PruefungViewTableModel(new ArrayList<Antwort>(ausgewaehlteAufgabe.getAntworten()));
-				
-				if(ausgewaehlteAufgabe.isVerwuerfelt()) {
+
+				if (ausgewaehlteAufgabe.isVerwuerfelt()) {
 					antwortenModel.verwuerfeln();
 				}
 				view.getAntwortenTable().setModel(antwortenModel);
@@ -173,37 +171,41 @@ public class PruefungViewController {
 		view.getTxtAufgabentext().setText("Bitte wähle links eine Aufgabe aus!");
 		view.getTxtAufgabentext().setForeground(Color.RED);
 	}
-	
-	
-	public double  berechneErgebnis() {
-		
+
+	public double berechneErgebnis() {
+
 		double gesamtePunktzahl = 0;
-		
-		for(Aufgabe aufgabe : this.aufgaben) {
-			
+
+		for (Aufgabe aufgabe : this.aufgaben) {
+
 			double punkteProAufgabe = aufgabe.getPunktzahl();
-			
-			for(Antwort antwort : aufgabe.getAntworten()) {
-				
-				if((antwort.isIstRichtig() != antwort.isAlsRichtigBeantwortet()) && punkteProAufgabe > 0) {
-					
-					punkteProAufgabe = punkteProAufgabe - (0.5 * aufgabe.getPunktzahl());
-					
+			int anzFalsch = 0;
+
+			for (Antwort antwort : aufgabe.getAntworten()) {
+
+				if ((antwort.isIstRichtig() != antwort.isAlsRichtigBeantwortet())) {
+
+					anzFalsch++;
+
 				}
-				
-				gesamtePunktzahl = gesamtePunktzahl + punkteProAufgabe;
-				
 			}
-			
+
+			if (anzFalsch == 1) {
+				punkteProAufgabe = punkteProAufgabe - (0.5 * aufgabe.getPunktzahl());
+			} else if (anzFalsch > 1) {
+				punkteProAufgabe = 0;
+			}
+
+			aufgabe.setErreichtePunktzahl(punkteProAufgabe);
+			gesamtePunktzahl = gesamtePunktzahl + punkteProAufgabe;
+
 		}
-		
-		
+
 		return gesamtePunktzahl;
 	}
-	
+
 	public boolean isAbgegeben() {
 		return abgegeben;
 	}
-	
 
 }

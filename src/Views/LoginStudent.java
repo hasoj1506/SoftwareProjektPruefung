@@ -109,9 +109,6 @@ public class LoginStudent {
 		gbc_lblNewLabel.gridy = 0;
 		frame.getContentPane().add(lblNewLabel, gbc_lblNewLabel);	
 		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/FH.png.jpg")));
-	
-		
-		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 155, 187));
