@@ -207,7 +207,7 @@ public class DatabaseService {
 
 		try {
 			List<Student> student;
-			TypedQuery q = em.createQuery("SELECT p FROM Nutzer p WHERE p.matrikelNr = " + matrikelNr, Nutzer.class);
+			TypedQuery q = em.createQuery("SELECT p FROM Student p WHERE p.matrikelNr = " + matrikelNr, Student.class);
 			student = q.getResultList();
 			return student;
 
