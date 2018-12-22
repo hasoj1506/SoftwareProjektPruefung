@@ -41,16 +41,17 @@ public class yaneksViewTest {
 		
 		
 		Pruefung pruefung = new Pruefung("test", 5);
-		pruefung.setPunkte(5);
+	    pruefung.setPunkte(5);
 		
 		
 		Aufgabe aufgabe = new Aufgabe("Mathe", 5, "Wieviel ist 1 + 1?",pruefung);
 		pruefung.addAufgabe(aufgabe);
 		Antwort antwort = new Antwort("1", false, aufgabe);
 		Antwort antwort1 = new Antwort("2", true, aufgabe);
+		Antwort antwort2 = new Antwort("3", false, aufgabe);
 		aufgabe.addAntwort(antwort);
 		aufgabe.addAntwort(antwort1);
-		
+		aufgabe.addAntwort(antwort2);
 		
 		Student student = new Student("t","t", 12);
 		student.setPruefung(pruefung);

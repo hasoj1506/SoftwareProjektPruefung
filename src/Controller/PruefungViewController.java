@@ -190,10 +190,19 @@ public class PruefungViewController {
 				}
 			}
 
-			if (anzFalsch == 1) {
-				punkteProAufgabe = punkteProAufgabe - (0.5 * aufgabe.getPunktzahl());
-			} else if (anzFalsch > 1) {
-				punkteProAufgabe = 0;
+			if (aufgabe.getAntworten().size() < 3) {
+				
+				if(anzFalsch > 0) {
+					punkteProAufgabe = 0;
+				}
+
+			} else {
+
+				if (anzFalsch == 1) {
+					punkteProAufgabe = punkteProAufgabe - (0.5 * aufgabe.getPunktzahl());
+				} else if (anzFalsch > 1) {
+					punkteProAufgabe = 0;
+				}
 			}
 
 			aufgabe.setErreichtePunktzahl(punkteProAufgabe);

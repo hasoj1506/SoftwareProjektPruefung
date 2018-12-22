@@ -44,6 +44,7 @@ public class AuswertungView {
 		onCreate();
 		this.student = student;
 		fuelleAuswertung();
+		btnAction();
 	}
 
 	public void onCreate() {
