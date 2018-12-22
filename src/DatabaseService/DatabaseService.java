@@ -202,6 +202,25 @@ public class DatabaseService {
 		}
 
 	}
+	
+	public List<Student> readTeilnehmer(int pruefungId) {
+
+		List<Student> studenten;
+
+		try {
+
+			Query q = em.createQuery("SELECT s FROM Student s WHERE s.pruefungId = " + pruefungId, Student.class);
+
+			studenten = (List<Student>) q.getResultList();
+
+			return studenten;
+
+		} catch (Exception e) {
+			// füllen, was beim Fehler passiert
+			return null;
+		}
+
+	}
 
 	public List<Student> readLogin(int matrikelNr) {
 

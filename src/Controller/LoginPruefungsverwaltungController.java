@@ -92,7 +92,8 @@ public class LoginPruefungsverwaltungController {
 				}
 
 				PruefungView pruefungViewS = new PruefungView(student);
-
+				student.setEingeloggt(true);
+				db.persistNutzer(student);
 				viewS.getLoginStudentFrame().dispose();
 
 			} else {

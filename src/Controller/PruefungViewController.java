@@ -76,6 +76,7 @@ public class PruefungViewController {
 			abgegeben = true;
 			ergebnis = berechneErgebnis();
 			student.setErreichtePunktzahl(ergebnis);
+			student.setEingeloggt(false);
 
 		}
 
@@ -90,7 +91,7 @@ public class PruefungViewController {
 		}
 
 		// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-		// service.persistNutzer(student);
+		 service.persistNutzer(student);
 		view.getFrame().dispose();
 		AuswertungView auswertungsView = new AuswertungView(student);
 

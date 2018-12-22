@@ -617,6 +617,7 @@ public class PruefungsDetails extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				pruefungsverwaltung.getFrame().setVisible(true);
+				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
 
