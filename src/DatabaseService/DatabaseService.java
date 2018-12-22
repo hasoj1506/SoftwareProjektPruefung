@@ -209,7 +209,7 @@ public class DatabaseService {
 
 		try {
 
-			Query q = em.createQuery("SELECT s FROM Student s WHERE s.pruefungId = " + pruefungId, Student.class);
+			Query q = em.createQuery("SELECT s FROM Student s WHERE s.pruefung.pruefungId = " + pruefungId, Student.class);
 
 			studenten = (List<Student>) q.getResultList();
 
