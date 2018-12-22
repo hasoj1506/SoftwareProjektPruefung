@@ -28,7 +28,7 @@ public class LoginPruefungsverwaltungController {
 	private List<String> passwoerterListe;
 
 	// Zugriff auf die Datenbank
-	DatabaseService db;
+	DatabaseService db = DatabaseService.getInstance();
 
 	// Konstruktor Professor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
@@ -54,11 +54,11 @@ public class LoginPruefungsverwaltungController {
 		try {
 
 			this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
-			
+
 			PruefungsverwaltungView view = new PruefungsverwaltungView();
 
 		} catch (NullPointerException e) {
-//			System.out.println("Nullpointerexception");
+			// System.out.println("Nullpointerexception");
 
 		}
 	}
@@ -72,32 +72,35 @@ public class LoginPruefungsverwaltungController {
 		char[] passwort = viewS.getTFPasswort().getPassword();
 		return String.valueOf(passwort);
 	}
-	
+
 	public int getMatrikelNr() {
 		return Integer.parseInt(viewS.getTFMatrikelNr().getText());
-		
+
 	}
 
 	public void einloggenStudent() {
 		try {
-			List<Student> student = db.readLogin(getMatrikelNr());
-			//this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
-			if (student.size() >= 0) {
-				if(student.get(0).getPruefung().isFreigegeben() == true) {
-					this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
-					PruefungView pruefungViewS = new PruefungView(student.get(0));
-					viewS.getLoginStudentFrame().dispose();
-				} else {
-					JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(), "Prüfung noch nicht freigegeben!");
+			List<Student> studenten = db.readLogin(getMatrikelNr());
+			Student student = null;
+
+			if (studenten.size() >= 0) {
+
+				for (Student s : studenten) {
+					if (s.getPruefung().isFreigegeben() == true) {
+						student = s;
+					}
 				}
-		} else {
-				JOptionPane.showMessageDialog(view.getLoginPruefungsverwaltungFrame(),
-						"Benutzername oder Passwort nicht gefunden!");
 
+				PruefungView pruefungViewS = new PruefungView(student);
+
+				viewS.getLoginStudentFrame().dispose();
+
+			} else {
+				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Prüfung noch nicht freigegeben!");
 			}
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 
-			System.out.println();
+			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Anmeldung fehlgeschlagen!");
 
 		}
 	}

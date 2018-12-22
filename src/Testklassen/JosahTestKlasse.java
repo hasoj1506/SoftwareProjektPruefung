@@ -44,6 +44,7 @@ public class JosahTestKlasse {
 		
 		List<Student> studentList = db.readLogin(233);
 		System.out.println(studentList.size());
+		System.out.println(studentList.get(0).getNachname());
 
 	}
 }
