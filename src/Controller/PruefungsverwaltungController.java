@@ -207,9 +207,11 @@ public class PruefungsverwaltungController {
 			
 			if(pruefungZumFreigeben.isFreigegeben() == false) {
 				pruefungZumFreigeben.setFreigegeben(true);
+				db.persistPruefung(pruefungZumFreigeben);
 				view.getBtnFreigeben().setText("Sperren");
 			}else {
 				pruefungZumFreigeben.setFreigegeben(false);
+				db.persistPruefung(pruefungZumFreigeben);
 				view.getBtnFreigeben().setText("Freigeben");
 			}
 			

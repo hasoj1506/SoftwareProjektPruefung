@@ -17,34 +17,23 @@ public class JosahTestKlasse {
 
 	public static void main(String[] args) {
 
-//		try {
-//
-//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//			
-//		} catch (UnsupportedLookAndFeelException e) {
-//
-//		} catch (ClassNotFoundException e) {
-//
-//		} catch (InstantiationException e) {
-//
-//		} catch (IllegalAccessException e) {
-//
-//		};
-//
-//		
-//		PruefungsverwaltungView view = new PruefungsverwaltungView();
-//		
-		DatabaseService db = DatabaseService.getInstance();
-//		List<Pruefung> pruefungen = db.readPruefungen();
-//		Pruefung pruefung = pruefungen.get(0);
-//		List<Student> studenten = new ArrayList<Student>(pruefung.getStudenten());
-//		Student student = studenten.get(0);
-//		
-//		PruefungView pruefungView = new PruefungView(student);
-		
-		List<Student> studentList = db.readLogin(233);
-		System.out.println(studentList.size());
-		System.out.println(studentList.get(0).getNachname());
+		try {
 
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+		} catch (UnsupportedLookAndFeelException e) {
+
+		} catch (ClassNotFoundException e) {
+
+		} catch (InstantiationException e) {
+
+		} catch (IllegalAccessException e) {
+
+		};
+
+		
+		PruefungsverwaltungView view = new PruefungsverwaltungView();
+		
+	
 	}
 }
