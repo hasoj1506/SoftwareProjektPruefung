@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -52,13 +53,14 @@ public class AufgabenDetailsController {
 		String frage = view.getAfgdFrageTextField().getText();
 
 		if (titel == ("") || titel.length() == 0) {
-
+			
+			view.getAfgdTitelTextField().setBackground(new Color(255, 102, 102));
 			view.fehlerMeldung("Fehler: Der Titel darf nicht leer sein!");
 
 		} else {
 
 			if (frage == ("") || frage.length() == 0) { 
-
+				view.getAfgdFrageTextField().setBackground(new Color(255, 102, 102));
 				view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
 
 			} else {
@@ -68,12 +70,13 @@ public class AufgabenDetailsController {
 					punkte = Double.parseDouble(view.getAfgdPunkteTextField().getText());
 
 				} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
-
+					view.getAfgdPunkteTextField().setBackground(new Color(255, 102, 102));
 					view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
 
 				}
 
 				if (model.getRowCount() < 2) {
+					view.getAfgdTable().setBackground(new Color(255, 102, 102));
 					view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
 				} else {
 
@@ -95,6 +98,7 @@ public class AufgabenDetailsController {
 						view.getPruefungsDetailsView().punkteCheck();
 						view.schliessen();
 					} else {
+						view.getAfgdTable().setBackground(new Color(255, 102, 102));
 						view.fehlerMeldung("Es muss mindestens eine Aufgabe geben die richtig ist.");
 
 					}

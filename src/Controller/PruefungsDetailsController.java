@@ -51,6 +51,7 @@ public class PruefungsDetailsController {
 	private List<Student> teilnehmer;
 	private Pruefung pruefung;
 	private PruefungsDetailsAufgabenTableModel tableModelAufgaben;
+	private PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer;
 
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
@@ -96,13 +97,15 @@ public class PruefungsDetailsController {
 		JTable tableTeilnehmer = view.getTableTeilnehmer();
 
 		try {
+			
+			db.getEm().clear();
 			// Liste mit Teilnehmern der Prüfung erstellen
 			teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
 //			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 			Collections.sort(teilnehmer, new TeilnehmerComparator());
-
+			db.refreshList(teilnehmer);
 			// Dem JTable das Model inklusive Liste zuweisen
-			PruefungsDetailsTeilnehmerTableModel tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
+			tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
 					teilnehmer);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
@@ -542,7 +545,7 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
-
+	
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
 		return tableModelAufgaben;
 	}

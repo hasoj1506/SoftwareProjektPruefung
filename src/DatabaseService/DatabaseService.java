@@ -203,6 +203,14 @@ public class DatabaseService {
 
 	}
 	
+	public EntityManager getEm() {
+		return em;
+	}
+
+	public EntityManagerFactory getEmf() {
+		return emf;
+	}
+
 	public List<Student> readTeilnehmer(int pruefungId) {
 
 		List<Student> studenten;
@@ -234,6 +242,15 @@ public class DatabaseService {
 			return null;
 		}
 
+	}
+	
+	public void refreshList(List<Student> teilnehmer) {
+		
+		for(Student student : teilnehmer) {
+			em.refresh(student);
+		}
+		
+		
 	}
 
 	public void loescheAntwort(Antwort antwort) {

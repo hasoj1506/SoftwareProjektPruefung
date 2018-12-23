@@ -211,13 +211,13 @@ public class NutzerErstellenPopUp {
 
 				// Nutzer die Daten zuweisen, sofern korrekt eingegeben
 				if (vorname.length() <= 0) {
-					textFieldVorname.setBackground(Color.RED);
+					textFieldVorname.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
 				} else if (nachname.length() <= 0) {
-					textFieldNachname.setBackground(Color.RED);
+					textFieldNachname.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else if (matrikelnummer == 0) {
-					textFieldMatrikelNr.setBackground(Color.RED);
+					textFieldMatrikelNr.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
 					student.setVorname(vorname);
@@ -259,13 +259,13 @@ public class NutzerErstellenPopUp {
 
 				// Nutzer die Daten zuweisen, sofern korrekt eingegeben
 				if (vorname.length() <= 0) {
-					textFieldVorname.setBackground(Color.RED);
+					textFieldVorname.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Vornamen korrekt eingeben!");
 				} else if (nachname.length() <= 0) {
-					textFieldNachname.setBackground(Color.RED);
+					textFieldNachname.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Nachnamen korrekt eingeben!");
 				} else if (matrikelnummer == 0) {
-					textFieldMatrikelNr.setBackground(Color.RED);
+					textFieldMatrikelNr.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
 					Student student = new Student(vorname, nachname, matrikelnummer);

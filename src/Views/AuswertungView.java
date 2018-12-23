@@ -199,8 +199,9 @@ public class AuswertungView {
 		lblErgebnis.setFont(new Font("Gill Sans MT", Font.BOLD, 32));
 		panel_2.add(lblErgebnis);
 
-		frame.pack();
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 	}
 
 	public void fuelleAuswertung() {
@@ -227,7 +228,7 @@ public class AuswertungView {
 		txtMatrikelNr.setText(String.valueOf(student.getMatrikelNr()));
 		txtGesamtpunktzahl.setText(String.valueOf(student.getPruefung().getPunkte()));
 		txtErreichtePunktzahl.setText(String.valueOf(student.getErreichtePunktzahl()));
-		txtGesamtpunktzahlProzent.setText(String.valueOf(prozent));
+		txtGesamtpunktzahlProzent.setText(String.valueOf((Math.round(prozent) * 100) / 100));
 		txtBonuspunkte.setText(String.valueOf(bonusPunkte));
 
 		AuswertungTableModel model = new AuswertungTableModel(

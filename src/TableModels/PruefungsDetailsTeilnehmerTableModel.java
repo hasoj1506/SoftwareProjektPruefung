@@ -56,5 +56,10 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
+	
+	public void setList(List<Student> studenten) {
+		
+		this.studenten = studenten;
+	}
 
 }

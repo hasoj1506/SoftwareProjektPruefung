@@ -133,6 +133,7 @@ public class AntwortErstellenPopUp {
 				text = textField.getText();
 
 				if (text == ("") || text.length() == 0) {
+					textField.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
 				} else {
 
@@ -162,6 +163,7 @@ public class AntwortErstellenPopUp {
 				text = textField.getText();
 
 				if (text == ("") || text.length() == 0) {
+					textField.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frame, "Der Antworttext darf nicht leer sein!");
 				} else {
 

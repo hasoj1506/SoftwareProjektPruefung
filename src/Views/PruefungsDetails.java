@@ -77,6 +77,7 @@ public class PruefungsDetails extends JFrame {
 
 	private JButton btnImportieren;
 	private JPanel panel;
+	private JButton btnAktualisieren;
 
 	/**
 	 * @wbp.parser.constructor
@@ -253,6 +254,14 @@ public class PruefungsDetails extends JFrame {
 		btnImportieren = new JButton("Importieren");
 		panel_4.add(btnImportieren);
 		btnImportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
+		
+		btnAktualisieren = new JButton("Aktualisieren");
+		btnAktualisieren.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnAktualisieren = new GridBagConstraints();
+		gbc_btnAktualisieren.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAktualisieren.gridx = 1;
+		gbc_btnAktualisieren.gridy = 0;
+		panelTeilnehmerButtons.add(btnAktualisieren, gbc_btnAktualisieren);
 
 		btnNeuTeilnehmer = new JButton("Neu");
 		btnNeuTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -636,6 +645,12 @@ public class PruefungsDetails extends JFrame {
 		btnExportieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.exportiereTeilnehmer();
+			}
+		});
+		
+		btnAktualisieren.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.fuelleTeilnehmerTable(pruefung);
 			}
 		});
 

@@ -187,13 +187,13 @@ public class TerminErstellenPopUp {
 				
 				//Bei gültigen Eingaben Termin bearbeiten
 				if (datum.length() != 10) {
-					textFieldDatum.setBackground(Color.RED);
+					textFieldDatum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
 				} else if (uhrzeit.length() != 5) {
-					textFieldUhrzeit.setBackground(Color.RED);
+					textFieldUhrzeit.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
 				} else if (raum.length() <= 0) {
-					textFieldRaum.setBackground(Color.RED);
+					textFieldRaum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
 				} else {
 					termin.setDatum(datum);
@@ -242,13 +242,13 @@ public class TerminErstellenPopUp {
 				
 				//Bei gültigen Eingaben Termin erstellen
 				if (datum.length() != 10) {
-					textFieldDatum.setBackground(Color.RED);
+					textFieldDatum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
 				} else if (uhrzeit.length() != 5) {
-					textFieldUhrzeit.setBackground(Color.RED);
+					textFieldUhrzeit.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
 				} else if (raum.length() <= 0) {
-					textFieldRaum.setBackground(Color.RED);
+					textFieldRaum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
 				} else {
 					Termin termin = new Termin(datum, uhrzeit, raum, pruefung);
