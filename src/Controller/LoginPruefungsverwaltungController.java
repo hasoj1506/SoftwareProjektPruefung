@@ -1,5 +1,6 @@
 package Controller;
 
+import java.sql.SQLRecoverableException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class LoginPruefungsverwaltungController {
 	private List<String> passwoerterListe;
 
 	// Zugriff auf die Datenbank
-	DatabaseService db = DatabaseService.getInstance();
+	DatabaseService db;
 
 	// Konstruktor Professor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
@@ -51,6 +52,29 @@ public class LoginPruefungsverwaltungController {
 	}
 
 	public void einloggenDozent() {
+		
+		String bn;
+		String pw;
+		
+		
+		try{
+			
+			bn = getBenutzername();
+			
+		}catch(NullPointerException e){
+			
+			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Das Benutzername-Feld darf nicht leer sein!");
+		}
+		
+		try{
+			
+			pw = getPasswort();
+			
+		}catch(NullPointerException e){
+			
+			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Das Passwort-Feld darf nicht leer sein!");
+		}
+		
 		try {
 
 			this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
@@ -58,9 +82,14 @@ public class LoginPruefungsverwaltungController {
 			PruefungsverwaltungView view = new PruefungsverwaltungView();
 
 		} catch (NullPointerException e) {
-			// System.out.println("Nullpointerexception");
-
+			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Benutzername oder Passwort nicht gefunden!");
 		}
+
+		catch (javax.persistence.PersistenceException e) {
+			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
+					"Die Verbindung zur Datenbank konnte nicht hergestellt werden. Bitte überprüfen Sie Ihre Verbindung zum FH-Bielefeld Netzwerk!");
+		}
+
 	}
 
 	// Get Benutzer und passwort von textfeld in view von Student
