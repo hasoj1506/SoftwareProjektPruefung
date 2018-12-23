@@ -77,15 +77,15 @@ public class AufgabendetailsView {
 		frame.setForeground(Color.WHITE);
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
-		frame.setMinimumSize(new Dimension(850, 650));
+		frame.setMinimumSize(new Dimension(1200, 800));
 
 		JPanel middleArbeitsPanel = new JPanel();
 		middleArbeitsPanel.setBackground(Color.WHITE);
 		middleArbeitsPanel.setMinimumSize(new Dimension(400, 300));
 		frame.getContentPane().add(middleArbeitsPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_middleArbeitsPanel = new GridBagLayout();
-		gbl_middleArbeitsPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
-		gbl_middleArbeitsPanel.rowHeights = new int[] { 0, 0, 0 };
+		gbl_middleArbeitsPanel.columnWidths = new int[] { 20, 150, 125, 65, 0 };
+		gbl_middleArbeitsPanel.rowHeights = new int[] { 0, 50, 0 };
 		gbl_middleArbeitsPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_middleArbeitsPanel.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		middleArbeitsPanel.setLayout(gbl_middleArbeitsPanel);
@@ -94,7 +94,6 @@ public class AufgabendetailsView {
 		afgdAntwortenLabel.setForeground(new Color(51, 51, 51));
 		afgdAntwortenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_afgdAntwortenLabel = new GridBagConstraints();
-		gbc_afgdAntwortenLabel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_afgdAntwortenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdAntwortenLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_afgdAntwortenLabel.gridx = 1;
@@ -248,7 +247,7 @@ public class AufgabendetailsView {
 		northPanel.add(eingabePanel, gbc_eingabePanel);
 		eingabePanel.setMinimumSize(new Dimension(400, 300));
 		GridBagLayout gbl_eingabePanel = new GridBagLayout();
-		gbl_eingabePanel.columnWidths = new int[] { 46, 95, 169, 215, 0, 65, 0 };
+		gbl_eingabePanel.columnWidths = new int[] { 20, 150, 169, 215, 0, 65, 0 };
 		gbl_eingabePanel.rowHeights = new int[] { 43, 0, 0, 0, 0, 0 };
 		gbl_eingabePanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_eingabePanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };

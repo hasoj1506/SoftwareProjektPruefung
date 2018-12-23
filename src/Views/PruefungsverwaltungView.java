@@ -51,9 +51,6 @@ public class PruefungsverwaltungView {
 
 	Pruefung pruefung;
 
-
-	
-
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -73,18 +70,21 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.setIconImage(icon1);
 		frmPrfungsverwaltung.setTitle("Pr\u00FCfungsverwaltung");
 		frmPrfungsverwaltung.setForeground(Color.WHITE);
-		frmPrfungsverwaltung.setMinimumSize(new Dimension(850, 650));
+		frmPrfungsverwaltung.setMinimumSize(new Dimension(1200, 800));
 
 		JPanel PruefungenPanel = new JPanel();
 		PruefungenPanel.setBackground(new Color(255, 255, 255));
 		PruefungenPanel.setMinimumSize(new Dimension(400, 300));
 		frmPrfungsverwaltung.getContentPane().add(PruefungenPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_PruefungenPanel = new GridBagLayout();
-		gbl_PruefungenPanel.columnWidths = new int[] { 65, 0, 125, 65, 0 };
+		gbl_PruefungenPanel.rowHeights = new int[] { 30, 0, 0, 30 };
+		gbl_PruefungenPanel.columnWidths = new int[] { 20, 150, 125, 65, 0 };
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 0.0, 1.0 };
+		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0 };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
-		
+		Image searchIcon = new ImageIcon(this.getClass().getResource("/searchIcon.png")).getImage();
+		Image resetIcon = new ImageIcon(this.getClass().getResource("/closeIcon.png")).getImage();
+
 		JPanel panelSuche = new JPanel();
 		panelSuche.setBackground(Color.WHITE);
 		FlowLayout flowLayout = (FlowLayout) panelSuche.getLayout();
@@ -95,23 +95,21 @@ public class PruefungsverwaltungView {
 		gbc_panelSuche.gridx = 2;
 		gbc_panelSuche.gridy = 1;
 		PruefungenPanel.add(panelSuche, gbc_panelSuche);
-		
+
 		textFieldSuche = new JTextField();
 		panelSuche.add(textFieldSuche);
 		textFieldSuche.setColumns(10);
-		
+
 		btnSuchen = new JButton("");
 		btnSuchen.setMaximumSize(new Dimension(20, 20));
 		btnSuchen.setPreferredSize(new Dimension(20, 20));
-		Image searchIcon = new ImageIcon(this.getClass().getResource("/searchIcon.png")).getImage();
 		btnSuchen.setIcon(new ImageIcon(searchIcon));
 		panelSuche.add(btnSuchen);
-		
+
 		btnReset = new JButton("");
 		btnReset.setPreferredSize(new Dimension(20, 20));
 		btnReset.setMinimumSize(new Dimension(20, 20));
 		btnReset.setMaximumSize(new Dimension(20, 20));
-		Image resetIcon = new ImageIcon(this.getClass().getResource("/closeIcon.png")).getImage();
 		btnReset.setIcon(new ImageIcon(resetIcon));
 		btnReset.setVisible(false);
 		panelSuche.add(btnReset);
@@ -157,64 +155,64 @@ public class PruefungsverwaltungView {
 		gbl_unterPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_unterPanel.rowWeights = new double[] { 0.0 };
 		unterPanel.setLayout(gbl_unterPanel);
-						
-								btnNeuPruefung = new JButton("Neu");
-								btnNeuPruefung.setForeground(new Color(51, 51, 51));
-								btnNeuPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-								GridBagConstraints gbc_btnNeuPruefung = new GridBagConstraints();
-								gbc_btnNeuPruefung.fill = GridBagConstraints.HORIZONTAL;
-								gbc_btnNeuPruefung.insets = new Insets(0, 0, 0, 5);
-								gbc_btnNeuPruefung.gridx = 0;
-								gbc_btnNeuPruefung.gridy = 0;
-								unterPanel.add(btnNeuPruefung, gbc_btnNeuPruefung);
-				
-						btnBearbeitenPruefung = new JButton("Bearbeiten");
-						btnBearbeitenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-						btnBearbeitenPruefung.setForeground(new Color(51, 51, 51));
-						GridBagConstraints gbc_btnBearbeitenPruefung = new GridBagConstraints();
-						gbc_btnBearbeitenPruefung.insets = new Insets(0, 0, 0, 5);
-						gbc_btnBearbeitenPruefung.fill = GridBagConstraints.HORIZONTAL;
-						gbc_btnBearbeitenPruefung.gridx = 1;
-						gbc_btnBearbeitenPruefung.gridy = 0;
-						unterPanel.add(btnBearbeitenPruefung, gbc_btnBearbeitenPruefung);
-				
-				btnDuplizierenPruefung = new JButton("Duplizieren");
-				btnDuplizierenPruefung.setForeground(new Color(51, 51, 51));
-				btnDuplizierenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-				GridBagConstraints gbc_btnDuplizieren = new GridBagConstraints();
-				gbc_btnDuplizieren.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnDuplizieren.insets = new Insets(0, 0, 0, 5);
-				gbc_btnDuplizieren.gridx = 2;
-				gbc_btnDuplizieren.gridy = 0;
-				unterPanel.add(btnDuplizierenPruefung, gbc_btnDuplizieren);
-				
-				btnFreigeben = new JButton("Freigeben");
-				btnFreigeben.setFont(new Font("Verdana", Font.PLAIN, 16));
-				GridBagConstraints gbc_btnFreigeben = new GridBagConstraints();
-				gbc_btnFreigeben.insets = new Insets(0, 0, 0, 5);
-				gbc_btnFreigeben.gridx = 3;
-				gbc_btnFreigeben.gridy = 0;
-				unterPanel.add(btnFreigeben, gbc_btnFreigeben);
-		
-				btnLoeschenPruefung = new JButton("L\u00F6schen");
-				btnLoeschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-				btnLoeschenPruefung.setForeground(new Color(51, 51, 51));
-				GridBagConstraints gbc_btnLoeschenPruefung = new GridBagConstraints();
-				gbc_btnLoeschenPruefung.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnLoeschenPruefung.gridx = 4;
-				gbc_btnLoeschenPruefung.gridy = 0;
-				unterPanel.add(btnLoeschenPruefung, gbc_btnLoeschenPruefung);
-		
+
+		btnNeuPruefung = new JButton("Neu");
+		btnNeuPruefung.setForeground(new Color(51, 51, 51));
+		btnNeuPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnNeuPruefung = new GridBagConstraints();
+		gbc_btnNeuPruefung.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNeuPruefung.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNeuPruefung.gridx = 0;
+		gbc_btnNeuPruefung.gridy = 0;
+		unterPanel.add(btnNeuPruefung, gbc_btnNeuPruefung);
+
+		btnBearbeitenPruefung = new JButton("Bearbeiten");
+		btnBearbeitenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnBearbeitenPruefung.setForeground(new Color(51, 51, 51));
+		GridBagConstraints gbc_btnBearbeitenPruefung = new GridBagConstraints();
+		gbc_btnBearbeitenPruefung.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBearbeitenPruefung.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnBearbeitenPruefung.gridx = 1;
+		gbc_btnBearbeitenPruefung.gridy = 0;
+		unterPanel.add(btnBearbeitenPruefung, gbc_btnBearbeitenPruefung);
+
+		btnDuplizierenPruefung = new JButton("Duplizieren");
+		btnDuplizierenPruefung.setForeground(new Color(51, 51, 51));
+		btnDuplizierenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnDuplizieren = new GridBagConstraints();
+		gbc_btnDuplizieren.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnDuplizieren.insets = new Insets(0, 0, 0, 5);
+		gbc_btnDuplizieren.gridx = 2;
+		gbc_btnDuplizieren.gridy = 0;
+		unterPanel.add(btnDuplizierenPruefung, gbc_btnDuplizieren);
+
+		btnFreigeben = new JButton("Freigeben");
+		btnFreigeben.setFont(new Font("Verdana", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnFreigeben = new GridBagConstraints();
+		gbc_btnFreigeben.insets = new Insets(0, 0, 0, 5);
+		gbc_btnFreigeben.gridx = 3;
+		gbc_btnFreigeben.gridy = 0;
+		unterPanel.add(btnFreigeben, gbc_btnFreigeben);
+
+		btnLoeschenPruefung = new JButton("L\u00F6schen");
+		btnLoeschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnLoeschenPruefung.setForeground(new Color(51, 51, 51));
+		GridBagConstraints gbc_btnLoeschenPruefung = new GridBagConstraints();
+		gbc_btnLoeschenPruefung.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnLoeschenPruefung.gridx = 4;
+		gbc_btnLoeschenPruefung.gridy = 0;
+		unterPanel.add(btnLoeschenPruefung, gbc_btnLoeschenPruefung);
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(204, 204, 204));
 		frmPrfungsverwaltung.getContentPane().add(panel_1, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{472, 0};
-		gbl_panel_1.rowHeights = new int[]{159, 32, 0};
-		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWidths = new int[] { 472, 0 };
+		gbl_panel_1.rowHeights = new int[] { 159, 32, 0 };
+		gbl_panel_1.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
-		
+
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
@@ -225,12 +223,12 @@ public class PruefungsverwaltungView {
 		panel_1.add(panel, gbc_panel);
 		panel.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{35, 30, 0, 0, 30, 0};
-		gbl_panel.rowHeights = new int[]{50, 0, 0, 48, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
+		gbl_panel.rowHeights = new int[] { 50, 0, 0, 48, 0 };
+		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-		
+
 		JLabel lblPrfungsverwaltung = new JLabel("Pr\u00FCfungsverwaltung");
 		lblPrfungsverwaltung.setFont(new Font("Verdana", Font.BOLD, 20));
 		GridBagConstraints gbc_lblPrfungsverwaltung = new GridBagConstraints();
@@ -240,7 +238,7 @@ public class PruefungsverwaltungView {
 		gbc_lblPrfungsverwaltung.gridx = 1;
 		gbc_lblPrfungsverwaltung.gridy = 1;
 		panel.add(lblPrfungsverwaltung, gbc_lblPrfungsverwaltung);
-		
+
 		JLabel lblVerwaltungAllerAnstehenden = new JLabel("Verwaltung aller anstehenden Pr\u00FCfungen");
 		lblVerwaltungAllerAnstehenden.setFont(new Font("Verdana", Font.BOLD, 17));
 		GridBagConstraints gbc_lblVerwaltungAllerAnstehenden = new GridBagConstraints();
@@ -249,7 +247,7 @@ public class PruefungsverwaltungView {
 		gbc_lblVerwaltungAllerAnstehenden.gridx = 2;
 		gbc_lblVerwaltungAllerAnstehenden.gridy = 3;
 		panel.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
-		
+
 		JLabel label_2 = new JLabel("");
 		Image icon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
 		label_2.setIcon(new ImageIcon(icon));
@@ -268,13 +266,13 @@ public class PruefungsverwaltungView {
 															// Mitte des
 															// Bildschirms
 															// erzeugt
-		
-		//Fenster maximiert starten
-		//frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
+
+		// Fenster maximiert starten
+		// frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
 
-	// Hinzufügen der ActionListener 
+	// Hinzufügen der ActionListener
 	public void addActionListeners() {
 
 		btnNeuPruefung.addActionListener(new ActionListener() {
@@ -291,7 +289,7 @@ public class PruefungsverwaltungView {
 				controller.bearbeitePruefung();
 			}
 		});
-		
+
 		btnDuplizierenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.duplizierePruefung();
@@ -312,48 +310,47 @@ public class PruefungsverwaltungView {
 				}
 			}
 		});
-		
+
 		btnSuchen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.suchePruefung();
 			}
 		});
-		
+
 		textFieldSuche.getDocument().addDocumentListener(new DocumentListener() {
 			public void updateLog(DocumentEvent et) {
 				controller.suchePruefung();
 			}
-			
+
 			public void changedUpdate(DocumentEvent e) {
 				updateLog(e);
-				
+
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				updateLog(e);
-				
+
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				updateLog(e);
-				
+
 			}
-			
-		
+
 		});
-		
+
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.resetSuche();
 			}
 		});
-		
+
 		btnFreigeben.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.pruefungFreigeben();
 			}
 		});
-		
+
 		tablePruefungen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				JTable table = (JTable) evt.getSource();
@@ -391,7 +388,7 @@ public class PruefungsverwaltungView {
 	public JButton getBtnReset() {
 		return btnReset;
 	}
-	
+
 	public JButton getBtnFreigeben() {
 		return btnFreigeben;
 	}
