@@ -216,9 +216,9 @@ public class PruefungView {
 		gbc_panel_4.gridy = 0;
 		panel.add(panel_4, gbc_panel_4);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[] { 50, 0, 0 };
+		gbl_panel_4.columnWidths = new int[] { 0, 0 };
 		gbl_panel_4.rowHeights = new int[] { 20, 0, 0 };
-		gbl_panel_4.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_4.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
 		gbl_panel_4.rowWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		panel_4.setLayout(gbl_panel_4);
 		// t
@@ -228,21 +228,21 @@ public class PruefungView {
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
 		gbc_lblMatrikelnummer.fill = GridBagConstraints.VERTICAL;
 		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 0);
-		gbc_lblMatrikelnummer.gridx = 1;
+		gbc_lblMatrikelnummer.gridx = 0;
 		gbc_lblMatrikelnummer.gridy = 0;
 		panel_4.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 
 		txtMatrNr = new JTextField();
 		txtMatrNr.setHorizontalAlignment(SwingConstants.CENTER);
 		txtMatrNr.setForeground(Color.WHITE);
-		txtMatrNr.setFont(new Font("Verdana", Font.BOLD, 12));
+		txtMatrNr.setFont(new Font("Verdana", Font.BOLD, 24));
 		txtMatrNr.setText("115462");
 		txtMatrNr.setBorder(null);
 		txtMatrNr.setBackground(new Color(0, 155, 187));
 		txtMatrNr.setEditable(false);
 		txtMatrNr.setSelectedTextColor(new Color(0, 155, 187));
 		GridBagConstraints gbc_txtMatrNr = new GridBagConstraints();
-		gbc_txtMatrNr.gridx = 1;
+		gbc_txtMatrNr.gridx = 0;
 		gbc_txtMatrNr.gridy = 1;
 		panel_4.add(txtMatrNr, gbc_txtMatrNr);
 		txtMatrNr.setColumns(10);

@@ -124,6 +124,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblNewLabel_7, gbc_lblNewLabel_7);
 
 		txtTeilnehmer = new JTextField();
+		txtTeilnehmer.setEditable(false);
 		txtTeilnehmer.setBorder(null);
 		GridBagConstraints gbc_txtTeilnehmer = new GridBagConstraints();
 		gbc_txtTeilnehmer.insets = new Insets(0, 0, 5, 5);
@@ -143,6 +144,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblNewLabel_8, gbc_lblNewLabel_8);
 
 		txtMatrikelnr = new JTextField();
+		txtMatrikelnr.setEditable(false);
 		txtMatrikelnr.setBorder(null);
 		GridBagConstraints gbc_txtMatrikelnr = new GridBagConstraints();
 		gbc_txtMatrikelnr.insets = new Insets(0, 0, 5, 5);
@@ -162,6 +164,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		txtDauer = new JTextField();
+		txtDauer.setEditable(false);
 		txtDauer.setBorder(null);
 		GridBagConstraints gbc_txtDauer = new GridBagConstraints();
 		gbc_txtDauer.insets = new Insets(0, 0, 5, 0);
@@ -191,6 +194,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblStatus, gbc_lblStatus);
 
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setBorder(null);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
@@ -210,6 +214,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		textField_1.setBorder(null);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 0, 5);
@@ -229,6 +234,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		txtPunkte = new JTextField();
+		txtPunkte.setEditable(false);
 		txtPunkte.setBorder(null);
 		GridBagConstraints gbc_txtPunkte = new GridBagConstraints();
 		gbc_txtPunkte.fill = GridBagConstraints.HORIZONTAL;

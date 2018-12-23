@@ -27,6 +27,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
 
 public class AuswertungView {
 	private JTextField txtErreichtePunktzahl;
@@ -98,6 +102,9 @@ public class AuswertungView {
 		panel_3.add(lblErreichteGesamtpunktzahl, gbc_lblErreichteGesamtpunktzahl);
 
 		txtErreichtePunktzahl = new JTextField();
+		txtErreichtePunktzahl.setDisabledTextColor(Color.WHITE);
+		txtErreichtePunktzahl.setEditable(false);
+		txtErreichtePunktzahl.setBorder(null);
 		GridBagConstraints gbc_txtGesamtPunktzahl = new GridBagConstraints();
 		gbc_txtGesamtPunktzahl.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtGesamtPunktzahl.insets = new Insets(0, 0, 5, 5);
@@ -115,6 +122,8 @@ public class AuswertungView {
 		panel_3.add(lblVon, gbc_lblVon);
 
 		txtGesamtpunktzahl = new JTextField();
+		txtGesamtpunktzahl.setEditable(false);
+		txtGesamtpunktzahl.setBorder(null);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -133,6 +142,9 @@ public class AuswertungView {
 		panel_3.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 
 		txtMatrikelNr = new JTextField();
+		txtMatrikelNr.setDisabledTextColor(Color.WHITE);
+		txtMatrikelNr.setEditable(false);
+		txtMatrikelNr.setBorder(null);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -151,6 +163,8 @@ public class AuswertungView {
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
 
 		txtGesamtpunktzahlProzent = new JTextField();
+		txtGesamtpunktzahlProzent.setEditable(false);
+		txtGesamtpunktzahlProzent.setBorder(null);
 		GridBagConstraints gbc_txtGesamtpunktzahlProzent = new GridBagConstraints();
 		gbc_txtGesamtpunktzahlProzent.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtGesamtpunktzahlProzent.insets = new Insets(0, 0, 0, 5);
@@ -169,6 +183,8 @@ public class AuswertungView {
 		panel_3.add(lblAnzahlBonuspunkte, gbc_lblAnzahlBonuspunkte);
 
 		txtBonuspunkte = new JTextField();
+		txtBonuspunkte.setEditable(false);
+		txtBonuspunkte.setBorder(null);
 		GridBagConstraints gbc_txtBonuspunkte = new GridBagConstraints();
 		gbc_txtBonuspunkte.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtBonuspunkte.insets = new Insets(0, 0, 0, 5);
