@@ -188,6 +188,7 @@ public class AuswertungView {
 		panel_1.add(scrollPane, gbc_scrollPane);
 
 		table = new JTable();
+		table.setRowHeight(35);
 		scrollPane.setViewportView(table);
 
 		JPanel panel_2 = new JPanel();

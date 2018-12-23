@@ -32,6 +32,7 @@ import Controller.PruefungViewController;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Student;
+import javax.swing.border.LineBorder;
 
 public class PruefungView {
 	Pruefung pruefung;
@@ -95,6 +96,7 @@ public class PruefungView {
 		frame.getContentPane().add(aufgabenlisteScrollPane, BorderLayout.WEST);
 
 		tableAufgaben = new JTable();
+		tableAufgaben.setRowHeight(35);
 		tableAufgaben.setGridColor(new Color(255, 255, 255));
 		tableAufgaben.setBackground(new Color(255, 255, 255));
 		aufgabenlisteScrollPane.setViewportView(tableAufgaben);
