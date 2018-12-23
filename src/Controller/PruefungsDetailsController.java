@@ -97,7 +97,8 @@ public class PruefungsDetailsController {
 
 		try {
 			// Liste mit Teilnehmern der Prüfung erstellen
-			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
+			teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
+//			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 			Collections.sort(teilnehmer, new TeilnehmerComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
