@@ -43,96 +43,115 @@ public class LoginPruefungsverwaltungController {
 
 	// Get Benutzer und passwort von textfeld in view von Professor
 	public String getBenutzername() {
-		return view.getTFBenutzername().getText();
+		try {
+			return view.getTFBenutzername().getText();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public String getPasswort() {
-		char[] passwort = view.getTFPasswort().getPassword();
-		return String.valueOf(passwort);
+
+		try {
+			char[] passwort = view.getTFPasswort().getPassword();
+			return String.valueOf(passwort);
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 
 	public void einloggenDozent() {
-		
-		String bn;
-		String pw;
-		
-		
-		try{
-			
-			bn = getBenutzername();
-			
-		}catch(NullPointerException e){
-			
-			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Das Benutzername-Feld darf nicht leer sein!");
-		}
-		
-		try{
-			
-			pw = getPasswort();
-			
-		}catch(NullPointerException e){
-			
-			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Das Passwort-Feld darf nicht leer sein!");
-		}
-		
-		try {
 
-			this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
+		if (getBenutzername() == null || getBenutzername().length() == 0) {
+			view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
 
-			PruefungsverwaltungView view = new PruefungsverwaltungView();
+		} else if (getPasswort() == null || getPasswort().length() == 0) {
+			view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
+		} else {
 
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Benutzername oder Passwort nicht gefunden!");
-		}
+			try {
 
-		catch (javax.persistence.PersistenceException e) {
-			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
-					"Die Verbindung zur Datenbank konnte nicht hergestellt werden. Bitte überprüfen Sie Ihre Verbindung zum FH-Bielefeld Netzwerk!");
+				this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
+
+				PruefungsverwaltungView view = new PruefungsverwaltungView();
+
+			} catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
+						"Benutzername oder Passwort nicht gefunden!");
+			}
+
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
+						"Die Verbindung zur Datenbank konnte nicht hergestellt werden. Bitte überprüfen Sie Ihre Verbindung zum FH-Bielefeld Netzwerk!");
+			}
 		}
 
 	}
 
 	// Get Benutzer und passwort von textfeld in view von Student
 	public String getBenutzernameS() {
-		return viewS.getTFBenutzername().getText();
-	}
-
-	public String getPasswortS() {
-		char[] passwort = viewS.getTFPasswort().getPassword();
-		return String.valueOf(passwort);
-	}
-
-	public int getMatrikelNr() {
-		return Integer.parseInt(viewS.getTFMatrikelNr().getText());
-
-	}
-
-	public void einloggenStudent() {
 		try {
-			List<Student> studenten = db.readLogin(getMatrikelNr());
-			Student student = null;
-
-			if (studenten.size() >= 0) {
-
-				for (Student s : studenten) {
-					if (s.getPruefung().isFreigegeben() == true) {
-						student = s;
-					}
-				}
-
-				PruefungView pruefungViewS = new PruefungView(student);
-				student.setEingeloggt(true);
-				db.persistNutzer(student);
-				viewS.getLoginStudentFrame().dispose();
-
-			} else {
-				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Prüfung noch nicht freigegeben!");
-			}
+			return viewS.getTFBenutzername().getText();
 		} catch (Exception e) {
-
-			JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(), "Anmeldung fehlgeschlagen!");
-
+			return null;
 		}
 	}
 
+	public String getPasswortS() {
+		try {
+			char[] passwort = viewS.getTFPasswort().getPassword();
+			return String.valueOf(passwort);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public int getMatrikelNr() {
+		try {
+			return Integer.parseInt(viewS.getTFMatrikelNr().getText());
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+
+	public void einloggenStudent() {
+
+		if (getBenutzernameS() == null || getBenutzername().length() == 0) {
+			view.getFehlerLabel().setText("Benutzername darf nicht leer sein!");
+
+		} else if (getPasswortS() == null || getPasswort().length() == 0) {
+			view.getFehlerLabel().setText("Passwort darf nicht leer sein!");
+		} else if (getMatrikelNr() == 0) {
+			view.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
+		} else {
+
+			try {
+				List<Student> studenten = db.readLogin(getMatrikelNr());
+				Student student = null;
+
+				if (studenten.size() >= 0) {
+
+					for (Student s : studenten) {
+						if (s.getPruefung().isFreigegeben() == true) {
+							student = s;
+						}
+					}
+
+					PruefungView pruefungViewS = new PruefungView(student);
+					student.setEingeloggt(true);
+					db.persistNutzer(student);
+					viewS.getLoginStudentFrame().dispose();
+
+				} else {
+					viewS.getFehlerLabel().setText("Die Ihnen zugeteilte Prüfung wurde noch nicht freigegeben!");
+				}
+			} catch (Exception e) {
+
+				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen!");
+
+			}
+		}
+
+	}
 }

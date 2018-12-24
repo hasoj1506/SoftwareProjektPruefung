@@ -37,7 +37,12 @@ public class LoginPruefungsverwaltung {
 	private JTextField textFieldBenutzername;
 	private JPasswordField textFieldPasswort;
 	private JButton btnLogin;
+	private JLabel fehlerLabel;
 	
+	public JLabel getFehlerLabel() {
+		return fehlerLabel;
+	}
+
 	LoginPruefungsverwaltungController controller;
 
 
@@ -176,6 +181,11 @@ public class LoginPruefungsverwaltung {
 		gbc_panel_3.gridy = 5;
 		panel_1.add(panel_3, gbc_panel_3);
 		
+		fehlerLabel = new JLabel("");
+		fehlerLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		fehlerLabel.setForeground(Color.RED);
+		panel_3.add(fehlerLabel);
+		
 		btnLogin = new JButton("Login");
 		panel_3.add(btnLogin);
 		btnLogin.setForeground(new Color(51, 51, 51));
@@ -220,7 +230,6 @@ public class LoginPruefungsverwaltung {
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.einloggenDozent();
-				frame.dispose();
 			}
 		});
 		

@@ -98,12 +98,11 @@ public class PruefungsDetailsController {
 
 		try {
 			
-			db.getEm().clear();
 			// Liste mit Teilnehmern der Prüfung erstellen
 			teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
 //			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 			Collections.sort(teilnehmer, new TeilnehmerComparator());
-			db.refreshList(teilnehmer);
+
 			// Dem JTable das Model inklusive Liste zuweisen
 			tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
 					teilnehmer);
@@ -113,6 +112,12 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
 		}
+	}
+	
+	public void aktualisiereTeilnehmerTable() {
+		db.getEm().clear();
+		teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
+		db.getEm().refresh(teilnehmer);
 	}
 
 	public void fuelleTermineTable(Pruefung pruefung) {

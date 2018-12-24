@@ -51,6 +51,8 @@ public class LoginStudent {
 	
 	LoginPruefungsverwaltungController controller;
 	private JTextField textFieldMatrikelNr;
+	private JLabel fehlerLabel;
+
 
 
 	/**
@@ -164,7 +166,7 @@ public class LoginStudent {
 		gbl_panel_1.columnWidths = new int[]{121, 309, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
@@ -233,14 +235,25 @@ public class LoginStudent {
 		panel_1.add(textFieldPassword, gbc_textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.anchor = GridBagConstraints.EAST;
+		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 1;
+		gbc_panel_2.gridy = 5;
+		panel_1.add(panel_2, gbc_panel_2);
+		
+		fehlerLabel = new JLabel("");
+		fehlerLabel.setForeground(Color.RED);
+		fehlerLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		panel_2.add(fehlerLabel);
+		
 		btnLogin = new JButton("Login");
+		panel_2.add(btnLogin);
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
-		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
-		gbc_btnLogin.insets = new Insets(0, 0, 5, 0);
-		gbc_btnLogin.anchor = GridBagConstraints.EAST;
-		gbc_btnLogin.gridx = 1;
-		gbc_btnLogin.gridy = 5;
-		panel_1.add(btnLogin, gbc_btnLogin);
 		
 		JLabel lblVersion = new JLabel("Version: 1.1");
 		lblVersion.setForeground(new Color(255, 255, 255));
@@ -285,6 +298,10 @@ public class LoginStudent {
 		textFieldBenutzer.addActionListener(btnLogin.getActionListeners()[0]);
 		
 		textFieldPassword.addActionListener(btnLogin.getActionListeners()[0]);
+	}
+	
+	public JLabel getFehlerLabel() {
+		return fehlerLabel;
 	}
 
 }
