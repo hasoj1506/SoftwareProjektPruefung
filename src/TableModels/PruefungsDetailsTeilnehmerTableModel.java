@@ -1,7 +1,9 @@
 package TableModels;
 
+import java.awt.Image;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
 import Models.Aufgabe;
@@ -37,6 +39,11 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
+		Image greenImage = new ImageIcon(this.getClass().getResource("/greenIcon.png")).getImage();
+		ImageIcon greenIcon = new ImageIcon(greenImage);
+		Image redImage = new ImageIcon(this.getClass().getResource("/redIcon.png")).getImage();
+		ImageIcon redIcon = new ImageIcon(redImage);
+		
 		switch (col) {
 		case 0:
 			return studenten.get(row).getNachname();
@@ -48,9 +55,9 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 			return studenten.get(row).getErreichtePunktzahl();
 		case 4:
 			if(studenten.get(row).isEingeloggt() == false){
-				return "Nicht eingeloggt";
+				return redIcon;
 			} else if(studenten.get(row).isEingeloggt() == true){
-				return "Eingeloggt";
+				return greenIcon;
 			}
 		default:
 			return null;
