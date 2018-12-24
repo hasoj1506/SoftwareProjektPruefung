@@ -477,14 +477,14 @@ public class PruefungsDetailsController {
 				TableModel model = view.getTableTeilnehmer().getModel();
 				FileWriter excelWriter = new FileWriter(excelFile);
 
-				for (int i = 0; i < model.getColumnCount(); i++) {
+				for (int i = 0; i < model.getColumnCount()-1; i++) {
 					excelWriter.write(model.getColumnName(i) + "\t");
 				}
 
 				excelWriter.write("\n");
 
 				for (int i = 0; i < model.getRowCount(); i++) {
-					for (int j = 0; j < model.getColumnCount(); j++) {
+					for (int j = 0; j < model.getColumnCount()-1; j++) {
 						excelWriter.write(model.getValueAt(i, j).toString() + "\t");
 					}
 					excelWriter.write("\n");
