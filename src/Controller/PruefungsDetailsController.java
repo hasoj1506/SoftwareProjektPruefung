@@ -88,7 +88,7 @@ public class PruefungsDetailsController {
 		fuelleAufgabenTable(pruefung);
 		fuelleTermineTable(pruefung);
 		fuelleTeilnehmerTable(pruefung);
-		
+
 	}
 
 	public void fuelleTeilnehmerTable(Pruefung pruefung) {
@@ -97,15 +97,14 @@ public class PruefungsDetailsController {
 		JTable tableTeilnehmer = view.getTableTeilnehmer();
 
 		try {
-			
+
 			// Liste mit Teilnehmern der Prüfung erstellen
-			teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
-//			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
+			// teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
+			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 			Collections.sort(teilnehmer, new TeilnehmerComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-			tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(
-					teilnehmer);
+			tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(teilnehmer);
 			tableTeilnehmer.setModel(tableModelTeilnehmer);
 
 		} catch (Exception e) {
@@ -113,11 +112,30 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
 		}
 	}
-	
+
 	public void aktualisiereTeilnehmerTable() {
-		db.getEm().clear();
-		teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
-		db.getEm().refresh(teilnehmer);
+
+		// Zu füllende Tabelle der View
+		JTable tableTeilnehmer = view.getTableTeilnehmer();
+
+		try {
+
+			// Liste mit Teilnehmern der Prüfung erstellen
+			db.getEm().clear();
+			teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
+			for (Student s : teilnehmer) {
+				db.getEm().refresh(s);
+			}
+			Collections.sort(teilnehmer, new TeilnehmerComparator());
+
+			// Dem JTable das Model inklusive Liste zuweisen
+			tableModelTeilnehmer = new PruefungsDetailsTeilnehmerTableModel(teilnehmer);
+			tableTeilnehmer.setModel(tableModelTeilnehmer);
+
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view, "Teilnehmer-Tabelle konnte nicht aktualisiert werden!");
+		}
 	}
 
 	public void fuelleTermineTable(Pruefung pruefung) {
@@ -550,7 +568,7 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
-	
+
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
 		return tableModelAufgaben;
 	}

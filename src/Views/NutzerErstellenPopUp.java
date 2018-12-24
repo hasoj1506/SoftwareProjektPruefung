@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import DatabaseService.DatabaseService;
 import Models.Pruefung;
 import Models.Student;
 
@@ -41,6 +42,7 @@ public class NutzerErstellenPopUp {
 	private JButton btnAbbrechen;
 	private JLabel lblMatrikelnummer;
 	private JTextField textFieldMatrikelNr;
+	private DatabaseService db;
 
 	/**
 	 * @wbp.parser.constructor
@@ -271,6 +273,7 @@ public class NutzerErstellenPopUp {
 					Student student = new Student(vorname, nachname, matrikelnummer);
 					student.setPruefung(pruefung);
 					pruefung.addStudent(student);
+					
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
 					frmNutzer.dispose();

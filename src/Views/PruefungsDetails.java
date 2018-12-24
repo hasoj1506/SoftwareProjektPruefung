@@ -649,7 +649,7 @@ public class PruefungsDetails extends JFrame {
 		
 		btnAktualisieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.fuelleTeilnehmerTable(pruefung);
+				controller.aktualisiereTeilnehmerTable();
 			}
 		});
 
