@@ -164,9 +164,9 @@ public class LoginStudent {
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{121, 309, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 33, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
@@ -194,7 +194,7 @@ public class LoginStudent {
 		GridBagConstraints gbc_lblDatenbank = new GridBagConstraints();
 		gbc_lblDatenbank.insets = new Insets(0, 0, 5, 0);
 		gbc_lblDatenbank.gridx = 1;
-		gbc_lblDatenbank.gridy = 2;
+		gbc_lblDatenbank.gridy = 1;
 		panel_1.add(lblDatenbank, gbc_lblDatenbank);
 		
 		JLabel lblBenutzername = new JLabel("Benutzername");
@@ -204,7 +204,7 @@ public class LoginStudent {
 		gbc_lblBenutzername.anchor = GridBagConstraints.EAST;
 		gbc_lblBenutzername.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBenutzername.gridx = 0;
-		gbc_lblBenutzername.gridy = 3;
+		gbc_lblBenutzername.gridy = 2;
 		panel_1.add(lblBenutzername, gbc_lblBenutzername);
 		
 		textFieldBenutzer = new JTextField();
@@ -212,7 +212,7 @@ public class LoginStudent {
 		gbc_textFieldBenutzer.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldBenutzer.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldBenutzer.gridx = 1;
-		gbc_textFieldBenutzer.gridy = 3;
+		gbc_textFieldBenutzer.gridy = 2;
 		panel_1.add(textFieldBenutzer, gbc_textFieldBenutzer);
 		textFieldBenutzer.setColumns(10);
 		
@@ -223,7 +223,7 @@ public class LoginStudent {
 		gbc_lblPasswort.anchor = GridBagConstraints.EAST;
 		gbc_lblPasswort.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPasswort.gridx = 0;
-		gbc_lblPasswort.gridy = 4;
+		gbc_lblPasswort.gridy = 3;
 		panel_1.add(lblPasswort, gbc_lblPasswort);
 		
 		textFieldPassword = new JPasswordField();
@@ -231,19 +231,21 @@ public class LoginStudent {
 		gbc_textFieldPassword.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPassword.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPassword.gridx = 1;
-		gbc_textFieldPassword.gridy = 4;
+		gbc_textFieldPassword.gridy = 3;
 		panel_1.add(textFieldPassword, gbc_textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(0,155,187));
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.gridwidth = 2;
 		gbc_panel_2.anchor = GridBagConstraints.EAST;
 		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
-		gbc_panel_2.gridx = 1;
-		gbc_panel_2.gridy = 5;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 4;
 		panel_1.add(panel_2, gbc_panel_2);
 		
 		fehlerLabel = new JLabel("");
@@ -261,7 +263,7 @@ public class LoginStudent {
 		gbc_lblVersion.insets = new Insets(0, 0, 0, 5);
 		gbc_lblVersion.anchor = GridBagConstraints.WEST;
 		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 6;
+		gbc_lblVersion.gridy = 5;
 		panel_1.add(lblVersion, gbc_lblVersion);
 		frame.pack();
 		

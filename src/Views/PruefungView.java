@@ -470,6 +470,10 @@ public class PruefungView {
 		return txtAufgabentitel;
 	}
 
+	public PruefungViewController getController() {
+		return controller;
+	}
+
 	public JTextField getTxtAufgabentext() {
 		return txtAufgabentext;
 	}

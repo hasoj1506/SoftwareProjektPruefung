@@ -1,5 +1,6 @@
 package Controller;
 
+import java.sql.SQLException;
 import java.sql.SQLRecoverableException;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,14 +77,9 @@ public class LoginPruefungsverwaltungController {
 
 				PruefungsverwaltungView view = new PruefungsverwaltungView();
 
-			} catch (NullPointerException e) {
-				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
-						"Benutzername oder Passwort nicht gefunden!");
-			}
-
-			catch (Exception e) {
-				JOptionPane.showMessageDialog(viewS.getLoginStudentFrame(),
-						"Die Verbindung zur Datenbank konnte nicht hergestellt werden. Bitte überprüfen Sie Ihre Verbindung zum FH-Bielefeld Netzwerk!");
+			} catch (Exception e) {
+				view.getFehlerLabel().setText(
+						"Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
 			}
 		}
 
@@ -117,13 +113,13 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggenStudent() {
 
-		if (getBenutzernameS() == null || getBenutzername().length() == 0) {
-			view.getFehlerLabel().setText("Benutzername darf nicht leer sein!");
+		if (getBenutzernameS() == null || getBenutzernameS().length() == 0) {
+			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
 
-		} else if (getPasswortS() == null || getPasswort().length() == 0) {
-			view.getFehlerLabel().setText("Passwort darf nicht leer sein!");
+		} else if (getPasswortS() == null || getPasswortS().length() == 0) {
+			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
 		} else if (getMatrikelNr() == 0) {
-			view.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
+			viewS.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
 		} else {
 
 			try {
@@ -135,6 +131,8 @@ public class LoginPruefungsverwaltungController {
 					for (Student s : studenten) {
 						if (s.getPruefung().isFreigegeben() == true) {
 							student = s;
+						} else {
+							viewS.getFehlerLabel().setText("Die Ihnen zugeteilte Prüfung wurde noch nicht freigegeben!");
 						}
 					}
 
@@ -144,13 +142,14 @@ public class LoginPruefungsverwaltungController {
 					viewS.getLoginStudentFrame().dispose();
 
 				} else {
-					viewS.getFehlerLabel().setText("Die Ihnen zugeteilte Prüfung wurde noch nicht freigegeben!");
+					viewS.getFehlerLabel().setText("Kein Teilnehmer mit dieser Matrikelnummer gefunden!");
 				}
-			} catch (Exception e) {
+				
+			}catch (Exception e) {
 
-				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen!");
+				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
 
-			}
+			} 
 		}
 
 	}

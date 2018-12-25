@@ -42,6 +42,10 @@ public class PruefungViewController {
 		setPruefungstitel(pruefung);
 		setMatrNummer(student);
 		aufgabeAuswaehlenAufforderung();
+
+	}
+
+	private void fuelleAufgabenTabelle() {
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 
 		if (pruefung.isVerwuerfelt()) {
@@ -51,7 +55,6 @@ public class PruefungViewController {
 		view.getAufgabenTable().setModel(model);
 		view.getAufgabenTable().setRowSelectionInterval(0, 0);
 		fuelleAufgabe();
-
 	}
 
 	// Josah Weber

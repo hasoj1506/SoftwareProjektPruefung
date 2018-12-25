@@ -9,6 +9,7 @@ public class Student extends Nutzer{
 	
 	private int matrikelNr;
 	private double erreichtePunktzahl;
+	private int bonusPunkte;
 	private boolean eingeloggt = false;
 	
 	public Student() {
@@ -43,6 +44,14 @@ public class Student extends Nutzer{
 
 	public void setErreichtePunktzahl(double erreichtePunktzahl) {
 		this.erreichtePunktzahl = erreichtePunktzahl;
+	}
+
+	public int getBonusPunkte() {
+		return bonusPunkte;
+	}
+
+	public void setBonusPunkte(int bonusPunkte) {
+		this.bonusPunkte = bonusPunkte;
 	}
 
 }
