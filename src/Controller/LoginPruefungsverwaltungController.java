@@ -1,11 +1,6 @@
 package Controller;
 
-import java.sql.SQLException;
-import java.sql.SQLRecoverableException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import DatabaseService.DatabaseService;
 import Models.Nutzer;
@@ -30,7 +25,7 @@ public class LoginPruefungsverwaltungController {
 	private List<String> passwoerterListe;
 
 	// Zugriff auf die Datenbank
-	DatabaseService db;
+	DatabaseService db = DatabaseService.getInstance();
 
 	// Konstruktor Professor
 	public LoginPruefungsverwaltungController(LoginPruefungsverwaltung view) {
@@ -113,16 +108,16 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggenStudent() {
 
-		if (getBenutzernameS() == null || getBenutzernameS().length() == 0) {
-			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-
-		} else if (getPasswortS() == null || getPasswortS().length() == 0) {
-			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-		} else if (getMatrikelNr() == 0) {
-			viewS.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
-		} else {
-
-			try {
+//		if (getBenutzernameS() == null || getBenutzernameS().length() == 0) {
+//			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
+//
+//		} else if (getPasswortS() == null || getPasswortS().length() == 0) {
+//			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
+//		} else if (getMatrikelNr() == 0) {
+//			viewS.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
+//		} else {
+//
+//			try {
 				List<Student> studenten = db.readLogin(getMatrikelNr());
 				Student student = null;
 
@@ -141,15 +136,15 @@ public class LoginPruefungsverwaltungController {
 					db.persistNutzer(student);
 					viewS.getLoginStudentFrame().dispose();
 
-				} else {
-					viewS.getFehlerLabel().setText("Kein Teilnehmer mit dieser Matrikelnummer gefunden!");
-				}
-				
-			}catch (Exception e) {
-
-				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
-
-			} 
+//				} else {
+//					viewS.getFehlerLabel().setText("Kein Teilnehmer mit dieser Matrikelnummer gefunden!");
+//				}
+//				
+//			}catch (Exception e) {
+//
+//				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
+//
+//			} 
 		}
 
 	}

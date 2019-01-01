@@ -68,9 +68,13 @@ public class PruefungView {
 	public PruefungView(Student student) {
 		this.student = student;
 		this.pruefung = student.getPruefung();
-	
-		erstellePruefungView();
 		this.controller = new PruefungViewController(this, pruefung, student);
+		erstellePruefungView();
+		
+		controller.setPruefungstitel(pruefung);
+		controller.setMatrNummer(student);
+		controller.aufgabeAuswaehlenAufforderung();
+		
 		btnAction();
 		
 		PruefungEinweisungPopUp pop = new PruefungEinweisungPopUp(student, this);

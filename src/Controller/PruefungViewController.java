@@ -39,9 +39,6 @@ public class PruefungViewController {
 		this.pruefung = pruefung;
 		this.student = student;
 		this.aufgaben = new ArrayList<Aufgabe>(pruefung.getAufgaben());
-		setPruefungstitel(pruefung);
-		setMatrNummer(student);
-		aufgabeAuswaehlenAufforderung();
 
 	}
 
