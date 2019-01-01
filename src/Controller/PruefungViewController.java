@@ -169,7 +169,7 @@ public class PruefungViewController {
 	}
 
 	public void aufgabeAuswaehlenAufforderung() {
-		view.getTxtAufgabentext().setText("Bitte wähle links eine Aufgabe aus!");
+		view.getTxtAufgabentext().setText("Es hat einen Fehler gegeben!");
 		view.getTxtAufgabentext().setForeground(Color.RED);
 	}
 
