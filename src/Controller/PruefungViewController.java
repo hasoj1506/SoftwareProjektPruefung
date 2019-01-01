@@ -42,7 +42,7 @@ public class PruefungViewController {
 
 	}
 
-	private void fuelleAufgabenTabelle() {
+	public void fuelleAufgabenTabelle() {
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 
 		if (pruefung.isVerwuerfelt()) {
@@ -75,8 +75,6 @@ public class PruefungViewController {
 		if (reply == JOptionPane.YES_OPTION) {
 			abgegeben = true;
 			ergebnis = berechneErgebnis();
-			student.setErreichtePunktzahl(ergebnis);
-			student.setEingeloggt(false);
 
 		}
 
@@ -91,9 +89,8 @@ public class PruefungViewController {
 		}
 
 		// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-		 service.persistNutzer(student);
 		view.getFrame().dispose();
-		AuswertungView auswertungsView = new AuswertungView(student);
+		AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
 
 	}
 
@@ -168,10 +165,10 @@ public class PruefungViewController {
 		abgeben();
 	}
 
-	public void aufgabeAuswaehlenAufforderung() {
+	/*public void aufgabeAuswaehlenAufforderung() {
 		view.getTxtAufgabentext().setText("Es hat einen Fehler gegeben!");
 		view.getTxtAufgabentext().setForeground(Color.RED);
-	}
+	}*/
 
 	public double berechneErgebnis() {
 

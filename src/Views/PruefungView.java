@@ -73,7 +73,6 @@ public class PruefungView {
 		
 		controller.setPruefungstitel(pruefung);
 		controller.setMatrNummer(student);
-		controller.aufgabeAuswaehlenAufforderung();
 		
 		btnAction();
 		

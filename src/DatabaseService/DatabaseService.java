@@ -56,31 +56,31 @@ public class DatabaseService {
 
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
-		em.persist(nutzer);
+		em.merge(nutzer);
 		em.getTransaction().commit();
 	}
 
 	public void persistPruefung(Pruefung pruefung) {
 		em.getTransaction().begin();
-		em.persist(pruefung);
+		em.merge(pruefung);
 		em.getTransaction().commit();
 	}
 
 	public void persistAufgabe(Aufgabe aufgabe) {
 		em.getTransaction().begin();
-		em.persist(aufgabe);
+		em.merge(aufgabe);
 		em.getTransaction().commit();
 	}
 
 	public void persistAntwort(Antwort antwort) {
 		em.getTransaction().begin();
-		em.persist(antwort);
+		em.merge(antwort);
 		em.getTransaction().commit();
 	}
 
 	public void persistTermin(Termin termin) {
 		em.getTransaction().begin();
-		em.persist(termin);
+		em.merge(termin);
 		em.getTransaction().commit();
 	}
 

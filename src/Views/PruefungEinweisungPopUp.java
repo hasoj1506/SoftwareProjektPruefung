@@ -274,7 +274,7 @@ public class PruefungEinweisungPopUp {
 				frame.dispose();
 				view.getFrame().setEnabled(true);
 				view.getFrame().setAlwaysOnTop(true);
-				view.getController().fuelleAufgabe();
+				view.getController().fuelleAufgabenTabelle();
 				view.timerAction(view.getPruefung().getDauer() * 60);
 
 			}

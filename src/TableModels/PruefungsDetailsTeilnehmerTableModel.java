@@ -20,7 +20,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.studenten = studenten;
 	}
 
-	String[] columnNames = { "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Angemeldet"};
+	String[] columnNames = { "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet"};
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -54,6 +54,8 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		case 3:
 			return studenten.get(row).getErreichtePunktzahl();
 		case 4:
+			return studenten.get(row).getBonusPunkte();
+		case 5:
 			if(studenten.get(row).isEingeloggt() == false){
 				return redIcon;
 			} else if(studenten.get(row).isEingeloggt() == true){

@@ -28,11 +28,15 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
+
+import DatabaseService.DatabaseService;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 
-public class AuswertungView {
+public class AuswertungView extends JFrame{
+	
 	private JTextField txtErreichtePunktzahl;
 	private JTextField txtGesamtpunktzahlProzent;
 	private JTextField txtBonuspunkte;
@@ -43,12 +47,19 @@ public class AuswertungView {
 	private JFrame frame;
 
 	Student student;
+	
+	private double erreichtePunktzahl;
+	private int bonusPunkte;
+	
+	DatabaseService service = DatabaseService.getInstance();
 
-	public AuswertungView(Student student) {
+	public AuswertungView(Student student, double erreichtePunktzahl) {
 		onCreate();
 		this.student = student;
+		this.erreichtePunktzahl = erreichtePunktzahl;
 		fuelleAuswertung();
 		btnAction();
+		setStudentErgebnis();
 	}
 
 	public void onCreate() {
@@ -223,7 +234,7 @@ public class AuswertungView {
 
 	public void fuelleAuswertung() {
 
-		double prozent = (student.getErreichtePunktzahl() / student.getPruefung().getPunkte()) * 100;
+		double prozent = (this.erreichtePunktzahl / student.getPruefung().getPunkte()) * 100;
 		int bonusPunkte = 0;
 
 		if (prozent >= 95) {
@@ -241,10 +252,12 @@ public class AuswertungView {
 		} else {
 			bonusPunkte = 0;
 		}
+		
+		this.bonusPunkte = bonusPunkte;
 
 		txtMatrikelNr.setText(String.valueOf(student.getMatrikelNr()));
 		txtGesamtpunktzahl.setText(String.valueOf(student.getPruefung().getPunkte()));
-		txtErreichtePunktzahl.setText(String.valueOf(student.getErreichtePunktzahl()));
+		txtErreichtePunktzahl.setText(String.valueOf(this.erreichtePunktzahl));
 		txtGesamtpunktzahlProzent.setText(String.valueOf((Math.round(prozent) * 100) / 100));
 		txtBonuspunkte.setText(String.valueOf(bonusPunkte));
 
@@ -259,8 +272,18 @@ public class AuswertungView {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				
 			}
 
 		});
+		
 	}
+	
+	public void setStudentErgebnis(){
+		student.setErreichtePunktzahl(erreichtePunktzahl);
+		student.setBonusPunkte(bonusPunkte);
+		student.setEingeloggt(false);
+		service.persistNutzer(student);
+	}
+	
 }
