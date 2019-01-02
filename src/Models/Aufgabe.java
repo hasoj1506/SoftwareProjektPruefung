@@ -31,7 +31,7 @@ public class Aufgabe {
 
 	}
 
-	public Aufgabe(String aufgabentitel, int punktzahl, String frageStellung, Pruefung pruefung) {
+	public Aufgabe(String aufgabentitel, double punktzahl, String frageStellung, Pruefung pruefung) {
 
 		super();
 
