@@ -17,6 +17,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 
 import Models.Nutzer;
+import Models.Student;
 
 import javax.swing.JTextArea;
 import java.awt.Font;
@@ -34,14 +35,14 @@ public class PruefungEinweisungPopUp {
 	private JFrame frame;
 
 	private JButton btnNewButton;
-	private Nutzer nutzer;
+	private Student student;
 	private PruefungView view;
 	private JTextField textField;
 
-	public PruefungEinweisungPopUp(Nutzer nutzer, PruefungView view) {
+	public PruefungEinweisungPopUp(Student student, PruefungView view) {
 
 		this.view = view;
-		this.nutzer = nutzer;
+		this.student = student;
 
 		onCreate();
 		btnAction();
@@ -83,14 +84,7 @@ public class PruefungEinweisungPopUp {
 		JTextArea txtrTestTestTest = new JTextArea();
 		txtrTestTestTest.setEditable(false);
 		txtrTestTestTest.setFont(new Font("Verdana", Font.PLAIN, 14));
-		txtrTestTestTest.setText("Willkommen zum digitalen Pr\u00FCfsystem examo!\r\n\r\n"
-				+ "Bevor es los geht ein paar wichtige Informationen vorab:\r\n"
-				+ "In der gleich folgenden Pr\u00FCfung findest du mehrere Aufgaben zum vorgebenen Thema.\r\n"
-				+ "Links in der Liste kannst du zwischen den Aufgaben hin und her springen\r\noder du verwendest die \"Vorher\" , bzw. \"N\u00E4chste\" - Buttons. \r\n"
-				+ "Die Aufgaben sind \"Multiple-Choice\". Es kann mehrere richtige Antworten \r\ngeben, bitte markiere die korrekten Antworten mit einem H\u00E4ckchen. \r\n"
-				+ "Wenn du vor der vorgebenen Zeit fertig sein solltest benutze \r\nden \"Abgabe\" - Button, unten rechts. Der Timer oben rechts gibt die restliche Zeit vor. \r\n"
-				+ "Wenn die Zeit vorbei ist, wird die Pr\u00FCfung automatisch abgegeben.\r\n\r\nBitte klicke erst auf \"Los geht's\", wenn der Dozent bescheid gibt.\r\n\r\n"
-				+ "Bitte \u00FCberpr\u00FCfe vorher noch folgende Angaben auf ihre Richtigkeit:");
+		txtrTestTestTest.setText("Willkommen zum digitalen Pr\u00FCfsystem examo!\r\n\r\nBevor es los geht ein paar wichtige Informationen vorab:\r\nIn der gleich folgenden Pr\u00FCfung findest Du mehrere Aufgaben zum vorgegebenen Thema.\r\nLinks in der Liste kannst Du zwischen den Aufgaben hin- und herspringen\r\noder Du verwendest die \"Vorherige-/N\u00E4chste-Buttons\". \r\nDie Aufgaben sind \"Multiple-Choice\". Es kann mehrere richtige Antworten \r\ngeben, bitte markiere die korrekten Antworten mit einem H\u00E4kchen. \r\nWenn Du vor der vorgegebenen Zeit fertig bist, benutze den \"Abgabe-Button\" unten rechts.\r\nDer Timer oben rechts gibt die restliche Zeit vor. \r\nWenn die Zeit vorbei ist, wird die Pr\u00FCfung automatisch abgegeben.\r\n\r\nBitte klicke erst auf \"Los geht's\", wenn der Dozent dazu auffordert.\r\n\r\nBitte \u00FCberpr\u00FCfe vorher noch folgende Angaben auf ihre Richtigkeit:");
 		txtrTestTestTest.setRows(4);
 		GridBagConstraints gbc_txtrTestTestTest = new GridBagConstraints();
 		gbc_txtrTestTestTest.insets = new Insets(0, 0, 5, 5);
@@ -292,13 +286,13 @@ public class PruefungEinweisungPopUp {
 
 	public void fuelleFelder() {
 
-		txtTeilnehmer.setText(this.nutzer.getVorname() + " " + this.nutzer.getNachname());
-		txtMatrikelnr.setText(String.valueOf(this.nutzer.getNutzerId()));
-		textField_1.setText(String.valueOf(this.nutzer.getPruefung().getDauer()) + " Minuten");
-		txtDauer.setText(this.nutzer.getPruefung().getBezeichnung());
-		txtPunkte.setText(String.valueOf(this.nutzer.getPruefung().getPunkte()));
+		txtTeilnehmer.setText(this.student.getVorname() + " " + this.student.getNachname());
+		txtMatrikelnr.setText(String.valueOf(this.student.getMatrikelNr()));
+		textField_1.setText(String.valueOf(this.student.getPruefung().getDauer()) + " Minuten");
+		txtDauer.setText(this.student.getPruefung().getBezeichnung());
+		txtPunkte.setText(String.valueOf(this.student.getPruefung().getPunkte()));
 		
-		if(this.nutzer.getPruefung().isFreigegeben() == false) {
+		if(this.student.getPruefung().isFreigegeben() == true) {
 			textField.setText("Freigegeben");
 		}else {
 			textField.setText("Gesperrt");
