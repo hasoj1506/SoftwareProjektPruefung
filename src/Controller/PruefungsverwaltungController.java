@@ -2,11 +2,14 @@ package Controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import DatabaseService.DatabaseService;
+import Models.Antwort;
+import Models.Aufgabe;
 import Models.Pruefung;
 import TableComparatoren.PruefungComparator;
 import TableModels.PruefungsverwaltungTableModel;
@@ -121,8 +124,26 @@ public class PruefungsverwaltungController {
 				duplikat.setBezeichnung(zuDuplizierendePrüfung.getBezeichnung() + " Kopie");
 				duplikat.setDauer(zuDuplizierendePrüfung.getDauer());
 				duplikat.setPunkte(zuDuplizierendePrüfung.getPunkte());
-				duplikat.setAufgaben(zuDuplizierendePrüfung.getAufgaben());
-
+				
+				for(Aufgabe a : zuDuplizierendePrüfung.getAufgaben()){
+					Aufgabe aufgabe = new Aufgabe();
+					
+					for(Antwort ant : a.getAntworten()){
+						Antwort antwort = new Antwort();
+						antwort.setAntworttext(ant.getAntworttext());
+						antwort.setAufgabe(aufgabe);
+						antwort.setIstRichtig(ant.isIstRichtig());
+						aufgabe.addAntwort(antwort);
+					}
+					aufgabe.setAufgabentitel(a.getAufgabentitel());
+					aufgabe.setFrageStellung(a.getFrageStellung());
+					aufgabe.setPruefung(duplikat);
+					aufgabe.setPunktzahl(a.getPunktzahl());
+					
+					duplikat.addAufgabe(aufgabe);
+				}
+				
+				
 				// Das Duplikat in die Datenbank schreiben und die Tabelle
 				// aktualisieren
 				db.persistPruefung(duplikat);
