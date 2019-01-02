@@ -124,11 +124,13 @@ public class PruefungsverwaltungController {
 				duplikat.setBezeichnung(zuDuplizierendePrüfung.getBezeichnung() + " Kopie");
 				duplikat.setDauer(zuDuplizierendePrüfung.getDauer());
 				duplikat.setPunkte(zuDuplizierendePrüfung.getPunkte());
-				
-				for(Aufgabe a : zuDuplizierendePrüfung.getAufgaben()){
+
+				// Folgendes ist notwendig, um neue Aufgaben/Antworten-Entities
+				// in die DB zu speichern
+				for (Aufgabe a : zuDuplizierendePrüfung.getAufgaben()) {
 					Aufgabe aufgabe = new Aufgabe();
-					
-					for(Antwort ant : a.getAntworten()){
+
+					for (Antwort ant : a.getAntworten()) {
 						Antwort antwort = new Antwort();
 						antwort.setAntworttext(ant.getAntworttext());
 						antwort.setAufgabe(aufgabe);
@@ -139,11 +141,10 @@ public class PruefungsverwaltungController {
 					aufgabe.setFrageStellung(a.getFrageStellung());
 					aufgabe.setPruefung(duplikat);
 					aufgabe.setPunktzahl(a.getPunktzahl());
-					
+
 					duplikat.addAufgabe(aufgabe);
 				}
-				
-				
+
 				// Das Duplikat in die Datenbank schreiben und die Tabelle
 				// aktualisieren
 				db.persistPruefung(duplikat);
@@ -218,38 +219,38 @@ public class PruefungsverwaltungController {
 		fuelleTabellePruefungsverwaltung();
 		view.getBtnReset().setVisible(false);
 	}
-	
-	
+
 	public void pruefungFreigeben() {
-		if(view.getTablePruefungen().getSelectedRow() > -1) {
-			
+		if (view.getTablePruefungen().getSelectedRow() > -1) {
+
 			int selection = view.getTablePruefungen().getSelectedRow();
 			Pruefung pruefungZumFreigeben = pruefungen.get(selection);
-			
-			if(pruefungZumFreigeben.isFreigegeben() == false) {
+
+			if (pruefungZumFreigeben.isFreigegeben() == false) {
 				pruefungZumFreigeben.setFreigegeben(true);
 				db.persistPruefung(pruefungZumFreigeben);
 				view.getBtnFreigeben().setText("Sperren");
-			}else {
+			} else {
 				pruefungZumFreigeben.setFreigegeben(false);
 				db.persistPruefung(pruefungZumFreigeben);
 				view.getBtnFreigeben().setText("Freigeben");
 			}
-			
+
 			fuelleTabellePruefungsverwaltung();
-			
-		}else {
-			JOptionPane.showMessageDialog(view.getFrame(), "Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
+
+		} else {
+			JOptionPane.showMessageDialog(view.getFrame(),
+					"Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
 		}
-		
+
 	}
-	
+
 	public void aendereBtnFreigeben() {
-		
+
 		int selection = view.getTablePruefungen().getSelectedRow();
 		Pruefung pruefungZumFreigeben = pruefungen.get(selection);
-		
-		if(pruefungZumFreigeben.isFreigegeben() == true) {
+
+		if (pruefungZumFreigeben.isFreigegeben() == true) {
 			view.getBtnFreigeben().setText("Sperren");
 		} else {
 			view.getBtnFreigeben().setText("Freigeben");
