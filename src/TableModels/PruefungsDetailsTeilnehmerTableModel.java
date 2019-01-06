@@ -20,7 +20,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.studenten = studenten;
 	}
 
-	String[] columnNames = { "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet"};
+	String[] columnNames = { "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -43,7 +43,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		ImageIcon greenIcon = new ImageIcon(greenImage);
 		Image redImage = new ImageIcon(this.getClass().getResource("/redIcon.png")).getImage();
 		ImageIcon redIcon = new ImageIcon(redImage);
-		
+
 		switch (col) {
 		case 0:
 			return studenten.get(row).getNachname();
@@ -56,18 +56,18 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		case 4:
 			return studenten.get(row).getBonusPunkte();
 		case 5:
-			if(studenten.get(row).isEingeloggt() == false){
+			if (studenten.get(row).isEingeloggt() == false) {
 				return redIcon;
-			} else if(studenten.get(row).isEingeloggt() == true){
+			} else if (studenten.get(row).isEingeloggt() == true) {
 				return greenIcon;
 			}
 		default:
 			return null;
 		}
 	}
-	
+
 	public void setList(List<Student> studenten) {
-		
+
 		this.studenten = studenten;
 	}
 

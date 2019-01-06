@@ -1,15 +1,28 @@
 package Views;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-import Models.Antwort;
-import Models.Pruefung;
-import Models.Termin;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import Models.Pruefung;
+import Models.Termin;
 
 //Josah Weber
 public class TerminErstellenPopUp {
@@ -40,7 +53,6 @@ public class TerminErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
-		addActionListeners();
 	}
 
 	// Konstruktor zum bearbeiten eines Termin
@@ -49,15 +61,13 @@ public class TerminErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, termin);
-		addActionListeners();
 		fuelleTerminPopUp(termin);
 	}
 
 	public void onCreate() {
 
 		frmTermin = new JFrame("Termin");
-		frmTermin.setSize(new Dimension(500, 250)); // Frame hat nicht
-													// verstellbare feste Größe
+		frmTermin.setSize(new Dimension(500, 250));
 		frmTermin.setResizable(false);
 		frmTermin.setMinimumSize(new Dimension(500, 250));
 		frmTermin.setMaximumSize(new Dimension(500, 250));
@@ -65,19 +75,19 @@ public class TerminErstellenPopUp {
 
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frmTermin.setIconImage(icon1);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 204));
 		frmTermin.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
-				btnOk = new JButton("Speichern");
-				btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
-				btnOk.setMinimumSize(new Dimension(100, 35));
-				btnOk.setMaximumSize(new Dimension(100, 35));
-				btnOk.setSize(new Dimension(100, 35));
-				panel.add(btnOk);
-		
+
+		btnOk = new JButton("Speichern");
+		btnOk.setFont(new Font("Verdana", Font.PLAIN, 16));
+		btnOk.setMinimumSize(new Dimension(100, 35));
+		btnOk.setMaximumSize(new Dimension(100, 35));
+		btnOk.setSize(new Dimension(100, 35));
+		panel.add(btnOk);
+
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel.add(btnAbbrechen);
@@ -151,8 +161,7 @@ public class TerminErstellenPopUp {
 		frmTermin.setDefaultCloseOperation(frmTermin.DISPOSE_ON_CLOSE);
 		frmTermin.setVisible(true);
 		frmTermin.pack();
-		frmTermin.setLocationRelativeTo(null); // Frame wird in der Mitte des
-												// Bildschirms erzeugt
+		frmTermin.setLocationRelativeTo(null);
 	}
 
 	public JFrame getFrmTermin() {
@@ -169,13 +178,12 @@ public class TerminErstellenPopUp {
 	// ActionListener beim Bearbeiten eines Termins
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Termin termin) {
 
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
-														// wenn "Ok" gedrückt
-														// wurde
+		// wenn speichern geklickt wird
+		btnOk.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//Werte der Felder holen
+
+				// Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
@@ -184,8 +192,8 @@ public class TerminErstellenPopUp {
 				textFieldDatum.setBackground(Color.WHITE);
 				textFieldUhrzeit.setBackground(Color.WHITE);
 				textFieldRaum.setBackground(Color.WHITE);
-				
-				//Bei gültigen Eingaben Termin bearbeiten
+
+				// Bei gültigen Eingaben Termin bearbeiten
 				if (datum.length() != 10) {
 					textFieldDatum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
@@ -207,30 +215,24 @@ public class TerminErstellenPopUp {
 			}
 		});
 
-	}
-	
-	//ActionListener zum schließen des Pop Ups
-	public void addActionListeners() {
-		
+		// wenn abbrechen geklickt wird
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmTermin.dispose();
 			}
 		});
+
 	}
-	
-	
 
 	// ActionListener beim Erstellen eines Termins
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
 
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
-														// wenn "Ok" gedrückt
-														// wurde
+		// wenn speichern geklickt wird
+		btnOk.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//Werte der Felder holen 
+
+				// Werte der Felder holen
 				datum = textFieldDatum.getText();
 				uhrzeit = textFieldUhrzeit.getText();
 				raum = textFieldRaum.getText();
@@ -239,8 +241,8 @@ public class TerminErstellenPopUp {
 				textFieldDatum.setBackground(Color.WHITE);
 				textFieldUhrzeit.setBackground(Color.WHITE);
 				textFieldRaum.setBackground(Color.WHITE);
-				
-				//Bei gültigen Eingaben Termin erstellen
+
+				// Bei gültigen Eingaben Termin erstellen
 				if (datum.length() != 10) {
 					textFieldDatum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
@@ -258,6 +260,13 @@ public class TerminErstellenPopUp {
 
 					frmTermin.dispose();
 				}
+			}
+		});
+
+		// wenn abbrechen geklickt wird
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmTermin.dispose();
 			}
 		});
 

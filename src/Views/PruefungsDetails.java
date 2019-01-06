@@ -1,43 +1,33 @@
 package Views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
 import Controller.PruefungsDetailsController;
-import Models.Aufgabe;
-import Models.Nutzer;
 import Models.Pruefung;
-import Models.Termin;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import java.awt.GridLayout;
-import java.awt.Image;
-
-import javax.swing.JSeparator;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import java.awt.Panel;
-import javax.swing.UIManager;
 
 //Josah Weber  
 public class PruefungsDetails extends JFrame {
@@ -105,7 +95,6 @@ public class PruefungsDetails extends JFrame {
 		punkteCheck();
 	}
 
-	// Refactoring?
 	public void onCreate() {
 
 		setMinimumSize(new Dimension(1200, 1200));
@@ -254,7 +243,7 @@ public class PruefungsDetails extends JFrame {
 		btnImportieren = new JButton("Importieren");
 		panel_4.add(btnImportieren);
 		btnImportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
-		
+
 		btnAktualisieren = new JButton("Aktualisieren");
 		btnAktualisieren.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnAktualisieren = new GridBagConstraints();
@@ -475,11 +464,7 @@ public class PruefungsDetails extends JFrame {
 
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		// pack();
 		setLocationRelativeTo(null);
-
-		// Fenster maximiert starten
-		// setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	public void punkteCheck() {
@@ -491,34 +476,6 @@ public class PruefungsDetails extends JFrame {
 			textFieldPunkte.setText("0");
 		}
 
-	}
-
-	public JTable getTableAufgaben() {
-		return tableAufgaben;
-	}
-
-	public JTextField getTextFieldPrfungstitel() {
-		return textFieldPrfungstitel;
-	}
-
-	public JTextField getTextFieldDauer() {
-		return textFieldDauer;
-	}
-
-	public JTextField getTextFieldPunkte() {
-		return textFieldPunkte;
-	}
-
-	public JTable getTableTeilnehmer() {
-		return tableTeilnehmer;
-	}
-
-	public PruefungsDetailsController getPruefungsDetailController() {
-		return this.controller;
-	}
-
-	public JTable getTableTermine() {
-		return tableTermine;
 	}
 
 	// Wenn vorhandene Prüfung bearbeitet werden soll
@@ -620,7 +577,6 @@ public class PruefungsDetails extends JFrame {
 			}
 		});
 
-		// ActionListener zum schließen des Frames
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -646,7 +602,7 @@ public class PruefungsDetails extends JFrame {
 				controller.exportiereTeilnehmer();
 			}
 		});
-		
+
 		btnAktualisieren.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.aktualisiereTeilnehmerTable();
@@ -668,6 +624,34 @@ public class PruefungsDetails extends JFrame {
 
 	public void setChckbxAufgabenVerwrfeln(JCheckBox chckbxAufgabenVerwrfeln) {
 		this.chckbxAufgabenVerwrfeln = chckbxAufgabenVerwrfeln;
+	}
+	
+	public JTable getTableAufgaben() {
+		return tableAufgaben;
+	}
+
+	public JTextField getTextFieldPrfungstitel() {
+		return textFieldPrfungstitel;
+	}
+
+	public JTextField getTextFieldDauer() {
+		return textFieldDauer;
+	}
+
+	public JTextField getTextFieldPunkte() {
+		return textFieldPunkte;
+	}
+
+	public JTable getTableTeilnehmer() {
+		return tableTeilnehmer;
+	}
+
+	public PruefungsDetailsController getPruefungsDetailController() {
+		return this.controller;
+	}
+
+	public JTable getTableTermine() {
+		return tableTermine;
 	}
 
 }

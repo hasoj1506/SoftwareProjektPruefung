@@ -2,7 +2,6 @@ package Controller;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,10 +23,11 @@ public class PruefungsverwaltungController {
 	private PruefungsverwaltungView view;
 	private List<Pruefung> pruefungen;
 
-	// um Zugriff auf die Datenbank zu bekommen
-	DatabaseService db = DatabaseService.getInstance();
 	private PruefungsverwaltungTableModel model;
 	private DefaultTableCellRenderer centerRenderer;
+
+	// um Zugriff auf die Datenbank zu bekommen
+	DatabaseService db = DatabaseService.getInstance();
 
 	public PruefungsverwaltungController(PruefungsverwaltungView view) {
 		this.view = view;
@@ -45,13 +45,6 @@ public class PruefungsverwaltungController {
 			view.getTablePruefungen().setModel(model);
 
 			spaltenbreiteAnpassen();
-
-			// centerRenderer = new DefaultTableCellRenderer();
-			// centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-			// for (int i = 0; i < view.getTablePruefungen().getColumnCount();
-			// i++) {
-			// view.getTablePruefungen().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-			// }
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
@@ -80,8 +73,6 @@ public class PruefungsverwaltungController {
 		// Frame-Titel wird geändert
 		detailView.setTitle("Neue Prüfung");
 
-		view.getFrame().setVisible(false);
-
 	}
 
 	// bearbeiten Button wird geklickt / Doppelklick auf Prüfung
@@ -100,7 +91,6 @@ public class PruefungsverwaltungController {
 				// Frame-Titel wird geändert
 				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 
-				view.getFrame().setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");
 			}
@@ -209,42 +199,55 @@ public class PruefungsverwaltungController {
 			view.getBtnReset().setVisible(true);
 
 		} catch (Exception e) {
-
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung konnte nicht gesucht werden!");
 		}
 
 	}
 
+	// Reset-Button wird geklickt
 	public void resetSuche() {
 		view.getTextFieldSuche().setText("");
 		fuelleTabellePruefungsverwaltung();
 		view.getBtnReset().setVisible(false);
 	}
 
+	// Freigeben-Button wird geklickt
 	public void pruefungFreigeben() {
-		if (view.getTablePruefungen().getSelectedRow() > -1) {
 
-			int selection = view.getTablePruefungen().getSelectedRow();
-			Pruefung pruefungZumFreigeben = pruefungen.get(selection);
+		try {
+			// Wenn Prüfung ausgewählt ist
+			if (view.getTablePruefungen().getSelectedRow() > -1) {
 
-			if (pruefungZumFreigeben.isFreigegeben() == false) {
-				pruefungZumFreigeben.setFreigegeben(true);
-				db.persistPruefung(pruefungZumFreigeben);
-				view.getBtnFreigeben().setText("Sperren");
+				// Identifizieren der Pruefung
+				int selection = view.getTablePruefungen().getSelectedRow();
+				Pruefung pruefungZumFreigeben = pruefungen.get(selection);
+
+				// Freigeben
+				if (pruefungZumFreigeben.isFreigegeben() == false) {
+					pruefungZumFreigeben.setFreigegeben(true);
+					db.persistPruefung(pruefungZumFreigeben);
+					view.getBtnFreigeben().setText("Sperren");
+				} else {
+					pruefungZumFreigeben.setFreigegeben(false);
+					db.persistPruefung(pruefungZumFreigeben);
+					view.getBtnFreigeben().setText("Freigeben");
+				}
+
+				fuelleTabellePruefungsverwaltung();
+
 			} else {
-				pruefungZumFreigeben.setFreigegeben(false);
-				db.persistPruefung(pruefungZumFreigeben);
-				view.getBtnFreigeben().setText("Freigeben");
+				JOptionPane.showMessageDialog(view.getFrame(),
+						"Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
 			}
-
-			fuelleTabellePruefungsverwaltung();
-
-		} else {
-			JOptionPane.showMessageDialog(view.getFrame(),
-					"Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
+		} catch (Exception e) {
+			// Was beim Fehler passiert
+			JOptionPane.showMessageDialog(view.getFrame(), "Pruefung konnte nicht freigegeben werden!");
 		}
 
 	}
 
+	// Veränderung des Freigeben-Buttons
 	public void aendereBtnFreigeben() {
 
 		int selection = view.getTablePruefungen().getSelectedRow();

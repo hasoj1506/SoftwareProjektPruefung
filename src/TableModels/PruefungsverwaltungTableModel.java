@@ -19,7 +19,8 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		this.pruefungen = pruefungen;
 	}
 
-	String[] columnNames = { "Titel", "Dauer (Min)", "Punkte", "Aufgaben", "Zuletzt erstellter Termin", "Teilnehmer", "Freigegeben" };
+	String[] columnNames = { "Titel", "Dauer (Min)", "Punkte", "Aufgaben", "Zuletzt erstellter Termin", "Teilnehmer",
+			"Freigegeben" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -42,7 +43,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		ImageIcon greenIcon = new ImageIcon(greenImage);
 		Image redImage = new ImageIcon(this.getClass().getResource("/redIcon.png")).getImage();
 		ImageIcon redIcon = new ImageIcon(redImage);
-		
+
 		switch (col) {
 		case 0:
 			return pruefungen.get(row).getBezeichnung();
@@ -57,7 +58,7 @@ public class PruefungsverwaltungTableModel extends AbstractTableModel {
 		case 5:
 			return pruefungen.get(row).getStudenten().size();
 		case 6:
-			if (pruefungen.get(row).isFreigegeben() == true){
+			if (pruefungen.get(row).isFreigegeben() == true) {
 				return greenIcon;
 			} else {
 				return redIcon;

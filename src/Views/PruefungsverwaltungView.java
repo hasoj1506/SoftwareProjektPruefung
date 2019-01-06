@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -13,25 +14,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Controller.PruefungsverwaltungController;
 import Models.Pruefung;
-import javax.swing.ListSelectionModel;
-import java.awt.Frame;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -262,13 +259,7 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.setVisible(true);
 		frmPrfungsverwaltung.setDefaultCloseOperation(frmPrfungsverwaltung.DISPOSE_ON_CLOSE);
 		frmPrfungsverwaltung.pack();
-		frmPrfungsverwaltung.setLocationRelativeTo(null); // Frame wird in der
-															// Mitte des
-															// Bildschirms
-															// erzeugt
-
-		// Fenster maximiert starten
-		// frmPrfungsverwaltung.setExtendedState(Frame.MAXIMIZED_BOTH);
+		frmPrfungsverwaltung.setLocationRelativeTo(null);
 
 	}
 
@@ -278,9 +269,6 @@ public class PruefungsverwaltungView {
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.neuPruefung();
-				// um das Mainframe zu sperren während das Secondframe offen ist
-				// frmPrfungsverwaltung.setEnabled(false);
-
 			}
 		});
 
@@ -375,10 +363,6 @@ public class PruefungsverwaltungView {
 
 	public void tabelleFuellen() {
 		controller.fuelleTabellePruefungsverwaltung();
-	}
-
-	public static void main(String[] ar) {
-		PruefungsverwaltungView view = new PruefungsverwaltungView();
 	}
 
 	public JTextField getTextFieldSuche() {

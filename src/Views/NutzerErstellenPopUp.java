@@ -53,7 +53,6 @@ public class NutzerErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionNeu(view, pruefung);
-		addActionListeners();
 
 	}
 
@@ -62,7 +61,6 @@ public class NutzerErstellenPopUp {
 		this.pruefung = pruefung;
 		onCreate();
 		btnActionBearbeiten(view, pruefung, student);
-		addActionListeners();
 
 		this.textFieldVorname.setText(student.getVorname());
 		this.textFieldNachname.setText(student.getNachname());
@@ -73,8 +71,7 @@ public class NutzerErstellenPopUp {
 	public void onCreate() {
 
 		frmNutzer = new JFrame("Nutzer");
-		frmNutzer.setSize(new Dimension(500, 250)); // Frame hat nicht
-													// verstellbare feste Größe
+		frmNutzer.setSize(new Dimension(500, 250));
 		frmNutzer.setResizable(false);
 		frmNutzer.setMinimumSize(new Dimension(500, 250));
 		frmNutzer.setMaximumSize(new Dimension(500, 250));
@@ -168,31 +165,18 @@ public class NutzerErstellenPopUp {
 		frmNutzer.setDefaultCloseOperation(frmNutzer.DISPOSE_ON_CLOSE);
 		frmNutzer.setVisible(true);
 		frmNutzer.pack();
-		frmNutzer.setLocationRelativeTo(null); // Frame wird in der Mitte des
-												// Bildschirms erzeugt
+		frmNutzer.setLocationRelativeTo(null);
 	}
 
 	public JFrame getFrmNutzer() {
 		return frmNutzer;
 	}
 
-	// ActionListener zum schließen des Frames
-	public void addActionListeners() {
-
-		btnAbbrechen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frmNutzer.dispose();
-			}
-		});
-
-	}
-
 	// ActionListener für den Fall, dass ein Nutzer bearbeitet wird
 	public void btnActionBearbeiten(final PruefungsDetails view, final Pruefung pruefung, final Student student) {
-
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
-														// wenn "Ok" gedrückt
-														// wurde
+		
+		//Wenn speichern geklickt wird
+		btnOk.addActionListener(new ActionListener() { 
 
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -232,15 +216,21 @@ public class NutzerErstellenPopUp {
 				}
 			}
 		});
+		
+		//Wenn abbrechen geklickt wird
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmNutzer.dispose();
+			}
+		});
 
 	}
 
 	// ActionListener für den Fall, dass ein neuer Nutzer angelegt wird
 	public void btnActionNeu(final PruefungsDetails view, final Pruefung pruefung) {
-
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster
-														// wenn "Ok" gedrückt
-														// wurde
+		
+		//wenn speichern geklickt wird
+		btnOk.addActionListener(new ActionListener() { 
 
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -273,12 +263,19 @@ public class NutzerErstellenPopUp {
 					Student student = new Student(vorname, nachname, matrikelnummer);
 					student.setPruefung(pruefung);
 					pruefung.addStudent(student);
-					
+
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
 					frmNutzer.dispose();
 				}
 
+			}
+		});
+		
+		//wenn abbrechen geklickt wird
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmNutzer.dispose();
 			}
 		});
 

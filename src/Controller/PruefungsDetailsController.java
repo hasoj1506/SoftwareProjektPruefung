@@ -1,20 +1,16 @@
 package Controller;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -99,7 +95,6 @@ public class PruefungsDetailsController {
 		try {
 
 			// Liste mit Teilnehmern der Prüfung erstellen
-			// teilnehmer = db.readTeilnehmer(pruefung.getPruefungId());
 			teilnehmer = new ArrayList<Student>(pruefung.getStudenten());
 			Collections.sort(teilnehmer, new TeilnehmerComparator());
 
@@ -169,7 +164,6 @@ public class PruefungsDetailsController {
 			Collections.sort(aufgaben, new AufgabenComparator());
 
 			// Dem JTable das Model inklusive Liste zuweisen
-
 			tableModelAufgaben = new PruefungsDetailsAufgabenTableModel(aufgaben);
 			tableAufgaben.setModel(tableModelAufgaben);
 
@@ -393,6 +387,7 @@ public class PruefungsDetailsController {
 	// Teilnehmer-importieren Button wird geklickt
 	public void importiereTeilnehmer() {
 		try {
+			// Datei über File-Chooser auswählen
 			JFileChooser fc = new JFileChooser();
 			fc.setDialogTitle("Welche Datei soll importiert werden?");
 			int auswahl = fc.showOpenDialog(null);
@@ -410,6 +405,7 @@ public class PruefungsDetailsController {
 				// der csv
 				dataRow = CSVFile.readLine();
 
+				// Daten der CSV lesen
 				while (dataRow != null && !dataRow.isEmpty()) {
 					String[] dataArray = dataRow.split(";");
 
@@ -420,9 +416,11 @@ public class PruefungsDetailsController {
 					try {
 						matrikelNr = Integer.parseInt(matrikelnummer);
 					} catch (Exception e) {
-						// noch füllen
+						// Was beim Fehler passiert
+						JOptionPane.showMessageDialog(view, "Fehler beim importieren!");
 					}
 
+					// Daten der CSV verwenden
 					Student teilnehmer = new Student(vorname, nachname, matrikelNr);
 					teilnehmer.setPruefung(pruefung);
 					pruefung.addStudent(teilnehmer);
@@ -477,14 +475,14 @@ public class PruefungsDetailsController {
 				TableModel model = view.getTableTeilnehmer().getModel();
 				FileWriter excelWriter = new FileWriter(excelFile);
 
-				for (int i = 0; i < model.getColumnCount()-1; i++) {
+				for (int i = 0; i < model.getColumnCount() - 1; i++) {
 					excelWriter.write(model.getColumnName(i) + "\t");
 				}
 
 				excelWriter.write("\n");
 
 				for (int i = 0; i < model.getRowCount(); i++) {
-					for (int j = 0; j < model.getColumnCount()-1; j++) {
+					for (int j = 0; j < model.getColumnCount() - 1; j++) {
 						excelWriter.write(model.getValueAt(i, j).toString() + "\t");
 					}
 					excelWriter.write("\n");
@@ -497,6 +495,7 @@ public class PruefungsDetailsController {
 			}
 
 		} catch (Exception e) {
+			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view, "Teilnehmerliste konnte nicht exportiert werden!" + e);
 		}
 	}
@@ -528,10 +527,10 @@ public class PruefungsDetailsController {
 		// Wenn die Felder gefüllt sind, Pruefung mit Daten versehen,
 		// andernfalls zum Füllen auffordern
 		if (bezeichnung.length() <= 0) {
-			view.getTextFieldPrfungstitel().setBackground(Color.RED);
+			view.getTextFieldPrfungstitel().setBackground(new Color(255, 102, 102));
 			JOptionPane.showMessageDialog(view, "Bitte Bezeichnung korrekt füllen!");
 		} else if (dauer == 0) {
-			view.getTextFieldDauer().setBackground(Color.RED);
+			view.getTextFieldDauer().setBackground(new Color(255, 102, 102));
 			JOptionPane.showMessageDialog(view, "Bitte Dauer korrekt füllen!");
 		} else {
 			pruefung.setBezeichnung(bezeichnung);
@@ -539,7 +538,7 @@ public class PruefungsDetailsController {
 			pruefung.setPunkte(punkte);
 			pruefung.setVerwuerfelt(view.getChckbxAufgabenVerwrfeln().isSelected());
 			db.persistPruefung(pruefung);
-			view.setVisible(false);
+			view.dispose();
 		}
 	}
 
@@ -559,7 +558,7 @@ public class PruefungsDetailsController {
 				// Löschen der Prüfung aus der Datenbank und neuladen der
 				// Tabelle
 				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-				view.setVisible(false);
+				view.dispose();
 			} else {
 				// nichts tun
 			}
