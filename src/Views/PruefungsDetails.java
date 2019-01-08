@@ -489,7 +489,6 @@ public class PruefungsDetails extends JFrame {
 		btnSpeichernPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.speichernPruefung(pruefungsverwaltung);
-				pruefungsverwaltung.getFrame().setVisible(true);
 				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
@@ -497,7 +496,6 @@ public class PruefungsDetails extends JFrame {
 		btnLschenPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loeschenPruefung(pruefungsverwaltung);
-				pruefungsverwaltung.getFrame().setVisible(true);
 				pruefungsverwaltung.tabelleFuellen();
 			}
 		});
