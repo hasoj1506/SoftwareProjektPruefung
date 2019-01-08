@@ -399,7 +399,7 @@ public class AufgabendetailsView {
 								// bestehende Aufgabe bearbeitet wird,
 								// und passt enstsprechend den Frame Titel an
 
-		if (this.aufgabe == null) {
+		if (this.aufgabe == null || this.aufgabe.getAufgabentitel() == "null" || this.aufgabe.getAufgabentitel() == null) {
 
 			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - Neue Aufgabe");
 		} else {

@@ -51,6 +51,10 @@ public class AufgabenDetailsController {
 		String titel = view.getAfgdTitelTextField().getText();
 		String frage = view.getAfgdFrageTextField().getText();
 
+		view.getAfgdFrageTextField().setBackground(Color.WHITE);
+		view.getAfgdPunkteTextField().setBackground(Color.WHITE);
+		view.getAfgdTitelTextField().setBackground(Color.WHITE);
+		
 		if (titel == ("") || titel.length() == 0) {
 
 			view.getAfgdTitelTextField().setBackground(new Color(255, 102, 102));
@@ -75,6 +79,7 @@ public class AufgabenDetailsController {
 
 				}
 				if (punkte < 0) {
+					view.getAfgdPunkteTextField().setBackground(new Color(255, 102, 102));
 					view.fehlerMeldung("Fehler: Die Punktzahl darf nicht kleiner als 0 sein!");
 				} else {
 					if (model.getRowCount() < 2) {

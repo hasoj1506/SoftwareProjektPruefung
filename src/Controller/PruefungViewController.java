@@ -61,7 +61,6 @@ public class PruefungViewController {
 	public void abgeben() {
 
 		int reply = 0;
-		double ergebnis = 0;
 
 		// Wenn Zeit noch nicht abgelaufen, Bestätigung fordern
 		if (view.isZeitUm() == false) {
@@ -76,26 +75,30 @@ public class PruefungViewController {
 
 		// Jede Antwort mit der Lösung abgleichen und Punkte berechnen
 		if (reply == JOptionPane.YES_OPTION) {
-			abgegeben = true;
-			ergebnis = berechneErgebnis();
-
-			// Antworten zurücksetzen
-
-			for (Aufgabe aufgabe : aufgaben) {
-
-				for (Antwort antwort : aufgabe.getAntworten()) {
-					antwort.setAlsRichtigBeantwortet(false);
-
-				}
-			}
-
-			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-			view.getFrame().dispose();
-			AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
+			abgegeben();
 		} else {
 			// nichts tun wenn nein geklickt wurde
 		}
 
+	}
+
+	public void abgegeben() {
+		abgegeben = true;
+		double ergebnis = berechneErgebnis();
+
+		// Antworten zurücksetzen
+
+		for (Aufgabe aufgabe : aufgaben) {
+
+			for (Antwort antwort : aufgabe.getAntworten()) {
+				antwort.setAlsRichtigBeantwortet(false);
+
+			}
+		}
+
+		// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
+		view.getFrame().dispose();
+		AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
 	}
 
 	// Marco Penner
@@ -170,7 +173,7 @@ public class PruefungViewController {
 	// Marco Penner
 	public void timerAbgelaufen() {
 
-		abgeben();
+		abgegeben();
 	}
 
 	// Yanek Wilken

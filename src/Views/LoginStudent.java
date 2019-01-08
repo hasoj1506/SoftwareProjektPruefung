@@ -162,27 +162,27 @@ public class LoginStudent {
 		gbc_panel_1.gridy = 1;
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{121, 309, 0};
+		gbl_panel_1.columnWidths = new int[]{309, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 33, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
+		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer");
 		lblMatrikelnummer.setForeground(Color.WHITE);
 		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 16));
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
-		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
-		gbc_lblMatrikelnummer.anchor = GridBagConstraints.EAST;
+		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMatrikelnummer.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_lblMatrikelnummer.gridx = 0;
-		gbc_lblMatrikelnummer.gridy = 1;
+		gbc_lblMatrikelnummer.gridy = 0;
 		panel_1.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 		
 		textFieldMatrikelNr = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
+		gbc_textField.gridx = 0;
 		gbc_textField.gridy = 1;
 		panel_1.add(textFieldMatrikelNr, gbc_textField);
 		textFieldMatrikelNr.setColumns(10);
@@ -192,7 +192,6 @@ public class LoginStudent {
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.gridwidth = 2;
 		gbc_panel_2.anchor = GridBagConstraints.EAST;
 		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
@@ -209,10 +208,9 @@ public class LoginStudent {
 		panel_2.add(btnLogin);
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		
-		JLabel lblVersion = new JLabel("Version: 1.1");
+		JLabel lblVersion = new JLabel("Version: 1.0");
 		lblVersion.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
-		gbc_lblVersion.insets = new Insets(0, 0, 0, 5);
 		gbc_lblVersion.anchor = GridBagConstraints.WEST;
 		gbc_lblVersion.gridx = 0;
 		gbc_lblVersion.gridy = 3;
@@ -239,6 +237,8 @@ public class LoginStudent {
 				controller.einloggenStudent();
 			}
 		});
+		
+		textFieldMatrikelNr.addActionListener(btnLogin.getActionListeners()[0]);
 	}
 	
 	public JLabel getFehlerLabel() {

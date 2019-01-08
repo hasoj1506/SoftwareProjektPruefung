@@ -159,6 +159,8 @@ public class PruefungView {
 		aufgabenstellungPanel.add(lblAufgabenstellung, gbc_lblAufgabenstellung);
 
 		txtAufgabentext = new JTextField();
+		txtAufgabentext.setDisabledTextColor(Color.WHITE);
+		txtAufgabentext.setBorder(null);
 		txtAufgabentext.setEditable(false);
 		GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
 		gbc_txtAufgabentext.gridwidth = 2;
@@ -346,7 +348,8 @@ public class PruefungView {
 		gbc_panel_2.gridy = 0;
 		panel_1.add(panel_2, gbc_panel_2);
 
-		JLabel lblVersion = new JLabel("Version:");
+		JLabel lblVersion = new JLabel("Version: 1.0");
+		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
 		panel_2.add(lblVersion);
 		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
 
@@ -419,7 +422,7 @@ public class PruefungView {
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 				
 				frame.dispose();
-				controller.abgeben();
+				controller.abgegeben();
 				
 			}
 		});

@@ -169,7 +169,7 @@ public class LoginPruefungsverwaltung {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		frame.getContentPane().add(panel_2, BorderLayout.SOUTH);
 		//t
-		JLabel lblVersion = new JLabel("Version: 1.1");
+		JLabel lblVersion = new JLabel("Version: 1.0");
 		lblVersion.setForeground(new Color(102, 102, 102));
 		panel_2.add(lblVersion);
 		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
