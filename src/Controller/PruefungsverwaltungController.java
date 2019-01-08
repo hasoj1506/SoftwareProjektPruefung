@@ -223,19 +223,26 @@ public class PruefungsverwaltungController {
 				int selection = view.getTablePruefungen().getSelectedRow();
 				Pruefung pruefungZumFreigeben = pruefungen.get(selection);
 
-				// Freigeben
-				if (pruefungZumFreigeben.isFreigegeben() == false) {
-					pruefungZumFreigeben.setFreigegeben(true);
-					db.persistPruefung(pruefungZumFreigeben);
-					view.getBtnFreigeben().setText("Sperren");
+				if (pruefungZumFreigeben.getAufgaben().isEmpty() == false
+						&& pruefungZumFreigeben.getStudenten().isEmpty() == false
+						&& pruefungZumFreigeben.getTermine().isEmpty() == false) {
+					// Freigeben
+					if (pruefungZumFreigeben.isFreigegeben() == false) {
+						pruefungZumFreigeben.setFreigegeben(true);
+						db.persistPruefung(pruefungZumFreigeben);
+						view.getBtnFreigeben().setText("Sperren");
+					} else {
+						pruefungZumFreigeben.setFreigegeben(false);
+						db.persistPruefung(pruefungZumFreigeben);
+						view.getBtnFreigeben().setText("Freigeben");
+					}
+
+					fuelleTabellePruefungsverwaltung();
+
 				} else {
-					pruefungZumFreigeben.setFreigegeben(false);
-					db.persistPruefung(pruefungZumFreigeben);
-					view.getBtnFreigeben().setText("Freigeben");
+					JOptionPane.showMessageDialog(view.getFrame(),
+							"Prüfungen ohne Aufgaben/Teilnehmer/Termine können nicht freigegeben werden!");
 				}
-
-				fuelleTabellePruefungsverwaltung();
-
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(),
 						"Es wurde keine Prüfung zum freigeben oder sperren ausgewählt!");
