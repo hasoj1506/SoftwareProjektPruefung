@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -89,7 +90,7 @@ public class LoginStudent {
 		frame.getContentPane().setMaximumSize(new Dimension(700, 400));
 		frame.getContentPane().setSize(new Dimension(700, 400));
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 871, 902);
+//		frame.setBounds(100, 100, 871, 902);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{559, 25, 400, 25, 0};

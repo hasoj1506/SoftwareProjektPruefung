@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -97,8 +98,8 @@ public class PruefungsDetails extends JFrame {
 
 	public void onCreate() {
 
-		setMinimumSize(new Dimension(1200, 1200));
-		setPreferredSize(new Dimension(850, 850));
+		setMinimumSize(new Dimension(1200, 850));
+//		setPreferredSize(new Dimension(850, 850));
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		setIconImage(icon1);
 
@@ -465,6 +466,7 @@ public class PruefungsDetails extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
+		
 	}
 
 	public void punkteCheck() {

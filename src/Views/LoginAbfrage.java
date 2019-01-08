@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
@@ -58,7 +59,7 @@ public class LoginAbfrage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+//		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
@@ -142,6 +143,16 @@ public class LoginAbfrage {
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		
+//		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+//		double width = screensize.getWidth();
+//		double height = screensize.getHeight();
+//		int frameWidth = frame.getContentPane().getWidth();
+//		int frameHeight = frame.getContentPane().getHeight();
+//		System.out.println(frameWidth);
+//		frame.setLocation((int)(width/2) - frameWidth/2 , (int)(height/2) - frameHeight/2);
+//		
 	}
 	
 	public void addActionListeners(){

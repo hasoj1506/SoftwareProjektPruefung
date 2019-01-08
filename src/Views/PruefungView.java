@@ -371,6 +371,7 @@ public class PruefungView {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setAlwaysOnTop(true);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 
 	}
 

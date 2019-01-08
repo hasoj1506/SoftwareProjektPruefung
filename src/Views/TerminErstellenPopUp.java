@@ -72,6 +72,7 @@ public class TerminErstellenPopUp {
 		frmTermin.setMinimumSize(new Dimension(500, 250));
 		frmTermin.setMaximumSize(new Dimension(500, 250));
 		frmTermin.setFocusable(false);
+		frmTermin.setLocationRelativeTo(null);
 
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frmTermin.setIconImage(icon1);

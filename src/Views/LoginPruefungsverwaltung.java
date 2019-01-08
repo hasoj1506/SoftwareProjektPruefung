@@ -15,6 +15,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -69,7 +70,7 @@ public class LoginPruefungsverwaltung {
 	private void initialize() {
 		//Kommentar 2
 		frame = new JFrame();
-		frame.setBounds(100, 100, 484, 849);
+		frame.setBounds(100, 100, 484, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -175,13 +176,10 @@ public class LoginPruefungsverwaltung {
 		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
 		
 
-		frame.setLocation(810, 200);
+		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 800));
 		frame.setResizable(false);
-		frame.setVisible(true);
-		
-		
-		
+		frame.setVisible(true);		
 	}
 	
 	public JPasswordField getTFPasswort() {
