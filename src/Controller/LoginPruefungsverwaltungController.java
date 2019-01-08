@@ -20,6 +20,9 @@ public class LoginPruefungsverwaltungController {
 
 	Pruefung pruefung;
 	Nutzer nutzers;
+	
+	
+	String passwort = "examo";
 
 	private List<String> benutzernameListe;
 	private List<String> passwoerterListe;
@@ -38,13 +41,6 @@ public class LoginPruefungsverwaltungController {
 	}
 
 	// Get Benutzer und passwort von textfeld in view von Professor
-	public String getBenutzername() {
-		try {
-			return view.getTFBenutzername().getText();
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 	public String getPasswort() {
 
@@ -58,17 +54,17 @@ public class LoginPruefungsverwaltungController {
 	}
 
 	public void einloggenDozent() {
-
-		if (getBenutzername() == null || getBenutzername().length() == 0) {
+		
+		if (getPasswort() == null || getPasswort().length() == 0) {
 			view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-
-		} else if (getPasswort() == null || getPasswort().length() == 0) {
-			view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-		} else {
+		} else if(getPasswort().equals(this.passwort) == false){
+			view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt!");
+		}else {
 
 			try {
 
-				this.db = DatabaseService.getInstance(getBenutzername(), getPasswort());
+				this.db = DatabaseService.getInstance();
+				view.getFrame().dispose();
 
 				PruefungsverwaltungView view = new PruefungsverwaltungView();
 
@@ -81,22 +77,6 @@ public class LoginPruefungsverwaltungController {
 	}
 
 	// Get Benutzer und passwort von textfeld in view von Student
-	public String getBenutzernameS() {
-		try {
-			return viewS.getTFBenutzername().getText();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public String getPasswortS() {
-		try {
-			char[] passwort = viewS.getTFPasswort().getPassword();
-			return String.valueOf(passwort);
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 	public int getMatrikelNr() {
 		try {
@@ -108,12 +88,8 @@ public class LoginPruefungsverwaltungController {
 
 	public void einloggenStudent() {
 
-		if (getBenutzernameS() == null || getBenutzernameS().length() == 0) {
-			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
 
-		} else if (getPasswortS() == null || getPasswortS().length() == 0) {
-			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-		} else if (getMatrikelNr() == 0) {
+		if (getMatrikelNr() == 0) {
 			viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden - bitte prüfen!");
 		} else {
 

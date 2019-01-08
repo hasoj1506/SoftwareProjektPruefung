@@ -46,9 +46,6 @@ public class LoginStudent {
 	int year = calender.get(GregorianCalendar.YEAR);
 	String yearS = String.valueOf(year);
 	
-	private JTextField textFieldBenutzer;
-	private JPasswordField textFieldPassword;
-	
 	LoginPruefungsverwaltungController controller;
 	private JTextField textFieldMatrikelNr;
 	private JLabel fehlerLabel;
@@ -124,7 +121,7 @@ public class LoginStudent {
 		gbl_panel.columnWidths = new int[]{0, 0};
 		gbl_panel.rowHeights = new int[] {40, 20, 43, 20};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblTestat = new JLabel("examo");
@@ -147,9 +144,10 @@ public class LoginStudent {
 		panel.add(lblDatum, gbc_lblDatum);
 		
 		JLabel lblTestat_1 = new JLabel("Testat");
-		lblTestat_1.setFont(new Font("Verdana", Font.BOLD, 22));
+		lblTestat_1.setFont(new Font("Verdana", Font.BOLD, 30));
 		lblTestat_1.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_lblTestat_1 = new GridBagConstraints();
+		gbc_lblTestat_1.fill = GridBagConstraints.VERTICAL;
 		gbc_lblTestat_1.gridx = 0;
 		gbc_lblTestat_1.gridy = 2;
 		panel.add(lblTestat_1, gbc_lblTestat_1);
@@ -164,9 +162,9 @@ public class LoginStudent {
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{121, 309, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 33, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 33, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
@@ -176,7 +174,7 @@ public class LoginStudent {
 		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMatrikelnummer.anchor = GridBagConstraints.EAST;
 		gbc_lblMatrikelnummer.gridx = 0;
-		gbc_lblMatrikelnummer.gridy = 0;
+		gbc_lblMatrikelnummer.gridy = 1;
 		panel_1.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 		
 		textFieldMatrikelNr = new JTextField();
@@ -184,56 +182,9 @@ public class LoginStudent {
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
+		gbc_textField.gridy = 1;
 		panel_1.add(textFieldMatrikelNr, gbc_textField);
 		textFieldMatrikelNr.setColumns(10);
-		
-		JLabel lblDatenbank = new JLabel("Bitte geben sie den Datenbank Login an");
-		lblDatenbank.setForeground(Color.WHITE);
-		lblDatenbank.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblDatenbank = new GridBagConstraints();
-		gbc_lblDatenbank.insets = new Insets(0, 0, 5, 0);
-		gbc_lblDatenbank.gridx = 1;
-		gbc_lblDatenbank.gridy = 1;
-		panel_1.add(lblDatenbank, gbc_lblDatenbank);
-		
-		JLabel lblBenutzername = new JLabel("Benutzername");
-		lblBenutzername.setForeground(new Color(255, 255, 255));
-		lblBenutzername.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblBenutzername = new GridBagConstraints();
-		gbc_lblBenutzername.anchor = GridBagConstraints.EAST;
-		gbc_lblBenutzername.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBenutzername.gridx = 0;
-		gbc_lblBenutzername.gridy = 2;
-		panel_1.add(lblBenutzername, gbc_lblBenutzername);
-		
-		textFieldBenutzer = new JTextField();
-		GridBagConstraints gbc_textFieldBenutzer = new GridBagConstraints();
-		gbc_textFieldBenutzer.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldBenutzer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldBenutzer.gridx = 1;
-		gbc_textFieldBenutzer.gridy = 2;
-		panel_1.add(textFieldBenutzer, gbc_textFieldBenutzer);
-		textFieldBenutzer.setColumns(10);
-		
-		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setForeground(new Color(255, 255, 255));
-		lblPasswort.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblPasswort = new GridBagConstraints();
-		gbc_lblPasswort.anchor = GridBagConstraints.EAST;
-		gbc_lblPasswort.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPasswort.gridx = 0;
-		gbc_lblPasswort.gridy = 3;
-		panel_1.add(lblPasswort, gbc_lblPasswort);
-		
-		textFieldPassword = new JPasswordField();
-		GridBagConstraints gbc_textFieldPassword = new GridBagConstraints();
-		gbc_textFieldPassword.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldPassword.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldPassword.gridx = 1;
-		gbc_textFieldPassword.gridy = 3;
-		panel_1.add(textFieldPassword, gbc_textFieldPassword);
-		textFieldPassword.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(0,155,187));
@@ -245,7 +196,7 @@ public class LoginStudent {
 		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridx = 0;
-		gbc_panel_2.gridy = 4;
+		gbc_panel_2.gridy = 2;
 		panel_1.add(panel_2, gbc_panel_2);
 		
 		fehlerLabel = new JLabel("");
@@ -263,22 +214,13 @@ public class LoginStudent {
 		gbc_lblVersion.insets = new Insets(0, 0, 0, 5);
 		gbc_lblVersion.anchor = GridBagConstraints.WEST;
 		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 5;
+		gbc_lblVersion.gridy = 3;
 		panel_1.add(lblVersion, gbc_lblVersion);
 		frame.pack();
 		
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
-	}
-	
-	public JTextField getTFBenutzername() {
-		return this.textFieldBenutzer;
-	}
-	
-	public JPasswordField getTFPasswort() {
-		return this.textFieldPassword;
-		
 	}
 	
 	public JTextField getTFMatrikelNr() {
@@ -296,10 +238,6 @@ public class LoginStudent {
 				controller.einloggenStudent();
 			}
 		});
-		
-		textFieldBenutzer.addActionListener(btnLogin.getActionListeners()[0]);
-		
-		textFieldPassword.addActionListener(btnLogin.getActionListeners()[0]);
 	}
 	
 	public JLabel getFehlerLabel() {

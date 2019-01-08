@@ -34,7 +34,6 @@ import javax.swing.JCheckBox;
 public class LoginPruefungsverwaltung {
 
 	private JFrame frame;
-	private JTextField textFieldBenutzername;
 	private JPasswordField textFieldPasswort;
 	private JButton btnLogin;
 	private JLabel fehlerLabel;
@@ -118,38 +117,10 @@ public class LoginPruefungsverwaltung {
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{20, 0, 20, 0};
-		gbl_panel_1.rowHeights = new int[] {63, 0, 41, 0, 35, 0, 27, 0};
+		gbl_panel_1.rowHeights = new int[] {63, 0, 35, 0, 27, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
-		
-		JLabel lblBitteGebenSie = new JLabel("Bitte geben Sie den Datenbank Login an");
-		lblBitteGebenSie.setForeground(new Color(0,155,187));
-		lblBitteGebenSie.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblBitteGebenSie = new GridBagConstraints();
-		gbc_lblBitteGebenSie.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBitteGebenSie.gridx = 1;
-		gbc_lblBitteGebenSie.gridy = 0;
-		panel_1.add(lblBitteGebenSie, gbc_lblBitteGebenSie);
-		
-		JLabel lblNewLabel_1 = new JLabel("Benutzername");
-		lblNewLabel_1.setForeground(new Color(0,155,187));
-		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 16));
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 1;
-		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
-		textFieldBenutzername = new JTextField();
-		GridBagConstraints gbc_textFieldBenutzername = new GridBagConstraints();
-		gbc_textFieldBenutzername.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldBenutzername.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldBenutzername.gridx = 1;
-		gbc_textFieldBenutzername.gridy = 2;
-		panel_1.add(textFieldBenutzername, gbc_textFieldBenutzername);
-		textFieldBenutzername.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Passwort");
 		lblNewLabel_2.setForeground(new Color(0,155,187));
@@ -158,7 +129,7 @@ public class LoginPruefungsverwaltung {
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 3;
+		gbc_lblNewLabel_2.gridy = 1;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		textFieldPasswort = new JPasswordField();
@@ -166,7 +137,7 @@ public class LoginPruefungsverwaltung {
 		gbc_textFieldPasswort.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPasswort.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPasswort.gridx = 1;
-		gbc_textFieldPasswort.gridy = 4;
+		gbc_textFieldPasswort.gridy = 2;
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
@@ -178,7 +149,7 @@ public class LoginPruefungsverwaltung {
 		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
 		gbc_panel_3.gridx = 1;
-		gbc_panel_3.gridy = 5;
+		gbc_panel_3.gridy = 3;
 		panel_1.add(panel_3, gbc_panel_3);
 		
 		fehlerLabel = new JLabel("");
@@ -212,10 +183,6 @@ public class LoginPruefungsverwaltung {
 		
 	}
 	
-	public JTextField getTFBenutzername() {
-		return this.textFieldBenutzername;
-	}
-	
 	public JPasswordField getTFPasswort() {
 		return this.textFieldPasswort;
 		
@@ -232,8 +199,6 @@ public class LoginPruefungsverwaltung {
 				controller.einloggenDozent();
 			}
 		});
-		
-		textFieldBenutzername.addActionListener(btnLogin.getActionListeners()[0]);
 		
 		textFieldPasswort.addActionListener(btnLogin.getActionListeners()[0]);
 		
