@@ -76,21 +76,22 @@ public class PruefungViewController {
 			abgegeben = true;
 			ergebnis = berechneErgebnis();
 
-		}
+			// Antworten zurücksetzen
 
-		// Antworten zurücksetzen
+			for (Aufgabe aufgabe : aufgaben) {
 
-		for (Aufgabe aufgabe : aufgaben) {
+				for (Antwort antwort : aufgabe.getAntworten()) {
+					antwort.setAlsRichtigBeantwortet(false);
 
-			for (Antwort antwort : aufgabe.getAntworten()) {
-				antwort.setAlsRichtigBeantwortet(false);
-
+				}
 			}
-		}
 
-		// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
-		view.getFrame().dispose();
-		AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
+			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
+			view.getFrame().dispose();
+			AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
+		}else{
+			//nichts tun wenn nein geklickt wurde
+		}
 
 	}
 
@@ -165,10 +166,11 @@ public class PruefungViewController {
 		abgeben();
 	}
 
-	/*public void aufgabeAuswaehlenAufforderung() {
-		view.getTxtAufgabentext().setText("Es hat einen Fehler gegeben!");
-		view.getTxtAufgabentext().setForeground(Color.RED);
-	}*/
+	/*
+	 * public void aufgabeAuswaehlenAufforderung() {
+	 * view.getTxtAufgabentext().setText("Es hat einen Fehler gegeben!");
+	 * view.getTxtAufgabentext().setForeground(Color.RED); }
+	 */
 
 	public double berechneErgebnis() {
 
@@ -189,8 +191,8 @@ public class PruefungViewController {
 			}
 
 			if (aufgabe.getAntworten().size() < 3) {
-				
-				if(anzFalsch > 0) {
+
+				if (anzFalsch > 0) {
 					punkteProAufgabe = 0;
 				}
 
