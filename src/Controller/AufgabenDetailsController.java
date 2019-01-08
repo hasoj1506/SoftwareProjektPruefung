@@ -19,7 +19,7 @@ import Views.AufgabendetailsView;
 
 public class AufgabenDetailsController {
 
-	Aufgabe aufgabe;//t
+	Aufgabe aufgabe;// t
 	AufgabendetailsView view;
 	Pruefung pruefung;
 	DatabaseService service = DatabaseService.getInstance();
@@ -53,13 +53,13 @@ public class AufgabenDetailsController {
 		String frage = view.getAfgdFrageTextField().getText();
 
 		if (titel == ("") || titel.length() == 0) {
-			
+
 			view.getAfgdTitelTextField().setBackground(new Color(255, 102, 102));
 			view.fehlerMeldung("Fehler: Der Titel darf nicht leer sein!");
 
 		} else {
 
-			if (frage == ("") || frage.length() == 0) { 
+			if (frage == ("") || frage.length() == 0) {
 				view.getAfgdFrageTextField().setBackground(new Color(255, 102, 102));
 				view.fehlerMeldung("Fehler: Der Fragetext darf nicht leer sein!");
 
@@ -74,36 +74,39 @@ public class AufgabenDetailsController {
 					view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
 
 				}
-
-				if (model.getRowCount() < 2) {
-					view.getAfgdTable().setBackground(new Color(255, 102, 102));
-					view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
+				if (punkte < 0) {
+					view.fehlerMeldung("Fehler: Die Punktzahl darf nicht kleiner als 0 sein!");
 				} else {
-
-					if (model.getMindestensEineRichtig() == true) {
-
-						if (this.aufgabe == null) {
-
-							aufgabe = new Aufgabe();
-							aufgabe.setPruefung(this.pruefung);
-						}
-						aufgabe.setFrageStellung(frage);
-						aufgabe.setPunktzahl(punkte);
-						aufgabe.setAufgabentitel(titel);
-						aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
-						aufgabe.setVerwuerfelt(view.getChckbxAntwortenVerwrfenl().isSelected());
-						view.setAufgabe(aufgabe);
-						pruefung.addAufgabe(aufgabe);
-						view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
-						view.getPruefungsDetailsView().punkteCheck();
-						view.schliessen();
-					} else {
+					if (model.getRowCount() < 2) {
 						view.getAfgdTable().setBackground(new Color(255, 102, 102));
-						view.fehlerMeldung("Es muss mindestens eine Aufgabe geben die richtig ist.");
+						view.fehlerMeldung("Eine Aufgabe muss mindestens 2 Antworten haben");
+					} else {
 
+						if (model.getMindestensEineRichtig() == true) {
+
+							if (this.aufgabe == null) {
+
+								aufgabe = new Aufgabe();
+								aufgabe.setPruefung(this.pruefung);
+							}
+							aufgabe.setFrageStellung(frage);
+							aufgabe.setPunktzahl(punkte);
+							aufgabe.setAufgabentitel(titel);
+							aufgabe.setAntworten(new HashSet<Antwort>(model.getAntworten()));
+							aufgabe.setVerwuerfelt(view.getChckbxAntwortenVerwrfenl().isSelected());
+							view.setAufgabe(aufgabe);
+							pruefung.addAufgabe(aufgabe);
+							view.getPruefungsDetailsView().getPruefungsDetailController().fuelleAufgabenTable(pruefung);
+							view.getPruefungsDetailsView().punkteCheck();
+							view.schliessen();
+						} else {
+							view.getAfgdTable().setBackground(new Color(255, 102, 102));
+							view.fehlerMeldung("Es muss mindestens eine Antwort geben die richtig ist.");
+
+						}
 					}
-				}
 
+				}
 			}
 		}
 
