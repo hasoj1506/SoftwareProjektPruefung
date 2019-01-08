@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JSeparator;
 import java.awt.Dimension;
 
+//Firat Aslan
 public class PruefungEinweisungPopUp {
 	private JTextField txtDauer;
 	private JTextField textField_1;

@@ -1,6 +1,11 @@
 package Models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Antwort {
@@ -13,9 +18,10 @@ public class Antwort {
 	private String antworttext;
 
 	@ManyToOne
-	@JoinColumn(nullable=false)
-	private Aufgabe aufgabe;	// Zu jeder Aufgabe gibt es 1 oder mehrere Antworten
-	
+	@JoinColumn(nullable = false)
+	private Aufgabe aufgabe; // Zu jeder Aufgabe gibt es 1 oder mehrere
+								// Antworten
+
 	public Antwort() {
 
 		super();
@@ -60,9 +66,9 @@ public class Antwort {
 	public void setAufgabe(Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
 	}
-	
-	public int getAntwortId(){
-		return antwortId; 
+
+	public int getAntwortId() {
+		return antwortId;
 	}
 
 }

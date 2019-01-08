@@ -25,7 +25,7 @@ import DatabaseService.DatabaseService;
 import Models.Pruefung;
 import Models.Student;
 
-//Josah Weber
+//Victoria Meier
 public class NutzerErstellenPopUp {
 
 	String vorname;

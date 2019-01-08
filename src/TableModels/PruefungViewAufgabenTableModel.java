@@ -7,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 import Models.Aufgabe;
 
+//Marco Penner
 public class PruefungViewAufgabenTableModel extends AbstractTableModel{
 	
 	private List<Aufgabe> aufgaben;  

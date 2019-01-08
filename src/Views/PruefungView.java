@@ -34,6 +34,7 @@ import Models.Pruefung;
 import Models.Student;
 import javax.swing.border.LineBorder;
 
+//Marco Penner
 public class PruefungView {
 	Pruefung pruefung;
 	Student student;
@@ -498,8 +499,4 @@ public class PruefungView {
 		return timer;
 	}
 
-	/*
-	 * public static void main(String[] args) { PruefungView view = new
-	 * PruefungView(); }
-	 */
 }

@@ -6,6 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 import Models.Antwort;
 
+//Marco Penner
 public class PruefungViewTableModel extends AbstractTableModel{
 	
 	private List<Antwort> antworten;

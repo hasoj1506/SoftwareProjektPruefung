@@ -17,6 +17,7 @@ import TableModels.PruefungsverwaltungTableModel;
 import Views.AntwortErstellenPopUp;
 import Views.AufgabendetailsView;
 
+//Yanek Wilken
 public class AufgabenDetailsController {
 
 	Aufgabe aufgabe;// t
@@ -26,8 +27,7 @@ public class AufgabenDetailsController {
 
 	AufgabendetailsTableModel model;
 
-	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) { // Konstruktor falls bestehende
-																					// Aufgabe bearbeitet wird
+	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
 		this.view = view;
@@ -36,8 +36,7 @@ public class AufgabenDetailsController {
 
 	}
 
-	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) { // Konstruktor falls neue Aufgabe
-																					// erzeugt wird
+	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) {
 		this.view = view;
 		this.pruefung = pruefung;
 		view.getAfgdTable().setModel(new AufgabendetailsTableModel());
@@ -69,7 +68,8 @@ public class AufgabenDetailsController {
 
 					punkte = Double.parseDouble(view.getAfgdPunkteTextField().getText());
 
-				} catch (NumberFormatException e) { // Prüft ob Punktzahl im richtigen Format ist {
+				} catch (NumberFormatException e) { // Prüft ob Punktzahl im
+													// richtigen Format ist {
 					view.getAfgdPunkteTextField().setBackground(new Color(255, 102, 102));
 					view.fehlerMeldung("Fehler: Die Punktzahl ist nicht im richtigen Format!");
 

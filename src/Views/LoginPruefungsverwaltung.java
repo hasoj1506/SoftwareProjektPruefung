@@ -31,6 +31,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JCheckBox;
 
+//Victoria Meier
 public class LoginPruefungsverwaltung {
 
 	private JFrame frame;

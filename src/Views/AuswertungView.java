@@ -35,6 +35,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 
+//Firat Aslan
 public class AuswertungView extends JFrame{
 	
 	private JTextField txtErreichtePunktzahl;

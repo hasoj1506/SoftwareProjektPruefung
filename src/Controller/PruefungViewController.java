@@ -16,11 +16,13 @@ import TableModels.PruefungViewTableModel;
 import Views.AuswertungView;
 import Views.PruefungView;
 
+//Beteiligt: Yanek Wilken, Marco Penner, Josah Weber
 public class PruefungViewController {
 
 	// alle Methoden, die durch Bedienung der PruefungView aufgerufen werden
 	// können
-
+	
+	//Marco Penner
 	Pruefung pruefung;
 	Student student;
 	List<Aufgabe> aufgaben;
@@ -42,6 +44,7 @@ public class PruefungViewController {
 
 	}
 
+	// Marco Penner
 	public void fuelleAufgabenTabelle() {
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 
@@ -89,12 +92,13 @@ public class PruefungViewController {
 			// Dem Nutzer die erreichten Punkte in die Datenbank schreiben
 			view.getFrame().dispose();
 			AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
-		}else{
-			//nichts tun wenn nein geklickt wurde
+		} else {
+			// nichts tun wenn nein geklickt wurde
 		}
 
 	}
 
+	// Marco Penner
 	public void fuelleAufgabe() {
 		/*
 		 * Table ausfüllen Textfelder ausfüllen
@@ -136,6 +140,7 @@ public class PruefungViewController {
 		view.getLblPrfungstitel().setText(pruefung.getBezeichnung());
 	}
 
+	// Josah Weber
 	public void naechste() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == view.getAufgabenTable().getRowCount() - 1) {
@@ -148,6 +153,7 @@ public class PruefungViewController {
 
 	}
 
+	// Josah Weber
 	public void vorherige() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == 0) {
@@ -161,17 +167,13 @@ public class PruefungViewController {
 
 	}
 
+	// Marco Penner
 	public void timerAbgelaufen() {
 
 		abgeben();
 	}
 
-	/*
-	 * public void aufgabeAuswaehlenAufforderung() {
-	 * view.getTxtAufgabentext().setText("Es hat einen Fehler gegeben!");
-	 * view.getTxtAufgabentext().setForeground(Color.RED); }
-	 */
-
+	// Yanek Wilken
 	public double berechneErgebnis() {
 
 		double gesamtePunktzahl = 0;

@@ -5,6 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.Collections;
 import Models.Antwort;
 
+//Yanek Wilken
 public class AufgabendetailsTableModel extends AbstractTableModel {
 
 	private List<Antwort> antworten;

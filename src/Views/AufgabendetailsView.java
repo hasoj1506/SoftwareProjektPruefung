@@ -18,6 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
+//Yanek Wilken
 public class AufgabendetailsView {
 
 	private JFrame frame;

@@ -7,8 +7,10 @@ import Models.*;
 
 import javax.persistence.*;
 
+//Beteiligt Yanek Wilken, Josah Weber, Victoria Meier
 public class DatabaseService {
-
+	
+	//Yanek Wilken
 	private EntityManager em;
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
@@ -24,7 +26,8 @@ public class DatabaseService {
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung", map);
 		em = emf.createEntityManager();
 	}
-
+	
+	//Yanek Wilken
 	public static DatabaseService getInstance() {
 
 		if (instance == null) {
@@ -34,7 +37,8 @@ public class DatabaseService {
 
 		return instance;
 	}
-
+	
+	//Yanek Wilken
 	public static DatabaseService getInstance(String benutzername, String passwort) {
 
 		if (instance == null) {
@@ -53,7 +57,8 @@ public class DatabaseService {
 	public EntityManager getEntityManager() {
 		return em;
 	}
-
+	
+	//Yanek Wilken
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
 		em.merge(nutzer);
@@ -103,7 +108,8 @@ public class DatabaseService {
 		}
 
 	}
-
+	
+	//Josah Weber
 	public List<Termin> readTermin(Pruefung pruefung) {
 
 		try {
@@ -124,6 +130,7 @@ public class DatabaseService {
 
 	}
 
+	//Yanek Wilken
 	public List<Aufgabe> readAufgabe(Pruefung pruefung) {
 
 		try {
@@ -144,6 +151,7 @@ public class DatabaseService {
 
 	}
 
+	//Josah Weber
 	public List<Pruefung> readPruefungen() {
 
 		List<Pruefung> pruefungen;
@@ -184,6 +192,7 @@ public class DatabaseService {
 
 	}
 
+	//Victoria Meier
 	public List<Nutzer> readNutzer() {
 
 		List<Nutzer> nutzer;
@@ -210,7 +219,8 @@ public class DatabaseService {
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
-
+	
+	//Josah Weber
 	public List<Student> readTeilnehmer(int pruefungId) {
 
 		List<Student> studenten;
@@ -227,9 +237,10 @@ public class DatabaseService {
 			// füllen, was beim Fehler passiert
 			return null;
 		}
-
+		
 	}
-
+	
+	//Victoria Meier
 	public List<Student> readLogin(int matrikelNr) {
 
 		try {
@@ -244,6 +255,7 @@ public class DatabaseService {
 
 	}
 	
+	//Yanek Wilken
 	public void refreshList(List<Student> teilnehmer) {
 		
 		for(Student student : teilnehmer) {

@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
 import Controller.PruefungsDetailsController;
 import Models.Pruefung;
 
-//Josah Weber  
+//Josah Weber
 public class PruefungsDetails extends JFrame {
 
 	private PruefungsverwaltungView pruefungsverwaltung;

@@ -11,7 +11,7 @@ public class examoMain {
 		try {
 
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			
+
 		} catch (UnsupportedLookAndFeelException e) {
 
 		} catch (ClassNotFoundException e) {
@@ -20,12 +20,11 @@ public class examoMain {
 
 		} catch (IllegalAccessException e) {
 
-		};
+		}
+		;
 
-		
 		LoginAbfrage login = new LoginAbfrage();
-		
-		
+
 	}
 
 }

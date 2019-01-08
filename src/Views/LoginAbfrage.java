@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Color;
 
+//Victoria Meier
 public class LoginAbfrage {
 
 	private JFrame frame;

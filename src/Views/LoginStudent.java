@@ -30,6 +30,7 @@ import Controller.LoginPruefungsverwaltungController;
 
 import java.awt.Color;
 
+//Victoria Meier
 public class LoginStudent {
 
 	private JFrame frame;

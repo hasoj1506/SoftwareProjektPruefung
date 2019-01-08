@@ -5,17 +5,17 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Student")
-public class Student extends Nutzer{
-	
+public class Student extends Nutzer {
+
 	private int matrikelNr;
 	private double erreichtePunktzahl;
 	private int bonusPunkte;
 	private boolean eingeloggt = false;
-	
+
 	public Student() {
-		
+
 	}
-	
+
 	public Student(String vorname, String nachname, int matrikelNr) {
 		super(vorname, nachname);
 		this.matrikelNr = matrikelNr;
@@ -28,7 +28,7 @@ public class Student extends Nutzer{
 	public void setMatrikelNr(int matrikelNr) {
 		this.matrikelNr = matrikelNr;
 	}
-	
+
 	public boolean isEingeloggt() {
 		return eingeloggt;
 	}
@@ -39,7 +39,7 @@ public class Student extends Nutzer{
 
 	public double getErreichtePunktzahl() {
 		return erreichtePunktzahl;
-		
+
 	}
 
 	public void setErreichtePunktzahl(double erreichtePunktzahl) {

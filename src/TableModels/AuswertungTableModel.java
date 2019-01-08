@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Models.*;
 
+//Firat Aslan
 public class AuswertungTableModel extends AbstractTableModel{
 
 		private List<Aufgabe> aufgaben;

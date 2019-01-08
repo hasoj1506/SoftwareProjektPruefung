@@ -1,31 +1,36 @@
 package Models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Termin {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int terminId;
 	private String datum;
-	private String uhrzeit;	//ggf. mit GregorianCalender anderer Parameter
+	private String uhrzeit; // ggf. mit GregorianCalender anderer Parameter
 	private String raum;
-	
+
 	@ManyToOne
-	@JoinColumn(nullable=false)
-	private Pruefung pruefung;	//Zu jedem Termin genau eine Pruefung
-	
+	@JoinColumn(nullable = false)
+	private Pruefung pruefung; // Zu jedem Termin genau eine Pruefung
+
 	public Termin() {
-		
+
 		super();
-		
+
 	}
-	
+
 	public Termin(String datum, String uhrzeit, String raum, Pruefung pruefung) {
-		
+
 		super();
-		
+
 		this.datum = datum;
 		this.uhrzeit = uhrzeit;
 		this.raum = raum;
@@ -63,9 +68,9 @@ public class Termin {
 	public void setPruefung(Pruefung pruefung) {
 		this.pruefung = pruefung;
 	}
-	
-	public int getTerminId(){
-		return terminId;  
+
+	public int getTerminId() {
+		return terminId;
 	}
 
 }

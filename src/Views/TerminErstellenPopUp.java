@@ -24,7 +24,7 @@ import javax.swing.SwingConstants;
 import Models.Pruefung;
 import Models.Termin;
 
-//Josah Weber
+//Marco Penner
 public class TerminErstellenPopUp {
 
 	String datum;
