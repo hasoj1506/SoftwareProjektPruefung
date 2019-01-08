@@ -158,6 +158,7 @@ public class PruefungView {
 		aufgabenstellungPanel.add(lblAufgabenstellung, gbc_lblAufgabenstellung);
 
 		txtAufgabentext = new JTextField();
+		txtAufgabentext.setEditable(false);
 		GridBagConstraints gbc_txtAufgabentext = new GridBagConstraints();
 		gbc_txtAufgabentext.gridwidth = 2;
 		gbc_txtAufgabentext.fill = GridBagConstraints.BOTH;

@@ -567,6 +567,12 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
+	
+	public void abbrechen() {
+		db.getEm().clear();
+		view.getPruefungsverwaltung().tabelleFuellen();
+		view.dispose();
+	}
 
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {
 		return tableModelAufgaben;

@@ -577,9 +577,9 @@ public class PruefungsDetails extends JFrame {
 
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				pruefungsverwaltung.getFrame().setVisible(true);
-				pruefungsverwaltung.tabelleFuellen();
+				
+				controller.abbrechen();
+				
 			}
 		});
 
@@ -650,6 +650,10 @@ public class PruefungsDetails extends JFrame {
 
 	public JTable getTableTermine() {
 		return tableTermine;
+	}
+
+	public PruefungsverwaltungView getPruefungsverwaltung() {
+		return pruefungsverwaltung;
 	}
 
 }
