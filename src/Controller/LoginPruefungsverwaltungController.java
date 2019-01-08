@@ -114,7 +114,7 @@ public class LoginPruefungsverwaltungController {
 		} else if (getPasswortS() == null || getPasswortS().length() == 0) {
 			viewS.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
 		} else if (getMatrikelNr() == 0) {
-			viewS.getFehlerLabel().setText("Matrikelnummer darf nicht leer sein!");
+			viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden - bitte prüfen!");
 		} else {
 
 			try {
