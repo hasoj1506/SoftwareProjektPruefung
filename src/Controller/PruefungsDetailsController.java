@@ -71,13 +71,13 @@ public class PruefungsDetailsController {
 		try {
 			textFieldDauer.setText(String.valueOf(pruefung.getDauer()));
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(view, "Die Dauer wurde nicht im richtigen Format eingegeben!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Die Dauer wurde nicht im richtigen Format eingegeben!");
 		}
 
 		try {
 			textFieldPunkte.setText(String.valueOf(pruefung.getPunkte()));
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(view, "Die Punkte wurden nicht im richtigen Format eingegeben!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Die Punkte wurden nicht im richtigen Format eingegeben!");
 		}
 
 		// Tabellen füllen
@@ -104,7 +104,7 @@ public class PruefungsDetailsController {
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
 		}
 	}
 
@@ -129,7 +129,7 @@ public class PruefungsDetailsController {
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmer-Tabelle konnte nicht aktualisiert werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer-Tabelle konnte nicht aktualisiert werden!");
 		}
 	}
 
@@ -149,7 +149,7 @@ public class PruefungsDetailsController {
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Termine-Tabelle konnte nicht gefüllt werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Termine-Tabelle konnte nicht gefüllt werden!");
 		}
 	}
 
@@ -169,7 +169,7 @@ public class PruefungsDetailsController {
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Aufgaben-Tabelle konnte nicht gefüllt werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Aufgaben-Tabelle konnte nicht gefüllt werden!");
 		}
 	}
 
@@ -198,11 +198,11 @@ public class PruefungsDetailsController {
 				// übergeben
 				AufgabendetailsView detailView = new AufgabendetailsView(zuBearbeitendeAufgabe, view);
 			} else {
-				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Keine Aufgabe ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Aufgabe kann nicht bearbeitet werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Aufgabe kann nicht bearbeitet werden!");
 		}
 	}
 
@@ -214,7 +214,7 @@ public class PruefungsDetailsController {
 			if (view.getTableAufgaben().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view, "Soll die Aufgabe wirklich gelöscht werden?", "Abfrage",
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Aufgabe wirklich gelöscht werden?", "Abfrage",
 						JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
@@ -233,11 +233,11 @@ public class PruefungsDetailsController {
 					// nichts tun
 				}
 			} else {
-				JOptionPane.showMessageDialog(view, "Keine Aufgabe ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Keine Aufgabe ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Aufgabe konnte nicht gelöscht werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Aufgabe konnte nicht gelöscht werden!");
 		}
 
 	}
@@ -269,11 +269,11 @@ public class PruefungsDetailsController {
 				detailView.getFrmTermin()
 						.setTitle("Bearbeiten - Termin für: " + zuBearbeitenderTermin.getPruefung().getBezeichnung());
 			} else {
-				JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Kein Termin ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Termin konnte nicht bearbeitet werden!" + e);
+			JOptionPane.showMessageDialog(view.getFrame(), "Termin konnte nicht bearbeitet werden!" + e);
 		}
 	}
 
@@ -285,7 +285,7 @@ public class PruefungsDetailsController {
 			if (view.getTableTermine().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view, "Soll der Termin wirklich gelöscht werden?", "Abfrage",
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll der Termin wirklich gelöscht werden?", "Abfrage",
 						JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
@@ -304,11 +304,11 @@ public class PruefungsDetailsController {
 					// nichts tun
 				}
 			} else {
-				JOptionPane.showMessageDialog(view, "Kein Termin ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Kein Termin ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Termin konnte nicht gelöscht werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Termin konnte nicht gelöscht werden!");
 		}
 
 	}
@@ -340,11 +340,11 @@ public class PruefungsDetailsController {
 				detailView.getFrmNutzer().setTitle(
 						"Bearbeiten - Teilnehmer für: " + zuBearbeitenderTeilnehmer.getPruefung().getBezeichnung());
 			} else {
-				JOptionPane.showMessageDialog(view, "Kein Teilnehmer ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Kein Teilnehmer ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmer konnte nicht bearbeitet werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer konnte nicht bearbeitet werden!");
 		}
 	}
 
@@ -356,7 +356,7 @@ public class PruefungsDetailsController {
 			if (view.getTableTeilnehmer().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view, "Soll der Teilnehmer wirklich gelöscht werden?",
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll der Teilnehmer wirklich gelöscht werden?",
 						"Abfrage", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
@@ -375,11 +375,11 @@ public class PruefungsDetailsController {
 					// nichts tun
 				}
 			} else {
-				JOptionPane.showMessageDialog(view, "Kein Teilnehmer ausgewählt!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Kein Teilnehmer ausgewählt!");
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmer konnte nicht gelöscht werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer konnte nicht gelöscht werden!");
 		}
 
 	}
@@ -417,7 +417,7 @@ public class PruefungsDetailsController {
 						matrikelNr = Integer.parseInt(matrikelnummer);
 					} catch (Exception e) {
 						// Was beim Fehler passiert
-						JOptionPane.showMessageDialog(view, "Fehler beim importieren!");
+						JOptionPane.showMessageDialog(view.getFrame(), "Fehler beim importieren!");
 					}
 
 					// Daten der CSV verwenden
@@ -429,14 +429,14 @@ public class PruefungsDetailsController {
 					importierteTeilnehmer++;
 				}
 				CSVFile.close();
-				JOptionPane.showMessageDialog(view, "Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
+				JOptionPane.showMessageDialog(view.getFrame(), "Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
 				fuelleTeilnehmerTable(pruefung);
 			} else {
 				// nichts tun
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmer konnten nicht importiert werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer konnten nicht importiert werden!");
 		}
 	}
 
@@ -490,13 +490,13 @@ public class PruefungsDetailsController {
 				excelWriter.close();
 
 				// Erfolgsmeldung
-				JOptionPane.showMessageDialog(view, "Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n"
+				JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n"
 						+ dateipfad + "\\" + dateiname + ".xls");
 			}
 
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Teilnehmerliste konnte nicht exportiert werden!" + e);
+			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmerliste konnte nicht exportiert werden!" + e);
 		}
 	}
 
@@ -528,17 +528,17 @@ public class PruefungsDetailsController {
 		// andernfalls zum Füllen auffordern
 		if (bezeichnung.length() <= 0) {
 			view.getTextFieldPrfungstitel().setBackground(new Color(255, 102, 102));
-			JOptionPane.showMessageDialog(view, "Bitte Bezeichnung korrekt füllen!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Bitte Bezeichnung korrekt füllen!");
 		} else if (dauer == 0) {
 			view.getTextFieldDauer().setBackground(new Color(255, 102, 102));
-			JOptionPane.showMessageDialog(view, "Bitte Dauer korrekt füllen!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Bitte Dauer korrekt füllen!");
 		} else {
 			pruefung.setBezeichnung(bezeichnung);
 			pruefung.setDauer(dauer);
 			pruefung.setPunkte(punkte);
 			pruefung.setVerwuerfelt(view.getChckbxAufgabenVerwrfeln().isSelected());
 			db.persistPruefung(pruefung);
-			view.dispose();
+			view.getFrame().dispose();
 		}
 	}
 
@@ -547,7 +547,7 @@ public class PruefungsDetailsController {
 		try {
 
 			// Abfrage, ob wirklich gelöscht werden soll
-			int reply = JOptionPane.showConfirmDialog(view, "Soll die Prüfung wirklich gelöscht werden?", "Abfrage",
+			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?", "Abfrage",
 					JOptionPane.YES_NO_OPTION);
 			if (reply == JOptionPane.YES_OPTION) {
 
@@ -558,20 +558,20 @@ public class PruefungsDetailsController {
 				// Löschen der Prüfung aus der Datenbank und neuladen der
 				// Tabelle
 				db.loeschePruefungAusPruefungsverwaltung(zuLoeschendePruefung);
-				view.dispose();
+				view.getFrame().dispose();
 			} else {
 				// nichts tun
 			}
 		} catch (Exception e) {
 			// Was beim Fehler passiert
-			JOptionPane.showMessageDialog(view, "Prüfung konnte nicht gelöscht werden!");
+			JOptionPane.showMessageDialog(view.getFrame(), "Prüfung konnte nicht gelöscht werden!");
 		}
 	}
 
 	public void abbrechen() {
 		db.getEm().clear();
 		view.getPruefungsverwaltung().tabelleFuellen();
-		view.dispose();
+		view.getFrame().dispose();
 	}
 
 	public PruefungsDetailsAufgabenTableModel getTableModelAufgaben() {

@@ -9,7 +9,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -31,12 +30,13 @@ import Controller.PruefungsDetailsController;
 import Models.Pruefung;
 
 //Josah Weber
-public class PruefungsDetails extends JFrame {
+public class PruefungsDetails {
 
 	private PruefungsverwaltungView pruefungsverwaltung;
 
 	private Pruefung pruefung;
 
+	private JFrame frame;
 	private JTextField textFieldPrfungstitel;
 	private JTable tableAufgaben;
 	private JTable tableTeilnehmer;
@@ -98,10 +98,10 @@ public class PruefungsDetails extends JFrame {
 
 	public void onCreate() {
 
-		setMinimumSize(new Dimension(1200, 850));
-//		setPreferredSize(new Dimension(850, 850));
+		this.frame = new JFrame();
+		frame.setMinimumSize(new Dimension(1200, 850));
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
-		setIconImage(icon1);
+		frame.setIconImage(icon1);
 
 		JPanel panelButtons = new JPanel();
 		panelButtons.setBorder(null);
@@ -110,7 +110,7 @@ public class PruefungsDetails extends JFrame {
 		flowLayout.setVgap(10);
 		flowLayout.setHgap(25);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
-		getContentPane().add(panelButtons, BorderLayout.SOUTH);
+		frame.getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
 		panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 204, 204));
@@ -132,7 +132,7 @@ public class PruefungsDetails extends JFrame {
 
 		JPanel panelMain = new JPanel();
 		panelMain.setBackground(new Color(255, 255, 255));
-		getContentPane().add(panelMain, BorderLayout.CENTER);
+		frame.getContentPane().add(panelMain, BorderLayout.CENTER);
 		GridBagLayout gbl_panelMain = new GridBagLayout();
 		gbl_panelMain.columnWidths = new int[] { 20, 150, 300, 65, 0 };
 		gbl_panelMain.rowHeights = new int[] { 22, 0, 50, 0, 50, 0, 50, 0 };
@@ -329,7 +329,7 @@ public class PruefungsDetails extends JFrame {
 
 		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(204, 204, 204));
-		getContentPane().add(panel_2, BorderLayout.NORTH);
+		frame.getContentPane().add(panel_2, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] { 475, 0 };
 		gbl_panel_2.rowHeights = new int[] { 110, 32, 0, 0 };
@@ -463,10 +463,10 @@ public class PruefungsDetails extends JFrame {
 		gbc_chckbxAufgabenVerwrfeln.gridy = 2;
 		panel_1.add(chckbxAufgabenVerwrfeln, gbc_chckbxAufgabenVerwrfeln);
 
-		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
-		
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+
 	}
 
 	public void punkteCheck() {
@@ -579,9 +579,9 @@ public class PruefungsDetails extends JFrame {
 
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				controller.abbrechen();
-				
+
 			}
 		});
 
@@ -609,7 +609,7 @@ public class PruefungsDetails extends JFrame {
 			}
 		});
 
-		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 				pruefungsverwaltung.getFrame().setVisible(true);
@@ -625,7 +625,7 @@ public class PruefungsDetails extends JFrame {
 	public void setChckbxAufgabenVerwrfeln(JCheckBox chckbxAufgabenVerwrfeln) {
 		this.chckbxAufgabenVerwrfeln = chckbxAufgabenVerwrfeln;
 	}
-	
+
 	public JTable getTableAufgaben() {
 		return tableAufgaben;
 	}
@@ -656,6 +656,10 @@ public class PruefungsDetails extends JFrame {
 
 	public PruefungsverwaltungView getPruefungsverwaltung() {
 		return pruefungsverwaltung;
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 
 }

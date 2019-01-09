@@ -71,7 +71,7 @@ public class PruefungsverwaltungController {
 		PruefungsDetails detailView = new PruefungsDetails(view, pruefung);
 
 		// Frame-Titel wird geändert
-		detailView.setTitle("Neue Prüfung");
+		detailView.getFrame().setTitle("Neue Prüfung");
 
 	}
 
@@ -89,7 +89,7 @@ public class PruefungsverwaltungController {
 				PruefungsDetails detailView = new PruefungsDetails(zuBearbeitendePrüfung, view);
 
 				// Frame-Titel wird geändert
-				detailView.setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
+				detailView.getFrame().setTitle("Bearbeiten: " + zuBearbeitendePrüfung.getBezeichnung());
 
 			} else {
 				JOptionPane.showMessageDialog(view.getFrame(), "Keine Pruefung ausgewählt!");

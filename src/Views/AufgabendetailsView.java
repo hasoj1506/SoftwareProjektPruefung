@@ -347,7 +347,7 @@ public class AufgabendetailsView {
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				pruefungsDetailsView.setVisible(true);
+				pruefungsDetailsView.getFrame().setVisible(true);
 			}
 		});
 
