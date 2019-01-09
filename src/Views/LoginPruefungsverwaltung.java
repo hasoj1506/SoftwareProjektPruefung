@@ -88,7 +88,7 @@ public class LoginPruefungsverwaltung {
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(new ImageIcon(this.getClass().getResource("/ELogok.png")).getImage()));
+		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/FH.png.jpg")));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Gill Sans MT", Font.BOLD, 72));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
