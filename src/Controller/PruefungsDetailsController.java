@@ -509,6 +509,12 @@ public class PruefungsDetailsController {
 		int dauer;
 		try {
 			dauer = Integer.parseInt(view.getTextFieldDauer().getText());
+			if (dauer <= 0) {
+				throw new Exception();
+			}
+			else {
+				dauer = Integer.parseInt(view.getTextFieldDauer().getText());
+			}		
 		} catch (Exception e) {
 			dauer = 0;
 		}
