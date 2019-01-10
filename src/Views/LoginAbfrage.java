@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 
 import javax.swing.ImageIcon;
@@ -59,27 +61,27 @@ public class LoginAbfrage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-//		frame.setBounds(100, 100, 450, 300);
+		// frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		panel.add(panel_1, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] {0, 0, 30, 0, 0, 0, 30, 0};
-		gbl_panel_1.rowHeights = new int[] {0, 70};
-		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWidths = new int[] { 0, 0, 30, 0, 0, 0, 30, 0 };
+		gbl_panel_1.rowHeights = new int[] { 0, 70 };
+		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.WHITE);
 		panel_3.setPreferredSize(new Dimension(25, 10));
@@ -90,7 +92,7 @@ public class LoginAbfrage {
 		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 0;
 		panel_1.add(panel_3, gbc_panel_3);
-		
+
 		btnStudent = new JButton("Student");
 		btnStudent.setFont(new Font("Verdana", Font.PLAIN, 20));
 		btnStudent.setPreferredSize(new Dimension(150, 40));
@@ -101,7 +103,7 @@ public class LoginAbfrage {
 		gbc_btnStudent.gridx = 2;
 		gbc_btnStudent.gridy = 0;
 		panel_1.add(btnStudent, gbc_btnStudent);
-		
+
 		btnProfessor = new JButton("Professor");
 		btnProfessor.setFont(new Font("Verdana", Font.PLAIN, 20));
 		btnProfessor.setPreferredSize(new Dimension(150, 40));
@@ -110,7 +112,7 @@ public class LoginAbfrage {
 		gbc_btnProfessor.gridx = 4;
 		gbc_btnProfessor.gridy = 0;
 		panel_1.add(btnProfessor, gbc_btnProfessor);
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
@@ -119,55 +121,66 @@ public class LoginAbfrage {
 		gbc_panel_4.gridx = 5;
 		gbc_panel_4.gridy = 0;
 		panel_1.add(panel_4, gbc_panel_4);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0};
-		gbl_panel_2.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[] { 0, 0 };
+		gbl_panel_2.rowHeights = new int[] { 0, 0 };
+		gbl_panel_2.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel_2.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel_2.setLayout(gbl_panel_2);
-		
+
 		JLabel lblIchBin = new JLabel("Ich bin:");
-		lblIchBin.setForeground(new Color(0,155,187));
+		lblIchBin.setForeground(new Color(0, 155, 187));
 		lblIchBin.setFont(new Font("Gill Sans MT", Font.BOLD, 50));
 		GridBagConstraints gbc_lblIchBin = new GridBagConstraints();
 		gbc_lblIchBin.fill = GridBagConstraints.VERTICAL;
 		gbc_lblIchBin.gridx = 0;
 		gbc_lblIchBin.gridy = 0;
 		panel_2.add(lblIchBin, gbc_lblIchBin);
-		
+
 		frame.setLocationRelativeTo(null);
 		frame.setMinimumSize(new Dimension(500, 300));
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-		
-//		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-//		double width = screensize.getWidth();
-//		double height = screensize.getHeight();
-//		int frameWidth = frame.getContentPane().getWidth();
-//		int frameHeight = frame.getContentPane().getHeight();
-//		System.out.println(frameWidth);
-//		frame.setLocation((int)(width/2) - frameWidth/2 , (int)(height/2) - frameHeight/2);
-//		
+
+		// Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+		// double width = screensize.getWidth();
+		// double height = screensize.getHeight();
+		// int frameWidth = frame.getContentPane().getWidth();
+		// int frameHeight = frame.getContentPane().getHeight();
+		// System.out.println(frameWidth);
+		// frame.setLocation((int)(width/2) - frameWidth/2 , (int)(height/2) -
+		// frameHeight/2);
+		//
 	}
-	
-	public void addActionListeners(){
-		
-		btnStudent.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				LoginStudent studentView = new LoginStudent();
-				frame.dispose();
+
+	public void addActionListeners() {
+
+		btnStudent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoginStudent studentView = new LoginStudent();
+					frame.dispose();
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(frame,
+							"Bitte stellen Sie eine Verbindung zum Netz der FH-Bielefeld her!");
+				}
 			}
 		});
-		
-		btnProfessor.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
-				frame.dispose();
+
+		btnProfessor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
+					frame.dispose();
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(frame,
+							"Bitte stellen Sie eine Verbindung zum Netz der FH-Bielefeld her!");
+				}
 			}
 		});
 	}
