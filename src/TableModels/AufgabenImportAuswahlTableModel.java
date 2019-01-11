@@ -1,11 +1,9 @@
 package TableModels;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import Models.Antwort;
 import Models.Aufgabe;
 
 //Josah Weber
@@ -49,7 +47,7 @@ public class AufgabenImportAuswahlTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-	
+
 	public void setValueAt(Object value, int row, int col) {
 		switch (col) {
 		case 3:
@@ -57,10 +55,10 @@ public class AufgabenImportAuswahlTableModel extends AbstractTableModel {
 			break;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int row, int col) {
-	     return col == 3;
+		return col == 3;
 	}
-	
+
 }

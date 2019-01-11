@@ -7,17 +7,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,15 +24,12 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
-import Controller.PruefungsverwaltungController;
 import DatabaseService.DatabaseService;
 import Models.Antwort;
 import Models.Aufgabe;
 import Models.Pruefung;
 import TableComparatoren.AufgabenComparator;
 import TableModels.AufgabenImportAuswahlTableModel;
-import TableModels.PruefungsDetailsAufgabenTableModel;
-import TableModels.PruefungsverwaltungTableModel;
 
 //Josah Weber
 public class ImportiereAufgabenAuswahlPopUp {
@@ -51,7 +44,7 @@ public class ImportiereAufgabenAuswahlPopUp {
 	private Pruefung importierendePruefung;
 	private PruefungsDetails pruefungsdetails;
 	private Pruefung pruefung;
-	
+
 	// um Zugriff auf die Datenbank zu bekommen
 	DatabaseService db = DatabaseService.getInstance();
 
@@ -180,14 +173,14 @@ public class ImportiereAufgabenAuswahlPopUp {
 			JOptionPane.showMessageDialog(frame, "Aufgaben konnten nicht geladen werden!");
 		}
 	}
-	
-	//Klicken des Importieren-Buttons
+
+	// Klicken des Importieren-Buttons
 	public void importiereAufgaben() {
 		try {
-			//alle Aufgaben der gewählten Prüfung durchgehen
+			// alle Aufgaben der gewählten Prüfung durchgehen
 			for (Aufgabe a : pruefung.getAufgaben()) {
-				
-				//Wenn Aufgabe zum Importieren markiert wurde, duplizieren
+
+				// Wenn Aufgabe zum Importieren markiert wurde, duplizieren
 				if (a.isSollImportieren() == true) {
 					Aufgabe aufgabe = new Aufgabe();
 
@@ -204,13 +197,13 @@ public class ImportiereAufgabenAuswahlPopUp {
 					aufgabe.setPunktzahl(a.getPunktzahl());
 
 					importierendePruefung.addAufgabe(aufgabe);
-					
-					//Markierung zurücksetzen
+
+					// Markierung zurücksetzen
 					a.setSollImportieren(false);
 				}
 			}
 			frame.dispose();
-			//Aufgabenliste aktualisieren
+			// Aufgabenliste aktualisieren
 			pruefungsdetails.getPruefungsDetailController().fuelleAufgabenTable(importierendePruefung);
 		} catch (Exception e) {
 			// Was beim Fehler passiert

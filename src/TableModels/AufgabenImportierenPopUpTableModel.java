@@ -1,12 +1,8 @@
 package TableModels;
 
-import java.awt.Image;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
-
-import com.sun.codemodel.JLabel;
 
 import Models.Pruefung;
 
@@ -19,7 +15,7 @@ public class AufgabenImportierenPopUpTableModel extends AbstractTableModel {
 		this.pruefungen = pruefungen;
 	}
 
-	String[] columnNames = { "Titel", "Aufgaben"};
+	String[] columnNames = { "Titel", "Aufgaben" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -38,7 +34,7 @@ public class AufgabenImportierenPopUpTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
-		
+
 		switch (col) {
 		case 0:
 			return pruefungen.get(row).getBezeichnung();
