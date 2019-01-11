@@ -106,6 +106,20 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
 		}
+		
+		spaltenbreiteTeilnehmerTable(tableTeilnehmer);
+	}
+	
+	//Spaltenbreiten der Teilnehmer-Table anpassen
+	private void spaltenbreiteTeilnehmerTable(JTable tableTeilnehmer) {
+		
+		tableTeilnehmer.getColumnModel().getColumn(0).setPreferredWidth(2);
+		tableTeilnehmer.getColumnModel().getColumn(1).setPreferredWidth(100);
+		tableTeilnehmer.getColumnModel().getColumn(2).setPreferredWidth(100);
+		tableTeilnehmer.getColumnModel().getColumn(3).setPreferredWidth(100);
+		tableTeilnehmer.getColumnModel().getColumn(4).setPreferredWidth(30);
+		tableTeilnehmer.getColumnModel().getColumn(5).setPreferredWidth(30);
+		tableTeilnehmer.getColumnModel().getColumn(6).setPreferredWidth(2);
 	}
 
 	public void aktualisiereTeilnehmerTable() {
@@ -475,14 +489,14 @@ public class PruefungsDetailsController {
 				TableModel model = view.getTableTeilnehmer().getModel();
 				FileWriter excelWriter = new FileWriter(excelFile);
 
-				for (int i = 0; i < model.getColumnCount() - 1; i++) {
+				for (int i = 1; i < model.getColumnCount() - 1; i++) {
 					excelWriter.write(model.getColumnName(i) + "\t");
 				}
 
 				excelWriter.write("\n");
 
 				for (int i = 0; i < model.getRowCount(); i++) {
-					for (int j = 0; j < model.getColumnCount() - 1; j++) {
+					for (int j = 1; j < model.getColumnCount() - 1; j++) {
 						excelWriter.write(model.getValueAt(i, j).toString() + "\t");
 					}
 					excelWriter.write("\n");

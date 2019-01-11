@@ -98,7 +98,7 @@ public class LoginPruefungsverwaltungController {
 				if (studenten.size() >= 0) {
 
 					for (Student s : studenten) {
-						if (s.getPruefung().isFreigegeben() == true) {
+						if (s.getPruefung().isFreigegeben() == true && s.isHatAbgegeben() == false) {
 							student = s;
 						} else {
 							viewS.getFehlerLabel()

@@ -285,6 +285,7 @@ public class AuswertungView extends JFrame{
 		student.setErreichtePunktzahl(erreichtePunktzahl);
 		student.setBonusPunkte(bonusPunkte);
 		student.setEingeloggt(false);
+		student.setHatAbgegeben(true);
 		service.persistNutzer(student);
 	}
 	

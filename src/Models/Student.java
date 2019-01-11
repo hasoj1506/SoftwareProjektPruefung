@@ -11,6 +11,8 @@ public class Student extends Nutzer {
 	private double erreichtePunktzahl;
 	private int bonusPunkte;
 	private boolean eingeloggt = false;
+	private boolean istImportiert;
+	private boolean hatAbgegeben;
 
 	public Student() {
 
@@ -19,6 +21,8 @@ public class Student extends Nutzer {
 	public Student(String vorname, String nachname, int matrikelNr) {
 		super(vorname, nachname);
 		this.matrikelNr = matrikelNr;
+		this.istImportiert = true;
+		this.hatAbgegeben = false;
 	}
 
 	public int getMatrikelNr() {
@@ -52,6 +56,22 @@ public class Student extends Nutzer {
 
 	public void setBonusPunkte(int bonusPunkte) {
 		this.bonusPunkte = bonusPunkte;
+	}
+
+	public boolean isIstImportiert() {
+		return istImportiert;
+	}
+
+	public void setIstImportiert(boolean istImportiert) {
+		this.istImportiert = istImportiert;
+	}
+
+	public boolean isHatAbgegeben() {
+		return hatAbgegeben;
+	}
+
+	public void setHatAbgegeben(boolean hatAbgegeben) {
+		this.hatAbgegeben = hatAbgegeben;
 	}
 
 }

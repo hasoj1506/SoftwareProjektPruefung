@@ -209,6 +209,7 @@ public class NutzerErstellenPopUp {
 					student.setVorname(vorname);
 					student.setNachname(nachname);
 					student.setMatrikelNr(matrikelnummer);
+					student.setIstImportiert(false);
 
 					view.getPruefungsDetailController().fuelleTeilnehmerTable(pruefung);
 
@@ -261,6 +262,7 @@ public class NutzerErstellenPopUp {
 					JOptionPane.showMessageDialog(frmNutzer, "Bitte Matrikelnummer korrekt eingeben!");
 				} else {
 					Student student = new Student(vorname, nachname, matrikelnummer);
+					student.setIstImportiert(false);
 					student.setPruefung(pruefung);
 					pruefung.addStudent(student);
 

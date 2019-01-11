@@ -20,7 +20,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.studenten = studenten;
 	}
 
-	String[] columnNames = { "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet" };
+	String[] columnNames = { "", "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -39,23 +39,34 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
+		//Icons für gewisse Spalten erstellen
 		Image greenImage = new ImageIcon(this.getClass().getResource("/greenIcon.png")).getImage();
 		ImageIcon greenIcon = new ImageIcon(greenImage);
 		Image redImage = new ImageIcon(this.getClass().getResource("/redIcon.png")).getImage();
 		ImageIcon redIcon = new ImageIcon(redImage);
+		Image importImage = new ImageIcon(this.getClass().getResource("/import.png")).getImage();
+		ImageIcon importIcon = new ImageIcon(importImage);
+		Image manuellImage = new ImageIcon(this.getClass().getResource("/manuell.png")).getImage();
+		ImageIcon manuellIcon = new ImageIcon(manuellImage);
 
 		switch (col) {
 		case 0:
-			return studenten.get(row).getNachname();
+			if(studenten.get(row).isIstImportiert() == true){
+				return importIcon;
+			} else if(studenten.get(row).isIstImportiert() == false) {
+				return manuellIcon;
+			}
 		case 1:
-			return studenten.get(row).getVorname();
+			return studenten.get(row).getNachname();
 		case 2:
-			return studenten.get(row).getMatrikelNr();
+			return studenten.get(row).getVorname();
 		case 3:
-			return studenten.get(row).getErreichtePunktzahl();
+			return studenten.get(row).getMatrikelNr();
 		case 4:
-			return studenten.get(row).getBonusPunkte();
+			return studenten.get(row).getErreichtePunktzahl();
 		case 5:
+			return studenten.get(row).getBonusPunkte();
+		case 6:
 			if (studenten.get(row).isEingeloggt() == false) {
 				return redIcon;
 			} else if (studenten.get(row).isEingeloggt() == true) {
