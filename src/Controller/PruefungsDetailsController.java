@@ -113,13 +113,13 @@ public class PruefungsDetailsController {
 	//Spaltenbreiten der Teilnehmer-Table anpassen
 	private void spaltenbreiteTeilnehmerTable(JTable tableTeilnehmer) {
 		
-		tableTeilnehmer.getColumnModel().getColumn(0).setPreferredWidth(2);
-		tableTeilnehmer.getColumnModel().getColumn(1).setPreferredWidth(100);
-		tableTeilnehmer.getColumnModel().getColumn(2).setPreferredWidth(100);
-		tableTeilnehmer.getColumnModel().getColumn(3).setPreferredWidth(100);
-		tableTeilnehmer.getColumnModel().getColumn(4).setPreferredWidth(30);
-		tableTeilnehmer.getColumnModel().getColumn(5).setPreferredWidth(30);
-		tableTeilnehmer.getColumnModel().getColumn(6).setPreferredWidth(2);
+		tableTeilnehmer.getColumnModel().getColumn(0).setPreferredWidth(100);
+		tableTeilnehmer.getColumnModel().getColumn(1).setPreferredWidth(1000);
+		tableTeilnehmer.getColumnModel().getColumn(2).setPreferredWidth(1000);
+		tableTeilnehmer.getColumnModel().getColumn(3).setPreferredWidth(1000);
+		tableTeilnehmer.getColumnModel().getColumn(4).setPreferredWidth(500);
+		tableTeilnehmer.getColumnModel().getColumn(5).setPreferredWidth(500);
+		tableTeilnehmer.getColumnModel().getColumn(6).setPreferredWidth(300);
 	}
 
 	public void aktualisiereTeilnehmerTable() {
