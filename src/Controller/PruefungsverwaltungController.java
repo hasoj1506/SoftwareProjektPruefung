@@ -61,6 +61,7 @@ public class PruefungsverwaltungController {
 		view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
 		view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
 		view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
+		view.getTablePruefungen().getColumnModel().getColumn(6).setPreferredWidth(10);
 	}
 
 	// Neu-Button wird geklickt
