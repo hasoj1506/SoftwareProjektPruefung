@@ -23,6 +23,7 @@ public class Aufgabe {
 	private double punktzahl;
 	private boolean verwuerfelt;
 	private double erreichtePunktzahl;
+	private boolean sollImportieren;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -111,5 +112,13 @@ public class Aufgabe {
 
 	public void setErreichtePunktzahl(double erreichtePunktzahl) {
 		this.erreichtePunktzahl = erreichtePunktzahl;
+	}
+
+	public boolean isSollImportieren() {
+		return sollImportieren;
+	}
+
+	public void setSollImportieren(boolean sollImportieren) {
+		this.sollImportieren = sollImportieren;
 	}
 }

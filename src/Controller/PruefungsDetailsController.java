@@ -31,6 +31,7 @@ import TableModels.PruefungsDetailsAufgabenTableModel;
 import TableModels.PruefungsDetailsTeilnehmerTableModel;
 import TableModels.PruefungsDetailsTermineTableModel;
 import Views.AufgabendetailsView;
+import Views.ImportiereAufgabenPopUp;
 import Views.NutzerErstellenPopUp;
 import Views.PruefungsDetails;
 import Views.PruefungsverwaltungView;
@@ -254,6 +255,11 @@ public class PruefungsDetailsController {
 			JOptionPane.showMessageDialog(view.getFrame(), "Aufgabe konnte nicht gelöscht werden!");
 		}
 
+	}
+	
+	//Aufgabe-Importieren-Button wird geklickt
+	public void importiereAufgaben(){
+		ImportiereAufgabenPopUp popUp = new ImportiereAufgabenPopUp(pruefung, view);
 	}
 
 	// Neu-Termin-Button wird geklickt

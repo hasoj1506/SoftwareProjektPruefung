@@ -69,6 +69,7 @@ public class PruefungsDetails {
 	private JButton btnImportieren;
 	private JPanel panel;
 	private JButton btnAktualisieren;
+	private JButton btnImportiereAufgaben;
 
 	/**
 	 * @wbp.parser.constructor
@@ -174,6 +175,10 @@ public class PruefungsDetails {
 		gbc_panelAufgabenButtons.gridx = 2;
 		gbc_panelAufgabenButtons.gridy = 2;
 		panelMain.add(panelAufgabenButtons, gbc_panelAufgabenButtons);
+		
+		btnImportiereAufgaben = new JButton("Importieren");
+		btnImportiereAufgaben.setFont(new Font("Verdana", Font.PLAIN, 16));
+		panelAufgabenButtons.add(btnImportiereAufgaben);
 
 		btnNeuAufgabe = new JButton("Neu");
 		btnNeuAufgabe.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -517,6 +522,12 @@ public class PruefungsDetails {
 		btnLschenAufgabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.loescheAufgabe();
+			}
+		});
+		
+		btnImportiereAufgaben.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.importiereAufgaben();;
 			}
 		});
 
