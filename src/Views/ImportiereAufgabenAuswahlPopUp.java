@@ -205,6 +205,7 @@ public class ImportiereAufgabenAuswahlPopUp {
 			frame.dispose();
 			// Aufgabenliste aktualisieren
 			pruefungsdetails.getPruefungsDetailController().fuelleAufgabenTable(importierendePruefung);
+			pruefungsdetails.punkteCheck();
 		} catch (Exception e) {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(frame, "Aufgaben können nicht importiert werden!");
