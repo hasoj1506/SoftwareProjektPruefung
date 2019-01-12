@@ -146,6 +146,7 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer-Tabelle konnte nicht aktualisiert werden!");
 		}
+		spaltenbreiteTeilnehmerTable(tableTeilnehmer);
 	}
 
 	public void fuelleTermineTable(Pruefung pruefung) {
