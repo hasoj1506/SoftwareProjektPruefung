@@ -31,7 +31,7 @@ import Models.Pruefung;
 
 //Josah Weber, Yanek Wilken
 public class PruefungsDetails {
-
+	//ab hier: Josah Weber
 	private PruefungsverwaltungView pruefungsverwaltung;
 
 	private Pruefung pruefung;
@@ -470,7 +470,7 @@ public class PruefungsDetails {
 
 	}
 
-	// Yanek Wilken
+	//ab hier: Yanek Wilken
 	public void punkteCheck() {
 
 		try {
@@ -482,7 +482,7 @@ public class PruefungsDetails {
 
 	}
 
-	// Josah Weber
+	//ab hier: Josah Weber
 	// Wenn vorhandene Prüfung bearbeitet werden soll
 	public void fuellePruefungsDetailsZumBearbeiten() {
 		controller.fuellePruefungsDetails(pruefung);

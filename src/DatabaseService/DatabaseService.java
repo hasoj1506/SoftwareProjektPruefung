@@ -10,7 +10,7 @@ import javax.persistence.*;
 //Beteiligt Yanek Wilken, Josah Weber, Victoria Meier
 public class DatabaseService {
 	
-	//Yanek Wilken
+	//ab hier: Yanek Wilken
 	private EntityManager em;
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
@@ -27,7 +27,7 @@ public class DatabaseService {
 		em = emf.createEntityManager();
 	}
 	
-	//Yanek Wilken
+	
 	public static DatabaseService getInstance() {
 
 		if (instance == null) {
@@ -38,7 +38,7 @@ public class DatabaseService {
 		return instance;
 	}
 	
-	//Yanek Wilken
+	
 	public static DatabaseService getInstance(String benutzername, String passwort) {
 
 		if (instance == null) {
@@ -58,7 +58,7 @@ public class DatabaseService {
 		return em;
 	}
 	
-	//Yanek Wilken
+	
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
 		em.merge(nutzer);
@@ -109,7 +109,7 @@ public class DatabaseService {
 
 	}
 	
-	//Josah Weber
+	//ab hier: Josah Weber
 	public List<Termin> readTermin(Pruefung pruefung) {
 
 		try {
@@ -130,7 +130,7 @@ public class DatabaseService {
 
 	}
 
-	//Yanek Wilken
+	//ab hier: Yanek Wilken
 	public List<Aufgabe> readAufgabe(Pruefung pruefung) {
 
 		try {
@@ -151,7 +151,7 @@ public class DatabaseService {
 
 	}
 
-	//Josah Weber
+	//ab hier: Josah Weber
 	public List<Pruefung> readPruefungen() {
 
 		List<Pruefung> pruefungen;
@@ -192,7 +192,7 @@ public class DatabaseService {
 
 	}
 
-	//Victoria Meier
+	//ab hier: Victoria Meier
 	public List<Nutzer> readNutzer() {
 
 		List<Nutzer> nutzer;
@@ -220,7 +220,7 @@ public class DatabaseService {
 		return emf;
 	}
 	
-	//Josah Weber
+	//ab hier: Josah Weber
 	public List<Student> readTeilnehmer(int pruefungId) {
 
 		List<Student> studenten;
@@ -240,7 +240,7 @@ public class DatabaseService {
 		
 	}
 	
-	//Victoria Meier
+	//ab hier: Victoria Meier
 	public List<Student> readLogin(int matrikelNr) {
 
 		try {
@@ -255,7 +255,7 @@ public class DatabaseService {
 
 	}
 	
-	//Yanek Wilken
+	//ab hier: Yanek Wilken
 	public void refreshList(List<Student> teilnehmer) {
 		
 		for(Student student : teilnehmer) {

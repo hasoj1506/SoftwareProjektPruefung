@@ -22,7 +22,7 @@ public class PruefungViewController {
 	// alle Methoden, die durch Bedienung der PruefungView aufgerufen werden
 	// können
 
-	// Marco Penner
+	//ab hier: Marco Penner
 	Pruefung pruefung;
 	Student student;
 	List<Aufgabe> aufgaben;
@@ -44,7 +44,7 @@ public class PruefungViewController {
 
 	}
 
-	// Marco Penner
+	
 	public void fuelleAufgabenTabelle() {
 		model = new PruefungViewAufgabenTableModel(new ArrayList<Aufgabe>(pruefung.getAufgaben()));
 
@@ -100,7 +100,7 @@ public class PruefungViewController {
 		AuswertungView auswertungsView = new AuswertungView(student, ergebnis);
 	}
 
-	// Marco Penner
+	
 	public void fuelleAufgabe() {
 		/*
 		 * Table ausfüllen Textfelder ausfüllen
@@ -167,13 +167,13 @@ public class PruefungViewController {
 
 	}
 
-	// Marco Penner
+	
 	public void timerAbgelaufen() {
 
 		abgegeben();
 	}
 
-	// Yanek Wilken
+	//ab hier: Yanek Wilken
 	public double berechneErgebnis() {
 
 		double gesamtePunktzahl = 0;
