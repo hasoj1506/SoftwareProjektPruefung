@@ -131,7 +131,6 @@ public class AufgabendetailsView {
 
 		afgdButtonNeuAntwort = new JButton("Neu");
 		panel_2.add(afgdButtonNeuAntwort);
-		afgdButtonNeuAntwort.setForeground(new Color(51, 51, 51));
 		afgdButtonNeuAntwort.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		afgdButtonBearbeitenAntwort = new JButton("Bearbeiten");

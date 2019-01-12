@@ -127,7 +127,6 @@ public class ImportiereAufgabenPopUp {
 		unterPanel.add(btnAufgabenAnzeigen, gbc_btnAufgabenAnzeigen);
 
 		btnFertig = new JButton("Fertig");
-		btnFertig.setForeground(new Color(51, 51, 51));
 		btnFertig.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnFertig = new GridBagConstraints();
 		gbc_btnFertig.insets = new Insets(0, 0, 0, 5);
@@ -137,7 +136,6 @@ public class ImportiereAufgabenPopUp {
 
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnAbbrechen.setForeground(new Color(51, 51, 51));
 		GridBagConstraints gbc_btnAbbrechen = new GridBagConstraints();
 		gbc_btnAbbrechen.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAbbrechen.gridx = 5;

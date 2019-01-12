@@ -155,7 +155,6 @@ public class PruefungsverwaltungView {
 		unterPanel.setLayout(gbl_unterPanel);
 
 		btnNeuPruefung = new JButton("Neu");
-		btnNeuPruefung.setForeground(new Color(51, 51, 51));
 		btnNeuPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnNeuPruefung = new GridBagConstraints();
 		gbc_btnNeuPruefung.fill = GridBagConstraints.HORIZONTAL;
@@ -166,7 +165,6 @@ public class PruefungsverwaltungView {
 
 		btnBearbeitenPruefung = new JButton("Bearbeiten");
 		btnBearbeitenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnBearbeitenPruefung.setForeground(new Color(51, 51, 51));
 		GridBagConstraints gbc_btnBearbeitenPruefung = new GridBagConstraints();
 		gbc_btnBearbeitenPruefung.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBearbeitenPruefung.fill = GridBagConstraints.HORIZONTAL;
@@ -175,7 +173,6 @@ public class PruefungsverwaltungView {
 		unterPanel.add(btnBearbeitenPruefung, gbc_btnBearbeitenPruefung);
 
 		btnDuplizierenPruefung = new JButton("Duplizieren");
-		btnDuplizierenPruefung.setForeground(new Color(51, 51, 51));
 		btnDuplizierenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnDuplizieren = new GridBagConstraints();
 		gbc_btnDuplizieren.fill = GridBagConstraints.HORIZONTAL;
@@ -194,7 +191,6 @@ public class PruefungsverwaltungView {
 
 		btnLoeschenPruefung = new JButton("L\u00F6schen");
 		btnLoeschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
-		btnLoeschenPruefung.setForeground(new Color(51, 51, 51));
 		GridBagConstraints gbc_btnLoeschenPruefung = new GridBagConstraints();
 		gbc_btnLoeschenPruefung.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnLoeschenPruefung.gridx = 4;
