@@ -116,7 +116,7 @@ public class LoginPruefungsverwaltungController {
 				}
 
 			} catch (NullPointerException ex) {
-				viewS.getFehlerLabel().setText("Es konnte kein Teilnehmer mit dieser Matriklenummer gefunden werden.");
+				viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen!");
 			}
 
 			catch (Exception e) {

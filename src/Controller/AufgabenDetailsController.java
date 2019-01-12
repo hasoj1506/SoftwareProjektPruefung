@@ -54,7 +54,7 @@ public class AufgabenDetailsController {
 		view.getAfgdFrageTextField().setBackground(Color.WHITE);
 		view.getAfgdPunkteTextField().setBackground(Color.WHITE);
 		view.getAfgdTitelTextField().setBackground(Color.WHITE);
-		
+
 		if (titel == ("") || titel.length() == 0) {
 
 			view.getAfgdTitelTextField().setBackground(new Color(255, 102, 102));
@@ -149,10 +149,13 @@ public class AufgabenDetailsController {
 	public void antwortLoeschen() {
 
 		if (view.getAfgdTable().getModel().getRowCount() > 0) {
-
-			model.removeRow(model.get(view.getAfgdTable().getSelectedRow()));
-			view.getAfgdTable().clearSelection();
-			view.getAfgdTable().updateUI();
+			if (view.getAfgdTable().getSelectedRow() == -1) {
+				view.fehlerMeldung("Es wurde keine Antwort ausgewählt!");
+			} else {
+				model.removeRow(model.get(view.getAfgdTable().getSelectedRow()));
+				view.getAfgdTable().clearSelection();
+				view.getAfgdTable().updateUI();
+			}
 		} else {
 			view.fehlerMeldung("Es sind keine Antworten vorhanden!");
 		}
