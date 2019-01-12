@@ -55,12 +55,12 @@ public class PruefungsverwaltungController {
 
 	private void spaltenbreiteAnpassen() {
 		// Spaltenbreiten anpassen
-		view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(120);
-		view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(30);
-		view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(10);
-		view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(20);
-		view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(100);
-		view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(30);
+		view.getTablePruefungen().getColumnModel().getColumn(0).setPreferredWidth(150);
+		view.getTablePruefungen().getColumnModel().getColumn(1).setPreferredWidth(20);
+		view.getTablePruefungen().getColumnModel().getColumn(2).setPreferredWidth(5);
+		view.getTablePruefungen().getColumnModel().getColumn(3).setPreferredWidth(5);
+		view.getTablePruefungen().getColumnModel().getColumn(4).setPreferredWidth(80);
+		view.getTablePruefungen().getColumnModel().getColumn(5).setPreferredWidth(20);
 		view.getTablePruefungen().getColumnModel().getColumn(6).setPreferredWidth(10);
 	}
 

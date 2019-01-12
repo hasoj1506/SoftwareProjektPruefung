@@ -244,6 +244,7 @@ public class PruefungsDetailsController {
 					pruefung.getAufgaben().remove(zuLoeschendeAufgabe);
 					db.loescheAufgabe(zuLoeschendeAufgabe);
 					fuelleAufgabenTable(pruefung);
+					view.punkteCheck();
 				} else {
 					// nichts tun
 				}
