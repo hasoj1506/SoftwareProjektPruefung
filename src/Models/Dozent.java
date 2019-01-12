@@ -3,6 +3,7 @@ package Models;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+//Marco Penner
 @Entity
 @DiscriminatorValue("Dozent")
 public class Dozent extends Nutzer {
