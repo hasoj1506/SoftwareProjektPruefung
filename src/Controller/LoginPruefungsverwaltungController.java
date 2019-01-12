@@ -116,7 +116,7 @@ public class LoginPruefungsverwaltungController {
 				}
 
 			} catch (NullPointerException ex) {
-				viewS.getFehlerLabel().setText("Die Prüfung ist noch nicht freigegeben!");
+				viewS.getFehlerLabel().setText("Es konnte kein Teilnehmer mit dieser Matriklenummer gefunden werden.");
 			}
 
 			catch (Exception e) {

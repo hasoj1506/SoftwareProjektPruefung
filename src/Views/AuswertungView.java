@@ -39,12 +39,12 @@ import javax.swing.UIManager;
 //Firat Aslan
 public class AuswertungView extends JFrame{
 	
-	private JTextField txtErreichtePunktzahl;
-	private JTextField txtGesamtpunktzahlProzent;
-	private JTextField txtBonuspunkte;
+	private JLabel txtErreichtePunktzahl;
+	private JLabel txtGesamtpunktzahlProzent;
+	private JLabel txtBonuspunkte;
 	private JTable table;
-	private JTextField txtGesamtpunktzahl;
-	private JTextField txtMatrikelNr;
+	private JLabel txtGesamtpunktzahl;
+	private JLabel txtMatrikelNr;
 	private JButton btnNewButton;
 	private JFrame frame;
 
@@ -114,9 +114,7 @@ public class AuswertungView extends JFrame{
 		gbc_lblErreichteGesamtpunktzahl.gridy = 0;
 		panel_3.add(lblErreichteGesamtpunktzahl, gbc_lblErreichteGesamtpunktzahl);
 
-		txtErreichtePunktzahl = new JTextField();
-		txtErreichtePunktzahl.setDisabledTextColor(Color.WHITE);
-		txtErreichtePunktzahl.setEditable(false);
+		txtErreichtePunktzahl = new JLabel();
 		txtErreichtePunktzahl.setBorder(null);
 		GridBagConstraints gbc_txtGesamtPunktzahl = new GridBagConstraints();
 		gbc_txtGesamtPunktzahl.fill = GridBagConstraints.HORIZONTAL;
@@ -124,7 +122,6 @@ public class AuswertungView extends JFrame{
 		gbc_txtGesamtPunktzahl.gridx = 2;
 		gbc_txtGesamtPunktzahl.gridy = 0;
 		panel_3.add(txtErreichtePunktzahl, gbc_txtGesamtPunktzahl);
-		txtErreichtePunktzahl.setColumns(10);
 
 		JLabel lblVon = new JLabel("von");
 		lblVon.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -134,16 +131,13 @@ public class AuswertungView extends JFrame{
 		gbc_lblVon.gridy = 0;
 		panel_3.add(lblVon, gbc_lblVon);
 
-		txtGesamtpunktzahl = new JTextField();
-		txtGesamtpunktzahl.setEditable(false);
-		txtGesamtpunktzahl.setBorder(null);
+		txtGesamtpunktzahl = new JLabel();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.gridx = 4;
 		gbc_textField.gridy = 0;
 		panel_3.add(txtGesamtpunktzahl, gbc_textField);
-		txtGesamtpunktzahl.setColumns(10);
 
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
 		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -154,9 +148,7 @@ public class AuswertungView extends JFrame{
 		gbc_lblMatrikelnummer.gridy = 0;
 		panel_3.add(lblMatrikelnummer, gbc_lblMatrikelnummer);
 
-		txtMatrikelNr = new JTextField();
-		txtMatrikelNr.setDisabledTextColor(Color.WHITE);
-		txtMatrikelNr.setEditable(false);
+		txtMatrikelNr = new JLabel();
 		txtMatrikelNr.setBorder(null);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -164,7 +156,6 @@ public class AuswertungView extends JFrame{
 		gbc_textField_1.gridx = 7;
 		gbc_textField_1.gridy = 0;
 		panel_3.add(txtMatrikelNr, gbc_textField_1);
-		txtMatrikelNr.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Erreichte Gesamtpunktzahl in %:");
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -175,16 +166,13 @@ public class AuswertungView extends JFrame{
 		gbc_lblNewLabel.gridy = 1;
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
 
-		txtGesamtpunktzahlProzent = new JTextField();
-		txtGesamtpunktzahlProzent.setEditable(false);
-		txtGesamtpunktzahlProzent.setBorder(null);
+		txtGesamtpunktzahlProzent = new JLabel();
 		GridBagConstraints gbc_txtGesamtpunktzahlProzent = new GridBagConstraints();
 		gbc_txtGesamtpunktzahlProzent.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtGesamtpunktzahlProzent.insets = new Insets(0, 0, 0, 5);
 		gbc_txtGesamtpunktzahlProzent.gridx = 2;
 		gbc_txtGesamtpunktzahlProzent.gridy = 1;
 		panel_3.add(txtGesamtpunktzahlProzent, gbc_txtGesamtpunktzahlProzent);
-		txtGesamtpunktzahlProzent.setColumns(10);
 
 		JLabel lblAnzahlBonuspunkte = new JLabel("Anzahl Bonuspunkte:");
 		lblAnzahlBonuspunkte.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -195,16 +183,13 @@ public class AuswertungView extends JFrame{
 		gbc_lblAnzahlBonuspunkte.gridy = 1;
 		panel_3.add(lblAnzahlBonuspunkte, gbc_lblAnzahlBonuspunkte);
 
-		txtBonuspunkte = new JTextField();
-		txtBonuspunkte.setEditable(false);
-		txtBonuspunkte.setBorder(null);
+		txtBonuspunkte = new JLabel();
 		GridBagConstraints gbc_txtBonuspunkte = new GridBagConstraints();
 		gbc_txtBonuspunkte.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtBonuspunkte.insets = new Insets(0, 0, 0, 5);
 		gbc_txtBonuspunkte.gridx = 7;
 		gbc_txtBonuspunkte.gridy = 1;
 		panel_3.add(txtBonuspunkte, gbc_txtBonuspunkte);
-		txtBonuspunkte.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

@@ -28,18 +28,18 @@ import java.awt.Dimension;
 
 //Firat Aslan
 public class PruefungEinweisungPopUp {
-	private JTextField txtDauer;
-	private JTextField textField_1;
-	private JTextField txtPunkte;
-	private JTextField txtTeilnehmer;
-	private JTextField txtMatrikelnr;
+	private JLabel txtDauer;
+	private JLabel textField_1;
+	private JLabel txtPunkte;
+	private JLabel txtTeilnehmer;
+	private JLabel txtMatrikelnr;
+	private JLabel textField;
 
 	private JFrame frame;
 
 	private JButton btnNewButton;
 	private Student student;
 	private PruefungView view;
-	private JTextField textField;
 
 	public PruefungEinweisungPopUp(Student student, PruefungView view) {
 
@@ -119,16 +119,13 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_7.gridy = 0;
 		panel.add(lblNewLabel_7, gbc_lblNewLabel_7);
 
-		txtTeilnehmer = new JTextField();
-		txtTeilnehmer.setEditable(false);
-		txtTeilnehmer.setBorder(null);
+		txtTeilnehmer = new JLabel();
 		GridBagConstraints gbc_txtTeilnehmer = new GridBagConstraints();
 		gbc_txtTeilnehmer.insets = new Insets(0, 0, 5, 5);
 		gbc_txtTeilnehmer.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtTeilnehmer.gridx = 1;
 		gbc_txtTeilnehmer.gridy = 0;
 		panel.add(txtTeilnehmer, gbc_txtTeilnehmer);
-		txtTeilnehmer.setColumns(10);
 
 		JLabel lblNewLabel_8 = new JLabel("Matrikelnummer:");
 		lblNewLabel_8.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -139,16 +136,13 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_8.gridy = 0;
 		panel.add(lblNewLabel_8, gbc_lblNewLabel_8);
 
-		txtMatrikelnr = new JTextField();
-		txtMatrikelnr.setEditable(false);
-		txtMatrikelnr.setBorder(null);
+		txtMatrikelnr = new JLabel();
 		GridBagConstraints gbc_txtMatrikelnr = new GridBagConstraints();
 		gbc_txtMatrikelnr.insets = new Insets(0, 0, 5, 5);
 		gbc_txtMatrikelnr.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtMatrikelnr.gridx = 3;
 		gbc_txtMatrikelnr.gridy = 0;
 		panel.add(txtMatrikelnr, gbc_txtMatrikelnr);
-		txtMatrikelnr.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("Pr\u00FCfung:");
 		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -159,16 +153,13 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_1.gridy = 0;
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-		txtDauer = new JTextField();
-		txtDauer.setEditable(false);
-		txtDauer.setBorder(null);
+		txtDauer = new JLabel();
 		GridBagConstraints gbc_txtDauer = new GridBagConstraints();
 		gbc_txtDauer.insets = new Insets(0, 0, 5, 0);
 		gbc_txtDauer.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtDauer.gridx = 5;
 		gbc_txtDauer.gridy = 0;
 		panel.add(txtDauer, gbc_txtDauer);
-		txtDauer.setColumns(10);
 
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(102, 102, 102));
@@ -189,16 +180,13 @@ public class PruefungEinweisungPopUp {
 		gbc_lblStatus.gridy = 2;
 		panel.add(lblStatus, gbc_lblStatus);
 
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBorder(null);
+		textField = new JLabel();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 2;
 		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Dauer:");
 		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -209,16 +197,13 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_2.gridy = 2;
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBorder(null);
+		textField_1 = new JLabel();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 0, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 3;
 		gbc_textField_1.gridy = 2;
 		panel.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Gesamtpunkte:");
 		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -229,15 +214,12 @@ public class PruefungEinweisungPopUp {
 		gbc_lblNewLabel_3.gridy = 2;
 		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
-		txtPunkte = new JTextField();
-		txtPunkte.setEditable(false);
-		txtPunkte.setBorder(null);
+		txtPunkte = new JLabel();
 		GridBagConstraints gbc_txtPunkte = new GridBagConstraints();
 		gbc_txtPunkte.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtPunkte.gridx = 5;
 		gbc_txtPunkte.gridy = 2;
 		panel.add(txtPunkte, gbc_txtPunkte);
-		txtPunkte.setColumns(10);
 
 		JLabel label = new JLabel("");
 		GridBagConstraints gbc_label = new GridBagConstraints();

@@ -74,55 +74,53 @@ public class LoginPruefungsverwaltung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		Image icon1 = new ImageIcon(this.getClass().getResource("/Elogok.png")).getImage();
 		frame.setIconImage(icon1);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setBackground(Color.WHITE);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[] {30, 70, 0, 0};
+		gbl_panel.columnWidths = new int[]{577, 0};
+		gbl_panel.rowHeights = new int[] {30, 312};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0};
+		gbl_panel.rowWeights = new double[]{0.0, 1.0};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/FH.png.jpg")));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Gill Sans MT", Font.BOLD, 72));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 1;
 		panel.add(lblNewLabel, gbc_lblNewLabel);
-		
-		JLabel lblExamo = new JLabel("examo");
-		lblExamo.setFont(new Font("Verdana", Font.BOLD, 45));
-		lblExamo.setForeground(new Color(0,155,187));
-		GridBagConstraints gbc_lblExamo = new GridBagConstraints();
-		gbc_lblExamo.insets = new Insets(0, 0, 5, 0);
-		gbc_lblExamo.gridx = 0;
-		gbc_lblExamo.gridy = 2;
-		panel.add(lblExamo, gbc_lblExamo);
-		
-		JLabel lblInstructorTools = new JLabel("Instructor Tools");
-		lblInstructorTools.setForeground(new Color(0,155,187));
-		lblInstructorTools.setFont(new Font("Gill Sans MT", Font.BOLD, 24));
-		GridBagConstraints gbc_lblInstructorTools = new GridBagConstraints();
-		gbc_lblInstructorTools.gridx = 0;
-		gbc_lblInstructorTools.gridy = 3;
-		panel.add(lblInstructorTools, gbc_lblInstructorTools);
+		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/Elogok.png")));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{20, 0, 20, 0};
-		gbl_panel_1.rowHeights = new int[] {63, 0, 35, 0, 27, 0};
+		gbl_panel_1.rowHeights = new int[] {0, 0, 0, 0, 35, 0, 30, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
+		
+		JLabel lblExamo = new JLabel("examo");
+		GridBagConstraints gbc_lblExamo = new GridBagConstraints();
+		gbc_lblExamo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblExamo.gridx = 1;
+		gbc_lblExamo.gridy = 1;
+		panel_1.add(lblExamo, gbc_lblExamo);
+		lblExamo.setFont(new Font("Verdana", Font.BOLD, 45));
+		lblExamo.setForeground(new Color(0,155,187));
+		
+		JLabel lblInstructorTools = new JLabel("Instructor Tools");
+		GridBagConstraints gbc_lblInstructorTools = new GridBagConstraints();
+		gbc_lblInstructorTools.insets = new Insets(0, 0, 5, 5);
+		gbc_lblInstructorTools.gridx = 1;
+		gbc_lblInstructorTools.gridy = 2;
+		panel_1.add(lblInstructorTools, gbc_lblInstructorTools);
+		lblInstructorTools.setForeground(new Color(0,155,187));
+		lblInstructorTools.setFont(new Font("Gill Sans MT", Font.BOLD, 24));
 		
 		JLabel lblNewLabel_2 = new JLabel("Passwort");
 		lblNewLabel_2.setForeground(new Color(0,155,187));
@@ -131,7 +129,7 @@ public class LoginPruefungsverwaltung {
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 1;
+		gbc_lblNewLabel_2.gridy = 3;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		textFieldPasswort = new JPasswordField();
@@ -139,7 +137,7 @@ public class LoginPruefungsverwaltung {
 		gbc_textFieldPasswort.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPasswort.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPasswort.gridx = 1;
-		gbc_textFieldPasswort.gridy = 2;
+		gbc_textFieldPasswort.gridy = 4;
 		panel_1.add(textFieldPasswort, gbc_textFieldPasswort);
 		textFieldPasswort.setColumns(10);
 		
@@ -151,7 +149,7 @@ public class LoginPruefungsverwaltung {
 		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
 		gbc_panel_3.gridx = 1;
-		gbc_panel_3.gridy = 3;
+		gbc_panel_3.gridy = 5;
 		panel_1.add(panel_3, gbc_panel_3);
 		
 		fehlerLabel = new JLabel("");
@@ -171,9 +169,9 @@ public class LoginPruefungsverwaltung {
 		frame.getContentPane().add(panel_2, BorderLayout.SOUTH);
 		//t
 		JLabel lblVersion = new JLabel("Version: 1.0");
-		lblVersion.setForeground(new Color(102, 102, 102));
+		lblVersion.setForeground(Color.BLACK);
 		panel_2.add(lblVersion);
-		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 		
 
 		frame.setLocationRelativeTo(null);
