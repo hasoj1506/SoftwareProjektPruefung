@@ -62,11 +62,11 @@ public class PruefungsDetailsAufgabenTableModel extends AbstractTableModel {
 		return punkte;
 
 	}
-	
+
 	public void verwuerfeln() {
-		
+
 		Collections.shuffle(aufgaben);
-		
+
 	}
-	
+
 }

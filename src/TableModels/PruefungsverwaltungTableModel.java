@@ -6,8 +6,6 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
-import com.sun.codemodel.JLabel;
-
 import Models.Pruefung;
 
 //Josah Weber

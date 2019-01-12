@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import Models.Aufgabe;
 import Models.Termin;
 
 //Josah Weber

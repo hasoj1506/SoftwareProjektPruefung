@@ -107,13 +107,13 @@ public class PruefungsDetailsController {
 			// Was beim Fehler passiert
 			JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmer-Tabelle konnte nicht gefüllt werden!");
 		}
-		
+
 		spaltenbreiteTeilnehmerTable(tableTeilnehmer);
 	}
-	
-	//Spaltenbreiten der Teilnehmer-Table anpassen
+
+	// Spaltenbreiten der Teilnehmer-Table anpassen
 	private void spaltenbreiteTeilnehmerTable(JTable tableTeilnehmer) {
-		
+
 		tableTeilnehmer.getColumnModel().getColumn(0).setPreferredWidth(100);
 		tableTeilnehmer.getColumnModel().getColumn(1).setPreferredWidth(1000);
 		tableTeilnehmer.getColumnModel().getColumn(2).setPreferredWidth(1000);
@@ -229,8 +229,8 @@ public class PruefungsDetailsController {
 			if (view.getTableAufgaben().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Aufgabe wirklich gelöscht werden?", "Abfrage",
-						JOptionPane.YES_NO_OPTION);
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Aufgabe wirklich gelöscht werden?",
+						"Abfrage", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
 					// Identifizieren der zu löschenden Aufgabe
@@ -257,9 +257,9 @@ public class PruefungsDetailsController {
 		}
 
 	}
-	
-	//Aufgabe-Importieren-Button wird geklickt
-	public void importiereAufgaben(){
+
+	// Aufgabe-Importieren-Button wird geklickt
+	public void importiereAufgaben() {
 		ImportiereAufgabenPopUp popUp = new ImportiereAufgabenPopUp(pruefung, view);
 	}
 
@@ -306,8 +306,8 @@ public class PruefungsDetailsController {
 			if (view.getTableTermine().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll der Termin wirklich gelöscht werden?", "Abfrage",
-						JOptionPane.YES_NO_OPTION);
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll der Termin wirklich gelöscht werden?",
+						"Abfrage", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
 					// Identifizieren des zu löschenden Termins
@@ -377,8 +377,8 @@ public class PruefungsDetailsController {
 			if (view.getTableTeilnehmer().getSelectedRow() > -1) {
 
 				// Abfrage, ob wirklich gelöscht werden soll
-				int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll der Teilnehmer wirklich gelöscht werden?",
-						"Abfrage", JOptionPane.YES_NO_OPTION);
+				int reply = JOptionPane.showConfirmDialog(view.getFrame(),
+						"Soll der Teilnehmer wirklich gelöscht werden?", "Abfrage", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
 
 					// Identifizieren des zu löschenden Teilnehmers
@@ -450,7 +450,8 @@ public class PruefungsDetailsController {
 					importierteTeilnehmer++;
 				}
 				CSVFile.close();
-				JOptionPane.showMessageDialog(view.getFrame(), "Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
+				JOptionPane.showMessageDialog(view.getFrame(),
+						"Es wurden " + importierteTeilnehmer + " Teilnehmer importiert!");
 				fuelleTeilnehmerTable(pruefung);
 			} else {
 				// nichts tun
@@ -511,8 +512,9 @@ public class PruefungsDetailsController {
 				excelWriter.close();
 
 				// Erfolgsmeldung
-				JOptionPane.showMessageDialog(view.getFrame(), "Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n"
-						+ dateipfad + "\\" + dateiname + ".xls");
+				JOptionPane.showMessageDialog(view.getFrame(),
+						"Teilnehmerliste wurde an folgenden Pfad exportiert: \n\n" + dateipfad + "\\" + dateiname
+								+ ".xls");
 			}
 
 		} catch (Exception e) {
@@ -532,7 +534,7 @@ public class PruefungsDetailsController {
 			dauer = Integer.parseInt(view.getTextFieldDauer().getText());
 			if (dauer <= 0) {
 				throw new Exception();
-			}		
+			}
 		} catch (Exception e) {
 			dauer = 0;
 		}
@@ -571,8 +573,8 @@ public class PruefungsDetailsController {
 		try {
 
 			// Abfrage, ob wirklich gelöscht werden soll
-			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?", "Abfrage",
-					JOptionPane.YES_NO_OPTION);
+			int reply = JOptionPane.showConfirmDialog(view.getFrame(), "Soll die Prüfung wirklich gelöscht werden?",
+					"Abfrage", JOptionPane.YES_NO_OPTION);
 			if (reply == JOptionPane.YES_OPTION) {
 
 				// Identifizieren der zu löschenden Prüfung

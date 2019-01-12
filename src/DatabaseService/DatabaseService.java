@@ -158,14 +158,14 @@ public class DatabaseService {
 
 		try {
 
-			Query q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
+			TypedQuery q = em.createQuery("SELECT p FROM Pruefung p", Pruefung.class);
 
-			pruefungen = (List<Pruefung>) q.getResultList();
+			pruefungen = q.getResultList();
 
 			return pruefungen;
 
 		} catch (Exception e) {
-			// füllen, was beim Fehler passiert
+			
 			return null;
 		}
 
@@ -186,7 +186,7 @@ public class DatabaseService {
 			return pruefungen;
 
 		} catch (Exception e) {
-			// füllen, was beim Fehler passiert
+
 			return null;
 		}
 

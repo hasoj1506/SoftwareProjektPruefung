@@ -49,9 +49,6 @@ public class PruefungsverwaltungView {
 
 	Pruefung pruefung;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public PruefungsverwaltungView() {
 
 		this.controller = new PruefungsverwaltungController(this);
@@ -257,7 +254,6 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.setDefaultCloseOperation(frmPrfungsverwaltung.DISPOSE_ON_CLOSE);
 		frmPrfungsverwaltung.pack();
 		frmPrfungsverwaltung.setLocationRelativeTo(null);
-		
 
 	}
 

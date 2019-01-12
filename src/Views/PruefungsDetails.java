@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
 import Controller.PruefungsDetailsController;
 import Models.Pruefung;
 
-//Josah Weber
+//Josah Weber, Yanek Wilken
 public class PruefungsDetails {
 
 	private PruefungsverwaltungView pruefungsverwaltung;
@@ -71,10 +71,6 @@ public class PruefungsDetails {
 	private JButton btnAktualisieren;
 	private JButton btnImportiereAufgaben;
 
-	/**
-	 * @wbp.parser.constructor
-	 */
-	/// Konstruktor für leere Maske
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
 
 		this.pruefung = pruefung;
@@ -175,7 +171,7 @@ public class PruefungsDetails {
 		gbc_panelAufgabenButtons.gridx = 2;
 		gbc_panelAufgabenButtons.gridy = 2;
 		panelMain.add(panelAufgabenButtons, gbc_panelAufgabenButtons);
-		
+
 		btnImportiereAufgaben = new JButton("Importieren");
 		btnImportiereAufgaben.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panelAufgabenButtons.add(btnImportiereAufgaben);
@@ -474,6 +470,7 @@ public class PruefungsDetails {
 
 	}
 
+	// Yanek Wilken
 	public void punkteCheck() {
 
 		try {
@@ -485,6 +482,7 @@ public class PruefungsDetails {
 
 	}
 
+	// Josah Weber
 	// Wenn vorhandene Prüfung bearbeitet werden soll
 	public void fuellePruefungsDetailsZumBearbeiten() {
 		controller.fuellePruefungsDetails(pruefung);
@@ -524,10 +522,11 @@ public class PruefungsDetails {
 				controller.loescheAufgabe();
 			}
 		});
-		
+
 		btnImportiereAufgaben.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.importiereAufgaben();;
+				controller.importiereAufgaben();
+				;
 			}
 		});
 

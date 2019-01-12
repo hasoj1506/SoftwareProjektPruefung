@@ -5,6 +5,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import Views.LoginPruefungsverwaltung;
 
+//Marco Penner
 public class examoDozentMain {
 
 	public static void main(String[] args) {

@@ -6,10 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
-import Models.Aufgabe;
-import Models.Nutzer;
 import Models.Student;
-import Models.Termin;
 
 //Josah Weber
 public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
@@ -20,7 +17,8 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.studenten = studenten;
 	}
 
-	String[] columnNames = { "", "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte", "Angemeldet" };
+	String[] columnNames = { "", "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte",
+			"Angemeldet" };
 
 	public String getColumnName(int col) {
 		return columnNames[col];
@@ -39,7 +37,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
-		//Icons für gewisse Spalten erstellen
+		// Icons für gewisse Spalten erstellen
 		Image greenImage = new ImageIcon(this.getClass().getResource("/greenIcon.png")).getImage();
 		ImageIcon greenIcon = new ImageIcon(greenImage);
 		Image redImage = new ImageIcon(this.getClass().getResource("/redIcon.png")).getImage();
@@ -51,9 +49,9 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 
 		switch (col) {
 		case 0:
-			if(studenten.get(row).isIstImportiert() == true){
+			if (studenten.get(row).isIstImportiert() == true) {
 				return importIcon;
-			} else if(studenten.get(row).isIstImportiert() == false) {
+			} else if (studenten.get(row).isIstImportiert() == false) {
 				return manuellIcon;
 			}
 		case 1:

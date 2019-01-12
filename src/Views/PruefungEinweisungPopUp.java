@@ -86,7 +86,8 @@ public class PruefungEinweisungPopUp {
 		JTextArea txtrTestTestTest = new JTextArea();
 		txtrTestTestTest.setEditable(false);
 		txtrTestTestTest.setFont(new Font("Verdana", Font.PLAIN, 14));
-		txtrTestTestTest.setText("Willkommen zum digitalen Pr\u00FCfsystem examo!\r\n\r\nBevor es los geht ein paar wichtige Informationen vorab:\r\nIn der gleich folgenden Pr\u00FCfung findest Du mehrere Aufgaben zum vorgegebenen Thema.\r\nLinks in der Liste kannst Du zwischen den Aufgaben hin- und herspringen\r\noder Du verwendest die \"Vorherige-/N\u00E4chste-Buttons\". \r\nDie Aufgaben sind \"Multiple-Choice\". Es kann mehrere richtige Antworten \r\ngeben, bitte markiere die korrekten Antworten mit einem H\u00E4kchen. \r\nWenn Du vor der vorgegebenen Zeit fertig bist, benutze den \"Abgabe-Button\" unten rechts.\r\nDer Timer oben rechts gibt die restliche Zeit vor. \r\nWenn die Zeit vorbei ist oder das Fenster sich irgendwie schlieﬂen sollte, \r\nwird die Pr\u00FCfung automatisch abgegeben.\r\n\r\nBitte klicke erst auf \"Los geht's\", wenn der Dozent dazu auffordert.\r\n\r\nBitte \u00FCberpr\u00FCfe vorher noch folgende Angaben auf ihre Richtigkeit:");
+		txtrTestTestTest.setText(
+				"Willkommen zum digitalen Pr\u00FCfsystem examo!\r\n\r\nBevor es los geht ein paar wichtige Informationen vorab:\r\nIn der gleich folgenden Pr\u00FCfung findest Du mehrere Aufgaben zum vorgegebenen Thema.\r\nLinks in der Liste kannst Du zwischen den Aufgaben hin- und herspringen\r\noder Du verwendest die \"Vorherige-/N\u00E4chste-Buttons\". \r\nDie Aufgaben sind \"Multiple-Choice\". Es kann mehrere richtige Antworten \r\ngeben, bitte markiere die korrekten Antworten mit einem H\u00E4kchen. \r\nWenn Du vor der vorgegebenen Zeit fertig bist, benutze den \"Abgabe-Button\" unten rechts.\r\nDer Timer oben rechts gibt die restliche Zeit vor. \r\nWenn die Zeit vorbei ist oder das Fenster sich irgendwie schlieﬂen sollte, \r\nwird die Pr\u00FCfung automatisch abgegeben.\r\n\r\nBitte klicke erst auf \"Los geht's\", wenn der Dozent dazu auffordert.\r\n\r\nBitte \u00FCberpr\u00FCfe vorher noch folgende Angaben auf ihre Richtigkeit:");
 		txtrTestTestTest.setRows(4);
 		GridBagConstraints gbc_txtrTestTestTest = new GridBagConstraints();
 		gbc_txtrTestTestTest.insets = new Insets(0, 0, 5, 5);
@@ -275,14 +276,13 @@ public class PruefungEinweisungPopUp {
 		textField_1.setText(String.valueOf(this.student.getPruefung().getDauer()) + " Minuten");
 		txtDauer.setText(this.student.getPruefung().getBezeichnung());
 		txtPunkte.setText(String.valueOf(this.student.getPruefung().getPunkte()));
-		
-		if(this.student.getPruefung().isFreigegeben() == true) {
+
+		if (this.student.getPruefung().isFreigegeben() == true) {
 			textField.setText("Freigegeben");
-		}else {
+		} else {
 			textField.setText("Gesperrt");
 		}
-		
-		
+
 	}
 
 }

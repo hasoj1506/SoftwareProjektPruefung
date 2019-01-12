@@ -16,13 +16,13 @@ import TableModels.PruefungViewTableModel;
 import Views.AuswertungView;
 import Views.PruefungView;
 
-//Beteiligt: Yanek Wilken, Marco Penner, Josah Weber
+//Beteiligt: Yanek Wilken, Marco Penner
 public class PruefungViewController {
 
 	// alle Methoden, die durch Bedienung der PruefungView aufgerufen werden
 	// können
-	
-	//Marco Penner
+
+	// Marco Penner
 	Pruefung pruefung;
 	Student student;
 	List<Aufgabe> aufgaben;
@@ -57,7 +57,6 @@ public class PruefungViewController {
 		fuelleAufgabe();
 	}
 
-	// Josah Weber
 	public void abgeben() {
 
 		int reply = 0;
@@ -143,7 +142,6 @@ public class PruefungViewController {
 		view.getLblPrfungstitel().setText(pruefung.getBezeichnung());
 	}
 
-	// Josah Weber
 	public void naechste() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == view.getAufgabenTable().getRowCount() - 1) {
@@ -156,7 +154,6 @@ public class PruefungViewController {
 
 	}
 
-	// Josah Weber
 	public void vorherige() {
 		selection = view.getAufgabenTable().getSelectedRow();
 		if (selection == 0) {
