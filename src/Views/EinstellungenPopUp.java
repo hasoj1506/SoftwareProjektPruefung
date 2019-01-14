@@ -26,7 +26,7 @@ public class EinstellungenPopUp {
 		onCreate();
 		
 	}
-
+//
 	public void onCreate(){
 		JFrame frame = new JFrame("Einstellungen");
 		frame.getContentPane().setFont(new Font("Verdana", Font.PLAIN, 11));

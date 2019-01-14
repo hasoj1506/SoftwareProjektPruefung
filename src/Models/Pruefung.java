@@ -12,11 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 //Firat Aslan
-@Entity
+
+@Entity													//ist eine persistente Klasse
 public class Pruefung {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id													//Primärschlüssel der Klasse
+	@GeneratedValue(strategy = GenerationType.AUTO)		//generiert automatisch fortlaufende Primärschlüssel
 	private int pruefungId;
 	private String bezeichnung;
 	private int dauer;
@@ -24,6 +25,7 @@ public class Pruefung {
 	private boolean freigegeben = false;
 	private boolean verwuerfelt;
 
+	
 	@OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "pruefung")
 	Set<Student> studenten;
 
