@@ -12,8 +12,8 @@ import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
 
 //Beteiligt Yanek Wilken, Josah Weber, Victoria Meier
 public class DatabaseService {
-	
-	//ab hier: Yanek Wilken
+
+	// ab hier: Yanek Wilken
 	private EntityManager em;
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
@@ -29,8 +29,7 @@ public class DatabaseService {
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung", map);
 		em = emf.createEntityManager();
 	}
-	
-	
+
 	public static DatabaseService getInstance() {
 
 		if (instance == null) {
@@ -40,34 +39,48 @@ public class DatabaseService {
 
 		return instance;
 	}
-	
-	public static DatabaseService getInstance(String driver, String url, String benutzername, String passwort) {
-		
+
+	public static DatabaseService getInstance(String driver, String url, String benutzername, String passwort,
+			boolean neuAnlegen) {
+
 		if (instance == null) {
 
-			
 			Map properties = new HashMap();
 			
-			properties.put(TRANSACTION_TYPE,  PersistenceUnitTransactionType.RESOURCE_LOCAL.name());
-			properties.put(JDBC_DRIVER, driver);
-			properties.put(JDBC_URL, url);
-			properties.put(JDBC_USER, benutzername);
-			properties.put(JDBC_PASSWORD, passwort);
-			properties.put("eclipselink.ddl-generation.output-mode", "database");
-			properties.put("eclipselink.ddl-generation", "drop-and-create-tables");
+			if (neuAnlegen) {
+
+				properties.put(TRANSACTION_TYPE, PersistenceUnitTransactionType.RESOURCE_LOCAL.name());
+				properties.put(JDBC_DRIVER, driver);
+				properties.put(JDBC_URL, url);
+				properties.put(JDBC_USER, benutzername);
+				properties.put(JDBC_PASSWORD, passwort);
+				properties.put("eclipselink.ddl-generation.output-mode", "database");
+				properties.put("eclipselink.ddl-generation", "drop-and-create-tables");
+				
+			}else{
+				
+				properties.put(TRANSACTION_TYPE, PersistenceUnitTransactionType.RESOURCE_LOCAL.name());
+				properties.put(JDBC_DRIVER, driver);
+				properties.put(JDBC_URL, url);
+				properties.put(JDBC_USER, benutzername);
+				properties.put(JDBC_PASSWORD, passwort);
+				properties.put("eclipselink.ddl-generation.output-mode", "database");
+				properties.put("eclipselink.ddl-generation", "create-or-extend-tables");
+
+			}
 			
+
 			instance = new DatabaseService(properties);
 		}
 
 		return instance;
-		
+
 	}
 
 	public EntityManager getEntityManager() {
 		return em;
 	}
-	
-	
+
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
 		em.merge(nutzer);
@@ -117,8 +130,8 @@ public class DatabaseService {
 		}
 
 	}
-	
-	//ab hier: Josah Weber
+
+	// ab hier: Josah Weber
 	public List<Termin> readTermin(Pruefung pruefung) {
 
 		try {
@@ -139,7 +152,7 @@ public class DatabaseService {
 
 	}
 
-	//ab hier: Yanek Wilken
+	// ab hier: Yanek Wilken
 	public List<Aufgabe> readAufgabe(Pruefung pruefung) {
 
 		try {
@@ -160,7 +173,7 @@ public class DatabaseService {
 
 	}
 
-	//ab hier: Josah Weber
+	// ab hier: Josah Weber
 	public List<Pruefung> readPruefungen() {
 
 		List<Pruefung> pruefungen;
@@ -174,7 +187,7 @@ public class DatabaseService {
 			return pruefungen;
 
 		} catch (Exception e) {
-			
+
 			return null;
 		}
 
@@ -201,7 +214,7 @@ public class DatabaseService {
 
 	}
 
-	//ab hier: Victoria Meier
+	// ab hier: Victoria Meier
 	public List<Nutzer> readNutzer() {
 
 		List<Nutzer> nutzer;
@@ -220,7 +233,7 @@ public class DatabaseService {
 		}
 
 	}
-	
+
 	public EntityManager getEm() {
 		return em;
 	}
@@ -228,15 +241,16 @@ public class DatabaseService {
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
-	
-	//ab hier: Josah Weber
+
+	// ab hier: Josah Weber
 	public List<Student> readTeilnehmer(int pruefungId) {
 
 		List<Student> studenten;
 
 		try {
 
-			Query q = em.createQuery("SELECT s FROM Student s WHERE s.pruefung.pruefungId = " + pruefungId, Student.class);
+			Query q = em.createQuery("SELECT s FROM Student s WHERE s.pruefung.pruefungId = " + pruefungId,
+					Student.class);
 
 			studenten = (List<Student>) q.getResultList();
 
@@ -246,10 +260,10 @@ public class DatabaseService {
 			// füllen, was beim Fehler passiert
 			return null;
 		}
-		
+
 	}
-	
-	//ab hier: Victoria Meier
+
+	// ab hier: Victoria Meier
 	public List<Student> readLogin(int matrikelNr) {
 
 		try {
@@ -263,15 +277,14 @@ public class DatabaseService {
 		}
 
 	}
-	
-	//ab hier: Yanek Wilken
+
+	// ab hier: Yanek Wilken
 	public void refreshList(List<Student> teilnehmer) {
-		
-		for(Student student : teilnehmer) {
+
+		for (Student student : teilnehmer) {
 			em.refresh(student);
 		}
-		
-		
+
 	}
 
 	public void loescheAntwort(Antwort antwort) {
