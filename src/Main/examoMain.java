@@ -8,6 +8,7 @@ import Views.LoginAbfrage;
 //Firat Aslan
 public class examoMain {
 
+	// passt lookandfeel ans system an und startet login abfrage
 	public static void main(String[] args) {
 		try {
 

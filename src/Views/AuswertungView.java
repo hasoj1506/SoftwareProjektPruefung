@@ -247,7 +247,8 @@ public class AuswertungView extends JFrame{
 		txtErreichtePunktzahl.setText(String.valueOf(this.erreichtePunktzahl));
 		txtGesamtpunktzahlProzent.setText(String.valueOf((Math.round(prozent) * 100) / 100));
 		txtBonuspunkte.setText(String.valueOf(bonusPunkte));
-
+		
+		//
 		AuswertungTableModel model = new AuswertungTableModel(
 				new ArrayList<Aufgabe>(student.getPruefung().getAufgaben()));
 
