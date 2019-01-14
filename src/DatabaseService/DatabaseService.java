@@ -6,6 +6,9 @@ import java.util.List;
 import Models.*;
 
 import javax.persistence.*;
+import javax.persistence.spi.PersistenceUnitTransactionType;
+
+import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
 
 //Beteiligt Yanek Wilken, Josah Weber, Victoria Meier
 public class DatabaseService {
@@ -38,20 +41,26 @@ public class DatabaseService {
 		return instance;
 	}
 	
-	
-	public static DatabaseService getInstance(String benutzername, String passwort) {
-
+	public static DatabaseService getInstance(String driver, String url, String benutzername, String passwort) {
+		
 		if (instance == null) {
 
-			Map map = new HashMap();
-
-			map.put("javax.persistence.jbdc.password", passwort);
-			map.put("javax.persistence.jbdc.username", benutzername);
-
-			instance = new DatabaseService(map);
+			
+			Map properties = new HashMap();
+			
+			properties.put(TRANSACTION_TYPE,  PersistenceUnitTransactionType.RESOURCE_LOCAL.name());
+			properties.put(JDBC_DRIVER, driver);
+			properties.put(JDBC_URL, url);
+			properties.put(JDBC_USER, benutzername);
+			properties.put(JDBC_PASSWORD, passwort);
+			properties.put("eclipselink.ddl-generation.output-mode", "database");
+			properties.put("eclipselink.ddl-generation", "drop-and-create-tables");
+			
+			instance = new DatabaseService(properties);
 		}
 
 		return instance;
+		
 	}
 
 	public EntityManager getEntityManager() {
