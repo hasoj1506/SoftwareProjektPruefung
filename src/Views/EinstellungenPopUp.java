@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTabbedPane;
 import java.awt.FlowLayout;
 import javax.swing.JTextArea;
@@ -23,6 +26,7 @@ public class EinstellungenPopUp {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JButton btnSchlieﬂen;
 	
 	public EinstellungenPopUp(){
 		onCreate();
@@ -30,14 +34,14 @@ public class EinstellungenPopUp {
 	}
 //
 	public void onCreate(){
-		JFrame frame = new JFrame("Einstellungen");
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.getContentPane().setFont(new Font("Verdana", Font.PLAIN, 11));
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		JFrame frmEinstellungen = new JFrame("Einstellungen");
+		frmEinstellungen.getContentPane().setBackground(Color.WHITE);
+		frmEinstellungen.getContentPane().setFont(new Font("Verdana", Font.PLAIN, 11));
+		frmEinstellungen.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(Color.WHITE);
-		frame.getContentPane().add(tabbedPane);
+		frmEinstellungen.getContentPane().add(tabbedPane);
 		
 		JPanel datenbankPanel = new JPanel();
 		datenbankPanel.setBackground(Color.WHITE);
@@ -140,6 +144,7 @@ public class EinstellungenPopUp {
 		JButton btnNewButton_2 = new JButton("Speichern");
 		btnNewButton_2.setFont(new Font("Verdana", Font.PLAIN, 11));
 		panel.add(btnNewButton_2);
+		
 		
 		JPanel sicherheitsPanel = new JPanel();
 		sicherheitsPanel.setBackground(new Color(255, 255, 255));
@@ -255,11 +260,18 @@ public class EinstellungenPopUp {
 		buttonPanel.setBackground(new Color(204, 204, 204));
 		FlowLayout flowLayout = (FlowLayout) buttonPanel.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
-		frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+		frmEinstellungen.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton_1 = new JButton("Schlie\u00DFen");
-		btnNewButton_1.setFont(new Font("Verdana", Font.PLAIN, 11));
-		buttonPanel.add(btnNewButton_1);
+		JButton btnSchlieﬂen = new JButton("Schlie\u00DFen");
+		btnSchlieﬂen.setFont(new Font("Verdana", Font.PLAIN, 11));
+		buttonPanel.add(btnSchlieﬂen);
 	}
 	
+
+	/*	btnSchlieﬂen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			frmEinstellungen.dispose();
+			}
+		});
+	} */
 }
