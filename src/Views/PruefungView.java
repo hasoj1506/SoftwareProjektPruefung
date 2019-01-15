@@ -458,7 +458,6 @@ public class PruefungView {
 		};
 		timer = new Timer(delay, action);
 		timer.setRepeats(true);
-		// timer.setInitialDelay(0);
 		timer.start();
 		count = countPassed;
 	}
