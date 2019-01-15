@@ -104,7 +104,7 @@ public class LoginAbfrage {
 		gbc_btnStudent.gridy = 0;
 		panel_1.add(btnStudent, gbc_btnStudent);
 
-		btnProfessor = new JButton("Professor");
+		btnProfessor = new JButton("Dozent");
 		btnProfessor.setFont(new Font("Verdana", Font.PLAIN, 20));
 		btnProfessor.setPreferredSize(new Dimension(150, 40));
 		GridBagConstraints gbc_btnProfessor = new GridBagConstraints();
