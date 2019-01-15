@@ -65,7 +65,6 @@ public class DatabaseService {
 				properties.put(JDBC_USER, benutzername);
 				properties.put(JDBC_PASSWORD, passwort);
 				properties.put("eclipselink.ddl-generation.output-mode", "database");
-				properties.put("eclipselink.ddl-generation", "create-or-extend-tables");
 
 			}
 			
