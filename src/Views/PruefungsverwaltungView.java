@@ -199,49 +199,50 @@ public class PruefungsverwaltungView {
 		gbc_btnLoeschenPruefung.gridy = 0;
 		unterPanel.add(btnLoeschenPruefung, gbc_btnLoeschenPruefung);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(204, 204, 204));
-		frmPrfungsverwaltung.getContentPane().add(panel_1, BorderLayout.NORTH);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 472, 0 };
-		gbl_panel_1.rowHeights = new int[] { 159, 32, 0 };
-		gbl_panel_1.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
-		panel_1.setLayout(gbl_panel_1);
+		JPanel headerPanel = new JPanel();
+		headerPanel.setBackground(new Color(204, 204, 204));
+		frmPrfungsverwaltung.getContentPane().add(headerPanel, BorderLayout.NORTH);
+		GridBagLayout gbl_headerPanel = new GridBagLayout();
+		gbl_headerPanel.columnWidths = new int[] { 472, 0 };
+		gbl_headerPanel.rowHeights = new int[] { 159, 32, 0 };
+		gbl_headerPanel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_headerPanel.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		headerPanel.setLayout(gbl_headerPanel);
 
-		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.anchor = GridBagConstraints.NORTH;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		panel_1.add(panel, gbc_panel);
-		panel.setBackground(new Color(0, 155, 187));
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
-		gbl_panel.rowHeights = new int[] { 50, 0, 0, 48, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel.setLayout(gbl_panel);
+		JPanel headerPanel2 = new JPanel();
+		GridBagConstraints gbc_headerPanel2 = new GridBagConstraints();
+		gbc_headerPanel2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_headerPanel2.insets = new Insets(0, 0, 5, 0);
+		gbc_headerPanel2.anchor = GridBagConstraints.NORTH;
+		gbc_headerPanel2.gridx = 0;
+		gbc_headerPanel2.gridy = 0;
+		headerPanel.add(headerPanel2, gbc_headerPanel2);
+		headerPanel2.setBackground(new Color(0, 155, 187));
+		GridBagLayout gbl_headerPanel2 = new GridBagLayout();
+		gbl_headerPanel2.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
+		gbl_headerPanel2.rowHeights = new int[] { 50, 0, 0, 48, 0 };
+		gbl_headerPanel2.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_headerPanel2.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		headerPanel2.setLayout(gbl_headerPanel2);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(0, 155, 187));
-		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.RIGHT);
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.gridwidth = 2;
-		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_2.fill = GridBagConstraints.BOTH;
-		gbc_panel_2.gridx = 3;
-		gbc_panel_2.gridy = 0;
-		panel.add(panel_2, gbc_panel_2);
+		JPanel headerPanel3 = new JPanel();
+		headerPanel3.setBackground(new Color(0, 155, 187));
+		FlowLayout fl_headerPanel3 = (FlowLayout) headerPanel3.getLayout();
+		fl_headerPanel3.setAlignment(FlowLayout.RIGHT);
+		GridBagConstraints gbc_headerPanel3 = new GridBagConstraints();
+		gbc_headerPanel3.gridwidth = 2;
+		gbc_headerPanel3.insets = new Insets(0, 0, 5, 5);
+		gbc_headerPanel3.fill = GridBagConstraints.BOTH;
+		gbc_headerPanel3.gridx = 3;
+		gbc_headerPanel3.gridy = 0;
+		headerPanel2.add(headerPanel3, gbc_headerPanel3);
 		
 		btnSettings = new JButton("");
+		btnSettings.setFocusable(false);
 		btnSettings.setBorder(null);
 		btnSettings.setBackground(new Color(0, 155, 187));
 		btnSettings.setIcon(new ImageIcon(settingsIcon));
-		panel_2.add(btnSettings);
+		headerPanel3.add(btnSettings);
 
 		JLabel lblPrfungsverwaltung = new JLabel("Pr\u00FCfungsverwaltung");
 		lblPrfungsverwaltung.setFont(new Font("Verdana", Font.BOLD, 20));
@@ -251,7 +252,7 @@ public class PruefungsverwaltungView {
 		gbc_lblPrfungsverwaltung.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrfungsverwaltung.gridx = 1;
 		gbc_lblPrfungsverwaltung.gridy = 1;
-		panel.add(lblPrfungsverwaltung, gbc_lblPrfungsverwaltung);
+		headerPanel2.add(lblPrfungsverwaltung, gbc_lblPrfungsverwaltung);
 
 		JLabel lblVerwaltungAllerAnstehenden = new JLabel("Verwaltung aller anstehenden Pr\u00FCfungen");
 		lblVerwaltungAllerAnstehenden.setFont(new Font("Verdana", Font.BOLD, 17));
@@ -260,7 +261,7 @@ public class PruefungsverwaltungView {
 		gbc_lblVerwaltungAllerAnstehenden.insets = new Insets(0, 0, 0, 5);
 		gbc_lblVerwaltungAllerAnstehenden.gridx = 2;
 		gbc_lblVerwaltungAllerAnstehenden.gridy = 3;
-		panel.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
+		headerPanel2.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
 
 		JLabel label_2 = new JLabel("");
 		Image icon = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
@@ -271,7 +272,7 @@ public class PruefungsverwaltungView {
 		gbc_label_2.insets = new Insets(0, 0, 0, 5);
 		gbc_label_2.gridx = 3;
 		gbc_label_2.gridy = 3;
-		panel.add(label_2, gbc_label_2);
+		headerPanel2.add(label_2, gbc_label_2);
 
 		frmPrfungsverwaltung.setVisible(true);
 		frmPrfungsverwaltung.setDefaultCloseOperation(frmPrfungsverwaltung.DISPOSE_ON_CLOSE);

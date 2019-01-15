@@ -21,6 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.TimePicker;
+
 import Models.Pruefung;
 import Models.Termin;
 
@@ -35,9 +38,9 @@ public class TerminErstellenPopUp {
 	JButton btnOk;
 	private JLabel lblDatum;
 	private JLabel lblRaum;
-	private JTextField textFieldDatum;
+	private DatePicker datePicker;
 	private JLabel lblUhrzeit;
-	private JTextField textFieldUhrzeit;
+	private TimePicker timePicker;
 	private JTextField textFieldRaum;
 
 	private Pruefung pruefung;
@@ -113,14 +116,13 @@ public class TerminErstellenPopUp {
 		gbc_lblDatum.gridy = 1;
 		panel_1.add(lblDatum, gbc_lblDatum);
 
-		textFieldDatum = new JTextField();
-		GridBagConstraints gbc_textFieldDatum = new GridBagConstraints();
-		gbc_textFieldDatum.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDatum.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldDatum.gridx = 2;
-		gbc_textFieldDatum.gridy = 1;
-		panel_1.add(textFieldDatum, gbc_textFieldDatum);
-		textFieldDatum.setColumns(10);
+		datePicker = new DatePicker();
+		GridBagConstraints gbc_datePicker = new GridBagConstraints();
+		gbc_datePicker.insets = new Insets(0, 0, 5, 5);
+		gbc_datePicker.fill = GridBagConstraints.HORIZONTAL;
+		gbc_datePicker.gridx = 2;
+		gbc_datePicker.gridy = 1;
+		panel_1.add(datePicker, gbc_datePicker);
 
 		lblUhrzeit = new JLabel("Uhrzeit:");
 		lblUhrzeit.setFont(new Font("Verdana", Font.BOLD, 16));
@@ -131,14 +133,13 @@ public class TerminErstellenPopUp {
 		gbc_lblUhrzeit.gridy = 2;
 		panel_1.add(lblUhrzeit, gbc_lblUhrzeit);
 
-		textFieldUhrzeit = new JTextField();
-		GridBagConstraints gbc_textFieldUhrzeit = new GridBagConstraints();
-		gbc_textFieldUhrzeit.anchor = GridBagConstraints.WEST;
-		gbc_textFieldUhrzeit.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldUhrzeit.gridx = 2;
-		gbc_textFieldUhrzeit.gridy = 2;
-		panel_1.add(textFieldUhrzeit, gbc_textFieldUhrzeit);
-		textFieldUhrzeit.setColumns(10);
+		timePicker = new TimePicker();
+		GridBagConstraints gbc_timePicker = new GridBagConstraints();
+		gbc_timePicker.fill = GridBagConstraints.HORIZONTAL;
+		gbc_timePicker.insets = new Insets(0, 0, 5, 5);
+		gbc_timePicker.gridx = 2;
+		gbc_timePicker.gridy = 2;
+		panel_1.add(timePicker, gbc_timePicker);
 
 		lblRaum = new JLabel("Raum:");
 		lblRaum.setFont(new Font("Verdana", Font.BOLD, 16));
@@ -171,8 +172,8 @@ public class TerminErstellenPopUp {
 
 	public void fuelleTerminPopUp(Termin termin) {
 
-		this.textFieldDatum.setText(termin.getDatum());
-		this.textFieldUhrzeit.setText(termin.getUhrzeit());
+		this.datePicker.setText(termin.getDatum());
+		this.timePicker.setText(termin.getUhrzeit());
 		this.textFieldRaum.setText(termin.getRaum());
 	}
 
@@ -185,22 +186,22 @@ public class TerminErstellenPopUp {
 			public void actionPerformed(ActionEvent arg0) {
 
 				// Werte der Felder holen
-				datum = textFieldDatum.getText();
-				uhrzeit = textFieldUhrzeit.getText();
+				datum = datePicker.getText();
+				uhrzeit = timePicker.getText();
 				raum = textFieldRaum.getText();
 
 				// Standard-Füllfarben
-				textFieldDatum.setBackground(Color.WHITE);
-				textFieldUhrzeit.setBackground(Color.WHITE);
+				datePicker.setBackground(Color.WHITE);
+				timePicker.setBackground(Color.WHITE);
 				textFieldRaum.setBackground(Color.WHITE);
 
 				// Bei gültigen Eingaben Termin bearbeiten
-				if (datum.length() != 10) {
-					textFieldDatum.setBackground(new Color(255, 102, 102));
-					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
-				} else if (uhrzeit.length() != 5) {
-					textFieldUhrzeit.setBackground(new Color(255, 102, 102));
-					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				if (datum.length() == 0) {
+					datePicker.setBackground(new Color(255, 102, 102));
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum eingeben!");
+				} else if (uhrzeit.length() == 0) {
+					timePicker.setBackground(new Color(255, 102, 102));
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit eingeben!");
 				} else if (raum.length() <= 0) {
 					textFieldRaum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
@@ -234,22 +235,22 @@ public class TerminErstellenPopUp {
 			public void actionPerformed(ActionEvent arg0) {
 
 				// Werte der Felder holen
-				datum = textFieldDatum.getText();
-				uhrzeit = textFieldUhrzeit.getText();
+				datum = datePicker.getText();
+				uhrzeit = timePicker.getText();
 				raum = textFieldRaum.getText();
 
 				// Standard-Füllfarben
-				textFieldDatum.setBackground(Color.WHITE);
-				textFieldUhrzeit.setBackground(Color.WHITE);
+				datePicker.setBackground(Color.WHITE);
+				timePicker.setBackground(Color.WHITE);
 				textFieldRaum.setBackground(Color.WHITE);
 
 				// Bei gültigen Eingaben Termin erstellen
-				if (datum.length() != 10) {
-					textFieldDatum.setBackground(new Color(255, 102, 102));
-					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum im Format 'DD.MM.JJJJ' eingeben!");
-				} else if (uhrzeit.length() != 5) {
-					textFieldUhrzeit.setBackground(new Color(255, 102, 102));
-					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit im Format 'HH:MM' eingeben!");
+				if (datum.length() == 0) {
+					datePicker.setBackground(new Color(255, 102, 102));
+					JOptionPane.showMessageDialog(frmTermin, "Bitte das Datum eingeben!");
+				} else if (uhrzeit.length() == 0) {
+					timePicker.setBackground(new Color(255, 102, 102));
+					JOptionPane.showMessageDialog(frmTermin, "Bitte die Uhrzeit eingeben!");
 				} else if (raum.length() <= 0) {
 					textFieldRaum.setBackground(new Color(255, 102, 102));
 					JOptionPane.showMessageDialog(frmTermin, "Bitte den Raum im korrekten Format eingeben!");
