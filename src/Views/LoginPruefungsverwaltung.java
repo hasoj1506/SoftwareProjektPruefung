@@ -60,7 +60,7 @@ public class LoginPruefungsverwaltung {
 
 
 	/**
-	 * Create the application.
+	 * Create the application. 
 	 */
 	public LoginPruefungsverwaltung() {
 		this.controller = new LoginPruefungsverwaltungController(this);
