@@ -48,50 +48,41 @@ public class LoginPruefungsverwaltungController {
 		String user = null;
 		String pw = null;
 
-		try {
-			url = view.getUrlTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte URL korrekt ausfüllen");
-		}
+		url = view.getUrlTextField().getText();
+		user = view.getUserTextField().getText();
+		pw = view.getDbPasswortTextField().getText();
 
-		try {
-			user = view.getUserTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte Benutzername korrekt ausfüllen");
-		}
+		if (url == null || url.length() == 0 || user == null || user.length() == 0 || pw == null || pw.length() == 0) {
 
-		try {
-			pw = view.getDbPasswortTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte Passwort korrekt ausfüllen");
-		}
+			view.getFehlerLabel().setText("Datenbanklogin-Felder müssen ausgefüllt sein");
 
-		if (einloggenDatenbank(url, user, pw, view.getNeueTabellenChkBox().isSelected())) {
-			
-			this.admin = db.readAdmin();
+		} else {
 
 			if (getPasswort() == null || getPasswort().length() == 0) {
-				view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-			} else if (getPasswort().equals(this.admin.getPasswort()) == false) {
-				view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt!");
+				view.getFehlerLabel().setText("Das Passwort darf nicht leer sein");
 			} else {
 
 				try {
+					if (einloggenDatenbank(url, user, pw, view.getNeueTabellenChkBox().isSelected())) {
 
-					this.db = DatabaseService.getInstance();
-					view.getFrame().dispose();
+						this.admin = db.readAdmin();
+						if (getPasswort().equals(this.admin.getPasswort()) == false) {
 
-					PruefungsverwaltungView view = new PruefungsverwaltungView();
+							view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt");
+						} else {
 
-				} catch (Exception e) {
-					view.getFehlerLabel()
-							.setText("Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
+							this.db = DatabaseService.getInstance();
+							view.getFrame().dispose();
+							PruefungsverwaltungView view = new PruefungsverwaltungView();
+						}
+					} else {
+						view.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
+					}
+				} catch (Exception o) {
+					view.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
 				}
 			}
-		} else {
-			view.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
 		}
-
 	}
 
 	// Get Benutzer und passwort von textfeld in view von Student
@@ -102,66 +93,63 @@ public class LoginPruefungsverwaltungController {
 		String user = null;
 		String pw = null;
 
-		try {
-			url = viewS.getUrlTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte URL korrekt ausfüllen");
-		}
+		url = viewS.getUrlTextField().getText();
+		user = viewS.getBenutzernameTextField().getText();
+		pw = viewS.getPasswortTextField().getText();
 
-		try {
-			user = viewS.getBenutzernameTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte Benutzername korrekt ausfüllen");
-		}
+		if (url == null || url.length() == 0 || user == null || user.length() == 0 || pw == null || pw.length() == 0) {
 
-		try {
-			pw = viewS.getPasswortTextField().getText();
-		} catch (Exception e) {
-			viewS.getFehlerLabel().setText("Bitte Passwort korrekt ausfüllen");
-		}
-
-		if (einloggenDatenbank(url, user, pw, false)) {
-
-			if (getMatrikelNr() == 0) {
-				viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden - bitte prüfen!");
-			} else {
-
-				try {
-					List<Student> studenten = db.readLogin(getMatrikelNr());
-					Student student = null;
-
-					if (studenten.size() >= 0) {
-
-						for (Student s : studenten) {
-							if (s.getPruefung().isFreigegeben() == true && s.isHatAbgegeben() == false) {
-								student = s;
-							} else {
-								viewS.getFehlerLabel()
-										.setText("Die Ihnen zugeteilte Prüfung wurde noch nicht freigegeben!");
-							}
-						}
-
-						PruefungView pruefungViewS = new PruefungView(student);
-						student.setEingeloggt(true);
-						db.persistNutzer(student);
-						viewS.getLoginStudentFrame().dispose();
-
-					} else {
-						viewS.getFehlerLabel().setText("Kein Teilnehmer mit dieser Matrikelnummer gefunden!");
-					}
-
-				} catch (NullPointerException ex) {
-					viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen!");
-				}
-
-				catch (Exception e) {
-					viewS.getFehlerLabel()
-							.setText("Anmeldung fehlgeschlagen! Überprüfe die Verbindung zum FH-Netzwerk!");
-				}
-			}
+			view.getFehlerLabel().setText("Datenbanklogin-Felder müssen ausgefüllt sein");
 
 		} else {
-			viewS.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
+
+			try {
+				if (einloggenDatenbank(url, user, pw, false)) {
+
+					if (getMatrikelNr() == 0) {
+						viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden");
+					} else {
+
+						try {
+							List<Student> studenten = db.readLogin(getMatrikelNr());
+							Student student = null;
+
+							if (studenten.size() >= 0) {
+
+								for (Student s : studenten) {
+									if (s.getPruefung().isFreigegeben() == true && s.isHatAbgegeben() == false) {
+										student = s;
+									} else {
+										viewS.getFehlerLabel()
+												.setText("Prüfung noch nicht freigegeben");
+									}
+								}
+
+								PruefungView pruefungViewS = new PruefungView(student);
+								student.setEingeloggt(true);
+								db.persistNutzer(student);
+								viewS.getLoginStudentFrame().dispose();
+
+							} else {
+								viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden");
+							}
+
+						} catch (NullPointerException ex) {
+							viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen");
+						}
+
+						catch (Exception e) {
+							viewS.getFehlerLabel()
+									.setText("Anmeldung fehlgeschlagen");
+						}
+					}
+
+				} else {
+					viewS.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
+				}
+			} catch (Exception o) {
+				viewS.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
+			}
 		}
 	}
 
@@ -178,13 +166,13 @@ public class LoginPruefungsverwaltungController {
 
 		}
 
-		if(neu) {
-			
+		if (neu) {
+
 			Admin admin = Admin.getInstance();
 			db.persistAdmin(admin);
-			
+
 		}
-		
+
 		return true;
 
 	}

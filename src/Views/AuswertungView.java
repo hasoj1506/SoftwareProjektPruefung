@@ -174,7 +174,7 @@ public class AuswertungView extends JFrame{
 		gbc_txtGesamtpunktzahlProzent.gridy = 1;
 		panel_3.add(txtGesamtpunktzahlProzent, gbc_txtGesamtpunktzahlProzent);
 
-		JLabel lblAnzahlBonuspunkte = new JLabel("Anzahl Bonuspunkte:");
+		JLabel lblAnzahlBonuspunkte = new JLabel("Note:\r\n");
 		lblAnzahlBonuspunkte.setFont(new Font("Verdana", Font.BOLD, 12));
 		GridBagConstraints gbc_lblAnzahlBonuspunkte = new GridBagConstraints();
 		gbc_lblAnzahlBonuspunkte.anchor = GridBagConstraints.EAST;
@@ -225,17 +225,17 @@ public class AuswertungView extends JFrame{
 		int bonusPunkte = 0;
 
 		if (prozent >= 95) {
-			bonusPunkte = 6;
-		} else if (prozent >= 80) {
-			bonusPunkte = 5;
-		} else if (prozent >= 65) {
-			bonusPunkte = 4;
-		} else if (prozent >= 50) {
-			bonusPunkte = 3;
-		} else if (prozent >= 35) {
-			bonusPunkte = 2;
-		} else if (prozent > 0) {
 			bonusPunkte = 1;
+		} else if (prozent >= 80) {
+			bonusPunkte = 2;
+		} else if (prozent >= 65) {
+			bonusPunkte = 3;
+		} else if (prozent >= 50) {
+			bonusPunkte = 4;
+		} else if (prozent >= 35) {
+			bonusPunkte = 5;
+		} else if (prozent > 0) {
+			bonusPunkte = 6;
 		} else {
 			bonusPunkte = 0;
 		}

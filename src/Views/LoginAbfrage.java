@@ -162,25 +162,15 @@ public class LoginAbfrage {
 
 		btnStudent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					LoginStudent studentView = new LoginStudent();
-					frame.dispose();
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(frame,
-							"Bitte stellen Sie eine Verbindung zum Netz der FH-Bielefeld her!");
-				}
+				LoginStudent studentView = new LoginStudent();
+				frame.dispose();
 			}
 		});
 
 		btnProfessor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
-					frame.dispose();
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(frame,
-							"Bitte stellen Sie eine Verbindung zum Netz der FH-Bielefeld her!");
-				}
+				LoginPruefungsverwaltung pruefungView = new LoginPruefungsverwaltung();
+				frame.dispose();
 			}
 		});
 	}

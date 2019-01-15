@@ -17,7 +17,7 @@ public class PruefungsDetailsTeilnehmerTableModel extends AbstractTableModel {
 		this.studenten = studenten;
 	}
 
-	String[] columnNames = { "", "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Bonuspunkte",
+	String[] columnNames = { "", "Name", "Vorname", "Matrikelnummer", "Erreichte Punktzahl", "Note",
 			"Angemeldet" };
 
 	public String getColumnName(int col) {

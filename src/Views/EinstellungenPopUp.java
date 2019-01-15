@@ -32,6 +32,8 @@ public class EinstellungenPopUp {
 	private Admin admin;
 	private JLabel messageLabel;
 	
+	private JFrame frmEinstellungen;
+	
 	private DatabaseService db = DatabaseService.getInstance();
 	
 	public EinstellungenPopUp(){
@@ -72,10 +74,17 @@ public class EinstellungenPopUp {
 			}
 		});
 		
+		btnSchlieﬂen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmEinstellungen.dispose();
+			
+			}
+		});
+		
 	}
 //
 	public void onCreate(){
-		JFrame frmEinstellungen = new JFrame("Einstellungen");
+		frmEinstellungen = new JFrame("Einstellungen");
 		frmEinstellungen.setMinimumSize(new Dimension(500, 300));
 		frmEinstellungen.getContentPane().setBackground(Color.WHITE);
 		frmEinstellungen.getContentPane().setFont(new Font("Verdana", Font.PLAIN, 11));
@@ -200,7 +209,7 @@ public class EinstellungenPopUp {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		frmEinstellungen.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 		
-		JButton btnSchlieﬂen = new JButton("Schlie\u00DFen");
+		btnSchlieﬂen = new JButton("Schlie\u00DFen");
 		btnSchlieﬂen.setFont(new Font("Verdana", Font.PLAIN, 11));
 		buttonPanel.add(btnSchlieﬂen);
 		
@@ -212,11 +221,4 @@ public class EinstellungenPopUp {
 		
 	}
 	
-
-	/*	btnSchlieﬂen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			frmEinstellungen.dispose();
-			}
-		});
-	} */
 }
