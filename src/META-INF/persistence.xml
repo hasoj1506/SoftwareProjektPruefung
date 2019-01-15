@@ -9,6 +9,7 @@
 		<class>Models.Termin</class>
 		<class>Models.Dozent</class>
 		<class>Models.Student</class>
+		<class>Models.Admin</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@aix1.fh-bielefeld.de:1521:d2"/>
 			<property name="javax.persistence.jdbc.user" value="dvi528"/>

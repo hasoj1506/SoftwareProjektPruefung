@@ -82,12 +82,22 @@ public class LoginStudent {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{559, 25, 400, 25, 0};
-		gridBagLayout.rowHeights = new int[]{211, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowHeights = new int[]{218, 793, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon("C:\\Users\\Yanek\\Desktop\\AW_FHC_A01_CAldoAmoretti_2000px.jpg"));
+		GridBagConstraints gbc_label_4 = new GridBagConstraints();
+		gbc_label_4.fill = GridBagConstraints.BOTH;
+		gbc_label_4.gridheight = 2;
+		gbc_label_4.insets = new Insets(0, 0, 5, 5);
+		gbc_label_4.gridx = 0;
+		gbc_label_4.gridy = 0;
+		frame.getContentPane().add(label_4, gbc_label_4);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 155, 187));
@@ -99,14 +109,14 @@ public class LoginStudent {
 		frame.getContentPane().add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[] {50, 20, 45, 20};
+		gbl_panel.rowHeights = new int[] {114, 20, 45, 20};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblTestat = new JLabel("examo");
 		lblTestat.setForeground(new Color(255, 255, 255));
-		lblTestat.setFont(new Font("Gill Sans MT", Font.PLAIN, 78));
+		lblTestat.setFont(new Font("Gill Sans MT", Font.PLAIN, 99));
 		GridBagConstraints gbc_lblTestat = new GridBagConstraints();
 		gbc_lblTestat.insets = new Insets(0, 0, 5, 0);
 		gbc_lblTestat.gridx = 0;
@@ -141,9 +151,9 @@ public class LoginStudent {
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{309, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 33, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 36, 0, 151, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JPanel panel_3 = new JPanel();
@@ -156,9 +166,9 @@ public class LoginStudent {
 		panel_1.add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{0, 0};
-		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_3.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
 		JLabel label = new JLabel("Datenbank Login");
@@ -227,21 +237,10 @@ public class LoginStudent {
 		gbc_textField_2.gridy = 6;
 		panel_3.add(passwortTextField, gbc_textField_2);
 		
-		JCheckBox checkBox = new JCheckBox("Erstanmeldung");
-		checkBox.setForeground(Color.WHITE);
-		checkBox.setFont(new Font("Verdana", Font.PLAIN, 16));
-		checkBox.setBackground(new Color(0,155,187));
-		GridBagConstraints gbc_checkBox = new GridBagConstraints();
-		gbc_checkBox.anchor = GridBagConstraints.EAST;
-		gbc_checkBox.insets = new Insets(0, 0, 5, 0);
-		gbc_checkBox.gridx = 0;
-		gbc_checkBox.gridy = 7;
-		panel_3.add(checkBox, gbc_checkBox);
-		
 		JSeparator separator = new JSeparator();
 		GridBagConstraints gbc_separator = new GridBagConstraints();
 		gbc_separator.gridx = 0;
-		gbc_separator.gridy = 8;
+		gbc_separator.gridy = 7;
 		panel_3.add(separator, gbc_separator);
 		
 		JLabel lblPrfungLogin = new JLabel("Pr\u00FCfung Login");
@@ -269,7 +268,7 @@ public class LoginStudent {
 		gbc_textField5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField5.gridx = 0;
 		gbc_textField5.gridy = 3;
-		panel_1.add(textFieldMatrikelNr, gbc_textField);
+		panel_1.add(textFieldMatrikelNr, gbc_textField5);
 		textFieldMatrikelNr.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
@@ -292,18 +291,10 @@ public class LoginStudent {
 		btnLogin = new JButton("Login");
 		panel_2.add(btnLogin);
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
-		
-		JLabel lblVersion = new JLabel("Version: 1.0");
-		lblVersion.setForeground(new Color(255, 255, 255));
-		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
-		gbc_lblVersion.anchor = GridBagConstraints.WEST;
-		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 5;
-		panel_1.add(lblVersion, gbc_lblVersion);
 		frame.pack();
 		
 		frame.setLocationRelativeTo(null);
-		frame.setMinimumSize(new Dimension(500, 300));
+		frame.setMinimumSize(new Dimension(500, 280));
 		frame.setResizable(false);
 	}
 	

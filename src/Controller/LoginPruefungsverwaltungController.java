@@ -3,6 +3,7 @@ package Controller;
 import java.util.List;
 
 import DatabaseService.DatabaseService;
+import Models.Admin;
 import Models.Nutzer;
 import Models.Pruefung;
 import Models.Student;
@@ -22,8 +23,7 @@ public class LoginPruefungsverwaltungController {
 	Pruefung pruefung;
 	Nutzer nutzers;
 
-	String passwort = "examo";
-
+	private Admin admin;
 	private List<String> benutzernameListe;
 	private List<String> passwoerterListe;
 
@@ -67,10 +67,12 @@ public class LoginPruefungsverwaltungController {
 		}
 
 		if (einloggenDatenbank(url, user, pw, view.getNeueTabellenChkBox().isSelected())) {
+			
+			this.admin = db.readAdmin();
 
 			if (getPasswort() == null || getPasswort().length() == 0) {
 				view.getFehlerLabel().setText("Benutzername oder Passwort darf nicht leer sein!");
-			} else if (getPasswort().equals(this.passwort) == false) {
+			} else if (getPasswort().equals(this.admin.getPasswort()) == false) {
 				view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt!");
 			} else {
 
@@ -176,6 +178,13 @@ public class LoginPruefungsverwaltungController {
 
 		}
 
+		if(neu) {
+			
+			Admin admin = Admin.getInstance();
+			db.persistAdmin(admin);
+			
+		}
+		
 		return true;
 
 	}

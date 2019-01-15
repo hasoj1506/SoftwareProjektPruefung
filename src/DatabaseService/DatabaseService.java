@@ -85,6 +85,12 @@ public class DatabaseService {
 		em.merge(nutzer);
 		em.getTransaction().commit();
 	}
+	
+	public void persistAdmin(Admin admin) {
+		em.getTransaction().begin();
+		em.merge(admin);
+		em.getTransaction().commit();
+	}
 
 	public void persistPruefung(Pruefung pruefung) {
 		em.getTransaction().begin();
@@ -171,6 +177,29 @@ public class DatabaseService {
 		}
 
 	}
+	public Admin readAdmin() {
+
+		try {
+
+			List<Admin> admins;
+
+			TypedQuery q = em.createQuery("SELECT p FROM Admin p",
+					Admin.class);
+
+			admins = q.getResultList();
+
+			return admins.get(0);
+
+		} catch (Exception e) {
+
+			return null;
+		}
+
+	}
+	
+	
+	
+	
 
 	// ab hier: Josah Weber
 	public List<Pruefung> readPruefungen() {
@@ -289,6 +318,13 @@ public class DatabaseService {
 	public void loescheAntwort(Antwort antwort) {
 		em.getTransaction().begin();
 		em.remove(antwort);
+		em.getTransaction().commit();
+
+	}
+	
+	public void loescheAdmin(Admin admin) {
+		em.getTransaction().begin();
+		em.remove(admin);
 		em.getTransaction().commit();
 
 	}

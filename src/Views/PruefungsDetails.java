@@ -70,6 +70,10 @@ public class PruefungsDetails {
 	private JPanel panel;
 	private JButton btnAktualisieren;
 	private JButton btnImportiereAufgaben;
+	
+	/**
+	 * @wbp.parser.constructor
+	 */
 
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
 

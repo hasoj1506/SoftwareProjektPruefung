@@ -30,6 +30,8 @@ import javax.swing.event.DocumentListener;
 
 import Controller.PruefungsverwaltungController;
 import Models.Pruefung;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 //Josah Weber
 public class PruefungsverwaltungView {
@@ -44,6 +46,7 @@ public class PruefungsverwaltungView {
 	private JButton btnSuchen;
 	private JButton btnFreigeben;
 	private JTextField textFieldSuche;
+	private JButton btnSettings;
 
 	PruefungsverwaltungController controller;
 
@@ -77,8 +80,10 @@ public class PruefungsverwaltungView {
 		gbl_PruefungenPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_PruefungenPanel.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0 };
 		PruefungenPanel.setLayout(gbl_PruefungenPanel);
+		
 		Image searchIcon = new ImageIcon(this.getClass().getResource("/searchIcon.png")).getImage();
 		Image resetIcon = new ImageIcon(this.getClass().getResource("/closeIcon.png")).getImage();
+		Image settingsIcon = new ImageIcon(this.getClass().getResource("/settings-icon.png")).getImage();
 
 		JPanel panelSuche = new JPanel();
 		panelSuche.setBackground(Color.WHITE);
@@ -219,6 +224,24 @@ public class PruefungsverwaltungView {
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(0, 155, 187));
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.RIGHT);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.gridwidth = 2;
+		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 3;
+		gbc_panel_2.gridy = 0;
+		panel.add(panel_2, gbc_panel_2);
+		
+		btnSettings = new JButton("");
+		btnSettings.setBorder(null);
+		btnSettings.setBackground(new Color(0, 155, 187));
+		btnSettings.setIcon(new ImageIcon(settingsIcon));
+		panel_2.add(btnSettings);
 
 		JLabel lblPrfungsverwaltung = new JLabel("Pr\u00FCfungsverwaltung");
 		lblPrfungsverwaltung.setFont(new Font("Verdana", Font.BOLD, 20));
@@ -259,6 +282,12 @@ public class PruefungsverwaltungView {
 
 	// Hinzufügen der ActionListener
 	public void addActionListeners() {
+		
+		btnSettings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EinstellungenPopUp settings = new EinstellungenPopUp();
+			}
+		});
 
 		btnNeuPruefung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
