@@ -33,6 +33,7 @@ import Models.Pruefung;
 public class PruefungsDetails {
 	//ab hier: Josah Weber
 	private PruefungsverwaltungView pruefungsverwaltung;
+	private PruefungsDetailsController controller;
 
 	private Pruefung pruefung;
 
@@ -55,7 +56,6 @@ public class PruefungsDetails {
 	private JButton btnLschenTeilnehmer;
 	private JButton btnLschenPruefung;
 
-	PruefungsDetailsController controller;
 	private JPanel panel_2;
 	private JPanel panel_3;
 	private JLabel lblPrfungsdetails;

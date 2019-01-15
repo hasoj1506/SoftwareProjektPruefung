@@ -48,9 +48,9 @@ public class PruefungsverwaltungView {
 	private JTextField textFieldSuche;
 	private JButton btnSettings;
 
-	PruefungsverwaltungController controller;
+	private PruefungsverwaltungController controller;
 
-	Pruefung pruefung;
+	private Pruefung pruefung;
 
 	public PruefungsverwaltungView() {
 
