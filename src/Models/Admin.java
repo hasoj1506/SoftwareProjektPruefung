@@ -1,11 +1,7 @@
 package Models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import DatabaseService.DatabaseService;
 
 //Marco Penner
 @Entity
