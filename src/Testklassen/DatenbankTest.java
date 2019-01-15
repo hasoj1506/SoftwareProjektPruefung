@@ -15,7 +15,7 @@ public class DatenbankTest {
 		String benutzer = "dvi724";
 		String passwort = "fh6317";
 
-		DatabaseService service = DatabaseService.getInstance(driver,url, benutzer, passwort);
+//		DatabaseService service = DatabaseService.getInstance(driver,url, benutzer, passwort);
 
 		// erzeugt ein Prüfungsobjekt mit Daten (siehe Konstruktor)
 		Pruefung pruefung = new Pruefung("Mathepruefung 1", 120);
@@ -33,7 +33,7 @@ public class DatenbankTest {
 		//
 		// persistiert(in die Datenbank schreiben) die Prüfung in der
 		// Datenbank
-		service.persistPruefung(pruefung);
+//		service.persistPruefung(pruefung);
 	}
 
 }
