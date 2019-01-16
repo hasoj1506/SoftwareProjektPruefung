@@ -13,7 +13,7 @@ public class Admin{
 	private String passwort;
 
 	private Admin() {
-		this.passwort = "examo";
+		this.passwort = "examo"; //Hier Standard Passwort ändern
 	}
 	
 	public static Admin getInstance() {

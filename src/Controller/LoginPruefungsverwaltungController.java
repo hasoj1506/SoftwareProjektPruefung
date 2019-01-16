@@ -160,7 +160,7 @@ public class LoginPruefungsverwaltungController {
 
 	public boolean einloggenDatenbank(String url, String user, String pw, boolean neu) {
 
-		String driver = "oracle.jdbc.OracleDriver";
+		String driver = "oracle.jdbc.OracleDriver"; //Hier Datenbank Treiber ändern
 
 		try {
 

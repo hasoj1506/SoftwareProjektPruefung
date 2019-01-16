@@ -127,7 +127,7 @@ public class AntwortErstellenPopUp {
 	//ActionListener für Antwort erstellen
 	public void btnAction(final AufgabendetailsView view) {
 
-		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
+		btnOk.addActionListener(new ActionListener() { 
 
 			public void actionPerformed(ActionEvent arg0) {
 
