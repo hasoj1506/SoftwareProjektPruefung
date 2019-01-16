@@ -112,7 +112,7 @@ public class PruefungEinweisungPopUp {
 		panel.setLayout(gbl_panel);
 
 		JLabel lblNewLabel_7 = new JLabel("Teilnehmer:");
-		lblNewLabel_7.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel_7.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
@@ -129,7 +129,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(txtTeilnehmer, gbc_txtTeilnehmer);
 
 		JLabel lblNewLabel_8 = new JLabel("Matrikelnummer:");
-		lblNewLabel_8.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel_8.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
 		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_8.anchor = GridBagConstraints.EAST;
@@ -146,7 +146,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(txtMatrikelnr, gbc_txtMatrikelnr);
 
 		JLabel lblNewLabel_1 = new JLabel("Pr\u00FCfung:");
-		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -173,7 +173,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(separator, gbc_separator);
 
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblStatus.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblStatus = new GridBagConstraints();
 		gbc_lblStatus.anchor = GridBagConstraints.EAST;
 		gbc_lblStatus.insets = new Insets(0, 0, 0, 5);
@@ -190,7 +190,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(textField, gbc_textField);
 
 		JLabel lblNewLabel_2 = new JLabel("Dauer:");
-		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel_2.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
@@ -207,7 +207,7 @@ public class PruefungEinweisungPopUp {
 		panel.add(textField_1, gbc_textField_1);
 
 		JLabel lblNewLabel_3 = new JLabel("Gesamtpunkte:");
-		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel_3.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);

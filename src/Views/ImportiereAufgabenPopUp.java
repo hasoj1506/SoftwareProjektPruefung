@@ -78,7 +78,7 @@ public class ImportiereAufgabenPopUp {
 
 		JLabel pruefungenLabel = new JLabel("Pr\u00FCfungen:");
 		pruefungenLabel.setForeground(new Color(51, 51, 51));
-		pruefungenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		pruefungenLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_pruefungenLabel = new GridBagConstraints();
 		gbc_pruefungenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_pruefungenLabel.insets = new Insets(0, 0, 5, 5);

@@ -107,7 +107,7 @@ public class NutzerErstellenPopUp {
 		panel_1.setLayout(gbl_panel_1);
 
 		lblVorname = new JLabel("Vorname:");
-		lblVorname.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblVorname.setFont(new Font("Verdana", Font.PLAIN, 16));
 		lblVorname.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblVorname = new GridBagConstraints();
 		gbc_lblVorname.anchor = GridBagConstraints.EAST;
@@ -126,7 +126,7 @@ public class NutzerErstellenPopUp {
 		textFieldVorname.setColumns(10);
 
 		lblNachname = new JLabel("Nachname:");
-		lblNachname.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblNachname.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblNachname = new GridBagConstraints();
 		gbc_lblNachname.anchor = GridBagConstraints.EAST;
 		gbc_lblNachname.insets = new Insets(0, 0, 5, 5);
@@ -145,7 +145,7 @@ public class NutzerErstellenPopUp {
 
 		lblMatrikelnummer = new JLabel("Matrikelnr.:");
 		lblMatrikelnummer.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblMatrikelnummer.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
 		gbc_lblMatrikelnummer.anchor = GridBagConstraints.EAST;
 		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);

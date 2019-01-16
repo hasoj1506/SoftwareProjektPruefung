@@ -107,7 +107,7 @@ public class TerminErstellenPopUp {
 		panel_1.setLayout(gbl_panel_1);
 
 		lblDatum = new JLabel("Datum:");
-		lblDatum.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblDatum.setFont(new Font("Verdana", Font.PLAIN, 16));
 		lblDatum.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblDatum = new GridBagConstraints();
 		gbc_lblDatum.anchor = GridBagConstraints.EAST;
@@ -125,7 +125,7 @@ public class TerminErstellenPopUp {
 		panel_1.add(datePicker, gbc_datePicker);
 
 		lblUhrzeit = new JLabel("Uhrzeit:");
-		lblUhrzeit.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblUhrzeit.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblUhrzeit = new GridBagConstraints();
 		gbc_lblUhrzeit.anchor = GridBagConstraints.EAST;
 		gbc_lblUhrzeit.insets = new Insets(0, 0, 5, 5);
@@ -142,7 +142,7 @@ public class TerminErstellenPopUp {
 		panel_1.add(timePicker, gbc_timePicker);
 
 		lblRaum = new JLabel("Raum:");
-		lblRaum.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblRaum.setFont(new Font("Verdana", Font.PLAIN, 16));
 		lblRaum.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblRaum = new GridBagConstraints();
 		gbc_lblRaum.anchor = GridBagConstraints.EAST;

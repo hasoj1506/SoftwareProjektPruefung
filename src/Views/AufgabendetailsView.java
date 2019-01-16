@@ -93,7 +93,7 @@ public class AufgabendetailsView {
 
 		JLabel afgdAntwortenLabel = new JLabel("Antworten:");
 		afgdAntwortenLabel.setForeground(new Color(51, 51, 51));
-		afgdAntwortenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		afgdAntwortenLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_afgdAntwortenLabel = new GridBagConstraints();
 		gbc_afgdAntwortenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdAntwortenLabel.insets = new Insets(0, 0, 5, 5);
@@ -255,7 +255,7 @@ public class AufgabendetailsView {
 
 		JLabel afgdTitelLabel = new JLabel("Aufgabentitel:");
 		afgdTitelLabel.setForeground(new Color(51, 51, 51));
-		afgdTitelLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		afgdTitelLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_afgdTitelLabel = new GridBagConstraints();
 		gbc_afgdTitelLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdTitelLabel.insets = new Insets(0, 0, 5, 5);
@@ -276,7 +276,7 @@ public class AufgabendetailsView {
 		JLabel afgdFrageLabel = new JLabel("Fragestellung:");
 		afgdFrageLabel.setForeground(new Color(51, 51, 51));
 		afgdFrageLabel.setBackground(new Color(255, 255, 255));
-		afgdFrageLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		afgdFrageLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_afgdFrageLabel = new GridBagConstraints();
 		gbc_afgdFrageLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_afgdFrageLabel.insets = new Insets(0, 0, 5, 5);
@@ -297,7 +297,7 @@ public class AufgabendetailsView {
 		afgdFrageTextField.setColumns(10);
 
 		lblPunktzahl = new JLabel("Punktzahl:");
-		lblPunktzahl.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblPunktzahl.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPunktzahl = new GridBagConstraints();
 		gbc_lblPunktzahl.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPunktzahl.anchor = GridBagConstraints.EAST;
@@ -321,7 +321,7 @@ public class AufgabendetailsView {
 		gbc_chckbxAntwortenVerwrfenl.gridy = 3;
 		eingabePanel.add(chckbxAntwortenVerwrfenl, gbc_chckbxAntwortenVerwrfenl);
 		chckbxAntwortenVerwrfenl.setBackground(new Color(255, 255, 255));
-		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.BOLD, 16));
+		chckbxAntwortenVerwrfenl.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);

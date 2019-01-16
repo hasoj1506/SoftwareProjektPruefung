@@ -81,7 +81,7 @@ public class AntwortErstellenPopUp {
 
 		lblNewLabel = new JLabel("Antwort:");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -101,7 +101,7 @@ public class AntwortErstellenPopUp {
 
 		lblNewLabel_2 = new JLabel("Richtig:");
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
-		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblNewLabel_2.setFont(new Font("Verdana", Font.PLAIN, 16));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;

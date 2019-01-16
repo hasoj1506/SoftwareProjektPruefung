@@ -12,8 +12,8 @@
 		<class>Models.Admin</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@aix1.fh-bielefeld.de:1521:d2"/>
-			<property name="javax.persistence.jdbc.user" value="dvi528"/>
-			<property name="javax.persistence.jdbc.password" value="fh2568"/>
+			<property name="javax.persistence.jdbc.user" value=""/>
+			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
 			<property name="eclipselink.jdbc.batch-writing" value="Oracle-JDBC"/>
 			<property name="eclipselink.jdbc.cache-statements" value="true"/>

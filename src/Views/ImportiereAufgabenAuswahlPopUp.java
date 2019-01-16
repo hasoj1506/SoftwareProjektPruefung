@@ -79,7 +79,7 @@ public class ImportiereAufgabenAuswahlPopUp {
 
 		JLabel aufgabenLabel = new JLabel("Aufgaben:");
 		aufgabenLabel.setForeground(new Color(51, 51, 51));
-		aufgabenLabel.setFont(new Font("Verdana", Font.BOLD, 16));
+		aufgabenLabel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_aufgabenLabel = new GridBagConstraints();
 		gbc_aufgabenLabel.anchor = GridBagConstraints.NORTHEAST;
 		gbc_aufgabenLabel.insets = new Insets(0, 0, 5, 5);

@@ -150,7 +150,7 @@ public class PruefungView {
 		panel_5.add(btnNchste);
 
 		JLabel lblAufgabenstellung = new JLabel("Aufgabenstellung:");
-		lblAufgabenstellung.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblAufgabenstellung.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblAufgabenstellung = new GridBagConstraints();
 		gbc_lblAufgabenstellung.anchor = GridBagConstraints.NORTH;
 		gbc_lblAufgabenstellung.insets = new Insets(0, 0, 5, 5);
@@ -173,7 +173,7 @@ public class PruefungView {
 		txtAufgabentext.setColumns(10);
 
 		JLabel lblAntworten = new JLabel("Antworten:");
-		lblAntworten.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblAntworten.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblAntworten = new GridBagConstraints();
 		gbc_lblAntworten.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAntworten.insets = new Insets(0, 0, 5, 5);
@@ -195,7 +195,7 @@ public class PruefungView {
 		antwortenTable = new JTable();
 		antwortenTable.setShowGrid(false);
 		antwortenTable.setSelectionBackground(SystemColor.inactiveCaptionBorder);
-		antwortenTable.setRowHeight(35);
+		antwortenTable.setRowHeight(40);
 		antwortenTable.setFont(new Font("Verdana", Font.BOLD, 16));
 		antwortenTable.setBackground(Color.LIGHT_GRAY);
 		antwortenTable.setTableHeader(null);
@@ -349,7 +349,7 @@ public class PruefungView {
 		panel_1.add(panel_2, gbc_panel_2);
 
 		JLabel lblVersion = new JLabel("Version: 1.0");
-		lblVersion.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panel_2.add(lblVersion);
 		lblVersion.setHorizontalAlignment(SwingConstants.LEFT);
 

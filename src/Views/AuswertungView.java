@@ -77,7 +77,7 @@ public class AuswertungView extends JFrame{
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 
 		btnNewButton = new JButton("Schlie\u00DFen");
-		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnNewButton.setFont(new Font("Verdana", Font.PLAIN, 12));
 		panel.add(btnNewButton);
 
 		JPanel panel_1 = new JPanel();
@@ -106,7 +106,7 @@ public class AuswertungView extends JFrame{
 		panel_3.setLayout(gbl_panel_3);
 
 		JLabel lblErreichteGesamtpunktzahl = new JLabel("Erreichte Gesamtpunktzahl:");
-		lblErreichteGesamtpunktzahl.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblErreichteGesamtpunktzahl.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblErreichteGesamtpunktzahl = new GridBagConstraints();
 		gbc_lblErreichteGesamtpunktzahl.anchor = GridBagConstraints.EAST;
 		gbc_lblErreichteGesamtpunktzahl.insets = new Insets(0, 0, 5, 5);
@@ -124,7 +124,7 @@ public class AuswertungView extends JFrame{
 		panel_3.add(txtErreichtePunktzahl, gbc_txtGesamtPunktzahl);
 
 		JLabel lblVon = new JLabel("von");
-		lblVon.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblVon.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblVon = new GridBagConstraints();
 		gbc_lblVon.insets = new Insets(0, 0, 5, 5);
 		gbc_lblVon.gridx = 3;
@@ -140,7 +140,7 @@ public class AuswertungView extends JFrame{
 		panel_3.add(txtGesamtpunktzahl, gbc_textField);
 
 		JLabel lblMatrikelnummer = new JLabel("Matrikelnummer:");
-		lblMatrikelnummer.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblMatrikelnummer.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblMatrikelnummer = new GridBagConstraints();
 		gbc_lblMatrikelnummer.anchor = GridBagConstraints.EAST;
 		gbc_lblMatrikelnummer.insets = new Insets(0, 0, 5, 5);
@@ -158,7 +158,7 @@ public class AuswertungView extends JFrame{
 		panel_3.add(txtMatrikelNr, gbc_textField_1);
 
 		JLabel lblNewLabel = new JLabel("Erreichte Gesamtpunktzahl in %:");
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
@@ -175,7 +175,7 @@ public class AuswertungView extends JFrame{
 		panel_3.add(txtGesamtpunktzahlProzent, gbc_txtGesamtpunktzahlProzent);
 
 		JLabel lblAnzahlBonuspunkte = new JLabel("Note:\r\n");
-		lblAnzahlBonuspunkte.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblAnzahlBonuspunkte.setFont(new Font("Verdana", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblAnzahlBonuspunkte = new GridBagConstraints();
 		gbc_lblAnzahlBonuspunkte.anchor = GridBagConstraints.EAST;
 		gbc_lblAnzahlBonuspunkte.insets = new Insets(0, 0, 0, 5);

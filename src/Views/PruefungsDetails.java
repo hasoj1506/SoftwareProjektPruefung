@@ -142,7 +142,7 @@ public class PruefungsDetails {
 		panelMain.setLayout(gbl_panelMain);
 
 		JLabel lblAufgaben = new JLabel("Aufgaben:");
-		lblAufgaben.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblAufgaben.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblAufgaben = new GridBagConstraints();
 		gbc_lblAufgaben.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblAufgaben.insets = new Insets(0, 0, 5, 5);
@@ -193,7 +193,7 @@ public class PruefungsDetails {
 		panelAufgabenButtons.add(btnLschenAufgabe);
 
 		JLabel lblTeilnehmer = new JLabel("Teilnehmer:");
-		lblTeilnehmer.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblTeilnehmer.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblTeilnehmer = new GridBagConstraints();
 		gbc_lblTeilnehmer.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblTeilnehmer.insets = new Insets(0, 0, 5, 5);
@@ -286,7 +286,7 @@ public class PruefungsDetails {
 
 		JLabel lblTermine = new JLabel("Termine:");
 		lblTermine.setForeground(new Color(51, 51, 51));
-		lblTermine.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblTermine.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblTermine = new GridBagConstraints();
 		gbc_lblTermine.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblTermine.insets = new Insets(0, 0, 5, 5);
@@ -403,7 +403,7 @@ public class PruefungsDetails {
 		panel_1.setLayout(gbl_panel_1);
 
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel:");
-		lblPrfungstitel.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblPrfungstitel.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPrfungstitel = new GridBagConstraints();
 		gbc_lblPrfungstitel.anchor = GridBagConstraints.EAST;
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
@@ -422,7 +422,7 @@ public class PruefungsDetails {
 		textFieldPrfungstitel.setColumns(10);
 
 		JLabel lblDauermin = new JLabel("Dauer(Min):");
-		lblDauermin.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblDauermin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblDauermin = new GridBagConstraints();
 		gbc_lblDauermin.anchor = GridBagConstraints.EAST;
 		gbc_lblDauermin.insets = new Insets(0, 0, 0, 5);
@@ -441,7 +441,7 @@ public class PruefungsDetails {
 		textFieldDauer.setColumns(5);
 
 		JLabel lblPunkte = new JLabel("Punkte:");
-		lblPunkte.setFont(new Font("Verdana", Font.BOLD, 16));
+		lblPunkte.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblPunkte = new GridBagConstraints();
 		gbc_lblPunkte.anchor = GridBagConstraints.EAST;
 		gbc_lblPunkte.insets = new Insets(0, 0, 0, 5);
@@ -461,7 +461,7 @@ public class PruefungsDetails {
 
 		chckbxAufgabenVerwrfeln = new JCheckBox("Aufgaben verw\u00FCrfeln");
 		chckbxAufgabenVerwrfeln.setBackground(new Color(255, 255, 255));
-		chckbxAufgabenVerwrfeln.setFont(new Font("Verdana", Font.BOLD, 16));
+		chckbxAufgabenVerwrfeln.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_chckbxAufgabenVerwrfeln = new GridBagConstraints();
 		gbc_chckbxAufgabenVerwrfeln.insets = new Insets(0, 0, 0, 5);
 		gbc_chckbxAufgabenVerwrfeln.gridx = 7;
