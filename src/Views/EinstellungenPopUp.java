@@ -7,10 +7,12 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -89,6 +91,8 @@ public class EinstellungenPopUp {
 		frmEinstellungen.getContentPane().setBackground(Color.WHITE);
 		frmEinstellungen.getContentPane().setFont(new Font("Verdana", Font.PLAIN, 11));
 		frmEinstellungen.getContentPane().setLayout(new BorderLayout(0, 0));
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frmEinstellungen.setIconImage(icon1);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(Color.WHITE);

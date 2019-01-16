@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,6 +66,8 @@ public class ImportiereAufgabenPopUp {
 		frame.setTitle("Von welcher Pr\u00FCfung sollen Aufgaben importiert werden?");
 		frame.setForeground(Color.WHITE);
 		frame.setMinimumSize(new Dimension(500, 250));
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frame.setIconImage(icon1);
 
 		JPanel PruefungenPanel = new JPanel();
 		PruefungenPanel.setBackground(new Color(255, 255, 255));
