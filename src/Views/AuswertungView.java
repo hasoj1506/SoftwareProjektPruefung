@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -14,6 +15,8 @@ import TableModels.AuswertungTableModel;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import java.awt.GridBagConstraints;
@@ -69,6 +72,8 @@ public class AuswertungView extends JFrame{
 		frame.setSize(new Dimension(750, 540));
 		frame.setMaximumSize(new Dimension(750, 540));
 		frame.setMinimumSize(new Dimension(750, 540));
+		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
+		frame.setIconImage(icon1);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 204));
