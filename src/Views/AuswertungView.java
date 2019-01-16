@@ -234,7 +234,7 @@ public class AuswertungView extends JFrame{
 			bonusPunkte = 4;
 		} else if (prozent >= 35) {
 			bonusPunkte = 5;
-		} else if (prozent > 0) {
+		} else if (prozent < 35) {
 			bonusPunkte = 6;
 		} else {
 			bonusPunkte = 0;
