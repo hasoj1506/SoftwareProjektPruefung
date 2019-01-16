@@ -147,16 +147,8 @@ public class LoginAbfrage {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 
-		// Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-		// double width = screensize.getWidth();
-		// double height = screensize.getHeight();
-		// int frameWidth = frame.getContentPane().getWidth();
-		// int frameHeight = frame.getContentPane().getHeight();
-		// System.out.println(frameWidth);
-		// frame.setLocation((int)(width/2) - frameWidth/2 , (int)(height/2) -
-		// frameHeight/2);
-		//
 	}
+	
 
 	public void addActionListeners() {
 

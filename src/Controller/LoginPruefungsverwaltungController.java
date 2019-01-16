@@ -42,7 +42,6 @@ public class LoginPruefungsverwaltungController {
 		this.viewS = viewS;
 	}
 
-	// Get Benutzer und passwort von textfeld in view von Professor
 
 	public void einloggenDozent() {
 
@@ -69,7 +68,7 @@ public class LoginPruefungsverwaltungController {
 
 						this.admin = db.readAdmin();
 						if (getPasswort().equals(this.admin.getPasswort()) == false) {
-
+							
 							view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt");
 						} else {
 							
@@ -88,7 +87,6 @@ public class LoginPruefungsverwaltungController {
 		}
 	}
 
-	// Get Benutzer und passwort von textfeld in view von Student
 
 	public void einloggenStudent() {
 
