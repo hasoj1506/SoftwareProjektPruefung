@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import DatabaseService.DatabaseService;
 import Models.Admin;
 import Models.Nutzer;
@@ -70,10 +72,11 @@ public class LoginPruefungsverwaltungController {
 
 							view.getFehlerLabel().setText("Das angegebene Passwort ist nicht korrekt");
 						} else {
-
-							this.db = DatabaseService.getInstance();
-							view.getFrame().dispose();
-							PruefungsverwaltungView view = new PruefungsverwaltungView();
+							
+								this.db = DatabaseService.getInstance();
+								view.getFrame().dispose();
+								PruefungsverwaltungView view = new PruefungsverwaltungView();
+							
 						}
 					} else {
 						view.getFehlerLabel().setText("Datenbankanmeldung fehlgeschlagen");
@@ -92,14 +95,20 @@ public class LoginPruefungsverwaltungController {
 		String url = null;
 		String user = null;
 		String pw = null;
+		
+		try {
 
 		url = viewS.getUrlTextField().getText();
 		user = viewS.getBenutzernameTextField().getText();
 		pw = viewS.getPasswortTextField().getText();
+		
+		}catch(NullPointerException ne) {
+			viewS.getFehlerLabel().setText("Datenbanklogin-Felder müssen ausgefüllt sein");
+		}
 
 		if (url == null || url.length() == 0 || user == null || user.length() == 0 || pw == null || pw.length() == 0) {
 
-			view.getFehlerLabel().setText("Datenbanklogin-Felder müssen ausgefüllt sein");
+			viewS.getFehlerLabel().setText("Datenbanklogin-Felder müssen ausgefüllt sein");
 
 		} else {
 
@@ -107,7 +116,7 @@ public class LoginPruefungsverwaltungController {
 				if (einloggenDatenbank(url, user, pw, false)) {
 
 					if (getMatrikelNr() == 0) {
-						viewS.getFehlerLabel().setText("Matrikelnummer nicht gefunden");
+						viewS.getFehlerLabel().setText("Darf nicht leer sein oder Zeichen enthalten");
 					} else {
 
 						try {
@@ -120,8 +129,7 @@ public class LoginPruefungsverwaltungController {
 									if (s.getPruefung().isFreigegeben() == true && s.isHatAbgegeben() == false) {
 										student = s;
 									} else {
-										viewS.getFehlerLabel()
-												.setText("Prüfung noch nicht freigegeben");
+										viewS.getFehlerLabel().setText("Prüfung noch nicht freigegeben");
 									}
 								}
 
@@ -139,8 +147,7 @@ public class LoginPruefungsverwaltungController {
 						}
 
 						catch (Exception e) {
-							viewS.getFehlerLabel()
-									.setText("Anmeldung fehlgeschlagen");
+							viewS.getFehlerLabel().setText("Anmeldung fehlgeschlagen");
 						}
 					}
 

@@ -12,24 +12,24 @@ import java.awt.event.ActionListener;
 //Yanek Wilken
 public class AntwortErstellenPopUp {
 
-	JFrame frame;
-	JButton btnOk;
+	private JFrame frame;
+	private JButton btnOk;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_2;
 	private JCheckBox chckbxNewCheckBox;
 	private JTextField textField;
-
-	boolean richtig;
-	String text;
-	int punkte;
 	private JButton btnAbbrechen;
+
+	private boolean richtig;
+	private String text;
+	private int punkte;
 
 	/**
 	 * @wbp.parser.constructor
 	 */
+	
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
-		// view.getAfgdFrame().setEnabled(false);
 		btnAction(view);
 		addActionListeners();
 
@@ -145,7 +145,6 @@ public class AntwortErstellenPopUp {
 					view.getAfgdTable().updateUI();
 
 					view.getAfgdFrame().setEnabled(true);
-//					view.punkteCheck();
 					frame.dispose();
 				}
 			}
@@ -174,7 +173,6 @@ public class AntwortErstellenPopUp {
 					view.getAfgdTable().updateUI();
 
 					view.getAfgdFrame().setEnabled(true);
-//					view.punkteCheck();
 					frame.dispose();
 								
 				}

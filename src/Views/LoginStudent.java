@@ -167,7 +167,7 @@ public class LoginStudent {
 		gbl_panel_1.columnWidths = new int[]{309, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 36, 0, 151, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JPanel panel_3 = new JPanel();
@@ -299,11 +299,16 @@ public class LoginStudent {
 		
 		fehlerLabel = new JLabel("");
 		fehlerLabel.setForeground(Color.RED);
-		fehlerLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		fehlerLabel.setFont(new Font("Verdana", Font.PLAIN, 11));
 		panel_2.add(fehlerLabel);
 		
 		btnLogin = new JButton("Login");
-		panel_2.add(btnLogin);
+		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
+		gbc_btnLogin.anchor = GridBagConstraints.EAST;
+		gbc_btnLogin.insets = new Insets(0, 0, 5, 0);
+		gbc_btnLogin.gridx = 0;
+		gbc_btnLogin.gridy = 5;
+		panel_1.add(btnLogin, gbc_btnLogin);
 		btnLogin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		
 		JLabel lblVersion = new JLabel("Version: 1.0");

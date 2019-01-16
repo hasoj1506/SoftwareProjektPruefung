@@ -76,10 +76,6 @@ public class DatabaseService {
 
 	}
 
-	public EntityManager getEntityManager() {
-		return em;
-	}
-
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
 		em.merge(nutzer);
@@ -196,10 +192,6 @@ public class DatabaseService {
 		}
 
 	}
-	
-	
-	
-	
 
 	// ab hier: Josah Weber
 	public List<Pruefung> readPruefungen() {
@@ -260,14 +252,6 @@ public class DatabaseService {
 			return null;
 		}
 
-	}
-
-	public EntityManager getEm() {
-		return em;
-	}
-
-	public EntityManagerFactory getEmf() {
-		return emf;
 	}
 
 	// ab hier: Josah Weber
@@ -356,4 +340,18 @@ public class DatabaseService {
 		em.getTransaction().commit();
 
 	}
+	
+	public EntityManager getEntityManager() {
+		return em;
+	}
+	
+
+	public EntityManager getEm() {
+		return em;
+	}
+
+	public EntityManagerFactory getEmf() {
+		return emf;
+	}
+
 }

@@ -20,12 +20,11 @@ import Views.AufgabendetailsView;
 //Yanek Wilken
 public class AufgabenDetailsController {
 
-	Aufgabe aufgabe;// t
-	AufgabendetailsView view;
-	Pruefung pruefung;
-	DatabaseService service = DatabaseService.getInstance();
-
-	AufgabendetailsTableModel model;
+	private Aufgabe aufgabe;
+	private AufgabendetailsView view;
+	private Pruefung pruefung;
+	private DatabaseService service = DatabaseService.getInstance();
+	private AufgabendetailsTableModel model;
 
 	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;

@@ -22,10 +22,19 @@ import java.awt.event.ActionEvent;
 public class AufgabendetailsView {
 
 	private JFrame frame;
+	
+	private JPanel northPanel;
+	private JPanel headPanel;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JPanel panel_2;
 
 	private JTextField afgdTitelTextField;
 	private JTextField afgdFrageTextField;
 	private JTextField afgdPunkteTextField;
+	
+	private JLabel lblPunktzahl;
 
 	private JTable afgdTable;
 
@@ -34,21 +43,14 @@ public class AufgabendetailsView {
 	private JButton afgdButtonLoeschenAntwort;
 	private JButton afgdButtonSpeichernAufgabe;
 	private JButton afgdButtonLoescheAufgabe;
-
-	AufgabenDetailsController controller;
-	PruefungsDetails pruefungsDetailsView;
-
-	Pruefung pruefung;
-	Aufgabe aufgabe;
-	private JPanel northPanel;
-	private JPanel headPanel;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JPanel panel_2;
 	private JCheckBox chckbxAntwortenVerwrfenl;
 	private JButton btnAbbrechen;
-	private JLabel lblPunktzahl;
+
+	private AufgabenDetailsController controller;
+	private PruefungsDetails pruefungsDetailsView;
+
+	private Pruefung pruefung;
+	private Aufgabe aufgabe;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -328,10 +330,6 @@ public class AufgabendetailsView {
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des
 											// Bildschirms erzeugt
-
-		// Fenster maximiert starten
-		// frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-		//
 	}
 
 	public void btnAction() {
@@ -386,24 +384,22 @@ public class AufgabendetailsView {
 
 	}
 
-	public JCheckBox getChckbxAntwortenVerwrfenl() {
-		return chckbxAntwortenVerwrfenl;
-	}
-
-	public void setChckbxAntwortenVerwrfenl(JCheckBox chckbxAntwortenVerwrfenl) {
-		this.chckbxAntwortenVerwrfenl = chckbxAntwortenVerwrfenl;
-	}
-
 	public void titleCheck() { // Prüft ob Aufgabe neu erzeugt wird oder
 								// bestehende Aufgabe bearbeitet wird,
 								// und passt enstsprechend den Frame Titel an
 
-		if (this.aufgabe == null || this.aufgabe.getAufgabentitel() == "null" || this.aufgabe.getAufgabentitel() == null) {
+		String prfTitel = "Neue Prüfung";
+		String afgTitel = "Neue Aufgabe";
 
-			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - Neue Aufgabe");
-		} else {
-			frame.setTitle(this.pruefung.getBezeichnung() + " Aufgabendetails - " + aufgabe.getAufgabentitel());
+		if (this.pruefung.getBezeichnung() != null) {
+			prfTitel = this.pruefung.getBezeichnung();
 		}
+
+		if (this.aufgabe != null && this.aufgabe.getAufgabentitel() != null) {
+			afgTitel = this.aufgabe.getAufgabentitel();
+		}
+
+		frame.setTitle(prfTitel + " - Aufgabendetails - " + afgTitel);
 
 	}
 
@@ -469,6 +465,14 @@ public class AufgabendetailsView {
 
 	public PruefungsDetails getPruefungsDetailsView() {
 		return pruefungsDetailsView;
+	}
+	
+	public JCheckBox getChckbxAntwortenVerwrfenl() {
+		return chckbxAntwortenVerwrfenl;
+	}
+
+	public void setChckbxAntwortenVerwrfenl(JCheckBox chckbxAntwortenVerwrfenl) {
+		this.chckbxAntwortenVerwrfenl = chckbxAntwortenVerwrfenl;
 	}
 
 }
