@@ -18,18 +18,19 @@ public class DatabaseService {
 	private EntityManagerFactory emf;
 	private static DatabaseService instance;
 
+	//Standart Konstruktor
 	private DatabaseService() {
 
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung");
 		em = emf.createEntityManager();
 
 	}
-
+	//Konstruktor mit Properties
 	private DatabaseService(Map map) {
 		emf = Persistence.createEntityManagerFactory("SoftwareProjektPruefung", map);
 		em = emf.createEntityManager();
 	}
-
+	//Standard getInstance
 	public static DatabaseService getInstance() {
 
 		if (instance == null) {
@@ -39,7 +40,7 @@ public class DatabaseService {
 
 		return instance;
 	}
-
+	//getInstance mit Datenbank Login
 	public static DatabaseService getInstance(String driver, String url, String benutzername, String passwort,
 			boolean neuAnlegen) {
 
@@ -75,7 +76,7 @@ public class DatabaseService {
 		return instance;
 
 	}
-
+	//Persitieren/Mergen von neuen/vorhandenen Objekten
 	public void persistNutzer(Nutzer nutzer) {
 		em.getTransaction().begin();
 		em.merge(nutzer);

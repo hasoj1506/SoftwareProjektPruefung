@@ -26,6 +26,7 @@ public class AufgabenDetailsController {
 	private DatabaseService service = DatabaseService.getInstance();
 	private AufgabendetailsTableModel model;
 
+	//Konstruktor für Aufgabe bearbeiten
 	public AufgabenDetailsController(AufgabendetailsView view, Aufgabe aufgabe) {
 		this.aufgabe = aufgabe;
 		this.pruefung = aufgabe.getPruefung();
@@ -34,7 +35,7 @@ public class AufgabenDetailsController {
 		view.getAfgdTable().setModel(model);
 
 	}
-
+	//Konstruktor für Aufgabe erstellen
 	public AufgabenDetailsController(AufgabendetailsView view, Pruefung pruefung) {
 		this.view = view;
 		this.pruefung = pruefung;
@@ -43,7 +44,8 @@ public class AufgabenDetailsController {
 		view.getAfgdTable().setModel(model);
 
 	}
-
+	
+	//Zuweisung der neuen Aufgabe zur Prüfung und Fehlerüberprüfung
 	public void aufgabeSpeichern() {
 
 		double punkte = 0;
@@ -116,6 +118,7 @@ public class AufgabenDetailsController {
 
 	}
 
+	//Löschen der Aufgabe mit Bestätigung
 	public void aufgabeLoeschen() {
 
 		if (this.aufgabe != null) {
@@ -139,12 +142,13 @@ public class AufgabenDetailsController {
 
 	}
 
+	//Erstellen einer Antwort mit PopUp
 	public void antwortErstellen() {
 
 		AntwortErstellenPopUp pop = new AntwortErstellenPopUp(this.view);
 
 	}
-
+	//Löschen einer Antwort mit Fehlerüberprüfung
 	public void antwortLoeschen() {
 
 		if (view.getAfgdTable().getModel().getRowCount() > 0) {
@@ -159,7 +163,7 @@ public class AufgabenDetailsController {
 			view.fehlerMeldung("Es sind keine Antworten vorhanden!");
 		}
 	}
-
+	//Bearbeiten einer Antwort mit Fehlerüberprüfung
 	public void antwortBearbeiten() {
 
 		if (view.getAfgdTable().getModel().getRowCount() > 0) {

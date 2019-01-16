@@ -95,6 +95,7 @@ public class AufgabendetailsTableModel extends AbstractTableModel {
 		return this.antworten;
 	}
 
+	//Überprüfung, ob mindestens Eine Antwort richtig ist
 	public boolean getMindestensEineRichtig() {
 
 		for (int zaehler = 0; zaehler < antworten.size(); zaehler++) {

@@ -27,14 +27,14 @@ public class AntwortErstellenPopUp {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	
+	//Konstruktor für Antwort erstellen
 	public AntwortErstellenPopUp(final AufgabendetailsView view) {
 		onCreate();
 		btnAction(view);
 		addActionListeners();
 
 	}
-
+	//Konstruktor für Antwort bearbeiten
 	public AntwortErstellenPopUp(final AufgabendetailsView view, Antwort antwort) {
 		onCreate();
 		btnAction(view, antwort);
@@ -124,6 +124,7 @@ public class AntwortErstellenPopUp {
 		frame.setLocationRelativeTo(null); // Frame wird in der Mitte des Bildschirms erzeugt
 	}
 
+	//ActionListener für Antwort erstellen
 	public void btnAction(final AufgabendetailsView view) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
@@ -151,7 +152,7 @@ public class AntwortErstellenPopUp {
 		});
 
 	}
-
+	//ActionListener für Antwort bearbeiten
 	public void btnAction(final AufgabendetailsView view, final Antwort antwort) {
 
 		btnOk.addActionListener(new ActionListener() { // Schließt das Fenster wenn "Ok" gedrückt wurde
@@ -193,6 +194,7 @@ public class AntwortErstellenPopUp {
 		});
 	}
 	
+	//Überprüfung der geöffneten Antwort
 	private void attributCheck(Antwort antwort) {
 		
 		this.chckbxNewCheckBox.setSelected(antwort.isIstRichtig());

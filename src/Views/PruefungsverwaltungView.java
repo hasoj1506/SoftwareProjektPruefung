@@ -204,7 +204,7 @@ public class PruefungsverwaltungView {
 		frmPrfungsverwaltung.getContentPane().add(headerPanel, BorderLayout.NORTH);
 		GridBagLayout gbl_headerPanel = new GridBagLayout();
 		gbl_headerPanel.columnWidths = new int[] { 472, 0 };
-		gbl_headerPanel.rowHeights = new int[] { 159, 32, 0 };
+		gbl_headerPanel.rowHeights = new int[] { 210, 14, 0 };
 		gbl_headerPanel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_headerPanel.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		headerPanel.setLayout(gbl_headerPanel);
@@ -220,9 +220,9 @@ public class PruefungsverwaltungView {
 		headerPanel2.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_headerPanel2 = new GridBagLayout();
 		gbl_headerPanel2.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
-		gbl_headerPanel2.rowHeights = new int[] { 50, 0, 0, 48, 0 };
+		gbl_headerPanel2.rowHeights = new int[] { 50, 0, 40, 0 };
 		gbl_headerPanel2.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_headerPanel2.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_headerPanel2.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		headerPanel2.setLayout(gbl_headerPanel2);
 		
 		JPanel headerPanel3 = new JPanel();
@@ -231,7 +231,7 @@ public class PruefungsverwaltungView {
 		fl_headerPanel3.setAlignment(FlowLayout.RIGHT);
 		GridBagConstraints gbc_headerPanel3 = new GridBagConstraints();
 		gbc_headerPanel3.gridwidth = 2;
-		gbc_headerPanel3.insets = new Insets(0, 0, 5, 5);
+		gbc_headerPanel3.insets = new Insets(0, 0, 5, 0);
 		gbc_headerPanel3.fill = GridBagConstraints.BOTH;
 		gbc_headerPanel3.gridx = 3;
 		gbc_headerPanel3.gridy = 0;
@@ -260,7 +260,7 @@ public class PruefungsverwaltungView {
 		gbc_lblVerwaltungAllerAnstehenden.anchor = GridBagConstraints.WEST;
 		gbc_lblVerwaltungAllerAnstehenden.insets = new Insets(0, 0, 0, 5);
 		gbc_lblVerwaltungAllerAnstehenden.gridx = 2;
-		gbc_lblVerwaltungAllerAnstehenden.gridy = 3;
+		gbc_lblVerwaltungAllerAnstehenden.gridy = 2;
 		headerPanel2.add(lblVerwaltungAllerAnstehenden, gbc_lblVerwaltungAllerAnstehenden);
 
 		JLabel label_2 = new JLabel("");
@@ -271,7 +271,7 @@ public class PruefungsverwaltungView {
 		gbc_label_2.anchor = GridBagConstraints.EAST;
 		gbc_label_2.insets = new Insets(0, 0, 0, 5);
 		gbc_label_2.gridx = 3;
-		gbc_label_2.gridy = 3;
+		gbc_label_2.gridy = 2;
 		headerPanel2.add(label_2, gbc_label_2);
 
 		frmPrfungsverwaltung.setVisible(true);

@@ -337,9 +337,9 @@ public class PruefungsDetails {
 		frame.getContentPane().add(panel_2, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] { 475, 0 };
-		gbl_panel_2.rowHeights = new int[] { 110, 32, 0, 0 };
+		gbl_panel_2.rowHeights = new int[] { 210, 14, 0, 0 };
 		gbl_panel_2.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_panel_2.rowWeights = new double[] { 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_2.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel_2.setLayout(gbl_panel_2);
 
 		panel_3 = new JPanel();
@@ -352,9 +352,9 @@ public class PruefungsDetails {
 		panel_2.add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
-		gbl_panel_3.rowHeights = new int[] { 50, 0, 0, 48, 0 };
+		gbl_panel_3.rowHeights = new int[] { 50, 0, 40, 0 };
 		gbl_panel_3.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
 		lblPrfungsdetails = new JLabel("Pr\u00FCfungsdetails");
@@ -374,7 +374,7 @@ public class PruefungsDetails {
 		gbc_lblLegeDieEigenschaften.anchor = GridBagConstraints.WEST;
 		gbc_lblLegeDieEigenschaften.insets = new Insets(0, 0, 0, 5);
 		gbc_lblLegeDieEigenschaften.gridx = 2;
-		gbc_lblLegeDieEigenschaften.gridy = 3;
+		gbc_lblLegeDieEigenschaften.gridy = 2;
 		panel_3.add(lblLegeDieEigenschaften, gbc_lblLegeDieEigenschaften);
 
 		label_2 = new JLabel("");
@@ -384,7 +384,7 @@ public class PruefungsDetails {
 		gbc_label_2.fill = GridBagConstraints.VERTICAL;
 		gbc_label_2.insets = new Insets(0, 0, 0, 5);
 		gbc_label_2.gridx = 3;
-		gbc_label_2.gridy = 3;
+		gbc_label_2.gridy = 2;
 		panel_3.add(label_2, gbc_label_2);
 
 		JPanel panel_1 = new JPanel();

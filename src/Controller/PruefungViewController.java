@@ -174,6 +174,7 @@ public class PruefungViewController {
 	}
 
 	//ab hier: Yanek Wilken
+	//Berechnung der Gesamtpunktzahl; Bei zwei Antwort, reicht 1 Fehler für 0 Punkte
 	public double berechneErgebnis() {
 
 		double gesamtePunktzahl = 0;

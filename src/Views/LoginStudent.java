@@ -74,25 +74,23 @@ public class LoginStudent {
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.getContentPane().setBackground(new Color(0, 155, 187));
-		frame.getContentPane().setMinimumSize(new Dimension(700, 400));
 		frame.getContentPane().setMaximumSize(new Dimension(700, 400));
 		frame.getContentPane().setSize(new Dimension(700, 400));
 		frame.setResizable(false);
 //		frame.setBounds(100, 100, 871, 902);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{559, 25, 0};
-		gridBagLayout.rowHeights = new int[]{218, 0};
+		gridBagLayout.columnWidths = new int[]{559, 311, 0};
+		gridBagLayout.rowHeights = new int[]{469, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		Image icon1 = new ImageIcon(this.getClass().getResource("/ELogo.png")).getImage();
 		frame.setIconImage(icon1);
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(this.getClass().getResource("/fhHaus.png")));
+		label_4.setIcon(new ImageIcon(this.getClass().getResource("/fhGebaude.jpg")));
 		GridBagConstraints gbc_label_4 = new GridBagConstraints();
-		gbc_label_4.fill = GridBagConstraints.BOTH;
 		gbc_label_4.insets = new Insets(0, 0, 0, 5);
 		gbc_label_4.gridx = 0;
 		gbc_label_4.gridy = 0;
@@ -106,8 +104,8 @@ public class LoginStudent {
 		gbc_panel_4.gridy = 0;
 		frame.getContentPane().add(panel_4, gbc_panel_4);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[]{30, 309, 30, 0};
-		gbl_panel_4.rowHeights = new int[]{0, 512, 0};
+		gbl_panel_4.columnWidths = new int[]{20, 253, 20, 0};
+		gbl_panel_4.rowHeights = new int[]{108, 360, 0};
 		gbl_panel_4.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_4.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		panel_4.setLayout(gbl_panel_4);
@@ -121,39 +119,38 @@ public class LoginStudent {
 		gbc_panel.gridy = 0;
 		panel_4.add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0};
-		gbl_panel.rowHeights = new int[]{114, 20, 45, 0, 0};
+		gbl_panel.columnWidths = new int[]{249, 0};
+		gbl_panel.rowHeights = new int[]{63, 20, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel label_5 = new JLabel("examo");
 		label_5.setForeground(Color.WHITE);
-		label_5.setFont(new Font("Gill Sans MT", Font.PLAIN, 99));
+		label_5.setFont(new Font("Gill Sans MT", Font.PLAIN, 50));
 		GridBagConstraints gbc_label_5 = new GridBagConstraints();
 		gbc_label_5.insets = new Insets(0, 0, 5, 0);
 		gbc_label_5.gridx = 0;
 		gbc_label_5.gridy = 0;
 		panel.add(label_5, gbc_label_5);
 		
-		JLabel label_6 = new JLabel("15.1.2019");
-		label_6.setForeground(Color.WHITE);
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		GridBagConstraints gbc_label_6 = new GridBagConstraints();
-		gbc_label_6.insets = new Insets(0, 0, 5, 0);
-		gbc_label_6.gridx = 0;
-		gbc_label_6.gridy = 1;
-		panel.add(label_6, gbc_label_6);
-		
 		JLabel label_7 = new JLabel("Testat");
 		label_7.setForeground(Color.WHITE);
-		label_7.setFont(new Font("Verdana", Font.BOLD, 30));
+		label_7.setFont(new Font("Verdana", Font.PLAIN, 18));
 		GridBagConstraints gbc_label_7 = new GridBagConstraints();
 		gbc_label_7.insets = new Insets(0, 0, 5, 0);
 		gbc_label_7.fill = GridBagConstraints.VERTICAL;
 		gbc_label_7.gridx = 0;
-		gbc_label_7.gridy = 2;
+		gbc_label_7.gridy = 1;
 		panel.add(label_7, gbc_label_7);
+		
+		JLabel label_6 = new JLabel("15.1.2019");
+		label_6.setForeground(Color.WHITE);
+		label_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_label_6 = new GridBagConstraints();
+		gbc_label_6.gridx = 0;
+		gbc_label_6.gridy = 2;
+		panel.add(label_6, gbc_label_6);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -164,10 +161,10 @@ public class LoginStudent {
 		panel_4.add(panel_1, gbc_panel_1);
 		panel_1.setBackground(new Color(0, 155, 187));
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{309, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 36, 0, 151, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{262, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 36, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JPanel panel_3 = new JPanel();
@@ -179,10 +176,10 @@ public class LoginStudent {
 		gbc_panel_3.gridy = 0;
 		panel_1.add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{0, 0};
-		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_3.columnWidths = new int[]{246, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0, 25, 0, 0, 0};
 		gbl_panel_3.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
 		JLabel label = new JLabel("Datenbank Login");
@@ -246,16 +243,9 @@ public class LoginStudent {
 		passwortTextField.setColumns(10);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_2.gridx = 0;
 		gbc_textField_2.gridy = 6;
 		panel_3.add(passwortTextField, gbc_textField_2);
-		
-		JSeparator separator = new JSeparator();
-		GridBagConstraints gbc_separator = new GridBagConstraints();
-		gbc_separator.gridx = 0;
-		gbc_separator.gridy = 7;
-		panel_3.add(separator, gbc_separator);
 		
 		JLabel lblPrfungLogin = new JLabel("Pr\u00FCfung Login");
 		lblPrfungLogin.setForeground(Color.WHITE);
@@ -315,13 +305,14 @@ public class LoginStudent {
 		lblVersion.setForeground(Color.WHITE);
 		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
+		gbc_lblVersion.anchor = GridBagConstraints.WEST;
 		gbc_lblVersion.gridx = 0;
-		gbc_lblVersion.gridy = 7;
+		gbc_lblVersion.gridy = 6;
 		panel_1.add(lblVersion, gbc_lblVersion);
 		frame.pack();
 		
 		frame.setLocationRelativeTo(null);
-		frame.setMinimumSize(new Dimension(500, 280));
+		frame.setMinimumSize(new Dimension(300, 200));
 		frame.setResizable(false);
 	}
 	

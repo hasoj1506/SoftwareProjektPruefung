@@ -80,9 +80,9 @@ public class LoginPruefungsverwaltung {
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setBackground(Color.WHITE);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 577, 0 };
-		gbl_panel.rowHeights = new int[] { 417 };
-		gbl_panel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel.columnWidths = new int[] { 400, 0 };
+		gbl_panel.rowHeights = new int[] { 282 };
+		gbl_panel.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 1.0 };
 		panel.setLayout(gbl_panel);
 
@@ -97,10 +97,10 @@ public class LoginPruefungsverwaltung {
 		panel_1.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 20, 0, 20, 0 };
-		gbl_panel_1.rowHeights = new int[] { 52, 0, 0, 232, 0, 0, 35, 0, 30, 0 };
+		gbl_panel_1.columnWidths = new int[] { 20, 340, 20, 0 };
+		gbl_panel_1.rowHeights = new int[] { 66, 0, 0, 232, 0, 0, 35, 0, 30, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		JLabel lblExamo = new JLabel("examo");
@@ -287,8 +287,9 @@ public class LoginPruefungsverwaltung {
 		panel_2.add(lblVersion);
 		lblVersion.setFont(new Font("Verdana", Font.PLAIN, 16));
 
+		frame.pack();
 		frame.setLocationRelativeTo(null);
-		frame.setMinimumSize(new Dimension(350, 1010));
+		frame.setMinimumSize(new Dimension(300, 600));
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}

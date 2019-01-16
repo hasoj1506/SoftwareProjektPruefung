@@ -190,9 +190,9 @@ public class AufgabendetailsView {
 		frame.getContentPane().add(northPanel, BorderLayout.NORTH);
 		GridBagLayout gbl_northPanel = new GridBagLayout();
 		gbl_northPanel.columnWidths = new int[] { 596, 0 };
-		gbl_northPanel.rowHeights = new int[] { 81, 32, 93, 0 };
+		gbl_northPanel.rowHeights = new int[] { 210, 14, 93, 0 };
 		gbl_northPanel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_northPanel.rowWeights = new double[] { 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_northPanel.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		northPanel.setLayout(gbl_northPanel);
 
 		headPanel = new JPanel();
@@ -205,9 +205,9 @@ public class AufgabendetailsView {
 		northPanel.add(headPanel, gbc_headPanel);
 		GridBagLayout gbl_headPanel = new GridBagLayout();
 		gbl_headPanel.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
-		gbl_headPanel.rowHeights = new int[] { 50, 0, 0, 48, 0 };
+		gbl_headPanel.rowHeights = new int[] { 50, 0, 40, 0 };
 		gbl_headPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_headPanel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_headPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		headPanel.setLayout(gbl_headPanel);
 
 		lblNewLabel = new JLabel("Aufgabendetails");
@@ -226,7 +226,7 @@ public class AufgabendetailsView {
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 3;
+		gbc_lblNewLabel_1.gridy = 2;
 		headPanel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		lblNewLabel_2 = new JLabel("");
@@ -237,7 +237,7 @@ public class AufgabendetailsView {
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_2.gridx = 3;
-		gbc_lblNewLabel_2.gridy = 3;
+		gbc_lblNewLabel_2.gridy = 2;
 		headPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		JPanel eingabePanel = new JPanel();
