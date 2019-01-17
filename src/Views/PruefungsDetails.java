@@ -56,25 +56,26 @@ public class PruefungsDetails {
 	private JButton btnLschenTeilnehmer;
 	private JButton btnLschenPruefung;
 
-	private JPanel panel_2;
-	private JPanel panel_3;
+	private JPanel headerPanel;
+	private JPanel headerPanel2;
 	private JLabel lblPrfungsdetails;
 	private JLabel lblLegeDieEigenschaften;
-	private JLabel label_2;
+	private JLabel labelHeader2;
 	private JCheckBox chckbxAufgabenVerwrfeln;
 	private JButton btnAbbrechen;
-	private JPanel panel_4;
+	private JPanel unterPanelTnBtn;
 	private JButton btnExportieren;
 
 	private JButton btnImportieren;
-	private JPanel panel;
+	private JPanel unterPanel;
 	private JButton btnAktualisieren;
 	private JButton btnImportiereAufgaben;
 	
 	/**
 	 * @wbp.parser.constructor
 	 */
-
+	
+	//Konstruktor zum Neu-erstellen einer Pruefung
 	public PruefungsDetails(PruefungsverwaltungView pruefungsverwaltung, Pruefung pruefung) {
 
 		this.pruefung = pruefung;
@@ -113,22 +114,22 @@ public class PruefungsDetails {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		frame.getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
-		panel = new JPanel();
-		panel.setBackground(new Color(204, 204, 204, 204));
-		panel.setBorder(null);
-		panelButtons.add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		unterPanel = new JPanel();
+		unterPanel.setBackground(new Color(204, 204, 204, 204));
+		unterPanel.setBorder(null);
+		panelButtons.add(unterPanel);
+		unterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		btnSpeichernPruefung = new JButton("Pr\u00FCfung Speichern");
-		panel.add(btnSpeichernPruefung);
+		unterPanel.add(btnSpeichernPruefung);
 		btnSpeichernPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		btnLschenPruefung = new JButton("Pr\u00FCfung L\u00F6schen");
-		panel.add(btnLschenPruefung);
+		unterPanel.add(btnLschenPruefung);
 		btnLschenPruefung.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		btnAbbrechen = new JButton("Abbrechen");
-		panel.add(btnAbbrechen);
+		unterPanel.add(btnAbbrechen);
 		btnAbbrechen.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		JPanel panelMain = new JPanel();
@@ -231,23 +232,23 @@ public class PruefungsDetails {
 		gbl_panelTeilnehmerButtons.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panelTeilnehmerButtons.setLayout(gbl_panelTeilnehmerButtons);
 
-		panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
-		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
-		gbc_panel_4.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_4.fill = GridBagConstraints.BOTH;
-		gbc_panel_4.gridx = 0;
-		gbc_panel_4.gridy = 0;
-		panelTeilnehmerButtons.add(panel_4, gbc_panel_4);
+		unterPanelTnBtn = new JPanel();
+		unterPanelTnBtn.setBackground(Color.WHITE);
+		FlowLayout fl_unterPanelTnBtn = (FlowLayout) unterPanelTnBtn.getLayout();
+		fl_unterPanelTnBtn.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_unterPanelTnBtn = new GridBagConstraints();
+		gbc_unterPanelTnBtn.insets = new Insets(0, 0, 0, 5);
+		gbc_unterPanelTnBtn.fill = GridBagConstraints.BOTH;
+		gbc_unterPanelTnBtn.gridx = 0;
+		gbc_unterPanelTnBtn.gridy = 0;
+		panelTeilnehmerButtons.add(unterPanelTnBtn, gbc_unterPanelTnBtn);
 
 		btnExportieren = new JButton("Exportieren");
 		btnExportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
-		panel_4.add(btnExportieren);
+		unterPanelTnBtn.add(btnExportieren);
 
 		btnImportieren = new JButton("Importieren");
-		panel_4.add(btnImportieren);
+		unterPanelTnBtn.add(btnImportieren);
 		btnImportieren.setFont(new Font("Verdana", Font.PLAIN, 16));
 
 		btnAktualisieren = new JButton("Aktualisieren");
@@ -332,30 +333,30 @@ public class PruefungsDetails {
 		btnLschenTermin.setFont(new Font("Verdana", Font.PLAIN, 16));
 		panelTermineButtons.add(btnLschenTermin);
 
-		panel_2 = new JPanel();
-		panel_2.setBackground(new Color(204, 204, 204));
-		frame.getContentPane().add(panel_2, BorderLayout.NORTH);
-		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[] { 475, 0 };
-		gbl_panel_2.rowHeights = new int[] { 210, 14, 0, 0 };
-		gbl_panel_2.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_panel_2.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		panel_2.setLayout(gbl_panel_2);
+		headerPanel = new JPanel();
+		headerPanel.setBackground(new Color(204, 204, 204));
+		frame.getContentPane().add(headerPanel, BorderLayout.NORTH);
+		GridBagLayout gbl_headerPanel = new GridBagLayout();
+		gbl_headerPanel.columnWidths = new int[] { 475, 0 };
+		gbl_headerPanel.rowHeights = new int[] { 210, 14, 0, 0 };
+		gbl_headerPanel.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_headerPanel.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		headerPanel.setLayout(gbl_headerPanel);
 
-		panel_3 = new JPanel();
-		panel_3.setBackground(new Color(0, 155, 187));
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 0;
-		panel_2.add(panel_3, gbc_panel_3);
-		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
-		gbl_panel_3.rowHeights = new int[] { 50, 0, 40, 0 };
-		gbl_panel_3.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel_3.setLayout(gbl_panel_3);
+		headerPanel2 = new JPanel();
+		headerPanel2.setBackground(new Color(0, 155, 187));
+		GridBagConstraints gbc_headerPanel2 = new GridBagConstraints();
+		gbc_headerPanel2.insets = new Insets(0, 0, 5, 0);
+		gbc_headerPanel2.fill = GridBagConstraints.BOTH;
+		gbc_headerPanel2.gridx = 0;
+		gbc_headerPanel2.gridy = 0;
+		headerPanel.add(headerPanel2, gbc_headerPanel2);
+		GridBagLayout gbl_headerPanel2 = new GridBagLayout();
+		gbl_headerPanel2.columnWidths = new int[] { 35, 30, 0, 0, 30, 0 };
+		gbl_headerPanel2.rowHeights = new int[] { 50, 0, 40, 0 };
+		gbl_headerPanel2.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_headerPanel2.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		headerPanel2.setLayout(gbl_headerPanel2);
 
 		lblPrfungsdetails = new JLabel("Pr\u00FCfungsdetails");
 		lblPrfungsdetails.setFont(new Font("Verdana", Font.BOLD, 20));
@@ -365,7 +366,7 @@ public class PruefungsDetails {
 		gbc_lblPrfungsdetails.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrfungsdetails.gridx = 1;
 		gbc_lblPrfungsdetails.gridy = 1;
-		panel_3.add(lblPrfungsdetails, gbc_lblPrfungsdetails);
+		headerPanel2.add(lblPrfungsdetails, gbc_lblPrfungsdetails);
 		Image icon2 = new ImageIcon(this.getClass().getResource("/Logo_FH_Bielefeld-652.png")).getImage();
 
 		lblLegeDieEigenschaften = new JLabel("Lege die Eigenschaften der Pr\u00FCfung fest");
@@ -375,32 +376,32 @@ public class PruefungsDetails {
 		gbc_lblLegeDieEigenschaften.insets = new Insets(0, 0, 0, 5);
 		gbc_lblLegeDieEigenschaften.gridx = 2;
 		gbc_lblLegeDieEigenschaften.gridy = 2;
-		panel_3.add(lblLegeDieEigenschaften, gbc_lblLegeDieEigenschaften);
+		headerPanel2.add(lblLegeDieEigenschaften, gbc_lblLegeDieEigenschaften);
 
-		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(icon2));
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.anchor = GridBagConstraints.EAST;
-		gbc_label_2.fill = GridBagConstraints.VERTICAL;
-		gbc_label_2.insets = new Insets(0, 0, 0, 5);
-		gbc_label_2.gridx = 3;
-		gbc_label_2.gridy = 2;
-		panel_3.add(label_2, gbc_label_2);
+		labelHeader2 = new JLabel("");
+		labelHeader2.setIcon(new ImageIcon(icon2));
+		GridBagConstraints gbc_labelHeader2 = new GridBagConstraints();
+		gbc_labelHeader2.anchor = GridBagConstraints.EAST;
+		gbc_labelHeader2.fill = GridBagConstraints.VERTICAL;
+		gbc_labelHeader2.insets = new Insets(0, 0, 0, 5);
+		gbc_labelHeader2.gridx = 3;
+		gbc_labelHeader2.gridy = 2;
+		headerPanel2.add(labelHeader2, gbc_labelHeader2);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_1.anchor = GridBagConstraints.NORTH;
-		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 2;
-		panel_2.add(panel_1, gbc_panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 20, 150, 104, 30, 0, 80, 30, 0, 0, 65, 0 };
-		gbl_panel_1.rowHeights = new int[] { 44, 0, 35, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		panel_1.setLayout(gbl_panel_1);
+		JPanel panelDetails = new JPanel();
+		panelDetails.setBackground(new Color(255, 255, 255));
+		GridBagConstraints gbc_panelDetails = new GridBagConstraints();
+		gbc_panelDetails.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelDetails.anchor = GridBagConstraints.NORTH;
+		gbc_panelDetails.gridx = 0;
+		gbc_panelDetails.gridy = 2;
+		headerPanel.add(panelDetails, gbc_panelDetails);
+		GridBagLayout gbl_panelDetails = new GridBagLayout();
+		gbl_panelDetails.columnWidths = new int[] { 20, 150, 104, 30, 0, 80, 30, 0, 0, 65, 0 };
+		gbl_panelDetails.rowHeights = new int[] { 44, 0, 35, 0 };
+		gbl_panelDetails.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panelDetails.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panelDetails.setLayout(gbl_panelDetails);
 
 		JLabel lblPrfungstitel = new JLabel("Pr\u00FCfungstitel:");
 		lblPrfungstitel.setFont(new Font("Verdana", Font.PLAIN, 16));
@@ -409,7 +410,7 @@ public class PruefungsDetails {
 		gbc_lblPrfungstitel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrfungstitel.gridx = 1;
 		gbc_lblPrfungstitel.gridy = 1;
-		panel_1.add(lblPrfungstitel, gbc_lblPrfungstitel);
+		panelDetails.add(lblPrfungstitel, gbc_lblPrfungstitel);
 
 		textFieldPrfungstitel = new JTextField();
 		GridBagConstraints gbc_textFieldPrfungstitel = new GridBagConstraints();
@@ -418,7 +419,7 @@ public class PruefungsDetails {
 		gbc_textFieldPrfungstitel.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldPrfungstitel.gridx = 2;
 		gbc_textFieldPrfungstitel.gridy = 1;
-		panel_1.add(textFieldPrfungstitel, gbc_textFieldPrfungstitel);
+		panelDetails.add(textFieldPrfungstitel, gbc_textFieldPrfungstitel);
 		textFieldPrfungstitel.setColumns(10);
 
 		JLabel lblDauermin = new JLabel("Dauer(Min):");
@@ -428,7 +429,7 @@ public class PruefungsDetails {
 		gbc_lblDauermin.insets = new Insets(0, 0, 0, 5);
 		gbc_lblDauermin.gridx = 1;
 		gbc_lblDauermin.gridy = 2;
-		panel_1.add(lblDauermin, gbc_lblDauermin);
+		panelDetails.add(lblDauermin, gbc_lblDauermin);
 		lblDauermin.setHorizontalAlignment(SwingConstants.CENTER);
 
 		textFieldDauer = new JTextField();
@@ -437,7 +438,7 @@ public class PruefungsDetails {
 		gbc_textFieldDauer.insets = new Insets(0, 0, 0, 5);
 		gbc_textFieldDauer.gridx = 2;
 		gbc_textFieldDauer.gridy = 2;
-		panel_1.add(textFieldDauer, gbc_textFieldDauer);
+		panelDetails.add(textFieldDauer, gbc_textFieldDauer);
 		textFieldDauer.setColumns(5);
 
 		JLabel lblPunkte = new JLabel("Punkte:");
@@ -447,7 +448,7 @@ public class PruefungsDetails {
 		gbc_lblPunkte.insets = new Insets(0, 0, 0, 5);
 		gbc_lblPunkte.gridx = 4;
 		gbc_lblPunkte.gridy = 2;
-		panel_1.add(lblPunkte, gbc_lblPunkte);
+		panelDetails.add(lblPunkte, gbc_lblPunkte);
 
 		textFieldPunkte = new JTextField();
 		textFieldPunkte.setEditable(false);
@@ -456,7 +457,7 @@ public class PruefungsDetails {
 		gbc_textFieldPunkte.insets = new Insets(0, 0, 0, 5);
 		gbc_textFieldPunkte.gridx = 5;
 		gbc_textFieldPunkte.gridy = 2;
-		panel_1.add(textFieldPunkte, gbc_textFieldPunkte);
+		panelDetails.add(textFieldPunkte, gbc_textFieldPunkte);
 		textFieldPunkte.setColumns(5);
 
 		chckbxAufgabenVerwrfeln = new JCheckBox("Aufgaben verw\u00FCrfeln");
@@ -466,7 +467,7 @@ public class PruefungsDetails {
 		gbc_chckbxAufgabenVerwrfeln.insets = new Insets(0, 0, 0, 5);
 		gbc_chckbxAufgabenVerwrfeln.gridx = 7;
 		gbc_chckbxAufgabenVerwrfeln.gridy = 2;
-		panel_1.add(chckbxAufgabenVerwrfeln, gbc_chckbxAufgabenVerwrfeln);
+		panelDetails.add(chckbxAufgabenVerwrfeln, gbc_chckbxAufgabenVerwrfeln);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
@@ -593,9 +594,7 @@ public class PruefungsDetails {
 
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				controller.abbrechen();
-
 			}
 		});
 

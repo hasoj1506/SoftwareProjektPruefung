@@ -188,7 +188,7 @@ public class PruefungsverwaltungController {
 		String suchText = view.getTextFieldSuche().getText();
 
 		try {
-
+			//entsprechende Prüfungen in der DB suchen
 			pruefungen = db.readPruefungenSuche(suchText);
 			Collections.sort(pruefungen, new PruefungComparator());
 
